@@ -67,7 +67,7 @@
 <body class="min-h-screen flex flex-col">
   <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="text-accent hover:text-accent-hover font-medium transition-colors duration-200">&larr; 返回博客</a>
+      <a href="../index.html" class="text-accent hover:text-accent-hover font-medium transition-colors duration-200">&larr; 返回博客</a>
       <span id="post-meta" class="text-sm text-secondary"></span>
     </div>
   </nav>
@@ -86,7 +86,7 @@
         <div id="error" class="text-center py-16 text-secondary" style="display:none">
           <p class="text-lg mb-2">文章加载失败</p>
           <p class="text-sm" id="error-msg"></p>
-          <a href="index.html" class="inline-block mt-4 text-accent hover:underline">&larr; 返回博客首页</a>
+          <a href="../index.html" class="inline-block mt-4 text-accent hover:underline">&larr; 返回博客首页</a>
         </div>
       </div>
     </article>
@@ -155,14 +155,20 @@
           bodyEl.style.display = 'block';
         })
         .catch(err => {
-          showError('无法加载文章：' + err.message);
+          const hint = window.location.protocol === 'file:'
+            ? '当前使用 file:// 协议，无法加载文章。<br><br>'
+              + '请在博客目录下启动本地服务器：<br>'
+              + '<code style="background:#e5e7eb;padding:2px 6px;border-radius:4px">python3 -m http.server 8080</code><br>'
+              + '然后访问 <code style="background:#e5e7eb;padding:2px 6px;border-radius:4px">http://localhost:8080/posts/post.html?p=' + postName + '</code>'
+            : '无法加载文章：' + err.message;
+          showError(hint);
         });
     }
 
     function showError(msg) {
       loadingEl.style.display = 'none';
       errorEl.style.display = 'block';
-      errorMsg.textContent = msg;
+      errorMsg.innerHTML = msg;
       document.title = '错误 — My Tech Blog';
     }
   </script>
