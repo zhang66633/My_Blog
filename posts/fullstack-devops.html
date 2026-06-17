@@ -6,11 +6,11 @@
   <meta name="author" content="zhang66633">
   <title>全栈架构与 DevOps — My Tech Blog</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{accent:'#2563EB','accent-hover':'#1D4ED8','text-primary':'#18181B',secondary:'#6B7280'}}}}</script>
+  <script>tailwind.config={theme:{extend:{colors:{accent:"#2563EB","accent-hover":"#1D4ED8","text-primary":"#18181B",secondary:"#6B7280"}}}}</script>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
   <style>
-    body{font-family:'DM Sans',sans-serif;background-color:#FAFAFA}
-    h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+    body{font-family:"DM Sans",sans-serif;background-color:#FAFAFA}
+    h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif}
     pre{background:#1e1e2e;color:#cdd6f4;padding:1em 1.25em;border-radius:8px;overflow-x:auto;font-size:0.875em;line-height:1.5;margin:1em 0}
     code{background:#e5e7eb;padding:0.15em 0.4em;border-radius:4px;font-size:0.9em}
     pre code{background:transparent;padding:0;font-size:inherit}
@@ -24,2435 +24,1185 @@
 <body class="min-h-screen flex flex-col">
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm"><div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="../index.html" class="text-accent hover:text-accent-hover font-medium">&larr; 返回博客</a><span class="text-sm text-secondary">CI/CD, Docker, Kubernetes, Cloud Native</span></div></nav>
 <main class="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12"><article><h1 class="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3">全栈架构与 DevOps</h1><p class="text-secondary text-sm mb-8">2026-06-17</p><div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-10 shadow-sm leading-relaxed text-text-primary">
-<p class="mb-2">---</p>
-<p class="mb-2">AIGC:</p>
-<p class="mb-2">AIGC:</p>
-<p class="mb-2">    Label: &quot;1&quot;</p>
-<p class="mb-2">    Label: &quot;1&quot;</p>
-<p class="mb-2">    ContentProducer: 001191110102MACQD9K64018705</p>
-<p class="mb-2">    ContentProducer: 001191110102MACQD9K64018705</p>
-<p class="mb-2">    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/全栈架构与DevOps.md</p>
-<p class="mb-2">    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/全栈架构与DevOps.md</p>
-<p class="mb-2">    ReservedCode1: &quot;&quot;</p>
-<p class="mb-2">    ReservedCode1: &quot;&quot;</p>
-<p class="mb-2">    ContentPropagator: 001191110102MACQD9K64028705</p>
-<p class="mb-2">    ContentPropagator: 001191110102MACQD9K64028705</p>
-<p class="mb-2">    PropagateID: 0#1781573275986</p>
-<p class="mb-2">    PropagateID: 0#1781573275986</p>
-<p class="mb-2">    ReservedCode2: &quot;&quot;</p>
-<p class="mb-2">    ReservedCode2: &quot;&quot;</p>
-<p class="mb-2">---</p>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">全栈架构与 DevOps</h1>
 <h1 class="font-heading text-3xl font-bold mt-8 mb-4">全栈架构与 DevOps</h1>
 <br>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
 <h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
 <br>
-<br>
-<p class="mb-2">1. [全栈架构模式](#1-全栈架构模式)</p>
 <p class="mb-2">1. [全栈架构模式](#1-全栈架构模式)</p>
 <p class="mb-2">2. [部署与 DevOps](#2-部署与-devops)</p>
-<p class="mb-2">2. [部署与 DevOps](#2-部署与-devops)</p>
 <p class="mb-2">3. [架构设计模式](#3-架构设计模式)</p>
-<p class="mb-2">3. [架构设计模式](#3-架构设计模式)</p>
-<br>
 <br>
 <p class="mb-2">---</p>
 <br>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. 全栈架构模式</h2>
 <h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. 全栈架构模式</h2>
 <br>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 SSR vs CSR vs SSG 适用场景</h3>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 SSR vs CSR vs SSG 适用场景</h3>
 <br>
-<br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 三种渲染模式对比</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 三种渲染模式对比</h4>
-<br>
 <br>
 <table class="my-4 w-full"><tr><td>模式</td><td>全称</td><td>首屏渲染</td><td>交互性</td><td>SEO</td><td>适用场景</td></tr>
-<tr><td>模式</td><td>全称</td><td>首屏渲染</td><td>交互性</td><td>SEO</td><td>适用场景</td></tr>
-<tr><td>**CSR**</td><td>Client-Side Rendering</td><td>慢（需等 JS 下载执行）</td><td>高</td><td>差</td><td>后台系统、SPA</td></tr>
 <tr><td>**CSR**</td><td>Client-Side Rendering</td><td>慢（需等 JS 下载执行）</td><td>高</td><td>差</td><td>后台系统、SPA</td></tr>
 <tr><td>**SSR**</td><td>Server-Side Rendering</td><td>快</td><td>高</td><td>好</td><td>动态内容、用户个性化</td></tr>
-<tr><td>**SSR**</td><td>Server-Side Rendering</td><td>快</td><td>高</td><td>好</td><td>动态内容、用户个性化</td></tr>
-<tr><td>**SSG**</td><td>Static Site Generation</td><td>最快</td><td>中</td><td>最好</td><td>静态站点、博客、文档</td></tr>
 <tr><td>**SSG**</td><td>Static Site Generation</td><td>最快</td><td>中</td><td>最好</td><td>静态站点、博客、文档</td></tr></table>
 <br>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 CSR 实现（React SPA）</h4>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 CSR 实现（React SPA）</h4>
 <br>
+<pre><code>// React + Vite 实现 CSR
+// src/App.jsx
+import React, { useState, useEffect } from &#x27;react&#x27;;
+
+function App() {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    // 客户端数据获取
+    useEffect(() =&gt; {
+        fetch(&#x27;/api/data&#x27;)
+            .then(res =&gt; res.json())
+            .then(data =&gt; {
+                setData(data);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;CSR Application&lt;/h1&gt;
+            {data &amp;&amp; &lt;p&gt;{data.message}&lt;/p&gt;}
+        &lt;/div&gt;
+    );
+}
+
+export default App;</code></pre>
 <br>
-<pre><code></code></pre>
-<p class="mb-2">// React + Vite 实现 CSR</p>
-<p class="mb-2">// React + Vite 实现 CSR</p>
-<p class="mb-2">// src/App.jsx</p>
-<p class="mb-2">// src/App.jsx</p>
-<p class="mb-2">import React, { useState, useEffect } from &#x27;react&#x27;;</p>
-<p class="mb-2">import React, { useState, useEffect } from &#x27;react&#x27;;</p>
-<br>
-<br>
-<p class="mb-2">function App() {</p>
-<p class="mb-2">function App() {</p>
-<p class="mb-2">    const [data, setData] = useState(null);</p>
-<p class="mb-2">    const [data, setData] = useState(null);</p>
-<p class="mb-2">    const [loading, setLoading] = useState(true);</p>
-<p class="mb-2">    const [loading, setLoading] = useState(true);</p>
-<br>
-<br>
-<p class="mb-2">    // 客户端数据获取</p>
-<p class="mb-2">    // 客户端数据获取</p>
-<p class="mb-2">    useEffect(() =&gt; {</p>
-<p class="mb-2">    useEffect(() =&gt; {</p>
-<p class="mb-2">        fetch(&#x27;/api/data&#x27;)</p>
-<p class="mb-2">        fetch(&#x27;/api/data&#x27;)</p>
-<p class="mb-2">            .then(res =&gt; res.json())</p>
-<p class="mb-2">            .then(res =&gt; res.json())</p>
-<p class="mb-2">            .then(data =&gt; {</p>
-<p class="mb-2">            .then(data =&gt; {</p>
-<p class="mb-2">                setData(data);</p>
-<p class="mb-2">                setData(data);</p>
-<p class="mb-2">                setLoading(false);</p>
-<p class="mb-2">                setLoading(false);</p>
-<p class="mb-2">            });</p>
-<p class="mb-2">            });</p>
-<p class="mb-2">    }, []);</p>
-<p class="mb-2">    }, []);</p>
-<br>
-<br>
-<p class="mb-2">    if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;</p>
-<p class="mb-2">    if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;</p>
-<br>
-<br>
-<p class="mb-2">    return (</p>
-<p class="mb-2">    return (</p>
-<p class="mb-2">        &lt;div&gt;</p>
-<p class="mb-2">        &lt;div&gt;</p>
-<p class="mb-2">            &lt;h1&gt;CSR Application&lt;/h1&gt;</p>
-<p class="mb-2">            &lt;h1&gt;CSR Application&lt;/h1&gt;</p>
-<p class="mb-2">            {data &amp;&amp; &lt;p&gt;{data.message}&lt;/p&gt;}</p>
-<p class="mb-2">            {data &amp;&amp; &lt;p&gt;{data.message}&lt;/p&gt;}</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">export default App;</p>
-<p class="mb-2">export default App;</p>
-<pre><code></code></pre>
-<br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// vite.config.js</p>
-<p class="mb-2">// vite.config.js</p>
-<p class="mb-2">import { defineConfig } from &#x27;vite&#x27;;</p>
-<p class="mb-2">import { defineConfig } from &#x27;vite&#x27;;</p>
-<p class="mb-2">import react from &#x27;@vitejs/plugin-react&#x27;;</p>
-<p class="mb-2">import react from &#x27;@vitejs/plugin-react&#x27;;</p>
-<br>
-<br>
-<p class="mb-2">export default defineConfig({</p>
-<p class="mb-2">export default defineConfig({</p>
-<p class="mb-2">    plugins: [react()],</p>
-<p class="mb-2">    plugins: [react()],</p>
-<p class="mb-2">    build: {</p>
-<p class="mb-2">    build: {</p>
-<p class="mb-2">        outDir: &#x27;dist&#x27;,</p>
-<p class="mb-2">        outDir: &#x27;dist&#x27;,</p>
-<p class="mb-2">        // CSR 模式：所有资源从相对路径加载</p>
-<p class="mb-2">        // CSR 模式：所有资源从相对路径加载</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">});</p>
-<p class="mb-2">});</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// vite.config.js
+import { defineConfig } from &#x27;vite&#x27;;
+import react from &#x27;@vitejs/plugin-react&#x27;;
+
+export default defineConfig({
+    plugins: [react()],
+    build: {
+        outDir: &#x27;dist&#x27;,
+        // CSR 模式：所有资源从相对路径加载
+    }
+});</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 SSR 实现（Next.js）</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 SSR 实现（Next.js）</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// pages/index.js - Next.js SSR</p>
-<p class="mb-2">// pages/index.js - Next.js SSR</p>
-<p class="mb-2">// 每次请求都会在服务端执行</p>
-<p class="mb-2">// 每次请求都会在服务端执行</p>
-<p class="mb-2">export async function getServerSideProps() {</p>
-<p class="mb-2">export async function getServerSideProps() {</p>
-<p class="mb-2">    // 服务端直接查询数据库</p>
-<p class="mb-2">    // 服务端直接查询数据库</p>
-<p class="mb-2">    const res = await fetch(&#x27;http://internal-api/data&#x27;);</p>
-<p class="mb-2">    const res = await fetch(&#x27;http://internal-api/data&#x27;);</p>
-<p class="mb-2">    const data = await res.json();</p>
-<p class="mb-2">    const data = await res.json();</p>
-<br>
-<br>
-<p class="mb-2">    return {</p>
-<p class="mb-2">    return {</p>
-<p class="mb-2">        props: { data },  // 传递给组件的 props</p>
-<p class="mb-2">        props: { data },  // 传递给组件的 props</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">export default function Home({ data }) {</p>
-<p class="mb-2">export default function Home({ data }) {</p>
-<p class="mb-2">    return (</p>
-<p class="mb-2">    return (</p>
-<p class="mb-2">        &lt;div&gt;</p>
-<p class="mb-2">        &lt;div&gt;</p>
-<p class="mb-2">            &lt;h1&gt;SSR Page&lt;/h1&gt;</p>
-<p class="mb-2">            &lt;h1&gt;SSR Page&lt;/h1&gt;</p>
-<p class="mb-2">            &lt;p&gt;{data.message}&lt;/p&gt;</p>
-<p class="mb-2">            &lt;p&gt;{data.message}&lt;/p&gt;</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// pages/index.js - Next.js SSR
+// 每次请求都会在服务端执行
+export async function getServerSideProps() {
+    // 服务端直接查询数据库
+    const res = await fetch(&#x27;http://internal-api/data&#x27;);
+    const data = await res.json();
+
+    return {
+        props: { data },  // 传递给组件的 props
+    };
+}
+
+export default function Home({ data }) {
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;SSR Page&lt;/h1&gt;
+            &lt;p&gt;{data.message}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.4 SSG 实现（Next.js）</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.4 SSG 实现（Next.js）</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// pages/about.js - Next.js SSG</p>
-<p class="mb-2">// pages/about.js - Next.js SSG</p>
-<p class="mb-2">// 构建时生成，部署后无需服务端</p>
-<p class="mb-2">// 构建时生成，部署后无需服务端</p>
-<p class="mb-2">export async function getStaticProps() {</p>
-<p class="mb-2">export async function getStaticProps() {</p>
-<p class="mb-2">    // 构建时执行一次</p>
-<p class="mb-2">    // 构建时执行一次</p>
-<p class="mb-2">    const data = await fetch(&#x27;http://api/data&#x27;).then(r =&gt; r.json());</p>
-<p class="mb-2">    const data = await fetch(&#x27;http://api/data&#x27;).then(r =&gt; r.json());</p>
-<br>
-<br>
-<p class="mb-2">    return {</p>
-<p class="mb-2">    return {</p>
-<p class="mb-2">        props: { data },</p>
-<p class="mb-2">        props: { data },</p>
-<p class="mb-2">        // ISR: 构建后每 3600 秒重新生成</p>
-<p class="mb-2">        // ISR: 构建后每 3600 秒重新生成</p>
-<p class="mb-2">        revalidate: 3600,</p>
-<p class="mb-2">        revalidate: 3600,</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">export default function About({ data }) {</p>
-<p class="mb-2">export default function About({ data }) {</p>
-<p class="mb-2">    return (</p>
-<p class="mb-2">    return (</p>
-<p class="mb-2">        &lt;div&gt;</p>
-<p class="mb-2">        &lt;div&gt;</p>
-<p class="mb-2">            &lt;h1&gt;About (Static)&lt;/h1&gt;</p>
-<p class="mb-2">            &lt;h1&gt;About (Static)&lt;/h1&gt;</p>
-<p class="mb-2">            &lt;p&gt;{data.content}&lt;/p&gt;</p>
-<p class="mb-2">            &lt;p&gt;{data.content}&lt;/p&gt;</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// pages/about.js - Next.js SSG
+// 构建时生成，部署后无需服务端
+export async function getStaticProps() {
+    // 构建时执行一次
+    const data = await fetch(&#x27;http://api/data&#x27;).then(r =&gt; r.json());
+
+    return {
+        props: { data },
+        // ISR: 构建后每 3600 秒重新生成
+        revalidate: 3600,
+    };
+}
+
+export default function About({ data }) {
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;About (Static)&lt;/h1&gt;
+            &lt;p&gt;{data.content}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.2 BFF（Backend For Frontend）模式</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.2 BFF（Backend For Frontend）模式</h3>
-<br>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.1 BFF 架构设计</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.1 BFF 架构设计</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">│                      BFF 架构模式                            │</p>
-<p class="mb-2">│                      BFF 架构模式                            │</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐                 │</p>
-<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐                 │</p>
-<p class="mb-2">│  │   iOS   │    │ Android │    │   Web   │                 │</p>
-<p class="mb-2">│  │   iOS   │    │ Android │    │   Web   │                 │</p>
-<p class="mb-2">│  └────┬────┘    └────┬────┘    └────┬────┘                 │</p>
-<p class="mb-2">│  └────┬────┘    └────┬────┘    └────┬────┘                 │</p>
-<p class="mb-2">│       │              │              │                        │</p>
-<p class="mb-2">│       │              │              │                        │</p>
-<p class="mb-2">│       └──────────────┼──────────────┘                        │</p>
-<p class="mb-2">│       └──────────────┼──────────────┘                        │</p>
-<p class="mb-2">│                      │                                       │</p>
-<p class="mb-2">│                      │                                       │</p>
-<p class="mb-2">│              ┌───────┴───────┐                              │</p>
-<p class="mb-2">│              ┌───────┴───────┐                              │</p>
-<p class="mb-2">│              │      BFF       │                              │</p>
-<p class="mb-2">│              │      BFF       │                              │</p>
-<p class="mb-2">│              │  (API Gateway) │                              │</p>
-<p class="mb-2">│              │  (API Gateway) │                              │</p>
-<p class="mb-2">│              │               │                              │</p>
-<p class="mb-2">│              │               │                              │</p>
-<p class="mb-2">│              │ ┌───────────┐ │                              │</p>
-<p class="mb-2">│              │ ┌───────────┐ │                              │</p>
-<p class="mb-2">│              │ │ iOS BFF   │ │  ← 不同客户端                │</p>
-<p class="mb-2">│              │ │ iOS BFF   │ │  ← 不同客户端                │</p>
-<p class="mb-2">│              │ │ Android   │ │    定制化接口                 │</p>
-<p class="mb-2">│              │ │ Android   │ │    定制化接口                 │</p>
-<p class="mb-2">│              │ │ Web BFF   │ │                              │</p>
-<p class="mb-2">│              │ │ Web BFF   │ │                              │</p>
-<p class="mb-2">│              │ └───────────┘ │                              │</p>
-<p class="mb-2">│              │ └───────────┘ │                              │</p>
-<p class="mb-2">│              └───────┬───────┘                              │</p>
-<p class="mb-2">│              └───────┬───────┘                              │</p>
-<p class="mb-2">│                      │                                       │</p>
-<p class="mb-2">│                      │                                       │</p>
-<p class="mb-2">│       ┌──────────────┼──────────────┐                        │</p>
-<p class="mb-2">│       ┌──────────────┼──────────────┐                        │</p>
-<p class="mb-2">│       │              │              │                        │</p>
-<p class="mb-2">│       │              │              │                        │</p>
-<p class="mb-2">│       ▼              ▼              ▼                        │</p>
-<p class="mb-2">│       ▼              ▼              ▼                        │</p>
-<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐                  │</p>
-<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐                  │</p>
-<p class="mb-2">│  │ User    │    │ Product │    │ Order   │                  │</p>
-<p class="mb-2">│  │ User    │    │ Product │    │ Order   │                  │</p>
-<p class="mb-2">│  │ Service │    │ Service │    │ Service │                  │</p>
-<p class="mb-2">│  │ Service │    │ Service │    │ Service │                  │</p>
-<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘                  │</p>
-<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘                  │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  优势：                                                      │</p>
-<p class="mb-2">│  优势：                                                      │</p>
-<p class="mb-2">│  1. 减少客户端请求次数（聚合多个微服务）                      │</p>
-<p class="mb-2">│  1. 减少客户端请求次数（聚合多个微服务）                      │</p>
-<p class="mb-2">│  2. 定制化返回字段（iOS 不需要 web 特有字段）                 │</p>
-<p class="mb-2">│  2. 定制化返回字段（iOS 不需要 web 特有字段）                 │</p>
-<p class="mb-2">│  3. 统一认证、日志、监控                                      │</p>
-<p class="mb-2">│  3. 统一认证、日志、监控                                      │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<pre><code></code></pre>
-<br>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                      BFF 架构模式                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐                 │
+│  │   iOS   │    │ Android │    │   Web   │                 │
+│  └────┬────┘    └────┬────┘    └────┬────┘                 │
+│       │              │              │                        │
+│       └──────────────┼──────────────┘                        │
+│                      │                                       │
+│              ┌───────┴───────┐                              │
+│              │      BFF       │                              │
+│              │  (API Gateway) │                              │
+│              │               │                              │
+│              │ ┌───────────┐ │                              │
+│              │ │ iOS BFF   │ │  ← 不同客户端                │
+│              │ │ Android   │ │    定制化接口                 │
+│              │ │ Web BFF   │ │                              │
+│              │ └───────────┘ │                              │
+│              └───────┬───────┘                              │
+│                      │                                       │
+│       ┌──────────────┼──────────────┐                        │
+│       │              │              │                        │
+│       ▼              ▼              ▼                        │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐                  │
+│  │ User    │    │ Product │    │ Order   │                  │
+│  │ Service │    │ Service │    │ Service │                  │
+│  └─────────┘    └─────────┘    └─────────┘                  │
+│                                                             │
+│  优势：                                                      │
+│  1. 减少客户端请求次数（聚合多个微服务）                      │
+│  2. 定制化返回字段（iOS 不需要 web 特有字段）                 │
+│  3. 统一认证、日志、监控                                      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.2 BFF 实现示例</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.2 BFF 实现示例</h4>
 <br>
+<pre><code>// bff/src/routes/web.ts
+// Web 端 BFF - 返回完整数据（SEO 需要）
+import { Router } from &#x27;express&#x27;;
+import { userService } from &#x27;../services/user&#x27;;
+import { productService } from &#x27;../services/product&#x27;;
+
+const router = Router();
+
+router.get(&#x27;/home&#x27;, async (req, res) =&gt; {
+    // Web 端需要完整的 SEO 数据
+    const [user, products, banners] = await Promise.all([
+        userService.getRecommendUsers(),
+        productService.getHotProducts(),
+        productService.getBanners()
+    ]);
+
+    res.json({
+        user,
+        products,
+        banners,  // Web 特有
+        meta: { title: &#x27;Home&#x27;, description: &#x27;...&#x27; }  // Web 特有 SEO
+    });
+});
+
+export default router;</code></pre>
 <br>
-<pre><code></code></pre>
-<p class="mb-2">// bff/src/routes/web.ts</p>
-<p class="mb-2">// bff/src/routes/web.ts</p>
-<p class="mb-2">// Web 端 BFF - 返回完整数据（SEO 需要）</p>
-<p class="mb-2">// Web 端 BFF - 返回完整数据（SEO 需要）</p>
-<p class="mb-2">import { Router } from &#x27;express&#x27;;</p>
-<p class="mb-2">import { Router } from &#x27;express&#x27;;</p>
-<p class="mb-2">import { userService } from &#x27;../services/user&#x27;;</p>
-<p class="mb-2">import { userService } from &#x27;../services/user&#x27;;</p>
-<p class="mb-2">import { productService } from &#x27;../services/product&#x27;;</p>
-<p class="mb-2">import { productService } from &#x27;../services/product&#x27;;</p>
-<br>
-<br>
-<p class="mb-2">const router = Router();</p>
-<p class="mb-2">const router = Router();</p>
-<br>
-<br>
-<p class="mb-2">router.get(&#x27;/home&#x27;, async (req, res) =&gt; {</p>
-<p class="mb-2">router.get(&#x27;/home&#x27;, async (req, res) =&gt; {</p>
-<p class="mb-2">    // Web 端需要完整的 SEO 数据</p>
-<p class="mb-2">    // Web 端需要完整的 SEO 数据</p>
-<p class="mb-2">    const [user, products, banners] = await Promise.all([</p>
-<p class="mb-2">    const [user, products, banners] = await Promise.all([</p>
-<p class="mb-2">        userService.getRecommendUsers(),</p>
-<p class="mb-2">        userService.getRecommendUsers(),</p>
-<p class="mb-2">        productService.getHotProducts(),</p>
-<p class="mb-2">        productService.getHotProducts(),</p>
-<p class="mb-2">        productService.getBanners()</p>
-<p class="mb-2">        productService.getBanners()</p>
-<p class="mb-2">    ]);</p>
-<p class="mb-2">    ]);</p>
-<br>
-<br>
-<p class="mb-2">    res.json({</p>
-<p class="mb-2">    res.json({</p>
-<p class="mb-2">        user,</p>
-<p class="mb-2">        user,</p>
-<p class="mb-2">        products,</p>
-<p class="mb-2">        products,</p>
-<p class="mb-2">        banners,  // Web 特有</p>
-<p class="mb-2">        banners,  // Web 特有</p>
-<p class="mb-2">        meta: { title: &#x27;Home&#x27;, description: &#x27;...&#x27; }  // Web 特有 SEO</p>
-<p class="mb-2">        meta: { title: &#x27;Home&#x27;, description: &#x27;...&#x27; }  // Web 特有 SEO</p>
-<p class="mb-2">    });</p>
-<p class="mb-2">    });</p>
-<p class="mb-2">});</p>
-<p class="mb-2">});</p>
-<br>
-<br>
-<p class="mb-2">export default router;</p>
-<p class="mb-2">export default router;</p>
-<pre><code></code></pre>
-<br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// bff/src/routes/mobile.ts</p>
-<p class="mb-2">// bff/src/routes/mobile.ts</p>
-<p class="mb-2">// 移动端 BFF - 返回精简数据</p>
-<p class="mb-2">// 移动端 BFF - 返回精简数据</p>
-<p class="mb-2">import { Router } from &#x27;express&#x27;;</p>
-<p class="mb-2">import { Router } from &#x27;express&#x27;;</p>
-<p class="mb-2">import { userService } from &#x27;../services/user&#x27;;</p>
-<p class="mb-2">import { userService } from &#x27;../services/user&#x27;;</p>
-<p class="mb-2">import { productService } from &#x27;../services/product&#x27;;</p>
-<p class="mb-2">import { productService } from &#x27;../services/product&#x27;;</p>
-<br>
-<br>
-<p class="mb-2">const router = Router();</p>
-<p class="mb-2">const router = Router();</p>
-<br>
-<br>
-<p class="mb-2">router.get(&#x27;/home&#x27;, async (req, res) =&gt; {</p>
-<p class="mb-2">router.get(&#x27;/home&#x27;, async (req, res) =&gt; {</p>
-<p class="mb-2">    // 移动端不需要 SEO，专注于性能</p>
-<p class="mb-2">    // 移动端不需要 SEO，专注于性能</p>
-<p class="mb-2">    const [user, products] = await Promise.all([</p>
-<p class="mb-2">    const [user, products] = await Promise.all([</p>
-<p class="mb-2">        userService.getRecommendUsers({ limit: 5 }),</p>
-<p class="mb-2">        userService.getRecommendUsers({ limit: 5 }),</p>
-<p class="mb-2">        productService.getHotProducts({ limit: 10 })</p>
-<p class="mb-2">        productService.getHotProducts({ limit: 10 })</p>
-<p class="mb-2">        // 移动端不需要 banners，减少数据传输</p>
-<p class="mb-2">        // 移动端不需要 banners，减少数据传输</p>
-<p class="mb-2">    ]);</p>
-<p class="mb-2">    ]);</p>
-<br>
-<br>
-<p class="mb-2">    res.json({</p>
-<p class="mb-2">    res.json({</p>
-<p class="mb-2">        user,</p>
-<p class="mb-2">        user,</p>
-<p class="mb-2">        products,</p>
-<p class="mb-2">        products,</p>
-<p class="mb-2">        version: &#x27;2.0&#x27;  // 移动端特有</p>
-<p class="mb-2">        version: &#x27;2.0&#x27;  // 移动端特有</p>
-<p class="mb-2">    });</p>
-<p class="mb-2">    });</p>
-<p class="mb-2">});</p>
-<p class="mb-2">});</p>
-<br>
-<br>
-<p class="mb-2">export default router;</p>
-<p class="mb-2">export default router;</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// bff/src/routes/mobile.ts
+// 移动端 BFF - 返回精简数据
+import { Router } from &#x27;express&#x27;;
+import { userService } from &#x27;../services/user&#x27;;
+import { productService } from &#x27;../services/product&#x27;;
+
+const router = Router();
+
+router.get(&#x27;/home&#x27;, async (req, res) =&gt; {
+    // 移动端不需要 SEO，专注于性能
+    const [user, products] = await Promise.all([
+        userService.getRecommendUsers({ limit: 5 }),
+        productService.getHotProducts({ limit: 10 })
+        // 移动端不需要 banners，减少数据传输
+    ]);
+
+    res.json({
+        user,
+        products,
+        version: &#x27;2.0&#x27;  // 移动端特有
+    });
+});
+
+export default router;</code></pre>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.3 微前端架构设计与实现</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.3 微前端架构设计与实现</h3>
-<br>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.1 微前端解决的问题</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.1 微前端解决的问题</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">│                    微前端架构价值                              │</p>
-<p class="mb-2">│                    微前端架构价值                              │</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  传统巨石应用问题：                                          │</p>
-<p class="mb-2">│  传统巨石应用问题：                                          │</p>
-<p class="mb-2">│  ├── 技术栈单一，无法引入新技术                               │</p>
-<p class="mb-2">│  ├── 技术栈单一，无法引入新技术                               │</p>
-<p class="mb-2">│  ├── 部署耦合，改一处需全量回归                               │</p>
-<p class="mb-2">│  ├── 部署耦合，改一处需全量回归                               │</p>
-<p class="mb-2">│  ├── 开发团队协作困难                                        │</p>
-<p class="mb-2">│  ├── 开发团队协作困难                                        │</p>
-<p class="mb-2">│  └── 扩展性差，难以拆分                                      │</p>
-<p class="mb-2">│  └── 扩展性差，难以拆分                                      │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  微前端解决方案：                                            │</p>
-<p class="mb-2">│  微前端解决方案：                                            │</p>
-<p class="mb-2">│  ├── 技术无关（React/Vue/Angular 混用）                      │</p>
-<p class="mb-2">│  ├── 技术无关（React/Vue/Angular 混用）                      │</p>
-<p class="mb-2">│  ├── 独立部署（各子应用独立上线）                             │</p>
-<p class="mb-2">│  ├── 独立部署（各子应用独立上线）                             │</p>
-<p class="mb-2">│  ├── 团队自治（按业务/功能划分）                              │</p>
-<p class="mb-2">│  ├── 团队自治（按业务/功能划分）                              │</p>
-<p class="mb-2">│  └── 增量升级（逐步迁移新技术）                               │</p>
-<p class="mb-2">│  └── 增量升级（逐步迁移新技术）                               │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<pre><code></code></pre>
-<br>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    微前端架构价值                              │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  传统巨石应用问题：                                          │
+│  ├── 技术栈单一，无法引入新技术                               │
+│  ├── 部署耦合，改一处需全量回归                               │
+│  ├── 开发团队协作困难                                        │
+│  └── 扩展性差，难以拆分                                      │
+│                                                             │
+│  微前端解决方案：                                            │
+│  ├── 技术无关（React/Vue/Angular 混用）                      │
+│  ├── 独立部署（各子应用独立上线）                             │
+│  ├── 团队自治（按业务/功能划分）                              │
+│  └── 增量升级（逐步迁移新技术）                               │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.2 微前端实现方案对比</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.2 微前端实现方案对比</h4>
-<br>
 <br>
 <table class="my-4 w-full"><tr><td>方案</td><td>原理</td><td>优点</td><td>缺点</td></tr>
-<tr><td>方案</td><td>原理</td><td>优点</td><td>缺点</td></tr>
-<tr><td>**iframe**</td><td>浏览器原生隔离</td><td>实现简单，完全隔离</td><td>通信困难，性能差</td></tr>
 <tr><td>**iframe**</td><td>浏览器原生隔离</td><td>实现简单，完全隔离</td><td>通信困难，性能差</td></tr>
 <tr><td>**Web Components**</td><td>原生组件标准</td><td>原生支持，通用性强</td><td>生态不成熟</td></tr>
-<tr><td>**Web Components**</td><td>原生组件标准</td><td>原生支持，通用性强</td><td>生态不成熟</td></tr>
 <tr><td>**Module Federation**</td><td>Webpack 运行时共享</td><td>性能好，生态成熟</td><td>配置复杂</td></tr>
-<tr><td>**Module Federation**</td><td>Webpack 运行时共享</td><td>性能好，生态成熟</td><td>配置复杂</td></tr>
-<tr><td>**qiankun**</td><td>基于 Single-SPA 封装</td><td>封装完善，文档好</td><td>依赖 Single-SPA</td></tr>
 <tr><td>**qiankun**</td><td>基于 Single-SPA 封装</td><td>封装完善，文档好</td><td>依赖 Single-SPA</td></tr></table>
 <br>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.3 Module Federation 实现示例</h4>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.3 Module Federation 实现示例</h4>
 <br>
+<pre><code>// 主应用 webpack.config.js
+const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);
+const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);
+
+module.exports = {
+    mode: &#x27;development&#x27;,
+    devServer: { port: 3000 },
+    plugins: [
+        new ModuleFederationPlugin({
+            name: &#x27;host&#x27;,
+            remotes: {
+                // 声明远程应用
+                dashboard: &#x27;dashboard@http://localhost:3001/remoteEntry.js&#x27;,
+                admin: &#x27;admin@http://localhost:3002/remoteEntry.js&#x27;
+            },
+            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;, &#x27;react-router-dom&#x27;]
+        }),
+        new HtmlWebpackPlugin({
+            template: &#x27;./index.html&#x27;
+        })
+    ]
+};</code></pre>
 <br>
-<pre><code></code></pre>
-<p class="mb-2">// 主应用 webpack.config.js</p>
-<p class="mb-2">// 主应用 webpack.config.js</p>
-<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
-<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
-<p class="mb-2">const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);</p>
-<p class="mb-2">const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);</p>
+<pre><code>// 子应用（Dashboard）webpack.config.js
+const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);
+const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);
+
+module.exports = {
+    mode: &#x27;development&#x27;,
+    devServer: { port: 3001 },
+    plugins: [
+        new ModuleFederationPlugin({
+            name: &#x27;dashboard&#x27;,
+            filename: &#x27;remoteEntry.js&#x27;,  // 暴露给主应用的入口
+            exposes: {
+                // 暴露组件
+                &#x27;./Dashboard&#x27;: &#x27;./src/Dashboard&#x27;,
+                &#x27;./DashboardStats&#x27;: &#x27;./src/components/Stats&#x27;
+            },
+            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]
+        }),
+        new HtmlWebpackPlugin({
+            template: &#x27;./index.html&#x27;
+        })
+    ]
+};</code></pre>
 <br>
-<br>
-<p class="mb-2">module.exports = {</p>
-<p class="mb-2">module.exports = {</p>
-<p class="mb-2">    mode: &#x27;development&#x27;,</p>
-<p class="mb-2">    mode: &#x27;development&#x27;,</p>
-<p class="mb-2">    devServer: { port: 3000 },</p>
-<p class="mb-2">    devServer: { port: 3000 },</p>
-<p class="mb-2">    plugins: [</p>
-<p class="mb-2">    plugins: [</p>
-<p class="mb-2">        new ModuleFederationPlugin({</p>
-<p class="mb-2">        new ModuleFederationPlugin({</p>
-<p class="mb-2">            name: &#x27;host&#x27;,</p>
-<p class="mb-2">            name: &#x27;host&#x27;,</p>
-<p class="mb-2">            remotes: {</p>
-<p class="mb-2">            remotes: {</p>
-<p class="mb-2">                // 声明远程应用</p>
-<p class="mb-2">                // 声明远程应用</p>
-<p class="mb-2">                dashboard: &#x27;dashboard@http://localhost:3001/remoteEntry.js&#x27;,</p>
-<p class="mb-2">                dashboard: &#x27;dashboard@http://localhost:3001/remoteEntry.js&#x27;,</p>
-<p class="mb-2">                admin: &#x27;admin@http://localhost:3002/remoteEntry.js&#x27;</p>
-<p class="mb-2">                admin: &#x27;admin@http://localhost:3002/remoteEntry.js&#x27;</p>
-<p class="mb-2">            },</p>
-<p class="mb-2">            },</p>
-<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;, &#x27;react-router-dom&#x27;]</p>
-<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;, &#x27;react-router-dom&#x27;]</p>
-<p class="mb-2">        }),</p>
-<p class="mb-2">        }),</p>
-<p class="mb-2">        new HtmlWebpackPlugin({</p>
-<p class="mb-2">        new HtmlWebpackPlugin({</p>
-<p class="mb-2">            template: &#x27;./index.html&#x27;</p>
-<p class="mb-2">            template: &#x27;./index.html&#x27;</p>
-<p class="mb-2">        })</p>
-<p class="mb-2">        })</p>
-<p class="mb-2">    ]</p>
-<p class="mb-2">    ]</p>
-<p class="mb-2">};</p>
-<p class="mb-2">};</p>
-<pre><code></code></pre>
-<br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// 子应用（Dashboard）webpack.config.js</p>
-<p class="mb-2">// 子应用（Dashboard）webpack.config.js</p>
-<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
-<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
-<p class="mb-2">const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);</p>
-<p class="mb-2">const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);</p>
-<br>
-<br>
-<p class="mb-2">module.exports = {</p>
-<p class="mb-2">module.exports = {</p>
-<p class="mb-2">    mode: &#x27;development&#x27;,</p>
-<p class="mb-2">    mode: &#x27;development&#x27;,</p>
-<p class="mb-2">    devServer: { port: 3001 },</p>
-<p class="mb-2">    devServer: { port: 3001 },</p>
-<p class="mb-2">    plugins: [</p>
-<p class="mb-2">    plugins: [</p>
-<p class="mb-2">        new ModuleFederationPlugin({</p>
-<p class="mb-2">        new ModuleFederationPlugin({</p>
-<p class="mb-2">            name: &#x27;dashboard&#x27;,</p>
-<p class="mb-2">            name: &#x27;dashboard&#x27;,</p>
-<p class="mb-2">            filename: &#x27;remoteEntry.js&#x27;,  // 暴露给主应用的入口</p>
-<p class="mb-2">            filename: &#x27;remoteEntry.js&#x27;,  // 暴露给主应用的入口</p>
-<p class="mb-2">            exposes: {</p>
-<p class="mb-2">            exposes: {</p>
-<p class="mb-2">                // 暴露组件</p>
-<p class="mb-2">                // 暴露组件</p>
-<p class="mb-2">                &#x27;./Dashboard&#x27;: &#x27;./src/Dashboard&#x27;,</p>
-<p class="mb-2">                &#x27;./Dashboard&#x27;: &#x27;./src/Dashboard&#x27;,</p>
-<p class="mb-2">                &#x27;./DashboardStats&#x27;: &#x27;./src/components/Stats&#x27;</p>
-<p class="mb-2">                &#x27;./DashboardStats&#x27;: &#x27;./src/components/Stats&#x27;</p>
-<p class="mb-2">            },</p>
-<p class="mb-2">            },</p>
-<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]</p>
-<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]</p>
-<p class="mb-2">        }),</p>
-<p class="mb-2">        }),</p>
-<p class="mb-2">        new HtmlWebpackPlugin({</p>
-<p class="mb-2">        new HtmlWebpackPlugin({</p>
-<p class="mb-2">            template: &#x27;./index.html&#x27;</p>
-<p class="mb-2">            template: &#x27;./index.html&#x27;</p>
-<p class="mb-2">        })</p>
-<p class="mb-2">        })</p>
-<p class="mb-2">    ]</p>
-<p class="mb-2">    ]</p>
-<p class="mb-2">};</p>
-<p class="mb-2">};</p>
-<pre><code></code></pre>
-<br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// 主应用中使用子应用组件</p>
-<p class="mb-2">// 主应用中使用子应用组件</p>
-<p class="mb-2">import React, { Suspense } from &#x27;react&#x27;;</p>
-<p class="mb-2">import React, { Suspense } from &#x27;react&#x27;;</p>
-<br>
-<br>
-<p class="mb-2">// 使用 React.lazy 懒加载远程组件</p>
-<p class="mb-2">// 使用 React.lazy 懒加载远程组件</p>
-<p class="mb-2">const Dashboard = React.lazy(() =&gt; import(&#x27;dashboard/Dashboard&#x27;));</p>
-<p class="mb-2">const Dashboard = React.lazy(() =&gt; import(&#x27;dashboard/Dashboard&#x27;));</p>
-<p class="mb-2">const DashboardStats = React.lazy(() =&gt; import(&#x27;dashboard/DashboardStats&#x27;));</p>
-<p class="mb-2">const DashboardStats = React.lazy(() =&gt; import(&#x27;dashboard/DashboardStats&#x27;));</p>
-<br>
-<br>
-<p class="mb-2">function App() {</p>
-<p class="mb-2">function App() {</p>
-<p class="mb-2">    return (</p>
-<p class="mb-2">    return (</p>
-<p class="mb-2">        &lt;div className=&quot;app&quot;&gt;</p>
-<p class="mb-2">        &lt;div className=&quot;app&quot;&gt;</p>
-<p class="mb-2">            &lt;header&gt;Main Application Header&lt;/header&gt;</p>
-<p class="mb-2">            &lt;header&gt;Main Application Header&lt;/header&gt;</p>
-<br>
-<br>
-<p class="mb-2">            &lt;main&gt;</p>
-<p class="mb-2">            &lt;main&gt;</p>
-<p class="mb-2">                &lt;Suspense fallback={&lt;div&gt;Loading Dashboard...&lt;/div&gt;}&gt;</p>
-<p class="mb-2">                &lt;Suspense fallback={&lt;div&gt;Loading Dashboard...&lt;/div&gt;}&gt;</p>
-<p class="mb-2">                    &lt;Dashboard title=&quot;Sales Overview&quot; /&gt;</p>
-<p class="mb-2">                    &lt;Dashboard title=&quot;Sales Overview&quot; /&gt;</p>
-<p class="mb-2">                &lt;/Suspense&gt;</p>
-<p class="mb-2">                &lt;/Suspense&gt;</p>
-<br>
-<br>
-<p class="mb-2">                &lt;Suspense fallback={&lt;div&gt;Loading Stats...&lt;/div&gt;}&gt;</p>
-<p class="mb-2">                &lt;Suspense fallback={&lt;div&gt;Loading Stats...&lt;/div&gt;}&gt;</p>
-<p class="mb-2">                    &lt;DashboardStats /&gt;</p>
-<p class="mb-2">                    &lt;DashboardStats /&gt;</p>
-<p class="mb-2">                &lt;/Suspense&gt;</p>
-<p class="mb-2">                &lt;/Suspense&gt;</p>
-<p class="mb-2">            &lt;/main&gt;</p>
-<p class="mb-2">            &lt;/main&gt;</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">        &lt;/div&gt;</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">    );</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// 主应用中使用子应用组件
+import React, { Suspense } from &#x27;react&#x27;;
+
+// 使用 React.lazy 懒加载远程组件
+const Dashboard = React.lazy(() =&gt; import(&#x27;dashboard/Dashboard&#x27;));
+const DashboardStats = React.lazy(() =&gt; import(&#x27;dashboard/DashboardStats&#x27;));
+
+function App() {
+    return (
+        &lt;div className=&quot;app&quot;&gt;
+            &lt;header&gt;Main Application Header&lt;/header&gt;
+            
+            &lt;main&gt;
+                &lt;Suspense fallback={&lt;div&gt;Loading Dashboard...&lt;/div&gt;}&gt;
+                    &lt;Dashboard title=&quot;Sales Overview&quot; /&gt;
+                &lt;/Suspense&gt;
+                
+                &lt;Suspense fallback={&lt;div&gt;Loading Stats...&lt;/div&gt;}&gt;
+                    &lt;DashboardStats /&gt;
+                &lt;/Suspense&gt;
+            &lt;/main&gt;
+        &lt;/div&gt;
+    );
+}</code></pre>
 <br>
 <p class="mb-2">---</p>
 <br>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. 部署与 DevOps</h2>
 <h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. 部署与 DevOps</h2>
 <br>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 Docker 容器化核心概念</h3>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 Docker 容器化核心概念</h3>
 <br>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 Docker vs 传统部署</h4>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 Docker vs 传统部署</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">传统部署问题：</p>
-<p class="mb-2">传统部署问题：</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">│  服务器 A: Python 3.8 + Django + PostgreSQL 12              │</p>
-<p class="mb-2">│  服务器 A: Python 3.8 + Django + PostgreSQL 12              │</p>
-<p class="mb-2">│  服务器 B: Python 3.9 + Flask + MySQL 8                      │</p>
-<p class="mb-2">│  服务器 B: Python 3.9 + Flask + MySQL 8                      │</p>
-<p class="mb-2">│  服务器 C: Node 14 + Express + MongoDB 5                    │</p>
-<p class="mb-2">│  服务器 C: Node 14 + Express + MongoDB 5                    │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  问题：                                                    │</p>
-<p class="mb-2">│  问题：                                                    │</p>
-<p class="mb-2">│  • 环境冲突（需要同时运行 Python 3.8 和 3.9）                  │</p>
-<p class="mb-2">│  • 环境冲突（需要同时运行 Python 3.8 和 3.9）                  │</p>
-<p class="mb-2">│  • 依赖版本不一致导致各种问题                                 │</p>
-<p class="mb-2">│  • 依赖版本不一致导致各种问题                                 │</p>
-<p class="mb-2">│  • 新机器部署困难（手动配置环境）                             │</p>
-<p class="mb-2">│  • 新机器部署困难（手动配置环境）                             │</p>
-<p class="mb-2">│  • 资源利用率低                                              │</p>
-<p class="mb-2">│  • 资源利用率低                                              │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<br>
-<br>
-<p class="mb-2">Docker 容器化：</p>
-<p class="mb-2">Docker 容器化：</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">│                    宿主机 (Host OS)                         │</p>
-<p class="mb-2">│                    宿主机 (Host OS)                         │</p>
-<p class="mb-2">│  ┌─────────┐  ┌─────────┐  ┌─────────┐                     │</p>
-<p class="mb-2">│  ┌─────────┐  ┌─────────┐  ┌─────────┐                     │</p>
-<p class="mb-2">│  │Container│  │Container│  │Container│                     │</p>
-<p class="mb-2">│  │Container│  │Container│  │Container│                     │</p>
-<p class="mb-2">│  │ App A   │  │ App B   │  │ App C   │                     │</p>
-<p class="mb-2">│  │ App A   │  │ App B   │  │ App C   │                     │</p>
-<p class="mb-2">│  │Python3.8│  │Python3.9│  │Node 14  │                     │</p>
-<p class="mb-2">│  │Python3.8│  │Python3.9│  │Node 14  │                     │</p>
-<p class="mb-2">│  │Django   │  │Flask    │  │Express  │                     │</p>
-<p class="mb-2">│  │Django   │  │Flask    │  │Express  │                     │</p>
-<p class="mb-2">│  ├─────────┤  ├─────────┤  ├─────────┤                     │</p>
-<p class="mb-2">│  ├─────────┤  ├─────────┤  ├─────────┤                     │</p>
-<p class="mb-2">│  │Container│  │Container│  │Container│                     │</p>
-<p class="mb-2">│  │Container│  │Container│  │Container│                     │</p>
-<p class="mb-2">│  │Postgres │  │MySQL    │  │MongoDB  │                     │</p>
-<p class="mb-2">│  │Postgres │  │MySQL    │  │MongoDB  │                     │</p>
-<p class="mb-2">│  └─────────┘  └─────────┘  └─────────┘                     │</p>
-<p class="mb-2">│  └─────────┘  └─────────┘  └─────────┘                     │</p>
-<p class="mb-2">│                    ↑                                        │</p>
-<p class="mb-2">│                    ↑                                        │</p>
-<p class="mb-2">│              Docker Engine                                  │</p>
-<p class="mb-2">│              Docker Engine                                  │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<br>
-<br>
-<p class="mb-2">优势：</p>
-<p class="mb-2">优势：</p>
-<p class="mb-2">• 环境一致（开发/测试/生产完全相同）</p>
-<p class="mb-2">• 环境一致（开发/测试/生产完全相同）</p>
-<p class="mb-2">• 资源隔离（应用间互不干扰）</p>
-<p class="mb-2">• 资源隔离（应用间互不干扰）</p>
-<p class="mb-2">• 快速部署（镜像拉取即用）</p>
-<p class="mb-2">• 快速部署（镜像拉取即用）</p>
-<p class="mb-2">• 弹性伸缩（容器可快速扩缩）                                    │</p>
-<p class="mb-2">• 弹性伸缩（容器可快速扩缩）                                    │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<pre><code></code></pre>
-<br>
+<pre><code>传统部署问题：
+┌─────────────────────────────────────────────────────────────┐
+│  服务器 A: Python 3.8 + Django + PostgreSQL 12              │
+│  服务器 B: Python 3.9 + Flask + MySQL 8                      │
+│  服务器 C: Node 14 + Express + MongoDB 5                    │
+│                                                             │
+│  问题：                                                    │
+│  • 环境冲突（需要同时运行 Python 3.8 和 3.9）                  │
+│  • 依赖版本不一致导致各种问题                                 │
+│  • 新机器部署困难（手动配置环境）                             │
+│  • 资源利用率低                                              │
+└─────────────────────────────────────────────────────────────┘
+
+Docker 容器化：
+┌─────────────────────────────────────────────────────────────┐
+│                    宿主机 (Host OS)                         │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐                     │
+│  │Container│  │Container│  │Container│                     │
+│  │ App A   │  │ App B   │  │ App C   │                     │
+│  │Python3.8│  │Python3.9│  │Node 14  │                     │
+│  │Django   │  │Flask    │  │Express  │                     │
+│  ├─────────┤  ├─────────┤  ├─────────┤                     │
+│  │Container│  │Container│  │Container│                     │
+│  │Postgres │  │MySQL    │  │MongoDB  │                     │
+│  └─────────┘  └─────────┘  └─────────┘                     │
+│                    ↑                                        │
+│              Docker Engine                                  │
+└─────────────────────────────────────────────────────────────┘
+
+优势：
+• 环境一致（开发/测试/生产完全相同）
+• 资源隔离（应用间互不干扰）
+• 快速部署（镜像拉取即用）
+• 弹性伸缩（容器可快速扩缩）                                    │
+└─────────────────────────────────────────────────────────────┘</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 Dockerfile 编写</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 Dockerfile 编写</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">Dockerfile 示例 - Node.js 应用</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">Dockerfile 示例 - Node.js 应用</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">阶段一：构建</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">阶段一：构建</h1>
-<p class="mb-2">FROM node:18-alpine AS builder</p>
-<p class="mb-2">FROM node:18-alpine AS builder</p>
-<br>
-<br>
-<p class="mb-2">WORKDIR /app</p>
-<p class="mb-2">WORKDIR /app</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">复制依赖文件并安装</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">复制依赖文件并安装</h1>
-<p class="mb-2">COPY package*.json ./</p>
-<p class="mb-2">COPY package*.json ./</p>
-<p class="mb-2">RUN npm ci --only=production</p>
-<p class="mb-2">RUN npm ci --only=production</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">复制源代码并构建</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">复制源代码并构建</h1>
-<p class="mb-2">COPY . .</p>
-<p class="mb-2">COPY . .</p>
-<p class="mb-2">RUN npm run build</p>
-<p class="mb-2">RUN npm run build</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">阶段二：运行</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">阶段二：运行</h1>
-<p class="mb-2">FROM node:18-alpine AS runner</p>
-<p class="mb-2">FROM node:18-alpine AS runner</p>
-<br>
-<br>
-<p class="mb-2">WORKDIR /app</p>
-<p class="mb-2">WORKDIR /app</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">创建非 root 用户（安全）</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">创建非 root 用户（安全）</h1>
-<p class="mb-2">RUN addgroup -g 1001 -S nodejs &amp;&amp; \</p>
-<p class="mb-2">RUN addgroup -g 1001 -S nodejs &amp;&amp; \</p>
-<p class="mb-2">    adduser -S nextjs -u 1001</p>
-<p class="mb-2">    adduser -S nextjs -u 1001</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">从构建阶段复制产物</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">从构建阶段复制产物</h1>
-<p class="mb-2">COPY --from=builder --chown=nextjs:nodejs /app/dist ./dist</p>
-<p class="mb-2">COPY --from=builder --chown=nextjs:nodejs /app/dist ./dist</p>
-<p class="mb-2">COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules</p>
-<p class="mb-2">COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules</p>
-<p class="mb-2">COPY --from=builder --chown=nextjs:nodejs /app/package.json ./</p>
-<p class="mb-2">COPY --from=builder --chown=nextjs:nodejs /app/package.json ./</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">切换用户</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">切换用户</h1>
-<p class="mb-2">USER nextjs</p>
-<p class="mb-2">USER nextjs</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">暴露端口</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">暴露端口</h1>
-<p class="mb-2">EXPOSE 3000</p>
-<p class="mb-2">EXPOSE 3000</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">启动命令</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">启动命令</h1>
-<p class="mb-2">CMD [&quot;node&quot;, &quot;dist/server.js&quot;]</p>
-<p class="mb-2">CMD [&quot;node&quot;, &quot;dist/server.js&quot;]</p>
-<pre><code></code></pre>
-<br>
+<pre><code># Dockerfile 示例 - Node.js 应用
+# 阶段一：构建
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# 复制依赖文件并安装
+COPY package*.json ./
+RUN npm ci --only=production
+
+# 复制源代码并构建
+COPY . .
+RUN npm run build
+
+# 阶段二：运行
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+
+# 创建非 root 用户（安全）
+RUN addgroup -g 1001 -S nodejs &amp;&amp; \
+    adduser -S nextjs -u 1001
+
+# 从构建阶段复制产物
+COPY --from=builder --chown=nextjs:nodejs /app/dist ./dist
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./
+
+# 切换用户
+USER nextjs
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动命令
+CMD [&quot;node&quot;, &quot;dist/server.js&quot;]</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.3 Docker Compose 编排</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.3 Docker Compose 编排</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">docker-compose.yml</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">docker-compose.yml</h1>
-<p class="mb-2">version: &#x27;3.8&#x27;</p>
-<p class="mb-2">version: &#x27;3.8&#x27;</p>
-<br>
-<br>
-<p class="mb-2">services:</p>
-<p class="mb-2">services:</p>
-<p class="mb-2">  # 应用服务</p>
-<p class="mb-2">  # 应用服务</p>
-<p class="mb-2">  web:</p>
-<p class="mb-2">  web:</p>
-<p class="mb-2">    build: .</p>
-<p class="mb-2">    build: .</p>
-<p class="mb-2">    ports:</p>
-<p class="mb-2">    ports:</p>
-<p class="mb-2">      - &quot;3000:3000&quot;</p>
-<p class="mb-2">      - &quot;3000:3000&quot;</p>
-<p class="mb-2">    environment:</p>
-<p class="mb-2">    environment:</p>
-<p class="mb-2">      - NODE_ENV=production</p>
-<p class="mb-2">      - NODE_ENV=production</p>
-<p class="mb-2">      - DATABASE_URL=postgresql://postgres:password@db:5432/myapp</p>
-<p class="mb-2">      - DATABASE_URL=postgresql://postgres:password@db:5432/myapp</p>
-<p class="mb-2">    depends_on:</p>
-<p class="mb-2">    depends_on:</p>
-<p class="mb-2">      - db</p>
-<p class="mb-2">      - db</p>
-<p class="mb-2">      - redis</p>
-<p class="mb-2">      - redis</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">      - app-network</p>
-<p class="mb-2">      - app-network</p>
-<br>
-<br>
-<p class="mb-2">  # 数据库服务</p>
-<p class="mb-2">  # 数据库服务</p>
-<p class="mb-2">  db:</p>
-<p class="mb-2">  db:</p>
-<p class="mb-2">    image: postgres:15-alpine</p>
-<p class="mb-2">    image: postgres:15-alpine</p>
-<p class="mb-2">    volumes:</p>
-<p class="mb-2">    volumes:</p>
-<p class="mb-2">      - postgres_data:/var/lib/postgresql/data</p>
-<p class="mb-2">      - postgres_data:/var/lib/postgresql/data</p>
-<p class="mb-2">      - ./init.sql:/docker-entrypoint-initdb.d/init.sql</p>
-<p class="mb-2">      - ./init.sql:/docker-entrypoint-initdb.d/init.sql</p>
-<p class="mb-2">    environment:</p>
-<p class="mb-2">    environment:</p>
-<p class="mb-2">      - POSTGRES_DB=myapp</p>
-<p class="mb-2">      - POSTGRES_DB=myapp</p>
-<p class="mb-2">      - POSTGRES_USER=postgres</p>
-<p class="mb-2">      - POSTGRES_USER=postgres</p>
-<p class="mb-2">      - POSTGRES_PASSWORD=password</p>
-<p class="mb-2">      - POSTGRES_PASSWORD=password</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">      - app-network</p>
-<p class="mb-2">      - app-network</p>
-<br>
-<br>
-<p class="mb-2">  # Redis 缓存</p>
-<p class="mb-2">  # Redis 缓存</p>
-<p class="mb-2">  redis:</p>
-<p class="mb-2">  redis:</p>
-<p class="mb-2">    image: redis:7-alpine</p>
-<p class="mb-2">    image: redis:7-alpine</p>
-<p class="mb-2">    volumes:</p>
-<p class="mb-2">    volumes:</p>
-<p class="mb-2">      - redis_data:/data</p>
-<p class="mb-2">      - redis_data:/data</p>
-<p class="mb-2">    command: redis-server --appendonly yes</p>
-<p class="mb-2">    command: redis-server --appendonly yes</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">      - app-network</p>
-<p class="mb-2">      - app-network</p>
-<br>
-<br>
-<p class="mb-2">  # Nginx 反向代理</p>
-<p class="mb-2">  # Nginx 反向代理</p>
-<p class="mb-2">  nginx:</p>
-<p class="mb-2">  nginx:</p>
-<p class="mb-2">    image: nginx:alpine</p>
-<p class="mb-2">    image: nginx:alpine</p>
-<p class="mb-2">    ports:</p>
-<p class="mb-2">    ports:</p>
-<p class="mb-2">      - &quot;80:80&quot;</p>
-<p class="mb-2">      - &quot;80:80&quot;</p>
-<p class="mb-2">      - &quot;443:443&quot;</p>
-<p class="mb-2">      - &quot;443:443&quot;</p>
-<p class="mb-2">    volumes:</p>
-<p class="mb-2">    volumes:</p>
-<p class="mb-2">      - ./nginx.conf:/etc/nginx/nginx.conf:ro</p>
-<p class="mb-2">      - ./nginx.conf:/etc/nginx/nginx.conf:ro</p>
-<p class="mb-2">      - ./ssl:/etc/nginx/ssl:ro</p>
-<p class="mb-2">      - ./ssl:/etc/nginx/ssl:ro</p>
-<p class="mb-2">    depends_on:</p>
-<p class="mb-2">    depends_on:</p>
-<p class="mb-2">      - web</p>
-<p class="mb-2">      - web</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    restart: unless-stopped</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">    networks:</p>
-<p class="mb-2">      - app-network</p>
-<p class="mb-2">      - app-network</p>
-<br>
-<br>
-<p class="mb-2">volumes:</p>
-<p class="mb-2">volumes:</p>
-<p class="mb-2">  postgres_data:</p>
-<p class="mb-2">  postgres_data:</p>
-<p class="mb-2">  redis_data:</p>
-<p class="mb-2">  redis_data:</p>
-<br>
-<br>
-<p class="mb-2">networks:</p>
-<p class="mb-2">networks:</p>
-<p class="mb-2">  app-network:</p>
-<p class="mb-2">  app-network:</p>
-<p class="mb-2">    driver: bridge</p>
-<p class="mb-2">    driver: bridge</p>
-<pre><code></code></pre>
-<br>
+<pre><code># docker-compose.yml
+version: &#x27;3.8&#x27;
+
+services:
+  # 应用服务
+  web:
+    build: .
+    ports:
+      - &quot;3000:3000&quot;
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db:5432/myapp
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # 数据库服务
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Nginx 反向代理
+  nginx:
+    image: nginx:alpine
+    ports:
+      - &quot;80:80&quot;
+      - &quot;443:443&quot;
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - web
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge</code></pre>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 Kubernetes 架构设计</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 Kubernetes 架构设计</h3>
-<br>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 Kubernetes 核心概念</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 Kubernetes 核心概念</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">│                    Kubernetes 架构                          │</p>
-<p class="mb-2">│                    Kubernetes 架构                          │</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
-<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
-<p class="mb-2">│  │                    Master Node                       │   │</p>
-<p class="mb-2">│  │                    Master Node                       │   │</p>
-<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐ │   │</p>
-<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐ │   │</p>
-<p class="mb-2">│  │  │ kube-   │  │ kube-   │  │ kube-   │  │   etcd  │ │   │</p>
-<p class="mb-2">│  │  │ kube-   │  │ kube-   │  │ kube-   │  │   etcd  │ │   │</p>
-<p class="mb-2">│  │  │apiserver│  │scheduler│  │controller│ │         │ │   │</p>
-<p class="mb-2">│  │  │apiserver│  │scheduler│  │controller│ │         │ │   │</p>
-<p class="mb-2">│  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘ │   │</p>
-<p class="mb-2">│  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘ │   │</p>
-<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
-<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
-<p class="mb-2">│                           │                                 │</p>
-<p class="mb-2">│                           │                                 │</p>
-<p class="mb-2">│                           ▼                                 │</p>
-<p class="mb-2">│                           ▼                                 │</p>
-<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
-<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
-<p class="mb-2">│  │                   Worker Node 1                       │   │</p>
-<p class="mb-2">│  │                   Worker Node 1                       │   │</p>
-<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐              │   │</p>
-<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐              │   │</p>
-<p class="mb-2">│  │  │  Pod     │  │  Pod     │  │  Pod     │              │   │</p>
-<p class="mb-2">│  │  │  Pod     │  │  Pod     │  │  Pod     │              │   │</p>
-<p class="mb-2">│  │  │┌───────┐│  │┌───────┐│  │┌───────┐│              │   │</p>
-<p class="mb-2">│  │  │┌───────┐│  │┌───────┐│  │┌───────┐│              │   │</p>
-<p class="mb-2">│  │  ││Container│ │Container│ │Container│ │              │   │</p>
-<p class="mb-2">│  │  ││Container│ │Container│ │Container│ │              │   │</p>
-<p class="mb-2">│  │  │└───────┘│  │└───────┘│  │└───────┘│              │   │</p>
-<p class="mb-2">│  │  │└───────┘│  │└───────┘│  │└───────┘│              │   │</p>
-<p class="mb-2">│  │  └─────────┘  └─────────┘  └─────────┘              │   │</p>
-<p class="mb-2">│  │  └─────────┘  └─────────┘  └─────────┘              │   │</p>
-<p class="mb-2">│  │                                                    │   │</p>
-<p class="mb-2">│  │                                                    │   │</p>
-<p class="mb-2">│  │  ┌─────────────────────────────────────────────┐  │   │</p>
-<p class="mb-2">│  │  ┌─────────────────────────────────────────────┐  │   │</p>
-<p class="mb-2">│  │  │              kubelet + kube-proxy            │  │   │</p>
-<p class="mb-2">│  │  │              kubelet + kube-proxy            │  │   │</p>
-<p class="mb-2">│  │  └─────────────────────────────────────────────┘  │   │</p>
-<p class="mb-2">│  │  └─────────────────────────────────────────────┘  │   │</p>
-<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
-<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
-<p class="mb-2">│                           │                                 │</p>
-<p class="mb-2">│                           │                                 │</p>
-<p class="mb-2">│                           ▼                                 │</p>
-<p class="mb-2">│                           ▼                                 │</p>
-<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
-<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
-<p class="mb-2">│  │                   Worker Node 2                      │   │</p>
-<p class="mb-2">│  │                   Worker Node 2                      │   │</p>
-<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐                           │   │</p>
-<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐                           │   │</p>
-<p class="mb-2">│  │  │  Pod     │  │  Pod     │                           │   │</p>
-<p class="mb-2">│  │  │  Pod     │  │  Pod     │                           │   │</p>
-<p class="mb-2">│  │  │┌───────┐│  │┌───────┐│                           │   │</p>
-<p class="mb-2">│  │  │┌───────┐│  │┌───────┐│                           │   │</p>
-<p class="mb-2">│  │  ││Container│ │Container│ │                           │   │</p>
-<p class="mb-2">│  │  ││Container│ │Container│ │                           │   │</p>
-<p class="mb-2">│  │  │└───────┘│  │└───────┘│                           │   │</p>
-<p class="mb-2">│  │  │└───────┘│  │└───────┘│                           │   │</p>
-<p class="mb-2">│  │  └─────────┘  └─────────┘                           │   │</p>
-<p class="mb-2">│  │  └─────────┘  └─────────┘                           │   │</p>
-<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
-<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<br>
-<br>
-<p class="mb-2">核心概念：</p>
-<p class="mb-2">核心概念：</p>
-<p class="mb-2">• Pod: 最小调度单元，包含一个或多个容器</p>
-<p class="mb-2">• Pod: 最小调度单元，包含一个或多个容器</p>
-<p class="mb-2">• Service: 负载均衡和服务发现</p>
-<p class="mb-2">• Service: 负载均衡和服务发现</p>
-<p class="mb-2">• Deployment: 声明式更新，副本管理</p>
-<p class="mb-2">• Deployment: 声明式更新，副本管理</p>
-<p class="mb-2">• Ingress: HTTP/HTTPS 路由</p>
-<p class="mb-2">• Ingress: HTTP/HTTPS 路由</p>
-<p class="mb-2">• ConfigMap/Secret: 配置管理</p>
-<p class="mb-2">• ConfigMap/Secret: 配置管理</p>
-<p class="mb-2">• PersistentVolume: 持久化存储</p>
-<p class="mb-2">• PersistentVolume: 持久化存储</p>
-<pre><code></code></pre>
-<br>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    Kubernetes 架构                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │                    Master Node                       │   │
+│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐ │   │
+│  │  │ kube-   │  │ kube-   │  │ kube-   │  │   etcd  │ │   │
+│  │  │apiserver│  │scheduler│  │controller│ │         │ │   │
+│  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘ │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                           │                                 │
+│                           ▼                                 │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │                   Worker Node 1                       │   │
+│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐              │   │
+│  │  │  Pod     │  │  Pod     │  │  Pod     │              │   │
+│  │  │┌───────┐│  │┌───────┐│  │┌───────┐│              │   │
+│  │  ││Container│ │Container│ │Container│ │              │   │
+│  │  │└───────┘│  │└───────┘│  │└───────┘│              │   │
+│  │  └─────────┘  └─────────┘  └─────────┘              │   │
+│  │                                                    │   │
+│  │  ┌─────────────────────────────────────────────┐  │   │
+│  │  │              kubelet + kube-proxy            │  │   │
+│  │  └─────────────────────────────────────────────┘  │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                           │                                 │
+│                           ▼                                 │
+│  ┌─────────────────────────────────────────────────────┐   │
+│  │                   Worker Node 2                      │   │
+│  │  ┌─────────┐  ┌─────────┐                           │   │
+│  │  │  Pod     │  │  Pod     │                           │   │
+│  │  │┌───────┐│  │┌───────┐│                           │   │
+│  │  ││Container│ │Container│ │                           │   │
+│  │  │└───────┘│  │└───────┘│                           │   │
+│  │  └─────────┘  └─────────┘                           │   │
+│  └─────────────────────────────────────────────────────┘   │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+
+核心概念：
+• Pod: 最小调度单元，包含一个或多个容器
+• Service: 负载均衡和服务发现
+• Deployment: 声明式更新，副本管理
+• Ingress: HTTP/HTTPS 路由
+• ConfigMap/Secret: 配置管理
+• PersistentVolume: 持久化存储</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 Kubernetes 资源定义</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 Kubernetes 资源定义</h4>
 <br>
+<pre><code># deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - name: web-app
+          image: myregistry/web-app:v1.0.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: &quot;production&quot;
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: url
+          resources:
+            requests:
+              memory: &quot;256Mi&quot;
+              cpu: &quot;250m&quot;
+            limits:
+              memory: &quot;512Mi&quot;
+              cpu: &quot;500m&quot;
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 3</code></pre>
 <br>
-<pre><code></code></pre>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">deployment.yaml</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">deployment.yaml</h1>
-<p class="mb-2">apiVersion: apps/v1</p>
-<p class="mb-2">apiVersion: apps/v1</p>
-<p class="mb-2">kind: Deployment</p>
-<p class="mb-2">kind: Deployment</p>
-<p class="mb-2">metadata:</p>
-<p class="mb-2">metadata:</p>
-<p class="mb-2">  name: web-app</p>
-<p class="mb-2">  name: web-app</p>
-<p class="mb-2">  labels:</p>
-<p class="mb-2">  labels:</p>
-<p class="mb-2">    app: web-app</p>
-<p class="mb-2">    app: web-app</p>
-<p class="mb-2">spec:</p>
-<p class="mb-2">spec:</p>
-<p class="mb-2">  replicas: 3</p>
-<p class="mb-2">  replicas: 3</p>
-<p class="mb-2">  selector:</p>
-<p class="mb-2">  selector:</p>
-<p class="mb-2">    matchLabels:</p>
-<p class="mb-2">    matchLabels:</p>
-<p class="mb-2">      app: web-app</p>
-<p class="mb-2">      app: web-app</p>
-<p class="mb-2">  template:</p>
-<p class="mb-2">  template:</p>
-<p class="mb-2">    metadata:</p>
-<p class="mb-2">    metadata:</p>
-<p class="mb-2">      labels:</p>
-<p class="mb-2">      labels:</p>
-<p class="mb-2">        app: web-app</p>
-<p class="mb-2">        app: web-app</p>
-<p class="mb-2">    spec:</p>
-<p class="mb-2">    spec:</p>
-<p class="mb-2">      containers:</p>
-<p class="mb-2">      containers:</p>
-<p class="mb-2">        - name: web-app</p>
-<p class="mb-2">        - name: web-app</p>
-<p class="mb-2">          image: myregistry/web-app:v1.0.0</p>
-<p class="mb-2">          image: myregistry/web-app:v1.0.0</p>
-<p class="mb-2">          ports:</p>
-<p class="mb-2">          ports:</p>
-<p class="mb-2">            - containerPort: 3000</p>
-<p class="mb-2">            - containerPort: 3000</p>
-<p class="mb-2">          env:</p>
-<p class="mb-2">          env:</p>
-<p class="mb-2">            - name: NODE_ENV</p>
-<p class="mb-2">            - name: NODE_ENV</p>
-<p class="mb-2">              value: &quot;production&quot;</p>
-<p class="mb-2">              value: &quot;production&quot;</p>
-<p class="mb-2">            - name: DATABASE_URL</p>
-<p class="mb-2">            - name: DATABASE_URL</p>
-<p class="mb-2">              valueFrom:</p>
-<p class="mb-2">              valueFrom:</p>
-<p class="mb-2">                secretKeyRef:</p>
-<p class="mb-2">                secretKeyRef:</p>
-<p class="mb-2">                  name: db-secret</p>
-<p class="mb-2">                  name: db-secret</p>
-<p class="mb-2">                  key: url</p>
-<p class="mb-2">                  key: url</p>
-<p class="mb-2">          resources:</p>
-<p class="mb-2">          resources:</p>
-<p class="mb-2">            requests:</p>
-<p class="mb-2">            requests:</p>
-<p class="mb-2">              memory: &quot;256Mi&quot;</p>
-<p class="mb-2">              memory: &quot;256Mi&quot;</p>
-<p class="mb-2">              cpu: &quot;250m&quot;</p>
-<p class="mb-2">              cpu: &quot;250m&quot;</p>
-<p class="mb-2">            limits:</p>
-<p class="mb-2">            limits:</p>
-<p class="mb-2">              memory: &quot;512Mi&quot;</p>
-<p class="mb-2">              memory: &quot;512Mi&quot;</p>
-<p class="mb-2">              cpu: &quot;500m&quot;</p>
-<p class="mb-2">              cpu: &quot;500m&quot;</p>
-<p class="mb-2">          livenessProbe:</p>
-<p class="mb-2">          livenessProbe:</p>
-<p class="mb-2">            httpGet:</p>
-<p class="mb-2">            httpGet:</p>
-<p class="mb-2">              path: /health</p>
-<p class="mb-2">              path: /health</p>
-<p class="mb-2">              port: 3000</p>
-<p class="mb-2">              port: 3000</p>
-<p class="mb-2">            initialDelaySeconds: 10</p>
-<p class="mb-2">            initialDelaySeconds: 10</p>
-<p class="mb-2">            periodSeconds: 5</p>
-<p class="mb-2">            periodSeconds: 5</p>
-<p class="mb-2">          readinessProbe:</p>
-<p class="mb-2">          readinessProbe:</p>
-<p class="mb-2">            httpGet:</p>
-<p class="mb-2">            httpGet:</p>
-<p class="mb-2">              path: /ready</p>
-<p class="mb-2">              path: /ready</p>
-<p class="mb-2">              port: 3000</p>
-<p class="mb-2">              port: 3000</p>
-<p class="mb-2">            initialDelaySeconds: 5</p>
-<p class="mb-2">            initialDelaySeconds: 5</p>
-<p class="mb-2">            periodSeconds: 3</p>
-<p class="mb-2">            periodSeconds: 3</p>
-<pre><code></code></pre>
+<pre><code># service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  ports:
+    - protocol: TCP
+      port: 80        # Service 端口
+      targetPort: 3000  # 容器端口
+  type: ClusterIP</code></pre>
 <br>
-<br>
-<pre><code></code></pre>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">service.yaml</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">service.yaml</h1>
-<p class="mb-2">apiVersion: v1</p>
-<p class="mb-2">apiVersion: v1</p>
-<p class="mb-2">kind: Service</p>
-<p class="mb-2">kind: Service</p>
-<p class="mb-2">metadata:</p>
-<p class="mb-2">metadata:</p>
-<p class="mb-2">  name: web-app-service</p>
-<p class="mb-2">  name: web-app-service</p>
-<p class="mb-2">spec:</p>
-<p class="mb-2">spec:</p>
-<p class="mb-2">  selector:</p>
-<p class="mb-2">  selector:</p>
-<p class="mb-2">    app: web-app</p>
-<p class="mb-2">    app: web-app</p>
-<p class="mb-2">  ports:</p>
-<p class="mb-2">  ports:</p>
-<p class="mb-2">    - protocol: TCP</p>
-<p class="mb-2">    - protocol: TCP</p>
-<p class="mb-2">      port: 80        # Service 端口</p>
-<p class="mb-2">      port: 80        # Service 端口</p>
-<p class="mb-2">      targetPort: 3000  # 容器端口</p>
-<p class="mb-2">      targetPort: 3000  # 容器端口</p>
-<p class="mb-2">  type: ClusterIP</p>
-<p class="mb-2">  type: ClusterIP</p>
-<pre><code></code></pre>
-<br>
-<br>
-<pre><code></code></pre>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">ingress.yaml</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">ingress.yaml</h1>
-<p class="mb-2">apiVersion: networking.k8s.io/v1</p>
-<p class="mb-2">apiVersion: networking.k8s.io/v1</p>
-<p class="mb-2">kind: Ingress</p>
-<p class="mb-2">kind: Ingress</p>
-<p class="mb-2">metadata:</p>
-<p class="mb-2">metadata:</p>
-<p class="mb-2">  name: web-app-ingress</p>
-<p class="mb-2">  name: web-app-ingress</p>
-<p class="mb-2">  annotations:</p>
-<p class="mb-2">  annotations:</p>
-<p class="mb-2">    nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;</p>
-<p class="mb-2">    nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;</p>
-<p class="mb-2">    cert-manager.io/cluster-issuer: &quot;letsencrypt-prod&quot;</p>
-<p class="mb-2">    cert-manager.io/cluster-issuer: &quot;letsencrypt-prod&quot;</p>
-<p class="mb-2">spec:</p>
-<p class="mb-2">spec:</p>
-<p class="mb-2">  ingressClassName: nginx</p>
-<p class="mb-2">  ingressClassName: nginx</p>
-<p class="mb-2">  tls:</p>
-<p class="mb-2">  tls:</p>
-<p class="mb-2">    - hosts:</p>
-<p class="mb-2">    - hosts:</p>
-<p class="mb-2">        - example.com</p>
-<p class="mb-2">        - example.com</p>
-<p class="mb-2">      secretName: web-app-tls</p>
-<p class="mb-2">      secretName: web-app-tls</p>
-<p class="mb-2">  rules:</p>
-<p class="mb-2">  rules:</p>
-<p class="mb-2">    - host: example.com</p>
-<p class="mb-2">    - host: example.com</p>
-<p class="mb-2">      http:</p>
-<p class="mb-2">      http:</p>
-<p class="mb-2">        paths:</p>
-<p class="mb-2">        paths:</p>
-<p class="mb-2">          - path: /</p>
-<p class="mb-2">          - path: /</p>
-<p class="mb-2">            pathType: Prefix</p>
-<p class="mb-2">            pathType: Prefix</p>
-<p class="mb-2">            backend:</p>
-<p class="mb-2">            backend:</p>
-<p class="mb-2">              service:</p>
-<p class="mb-2">              service:</p>
-<p class="mb-2">                name: web-app-service</p>
-<p class="mb-2">                name: web-app-service</p>
-<p class="mb-2">                port:</p>
-<p class="mb-2">                port:</p>
-<p class="mb-2">                  number: 80</p>
-<p class="mb-2">                  number: 80</p>
-<pre><code></code></pre>
-<br>
+<pre><code># ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
+    cert-manager.io/cluster-issuer: &quot;letsencrypt-prod&quot;
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - example.com
+      secretName: web-app-tls
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-app-service
+                port:
+                  number: 80</code></pre>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.3 CI/CD 流程设计</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.3 CI/CD 流程设计</h3>
-<br>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.1 完整 CI/CD 流程</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.1 完整 CI/CD 流程</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">│                    CI/CD 完整流程                           │</p>
-<p class="mb-2">│                    CI/CD 完整流程                           │</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  代码提交 ──▶ Git Hooks ──▶ GitLab CI / GitHub Actions      │</p>
-<p class="mb-2">│  代码提交 ──▶ Git Hooks ──▶ GitLab CI / GitHub Actions      │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                            ┌─────▼─────┐            │</p>
-<p class="mb-2">│      │                            ┌─────▼─────┐            │</p>
-<p class="mb-2">│      │                            │  Pipeline │            │</p>
-<p class="mb-2">│      │                            │  Pipeline │            │</p>
-<p class="mb-2">│      │                            └─────┬─────┘            │</p>
-<p class="mb-2">│      │                            └─────┬─────┘            │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                   ┌──────────────┼──────────────┐    │</p>
-<p class="mb-2">│      │                   ┌──────────────┼──────────────┐    │</p>
-<p class="mb-2">│      │                   ▼              ▼              ▼    │</p>
-<p class="mb-2">│      │                   ▼              ▼              ▼    │</p>
-<p class="mb-2">│      │              ┌─────────┐   ┌─────────┐   ┌─────────┐ │</p>
-<p class="mb-2">│      │              ┌─────────┐   ┌─────────┐   ┌─────────┐ │</p>
-<p class="mb-2">│      │              │  Lint   │   │  Test   │   │  Build  │ │</p>
-<p class="mb-2">│      │              │  Lint   │   │  Test   │   │  Build  │ │</p>
-<p class="mb-2">│      │              │ 代码风格 │   │ 单元测试 │   │  编译   │ │</p>
-<p class="mb-2">│      │              │ 代码风格 │   │ 单元测试 │   │  编译   │ │</p>
-<p class="mb-2">│      │              └────┬────┘   └────┬────┘   └────┬────┘ │</p>
-<p class="mb-2">│      │              └────┬────┘   └────┬────┘   └────┬────┘ │</p>
-<p class="mb-2">│      │                   │              │              │    │</p>
-<p class="mb-2">│      │                   │              │              │    │</p>
-<p class="mb-2">│      │                   └──────────────┼──────────────┘    │</p>
-<p class="mb-2">│      │                   └──────────────┼──────────────┘    │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                            ┌─────▼─────┐            │</p>
-<p class="mb-2">│      │                            ┌─────▼─────┐            │</p>
-<p class="mb-2">│      │                            │  质量门禁  │            │</p>
-<p class="mb-2">│      │                            │  质量门禁  │            │</p>
-<p class="mb-2">│      │                            └─────┬─────┘            │</p>
-<p class="mb-2">│      │                            └─────┬─────┘            │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                            ┌─────▼─────┐            │</p>
-<p class="mb-2">│      │                            ┌─────▼─────┐            │</p>
-<p class="mb-2">│      │                            │ Security  │            │</p>
-<p class="mb-2">│      │                            │ Security  │            │</p>
-<p class="mb-2">│      │                            │   Scan    │            │</p>
-<p class="mb-2">│      │                            │   Scan    │            │</p>
-<p class="mb-2">│      │                            └─────┬─────┘            │</p>
-<p class="mb-2">│      │                            └─────┬─────┘            │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                                  │                   │</p>
-<p class="mb-2">│      │                   ┌──────────────┴──────────────┐    │</p>
-<p class="mb-2">│      │                   ┌──────────────┴──────────────┐    │</p>
-<p class="mb-2">│      │                   ▼                             ▼    │</p>
-<p class="mb-2">│      │                   ▼                             ▼    │</p>
-<p class="mb-2">│      │              ┌─────────┐                  ┌─────────┐│</p>
-<p class="mb-2">│      │              ┌─────────┐                  ┌─────────┐│</p>
-<p class="mb-2">│      │              │  Push   │                  │  Push   ││</p>
-<p class="mb-2">│      │              │  Push   │                  │  Push   ││</p>
-<p class="mb-2">│      │              │  Image  │                  │  Image  ││</p>
-<p class="mb-2">│      │              │  Image  │                  │  Image  ││</p>
-<p class="mb-2">│      │              │ to Dev  │                  │ to Prod ││</p>
-<p class="mb-2">│      │              │ to Dev  │                  │ to Prod ││</p>
-<p class="mb-2">│      │              └────┬────┘                  └────┬────┘│</p>
-<p class="mb-2">│      │              └────┬────┘                  └────┬────┘│</p>
-<p class="mb-2">│      │                   │                            │    │</p>
-<p class="mb-2">│      │                   │                            │    │</p>
-<p class="mb-2">│      │                   ▼                            ▼    │</p>
-<p class="mb-2">│      │                   ▼                            ▼    │</p>
-<p class="mb-2">│      │              ┌─────────┐                  ┌─────────┐│</p>
-<p class="mb-2">│      │              ┌─────────┐                  ┌─────────┐│</p>
-<p class="mb-2">│      │              │ Deploy  │                  │ Deploy  ││</p>
-<p class="mb-2">│      │              │ Deploy  │                  │ Deploy  ││</p>
-<p class="mb-2">│      │              │   to    │                  │  to     ││</p>
-<p class="mb-2">│      │              │   to    │                  │  to     ││</p>
-<p class="mb-2">│      │              │   Dev   │                  │  Prod   ││</p>
-<p class="mb-2">│      │              │   Dev   │                  │  Prod   ││</p>
-<p class="mb-2">│      │              └────┬────┘                  └────┬────┘│</p>
-<p class="mb-2">│      │              └────┬────┘                  └────┬────┘│</p>
-<p class="mb-2">│      │                   │                            │    │</p>
-<p class="mb-2">│      │                   │                            │    │</p>
-<p class="mb-2">│      │                   ▼                            ▼    │</p>
-<p class="mb-2">│      │                   ▼                            ▼    │</p>
-<p class="mb-2">│      │              ┌─────────┐                  ┌─────────┐│</p>
-<p class="mb-2">│      │              ┌─────────┐                  ┌─────────┐│</p>
-<p class="mb-2">│      │              │ Auto    │                  │ Canary  ││</p>
-<p class="mb-2">│      │              │ Auto    │                  │ Canary  ││</p>
-<p class="mb-2">│      │              │  Test   │                  │ Deploy  ││</p>
-<p class="mb-2">│      │              │  Test   │                  │ Deploy  ││</p>
-<p class="mb-2">│      │              └─────────┘                  └─────────┘│</p>
-<p class="mb-2">│      │              └─────────┘                  └─────────┘│</p>
-<p class="mb-2">│      │                   │                            │    │</p>
-<p class="mb-2">│      │                   │                            │    │</p>
-<p class="mb-2">│      └───────────────────┴────────────────────────────┘    │</p>
-<p class="mb-2">│      └───────────────────┴────────────────────────────┘    │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<pre><code></code></pre>
-<br>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    CI/CD 完整流程                           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  代码提交 ──▶ Git Hooks ──▶ GitLab CI / GitHub Actions      │
+│      │                                  │                   │
+│      │                            ┌─────▼─────┐            │
+│      │                            │  Pipeline │            │
+│      │                            └─────┬─────┘            │
+│      │                                  │                   │
+│      │                   ┌──────────────┼──────────────┐    │
+│      │                   ▼              ▼              ▼    │
+│      │              ┌─────────┐   ┌─────────┐   ┌─────────┐ │
+│      │              │  Lint   │   │  Test   │   │  Build  │ │
+│      │              │ 代码风格 │   │ 单元测试 │   │  编译   │ │
+│      │              └────┬────┘   └────┬────┘   └────┬────┘ │
+│      │                   │              │              │    │
+│      │                   └──────────────┼──────────────┘    │
+│      │                                  │                   │
+│      │                            ┌─────▼─────┐            │
+│      │                            │  质量门禁  │            │
+│      │                            └─────┬─────┘            │
+│      │                                  │                   │
+│      │                            ┌─────▼─────┐            │
+│      │                            │ Security  │            │
+│      │                            │   Scan    │            │
+│      │                            └─────┬─────┘            │
+│      │                                  │                   │
+│      │                   ┌──────────────┴──────────────┐    │
+│      │                   ▼                             ▼    │
+│      │              ┌─────────┐                  ┌─────────┐│
+│      │              │  Push   │                  │  Push   ││
+│      │              │  Image  │                  │  Image  ││
+│      │              │ to Dev  │                  │ to Prod ││
+│      │              └────┬────┘                  └────┬────┘│
+│      │                   │                            │    │
+│      │                   ▼                            ▼    │
+│      │              ┌─────────┐                  ┌─────────┐│
+│      │              │ Deploy  │                  │ Deploy  ││
+│      │              │   to    │                  │  to     ││
+│      │              │   Dev   │                  │  Prod   ││
+│      │              └────┬────┘                  └────┬────┘│
+│      │                   │                            │    │
+│      │                   ▼                            ▼    │
+│      │              ┌─────────┐                  ┌─────────┐│
+│      │              │ Auto    │                  │ Canary  ││
+│      │              │  Test   │                  │ Deploy  ││
+│      │              └─────────┘                  └─────────┘│
+│      │                   │                            │    │
+│      └───────────────────┴────────────────────────────┘    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.2 GitHub Actions 示例</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.2 GitHub Actions 示例</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">.github/workflows/ci.yml</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">.github/workflows/ci.yml</h1>
-<p class="mb-2">name: CI/CD Pipeline</p>
-<p class="mb-2">name: CI/CD Pipeline</p>
-<br>
-<br>
-<p class="mb-2">on:</p>
-<p class="mb-2">on:</p>
-<p class="mb-2">  push:</p>
-<p class="mb-2">  push:</p>
-<p class="mb-2">    branches: [main, develop]</p>
-<p class="mb-2">    branches: [main, develop]</p>
-<p class="mb-2">  pull_request:</p>
-<p class="mb-2">  pull_request:</p>
-<p class="mb-2">    branches: [main]</p>
-<p class="mb-2">    branches: [main]</p>
-<br>
-<br>
-<p class="mb-2">env:</p>
-<p class="mb-2">env:</p>
-<p class="mb-2">  REGISTRY: ghcr.io</p>
-<p class="mb-2">  REGISTRY: ghcr.io</p>
-<p class="mb-2">  IMAGE_NAME: ${{ github.repository }}</p>
-<p class="mb-2">  IMAGE_NAME: ${{ github.repository }}</p>
-<br>
-<br>
-<p class="mb-2">jobs:</p>
-<p class="mb-2">jobs:</p>
-<p class="mb-2">  # 阶段一：代码检查</p>
-<p class="mb-2">  # 阶段一：代码检查</p>
-<p class="mb-2">  lint:</p>
-<p class="mb-2">  lint:</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<br>
-<br>
-<p class="mb-2">      - name: Setup Node.js</p>
-<p class="mb-2">      - name: Setup Node.js</p>
-<p class="mb-2">        uses: actions/setup-node@v3</p>
-<p class="mb-2">        uses: actions/setup-node@v3</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">          node-version: &#x27;18&#x27;</p>
-<p class="mb-2">          node-version: &#x27;18&#x27;</p>
-<p class="mb-2">          cache: &#x27;npm&#x27;</p>
-<p class="mb-2">          cache: &#x27;npm&#x27;</p>
-<br>
-<br>
-<p class="mb-2">      - name: Install dependencies</p>
-<p class="mb-2">      - name: Install dependencies</p>
-<p class="mb-2">        run: npm ci</p>
-<p class="mb-2">        run: npm ci</p>
-<br>
-<br>
-<p class="mb-2">      - name: Run ESLint</p>
-<p class="mb-2">      - name: Run ESLint</p>
-<p class="mb-2">        run: npm run lint</p>
-<p class="mb-2">        run: npm run lint</p>
-<br>
-<br>
-<p class="mb-2">      - name: Check types</p>
-<p class="mb-2">      - name: Check types</p>
-<p class="mb-2">        run: npm run type-check</p>
-<p class="mb-2">        run: npm run type-check</p>
-<br>
-<br>
-<p class="mb-2">  # 阶段二：测试</p>
-<p class="mb-2">  # 阶段二：测试</p>
-<p class="mb-2">  test:</p>
-<p class="mb-2">  test:</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    needs: lint</p>
-<p class="mb-2">    needs: lint</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<br>
-<br>
-<p class="mb-2">      - name: Setup Node.js</p>
-<p class="mb-2">      - name: Setup Node.js</p>
-<p class="mb-2">        uses: actions/setup-node@v3</p>
-<p class="mb-2">        uses: actions/setup-node@v3</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">          node-version: &#x27;18&#x27;</p>
-<p class="mb-2">          node-version: &#x27;18&#x27;</p>
-<p class="mb-2">          cache: &#x27;npm&#x27;</p>
-<p class="mb-2">          cache: &#x27;npm&#x27;</p>
-<br>
-<br>
-<p class="mb-2">      - name: Install dependencies</p>
-<p class="mb-2">      - name: Install dependencies</p>
-<p class="mb-2">        run: npm ci</p>
-<p class="mb-2">        run: npm ci</p>
-<br>
-<br>
-<p class="mb-2">      - name: Run unit tests</p>
-<p class="mb-2">      - name: Run unit tests</p>
-<p class="mb-2">        run: npm run test:unit</p>
-<p class="mb-2">        run: npm run test:unit</p>
-<br>
-<br>
-<p class="mb-2">      - name: Run integration tests</p>
-<p class="mb-2">      - name: Run integration tests</p>
-<p class="mb-2">        run: npm run test:integration</p>
-<p class="mb-2">        run: npm run test:integration</p>
-<br>
-<br>
-<p class="mb-2">      - name: Upload coverage</p>
-<p class="mb-2">      - name: Upload coverage</p>
-<p class="mb-2">        uses: codecov/codecov-action@v3</p>
-<p class="mb-2">        uses: codecov/codecov-action@v3</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">          files: ./coverage/lcov.info</p>
-<p class="mb-2">          files: ./coverage/lcov.info</p>
-<br>
-<br>
-<p class="mb-2">  # 阶段三：构建并推送到镜像仓库</p>
-<p class="mb-2">  # 阶段三：构建并推送到镜像仓库</p>
-<p class="mb-2">  build-and-push:</p>
-<p class="mb-2">  build-and-push:</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    needs: test</p>
-<p class="mb-2">    needs: test</p>
-<p class="mb-2">    if: github.ref == &#x27;refs/heads/main&#x27;</p>
-<p class="mb-2">    if: github.ref == &#x27;refs/heads/main&#x27;</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<br>
-<br>
-<p class="mb-2">      - name: Setup Docker Buildx</p>
-<p class="mb-2">      - name: Setup Docker Buildx</p>
-<p class="mb-2">        uses: docker/setup-buildx-action@v3</p>
-<p class="mb-2">        uses: docker/setup-buildx-action@v3</p>
-<br>
-<br>
-<p class="mb-2">      - name: Login to Container Registry</p>
-<p class="mb-2">      - name: Login to Container Registry</p>
-<p class="mb-2">        uses: docker/login-action@v3</p>
-<p class="mb-2">        uses: docker/login-action@v3</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">          registry: ${{ env.REGISTRY }}</p>
-<p class="mb-2">          registry: ${{ env.REGISTRY }}</p>
-<p class="mb-2">          username: ${{ github.actor }}</p>
-<p class="mb-2">          username: ${{ github.actor }}</p>
-<p class="mb-2">          password: ${{ secrets.GITHUB_TOKEN }}</p>
-<p class="mb-2">          password: ${{ secrets.GITHUB_TOKEN }}</p>
-<br>
-<br>
-<p class="mb-2">      - name: Extract metadata</p>
-<p class="mb-2">      - name: Extract metadata</p>
-<p class="mb-2">        id: meta</p>
-<p class="mb-2">        id: meta</p>
-<p class="mb-2">        uses: docker/metadata-action@v5</p>
-<p class="mb-2">        uses: docker/metadata-action@v5</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}</p>
-<p class="mb-2">          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}</p>
-<p class="mb-2">          tags: |</p>
-<p class="mb-2">          tags: |</p>
-<p class="mb-2">            type=ref,event=branch</p>
-<p class="mb-2">            type=ref,event=branch</p>
-<p class="mb-2">            type=sha,prefix={{branch}}-</p>
-<p class="mb-2">            type=sha,prefix={{branch}}-</p>
-<p class="mb-2">            type=raw,value=latest</p>
-<p class="mb-2">            type=raw,value=latest</p>
-<br>
-<br>
-<p class="mb-2">      - name: Build and push</p>
-<p class="mb-2">      - name: Build and push</p>
-<p class="mb-2">        uses: docker/build-push-action@v5</p>
-<p class="mb-2">        uses: docker/build-push-action@v5</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">        with:</p>
-<p class="mb-2">          context: .</p>
-<p class="mb-2">          context: .</p>
-<p class="mb-2">          push: true</p>
-<p class="mb-2">          push: true</p>
-<p class="mb-2">          tags: ${{ steps.meta.outputs.tags }}</p>
-<p class="mb-2">          tags: ${{ steps.meta.outputs.tags }}</p>
-<p class="mb-2">          labels: ${{ steps.meta.outputs.labels }}</p>
-<p class="mb-2">          labels: ${{ steps.meta.outputs.labels }}</p>
-<p class="mb-2">          cache-from: type=gha</p>
-<p class="mb-2">          cache-from: type=gha</p>
-<p class="mb-2">          cache-to: type=gha,mode=max</p>
-<p class="mb-2">          cache-to: type=gha,mode=max</p>
-<br>
-<br>
-<p class="mb-2">  # 阶段四：部署到 Kubernetes</p>
-<p class="mb-2">  # 阶段四：部署到 Kubernetes</p>
-<p class="mb-2">  deploy:</p>
-<p class="mb-2">  deploy:</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    runs-on: ubuntu-latest</p>
-<p class="mb-2">    needs: build-and-push</p>
-<p class="mb-2">    needs: build-and-push</p>
-<p class="mb-2">    if: github.ref == &#x27;refs/heads/main&#x27;</p>
-<p class="mb-2">    if: github.ref == &#x27;refs/heads/main&#x27;</p>
-<p class="mb-2">    environment: production</p>
-<p class="mb-2">    environment: production</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">    steps:</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<p class="mb-2">      - uses: actions/checkout@v3</p>
-<br>
-<br>
-<p class="mb-2">      - name: Setup kubectl</p>
-<p class="mb-2">      - name: Setup kubectl</p>
-<p class="mb-2">        uses: azure/setup-kubectl@v3</p>
-<p class="mb-2">        uses: azure/setup-kubectl@v3</p>
-<br>
-<br>
-<p class="mb-2">      - name: Configure kubectl</p>
-<p class="mb-2">      - name: Configure kubectl</p>
-<p class="mb-2">        run: |</p>
-<p class="mb-2">        run: |</p>
-<p class="mb-2">          echo &quot;${{ secrets.KUBE_CONFIG }}&quot; | base64 -d &gt; kubeconfig</p>
-<p class="mb-2">          echo &quot;${{ secrets.KUBE_CONFIG }}&quot; | base64 -d &gt; kubeconfig</p>
-<p class="mb-2">          echo &quot;KUBECONFIG=$(pwd)/kubeconfig&quot; &gt;&gt; $GITHUB_ENV</p>
-<p class="mb-2">          echo &quot;KUBECONFIG=$(pwd)/kubeconfig&quot; &gt;&gt; $GITHUB_ENV</p>
-<br>
-<br>
-<p class="mb-2">      - name: Deploy to production</p>
-<p class="mb-2">      - name: Deploy to production</p>
-<p class="mb-2">        run: |</p>
-<p class="mb-2">        run: |</p>
-<p class="mb-2">          kubectl set image deployment/web-app \</p>
-<p class="mb-2">          kubectl set image deployment/web-app \</p>
-<p class="mb-2">            web-app=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}</p>
-<p class="mb-2">            web-app=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}</p>
-<p class="mb-2">          kubectl rollout status deployment/web-app --timeout=300s</p>
-<p class="mb-2">          kubectl rollout status deployment/web-app --timeout=300s</p>
-<pre><code></code></pre>
-<br>
+<pre><code># .github/workflows/ci.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # 阶段一：代码检查
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: &#x27;18&#x27;
+          cache: &#x27;npm&#x27;
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run ESLint
+        run: npm run lint
+      
+      - name: Check types
+        run: npm run type-check
+
+  # 阶段二：测试
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: &#x27;18&#x27;
+          cache: &#x27;npm&#x27;
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run unit tests
+        run: npm run test:unit
+      
+      - name: Run integration tests
+        run: npm run test:integration
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/lcov.info
+
+  # 阶段三：构建并推送到镜像仓库
+  build-and-push:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == &#x27;refs/heads/main&#x27;
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest
+      
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # 阶段四：部署到 Kubernetes
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    if: github.ref == &#x27;refs/heads/main&#x27;
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+      
+      - name: Configure kubectl
+        run: |
+          echo &quot;${{ secrets.KUBE_CONFIG }}&quot; | base64 -d &gt; kubeconfig
+          echo &quot;KUBECONFIG=$(pwd)/kubeconfig&quot; &gt;&gt; $GITHUB_ENV
+      
+      - name: Deploy to production
+        run: |
+          kubectl set image deployment/web-app \
+            web-app=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          kubectl rollout status deployment/web-app --timeout=300s</code></pre>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.4 云原生架构设计原则</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.4 云原生架构设计原则</h3>
-<br>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.4.1 云原生十二要素</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.4.1 云原生十二要素</h4>
-<br>
 <br>
 <table class="my-4 w-full"><tr><td>要素</td><td>说明</td><td>实践</td></tr>
-<tr><td>要素</td><td>说明</td><td>实践</td></tr>
-<tr><td>**基准代码**</td><td>一份基准代码，多分部署</td><td>Git 管理，CI/CD 流水线</td></tr>
 <tr><td>**基准代码**</td><td>一份基准代码，多分部署</td><td>Git 管理，CI/CD 流水线</td></tr>
 <tr><td>**依赖**</td><td>显式声明依赖</td><td>package.json, requirements.txt</td></tr>
-<tr><td>**依赖**</td><td>显式声明依赖</td><td>package.json, requirements.txt</td></tr>
-<tr><td>**配置**</td><td>环境变量存储配置</td><td>ConfigMap, Secret</td></tr>
 <tr><td>**配置**</td><td>环境变量存储配置</td><td>ConfigMap, Secret</td></tr>
 <tr><td>**后端服务**</td><td>把后端服务当作附加资源</td><td>数据库、缓存作为服务引用</td></tr>
-<tr><td>**后端服务**</td><td>把后端服务当作附加资源</td><td>数据库、缓存作为服务引用</td></tr>
-<tr><td>**构建/发布/运行**</td><td>严格分离构建和运行阶段</td><td>Docker 镜像分层</td></tr>
 <tr><td>**构建/发布/运行**</td><td>严格分离构建和运行阶段</td><td>Docker 镜像分层</td></tr>
 <tr><td>**进程**</td><td>应用作为一个或多个无状态进程</td><td>容器无状态设计</td></tr>
-<tr><td>**进程**</td><td>应用作为一个或多个无状态进程</td><td>容器无状态设计</td></tr>
-<tr><td>**端口绑定**</td><td>通过端口绑定导出服务</td><td>Service 暴露</td></tr>
 <tr><td>**端口绑定**</td><td>通过端口绑定导出服务</td><td>Service 暴露</td></tr>
 <tr><td>**并发**</td><td>通过进程模型扩展</td><td>Kubernetes HPA</td></tr>
-<tr><td>**并发**</td><td>通过进程模型扩展</td><td>Kubernetes HPA</td></tr>
-<tr><td>**易处理**</td><td>快速启动和优雅停止</td><td>优雅关闭信号处理</td></tr>
 <tr><td>**易处理**</td><td>快速启动和优雅停止</td><td>优雅关闭信号处理</td></tr>
 <tr><td>**开发/生产对等**</td><td>开发/ staging /生产环境一致</td><td>容器镜像统一</td></tr>
-<tr><td>**开发/生产对等**</td><td>开发/ staging /生产环境一致</td><td>容器镜像统一</td></tr>
 <tr><td>**日志**</td><td>把日志当作事件流</td><td>stdout 输出，ELK 收集</td></tr>
-<tr><td>**日志**</td><td>把日志当作事件流</td><td>stdout 输出，ELK 收集</td></tr>
-<tr><td>**管理进程**</td><td>后台管理任务作为一次性进程</td><td>Kubernetes Job</td></tr>
 <tr><td>**管理进程**</td><td>后台管理任务作为一次性进程</td><td>Kubernetes Job</td></tr></table>
 <br>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.4.2 微服务设计原则</h4>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.4.2 微服务设计原则</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
-<p class="mb-2">│                    微服务设计原则                            │</p>
-<p class="mb-2">│                    微服务设计原则                            │</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  1. 单一职责原则                                             │</p>
-<p class="mb-2">│  1. 单一职责原则                                             │</p>
-<p class="mb-2">│     每个服务只负责一个业务功能                               │</p>
-<p class="mb-2">│     每个服务只负责一个业务功能                               │</p>
-<p class="mb-2">│     ┌─────────┐  ┌─────────┐  ┌─────────┐                 │</p>
-<p class="mb-2">│     ┌─────────┐  ┌─────────┐  ┌─────────┐                 │</p>
-<p class="mb-2">│     │ User    │  │ Product │  │  Order  │                 │</p>
-<p class="mb-2">│     │ User    │  │ Product │  │  Order  │                 │</p>
-<p class="mb-2">│     │ Service │  │ Service │  │ Service │                 │</p>
-<p class="mb-2">│     │ Service │  │ Service │  │ Service │                 │</p>
-<p class="mb-2">│     └─────────┘  └─────────┘  └─────────┘                 │</p>
-<p class="mb-2">│     └─────────┘  └─────────┘  └─────────┘                 │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  2. 独立数据库原则                                           │</p>
-<p class="mb-2">│  2. 独立数据库原则                                           │</p>
-<p class="mb-2">│     每个服务拥有自己的数据库                                 │</p>
-<p class="mb-2">│     每个服务拥有自己的数据库                                 │</p>
-<p class="mb-2">│     ┌─────────┐  ┌─────────┐  ┌─────────┐                 │</p>
-<p class="mb-2">│     ┌─────────┐  ┌─────────┐  ┌─────────┐                 │</p>
-<p class="mb-2">│     │ Users DB│  │Products │  │ Orders  │                 │</p>
-<p class="mb-2">│     │ Users DB│  │Products │  │ Orders  │                 │</p>
-<p class="mb-2">│     │ Postgres│  │  MySQL  │  │ MongoDB │                 │</p>
-<p class="mb-2">│     │ Postgres│  │  MySQL  │  │ MongoDB │                 │</p>
-<p class="mb-2">│     └─────────┘  └─────────┘  └─────────┘                 │</p>
-<p class="mb-2">│     └─────────┘  └─────────┘  └─────────┘                 │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  3. API 优先原则                                             │</p>
-<p class="mb-2">│  3. API 优先原则                                             │</p>
-<p class="mb-2">│     通过 API 进行服务间通信                                  │</p>
-<p class="mb-2">│     通过 API 进行服务间通信                                  │</p>
-<p class="mb-2">│     ┌───────┐     ┌───────┐     ┌───────┐                 │</p>
-<p class="mb-2">│     ┌───────┐     ┌───────┐     ┌───────┐                 │</p>
-<p class="mb-2">│     │ A     │────▶│ B     │────▶│ C     │                 │</p>
-<p class="mb-2">│     │ A     │────▶│ B     │────▶│ C     │                 │</p>
-<p class="mb-2">│     └───────┘     └───────┘     └───────┘                 │</p>
-<p class="mb-2">│     └───────┘     └───────┘     └───────┘                 │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│  4. 异步通信原则                                             │</p>
-<p class="mb-2">│  4. 异步通信原则                                             │</p>
-<p class="mb-2">│     优先使用消息队列解耦                                     │</p>
-<p class="mb-2">│     优先使用消息队列解耦                                     │</p>
-<p class="mb-2">│     ┌───────┐     ┌─────────┐     ┌───────┐               │</p>
-<p class="mb-2">│     ┌───────┐     ┌─────────┐     ┌───────┐               │</p>
-<p class="mb-2">│     │ A     │────▶│  Kafka  │────▶│ B     │               │</p>
-<p class="mb-2">│     │ A     │────▶│  Kafka  │────▶│ B     │               │</p>
-<p class="mb-2">│     └───────┘     └─────────┘     └───────┘               │</p>
-<p class="mb-2">│     └───────┘     └─────────┘     └───────┘               │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">│                                                             │</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
-<pre><code></code></pre>
-<br>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    微服务设计原则                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  1. 单一职责原则                                             │
+│     每个服务只负责一个业务功能                               │
+│     ┌─────────┐  ┌─────────┐  ┌─────────┐                 │
+│     │ User    │  │ Product │  │  Order  │                 │
+│     │ Service │  │ Service │  │ Service │                 │
+│     └─────────┘  └─────────┘  └─────────┘                 │
+│                                                             │
+│  2. 独立数据库原则                                           │
+│     每个服务拥有自己的数据库                                 │
+│     ┌─────────┐  ┌─────────┐  ┌─────────┐                 │
+│     │ Users DB│  │Products │  │ Orders  │                 │
+│     │ Postgres│  │  MySQL  │  │ MongoDB │                 │
+│     └─────────┘  └─────────┘  └─────────┘                 │
+│                                                             │
+│  3. API 优先原则                                             │
+│     通过 API 进行服务间通信                                  │
+│     ┌───────┐     ┌───────┐     ┌───────┐                 │
+│     │ A     │────▶│ B     │────▶│ C     │                 │
+│     └───────┘     └───────┘     └───────┘                 │
+│                                                             │
+│  4. 异步通信原则                                             │
+│     优先使用消息队列解耦                                     │
+│     ┌───────┐     ┌─────────┐     ┌───────┐               │
+│     │ A     │────▶│  Kafka  │────▶│ B     │               │
+│     └───────┘     └─────────┘     └───────┘               │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘</code></pre>
 <br>
 <p class="mb-2">---</p>
 <br>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. 架构设计模式</h2>
 <h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. 架构设计模式</h2>
 <br>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 设计模式在前端的应用</h3>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 设计模式在前端的应用</h3>
 <br>
-<br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 常见设计模式</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 常见设计模式</h4>
-<br>
 <br>
 <table class="my-4 w-full"><tr><td>模式</td><td>前端应用场景</td><td>示例</td></tr>
-<tr><td>模式</td><td>前端应用场景</td><td>示例</td></tr>
-<tr><td>**单例模式**</td><td>全局状态、弹窗管理器</td><td>Redux Store、Modal</td></tr>
 <tr><td>**单例模式**</td><td>全局状态、弹窗管理器</td><td>Redux Store、Modal</td></tr>
 <tr><td>**工厂模式**</td><td>创建不同类型组件</td><td>React.createElement</td></tr>
-<tr><td>**工厂模式**</td><td>创建不同类型组件</td><td>React.createElement</td></tr>
-<tr><td>**观察者模式**</td><td>响应式数据绑定</td><td>Vue 响应式原理、EventEmitter</td></tr>
 <tr><td>**观察者模式**</td><td>响应式数据绑定</td><td>Vue 响应式原理、EventEmitter</td></tr>
 <tr><td>**策略模式**</td><td>表单验证规则切换</td><td>不同验证策略</td></tr>
-<tr><td>**策略模式**</td><td>表单验证规则切换</td><td>不同验证策略</td></tr>
 <tr><td>**装饰器模式**</td><td>HOC、装饰器</td><td>@withStyles、@observer</td></tr>
-<tr><td>**装饰器模式**</td><td>HOC、装饰器</td><td>@withStyles、@observer</td></tr>
-<tr><td>**组合模式**</td><td>组件树结构</td><td>React Props.children</td></tr>
 <tr><td>**组合模式**</td><td>组件树结构</td><td>React Props.children</td></tr></table>
 <br>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 观察者模式实现</h4>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 观察者模式实现</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// 简单的观察者模式实现</p>
-<p class="mb-2">// 简单的观察者模式实现</p>
-<p class="mb-2">class EventEmitter {</p>
-<p class="mb-2">class EventEmitter {</p>
-<p class="mb-2">    constructor() {</p>
-<p class="mb-2">    constructor() {</p>
-<p class="mb-2">        this.events = {};</p>
-<p class="mb-2">        this.events = {};</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<br>
-<br>
-<p class="mb-2">    on(event, callback) {</p>
-<p class="mb-2">    on(event, callback) {</p>
-<p class="mb-2">        if (!this.events[event]) {</p>
-<p class="mb-2">        if (!this.events[event]) {</p>
-<p class="mb-2">            this.events[event] = [];</p>
-<p class="mb-2">            this.events[event] = [];</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        this.events[event].push(callback);</p>
-<p class="mb-2">        this.events[event].push(callback);</p>
-<p class="mb-2">        // 返回取消订阅函数</p>
-<p class="mb-2">        // 返回取消订阅函数</p>
-<p class="mb-2">        return () =&gt; this.off(event, callback);</p>
-<p class="mb-2">        return () =&gt; this.off(event, callback);</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<br>
-<br>
-<p class="mb-2">    off(event, callback) {</p>
-<p class="mb-2">    off(event, callback) {</p>
-<p class="mb-2">        if (!this.events[event]) return;</p>
-<p class="mb-2">        if (!this.events[event]) return;</p>
-<p class="mb-2">        this.events[event] = this.events[event].filter(cb =&gt; cb !== callback);</p>
-<p class="mb-2">        this.events[event] = this.events[event].filter(cb =&gt; cb !== callback);</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<br>
-<br>
-<p class="mb-2">    emit(event, ...args) {</p>
-<p class="mb-2">    emit(event, ...args) {</p>
-<p class="mb-2">        if (!this.events[event]) return;</p>
-<p class="mb-2">        if (!this.events[event]) return;</p>
-<p class="mb-2">        this.events[event].forEach(callback =&gt; callback(...args));</p>
-<p class="mb-2">        this.events[event].forEach(callback =&gt; callback(...args));</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<br>
-<br>
-<p class="mb-2">    once(event, callback) {</p>
-<p class="mb-2">    once(event, callback) {</p>
-<p class="mb-2">        const wrapper = (...args) =&gt; {</p>
-<p class="mb-2">        const wrapper = (...args) =&gt; {</p>
-<p class="mb-2">            callback(...args);</p>
-<p class="mb-2">            callback(...args);</p>
-<p class="mb-2">            this.off(event, wrapper);</p>
-<p class="mb-2">            this.off(event, wrapper);</p>
-<p class="mb-2">        };</p>
-<p class="mb-2">        };</p>
-<p class="mb-2">        this.on(event, wrapper);</p>
-<p class="mb-2">        this.on(event, wrapper);</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 使用示例</p>
-<p class="mb-2">// 使用示例</p>
-<p class="mb-2">const emitter = new EventEmitter();</p>
-<p class="mb-2">const emitter = new EventEmitter();</p>
-<br>
-<br>
-<p class="mb-2">// 订阅</p>
-<p class="mb-2">// 订阅</p>
-<p class="mb-2">const unsubscribe = emitter.on(&#x27;user:login&#x27;, (user) =&gt; {</p>
-<p class="mb-2">const unsubscribe = emitter.on(&#x27;user:login&#x27;, (user) =&gt; {</p>
-<p class="mb-2">    console.log(&#x27;User logged in:&#x27;, user.name);</p>
-<p class="mb-2">    console.log(&#x27;User logged in:&#x27;, user.name);</p>
-<p class="mb-2">});</p>
-<p class="mb-2">});</p>
-<br>
-<br>
-<p class="mb-2">// 发布</p>
-<p class="mb-2">// 发布</p>
-<p class="mb-2">emitter.emit(&#x27;user:login&#x27;, { name: &#x27;John&#x27; });</p>
-<p class="mb-2">emitter.emit(&#x27;user:login&#x27;, { name: &#x27;John&#x27; });</p>
-<br>
-<br>
-<p class="mb-2">// 取消订阅</p>
-<p class="mb-2">// 取消订阅</p>
-<p class="mb-2">unsubscribe();</p>
-<p class="mb-2">unsubscribe();</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// 简单的观察者模式实现
+class EventEmitter {
+    constructor() {
+        this.events = {};
+    }
+    
+    on(event, callback) {
+        if (!this.events[event]) {
+            this.events[event] = [];
+        }
+        this.events[event].push(callback);
+        // 返回取消订阅函数
+        return () =&gt; this.off(event, callback);
+    }
+    
+    off(event, callback) {
+        if (!this.events[event]) return;
+        this.events[event] = this.events[event].filter(cb =&gt; cb !== callback);
+    }
+    
+    emit(event, ...args) {
+        if (!this.events[event]) return;
+        this.events[event].forEach(callback =&gt; callback(...args));
+    }
+    
+    once(event, callback) {
+        const wrapper = (...args) =&gt; {
+            callback(...args);
+            this.off(event, wrapper);
+        };
+        this.on(event, wrapper);
+    }
+}
+
+// 使用示例
+const emitter = new EventEmitter();
+
+// 订阅
+const unsubscribe = emitter.on(&#x27;user:login&#x27;, (user) =&gt; {
+    console.log(&#x27;User logged in:&#x27;, user.name);
+});
+
+// 发布
+emitter.emit(&#x27;user:login&#x27;, { name: &#x27;John&#x27; });
+
+// 取消订阅
+unsubscribe();</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 装饰器模式（HOC）</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 装饰器模式（HOC）</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// 高阶组件 (Higher-Order Component)</p>
-<p class="mb-2">// 高阶组件 (Higher-Order Component)</p>
-<p class="mb-2">function withLoading(WrappedComponent) {</p>
-<p class="mb-2">function withLoading(WrappedComponent) {</p>
-<p class="mb-2">    return function WithLoadingComponent({ isLoading, ...props }) {</p>
-<p class="mb-2">    return function WithLoadingComponent({ isLoading, ...props }) {</p>
-<p class="mb-2">        if (isLoading) {</p>
-<p class="mb-2">        if (isLoading) {</p>
-<p class="mb-2">            return &lt;div className=&quot;loading-spinner&quot;&gt;Loading...&lt;/div&gt;;</p>
-<p class="mb-2">            return &lt;div className=&quot;loading-spinner&quot;&gt;Loading...&lt;/div&gt;;</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        return &lt;WrappedComponent {...props} /&gt;;</p>
-<p class="mb-2">        return &lt;WrappedComponent {...props} /&gt;;</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 多个装饰器组合</p>
-<p class="mb-2">// 多个装饰器组合</p>
-<p class="mb-2">function withAuth(WrappedComponent) {</p>
-<p class="mb-2">function withAuth(WrappedComponent) {</p>
-<p class="mb-2">    return function AuthComponent({ isAuthenticated, ...props }) {</p>
-<p class="mb-2">    return function AuthComponent({ isAuthenticated, ...props }) {</p>
-<p class="mb-2">        if (!isAuthenticated) {</p>
-<p class="mb-2">        if (!isAuthenticated) {</p>
-<p class="mb-2">            return &lt;div&gt;Please login first&lt;/div&gt;;</p>
-<p class="mb-2">            return &lt;div&gt;Please login first&lt;/div&gt;;</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        return &lt;WrappedComponent {...props} /&gt;;</p>
-<p class="mb-2">        return &lt;WrappedComponent {...props} /&gt;;</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">    };</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 使用装饰器</p>
-<p class="mb-2">// 使用装饰器</p>
-<p class="mb-2">const EnhancedUserList = withAuth(withLoading(UserList));</p>
-<p class="mb-2">const EnhancedUserList = withAuth(withLoading(UserList));</p>
-<br>
-<br>
-<p class="mb-2">// 渲染</p>
-<p class="mb-2">// 渲染</p>
-<p class="mb-2">&lt;EnhancedUserList isLoading={true} isAuthenticated={true} /&gt;</p>
-<p class="mb-2">&lt;EnhancedUserList isLoading={true} isAuthenticated={true} /&gt;</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// 高阶组件 (Higher-Order Component)
+function withLoading(WrappedComponent) {
+    return function WithLoadingComponent({ isLoading, ...props }) {
+        if (isLoading) {
+            return &lt;div className=&quot;loading-spinner&quot;&gt;Loading...&lt;/div&gt;;
+        }
+        return &lt;WrappedComponent {...props} /&gt;;
+    };
+}
+
+// 多个装饰器组合
+function withAuth(WrappedComponent) {
+    return function AuthComponent({ isAuthenticated, ...props }) {
+        if (!isAuthenticated) {
+            return &lt;div&gt;Please login first&lt;/div&gt;;
+        }
+        return &lt;WrappedComponent {...props} /&gt;;
+    };
+}
+
+// 使用装饰器
+const EnhancedUserList = withAuth(withLoading(UserList));
+
+// 渲染
+&lt;EnhancedUserList isLoading={true} isAuthenticated={true} /&gt;</code></pre>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 设计模式在后端的应用</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 设计模式在后端的应用</h3>
-<br>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 依赖注入模式</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 依赖注入模式</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// TypeScript 依赖注入示例</p>
-<p class="mb-2">// TypeScript 依赖注入示例</p>
-<p class="mb-2">import { Injectable, Inject } from &#x27;@nestjs/common&#x27;;</p>
-<p class="mb-2">import { Injectable, Inject } from &#x27;@nestjs/common&#x27;;</p>
-<br>
-<br>
-<p class="mb-2">// 定义 Token</p>
-<p class="mb-2">// 定义 Token</p>
-<p class="mb-2">const DATABASE_TOKEN = &#x27;DATABASE&#x27;;</p>
-<p class="mb-2">const DATABASE_TOKEN = &#x27;DATABASE&#x27;;</p>
-<br>
-<br>
-<p class="mb-2">// 接口定义</p>
-<p class="mb-2">// 接口定义</p>
-<p class="mb-2">interface Database {</p>
-<p class="mb-2">interface Database {</p>
-<p class="mb-2">    query(sql: string): Promise&lt;any&gt;;</p>
-<p class="mb-2">    query(sql: string): Promise&lt;any&gt;;</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 实现</p>
-<p class="mb-2">// 实现</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">class PostgreSQL implements Database {</p>
-<p class="mb-2">class PostgreSQL implements Database {</p>
-<p class="mb-2">    async query(sql: string) {</p>
-<p class="mb-2">    async query(sql: string) {</p>
-<p class="mb-2">        // PostgreSQL 实现</p>
-<p class="mb-2">        // PostgreSQL 实现</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 使用 @Inject 指定 Token</p>
-<p class="mb-2">// 使用 @Inject 指定 Token</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">class UserService {</p>
-<p class="mb-2">class UserService {</p>
-<p class="mb-2">    constructor(</p>
-<p class="mb-2">    constructor(</p>
-<p class="mb-2">        @Inject(DATABASE_TOKEN) private db: Database</p>
-<p class="mb-2">        @Inject(DATABASE_TOKEN) private db: Database</p>
-<p class="mb-2">    ) {}</p>
-<p class="mb-2">    ) {}</p>
-<br>
-<br>
-<p class="mb-2">    async findUsers() {</p>
-<p class="mb-2">    async findUsers() {</p>
-<p class="mb-2">        return this.db.query(&#x27;SELECT * FROM users&#x27;);</p>
-<p class="mb-2">        return this.db.query(&#x27;SELECT * FROM users&#x27;);</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 模块注册</p>
-<p class="mb-2">// 模块注册</p>
-<p class="mb-2">@Module({</p>
-<p class="mb-2">@Module({</p>
-<p class="mb-2">    providers: [</p>
-<p class="mb-2">    providers: [</p>
-<p class="mb-2">        { provide: DATABASE_TOKEN, useClass: PostgreSQL },</p>
-<p class="mb-2">        { provide: DATABASE_TOKEN, useClass: PostgreSQL },</p>
-<p class="mb-2">        UserService</p>
-<p class="mb-2">        UserService</p>
-<p class="mb-2">    ]</p>
-<p class="mb-2">    ]</p>
-<p class="mb-2">})</p>
-<p class="mb-2">})</p>
-<p class="mb-2">export class AppModule {}</p>
-<p class="mb-2">export class AppModule {}</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// TypeScript 依赖注入示例
+import { Injectable, Inject } from &#x27;@nestjs/common&#x27;;
+
+// 定义 Token
+const DATABASE_TOKEN = &#x27;DATABASE&#x27;;
+
+// 接口定义
+interface Database {
+    query(sql: string): Promise&lt;any&gt;;
+}
+
+// 实现
+@Injectable()
+class PostgreSQL implements Database {
+    async query(sql: string) {
+        // PostgreSQL 实现
+    }
+}
+
+// 使用 @Inject 指定 Token
+@Injectable()
+class UserService {
+    constructor(
+        @Inject(DATABASE_TOKEN) private db: Database
+    ) {}
+    
+    async findUsers() {
+        return this.db.query(&#x27;SELECT * FROM users&#x27;);
+    }
+}
+
+// 模块注册
+@Module({
+    providers: [
+        { provide: DATABASE_TOKEN, useClass: PostgreSQL },
+        UserService
+    ]
+})
+export class AppModule {}</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 仓储模式（Repository Pattern）</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 仓储模式（Repository Pattern）</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">// 仓储接口</p>
-<p class="mb-2">// 仓储接口</p>
-<p class="mb-2">interface UserRepository {</p>
-<p class="mb-2">interface UserRepository {</p>
-<p class="mb-2">    findById(id: number): Promise&lt;User | null&gt;;</p>
-<p class="mb-2">    findById(id: number): Promise&lt;User | null&gt;;</p>
-<p class="mb-2">    findAll(): Promise&lt;User[]&gt;;</p>
-<p class="mb-2">    findAll(): Promise&lt;User[]&gt;;</p>
-<p class="mb-2">    save(user: User): Promise&lt;User&gt;;</p>
-<p class="mb-2">    save(user: User): Promise&lt;User&gt;;</p>
-<p class="mb-2">    delete(id: number): Promise&lt;void&gt;;</p>
-<p class="mb-2">    delete(id: number): Promise&lt;void&gt;;</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 仓储实现</p>
-<p class="mb-2">// 仓储实现</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">class TypeORMUserRepository implements UserRepository {</p>
-<p class="mb-2">class TypeORMUserRepository implements UserRepository {</p>
-<p class="mb-2">    constructor(</p>
-<p class="mb-2">    constructor(</p>
-<p class="mb-2">        @InjectRepository(User)</p>
-<p class="mb-2">        @InjectRepository(User)</p>
-<p class="mb-2">        private ormRepo: Repository&lt;User&gt;</p>
-<p class="mb-2">        private ormRepo: Repository&lt;User&gt;</p>
-<p class="mb-2">    ) {}</p>
-<p class="mb-2">    ) {}</p>
-<br>
-<br>
-<p class="mb-2">    async findById(id: number): Promise&lt;User | null&gt; {</p>
-<p class="mb-2">    async findById(id: number): Promise&lt;User | null&gt; {</p>
-<p class="mb-2">        return this.ormRepo.findOne({ where: { id } });</p>
-<p class="mb-2">        return this.ormRepo.findOne({ where: { id } });</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<br>
-<br>
-<p class="mb-2">    async findAll(): Promise&lt;User[]&gt; {</p>
-<p class="mb-2">    async findAll(): Promise&lt;User[]&gt; {</p>
-<p class="mb-2">        return this.ormRepo.find();</p>
-<p class="mb-2">        return this.ormRepo.find();</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<br>
-<br>
-<p class="mb-2">    async save(user: User): Promise&lt;User&gt; {</p>
-<p class="mb-2">    async save(user: User): Promise&lt;User&gt; {</p>
-<p class="mb-2">        return this.ormRepo.save(user);</p>
-<p class="mb-2">        return this.ormRepo.save(user);</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<br>
-<br>
-<p class="mb-2">    async delete(id: number): Promise&lt;void&gt; {</p>
-<p class="mb-2">    async delete(id: number): Promise&lt;void&gt; {</p>
-<p class="mb-2">        await this.ormRepo.delete(id);</p>
-<p class="mb-2">        await this.ormRepo.delete(id);</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<br>
-<br>
-<p class="mb-2">// 服务层使用仓储</p>
-<p class="mb-2">// 服务层使用仓储</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">@Injectable()</p>
-<p class="mb-2">class UserService {</p>
-<p class="mb-2">class UserService {</p>
-<p class="mb-2">    constructor(</p>
-<p class="mb-2">    constructor(</p>
-<p class="mb-2">        private userRepo: UserRepository</p>
-<p class="mb-2">        private userRepo: UserRepository</p>
-<p class="mb-2">    ) {}</p>
-<p class="mb-2">    ) {}</p>
-<br>
-<br>
-<p class="mb-2">    async getUserWithOrders(userId: number) {</p>
-<p class="mb-2">    async getUserWithOrders(userId: number) {</p>
-<p class="mb-2">        const user = await this.userRepo.findById(userId);</p>
-<p class="mb-2">        const user = await this.userRepo.findById(userId);</p>
-<p class="mb-2">        if (!user) {</p>
-<p class="mb-2">        if (!user) {</p>
-<p class="mb-2">            throw new NotFoundException(&#x27;User not found&#x27;);</p>
-<p class="mb-2">            throw new NotFoundException(&#x27;User not found&#x27;);</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        }</p>
-<p class="mb-2">        const orders = await this.orderRepo.findByUser(userId);</p>
-<p class="mb-2">        const orders = await this.orderRepo.findByUser(userId);</p>
-<p class="mb-2">        return { user, orders };</p>
-<p class="mb-2">        return { user, orders };</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">    }</p>
-<p class="mb-2">}</p>
-<p class="mb-2">}</p>
-<pre><code></code></pre>
-<br>
+<pre><code>// 仓储接口
+interface UserRepository {
+    findById(id: number): Promise&lt;User | null&gt;;
+    findAll(): Promise&lt;User[]&gt;;
+    save(user: User): Promise&lt;User&gt;;
+    delete(id: number): Promise&lt;void&gt;;
+}
+
+// 仓储实现
+@Injectable()
+class TypeORMUserRepository implements UserRepository {
+    constructor(
+        @InjectRepository(User)
+        private ormRepo: Repository&lt;User&gt;
+    ) {}
+    
+    async findById(id: number): Promise&lt;User | null&gt; {
+        return this.ormRepo.findOne({ where: { id } });
+    }
+    
+    async findAll(): Promise&lt;User[]&gt; {
+        return this.ormRepo.find();
+    }
+    
+    async save(user: User): Promise&lt;User&gt; {
+        return this.ormRepo.save(user);
+    }
+    
+    async delete(id: number): Promise&lt;void&gt; {
+        await this.ormRepo.delete(id);
+    }
+}
+
+// 服务层使用仓储
+@Injectable()
+class UserService {
+    constructor(
+        private userRepo: UserRepository
+    ) {}
+    
+    async getUserWithOrders(userId: number) {
+        const user = await this.userRepo.findById(userId);
+        if (!user) {
+            throw new NotFoundException(&#x27;User not found&#x27;);
+        }
+        const orders = await this.orderRepo.findByUser(userId);
+        return { user, orders };
+    }
+}</code></pre>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.3 分布式系统核心概念</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.3 分布式系统核心概念</h3>
-<br>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.1 负载均衡算法</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.1 负载均衡算法</h4>
-<br>
 <br>
 <table class="my-4 w-full"><tr><td>算法</td><td>原理</td><td>优点</td><td>缺点</td></tr>
-<tr><td>算法</td><td>原理</td><td>优点</td><td>缺点</td></tr>
-<tr><td>**轮询 (Round Robin)**</td><td>依次分配请求</td><td>简单、均匀</td><td>不考虑服务器负载</td></tr>
 <tr><td>**轮询 (Round Robin)**</td><td>依次分配请求</td><td>简单、均匀</td><td>不考虑服务器负载</td></tr>
 <tr><td>**加权轮询**</td><td>按权重分配</td><td>可控制比例</td><td>权重固定</td></tr>
-<tr><td>**加权轮询**</td><td>按权重分配</td><td>可控制比例</td><td>权重固定</td></tr>
 <tr><td>**最少连接**</td><td>分配给连接数最少的</td><td>动态平衡</td><td>实现复杂</td></tr>
-<tr><td>**最少连接**</td><td>分配给连接数最少的</td><td>动态平衡</td><td>实现复杂</td></tr>
-<tr><td>**IP 哈希**</td><td>同一 IP 固定到某服务器</td><td>Session 保持</td><td>可能不均匀</td></tr>
 <tr><td>**IP 哈希**</td><td>同一 IP 固定到某服务器</td><td>Session 保持</td><td>可能不均匀</td></tr></table>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">负载均衡示意：</p>
-<p class="mb-2">负载均衡示意：</p>
-<p class="mb-2">                    ┌─────────────┐</p>
-<p class="mb-2">                    ┌─────────────┐</p>
-<p class="mb-2">                    │ Load        │</p>
-<p class="mb-2">                    │ Load        │</p>
-<p class="mb-2">                    │ Balancer    │</p>
-<p class="mb-2">                    │ Balancer    │</p>
-<p class="mb-2">                    └──────┬──────┘</p>
-<p class="mb-2">                    └──────┬──────┘</p>
-<p class="mb-2">                           │</p>
-<p class="mb-2">                           │</p>
-<p class="mb-2">         ┌─────────────────┼─────────────────┐</p>
-<p class="mb-2">         ┌─────────────────┼─────────────────┐</p>
-<p class="mb-2">         │                 │                 │</p>
-<p class="mb-2">         │                 │                 │</p>
-<p class="mb-2">         ▼                 ▼                 ▼</p>
-<p class="mb-2">         ▼                 ▼                 ▼</p>
-<p class="mb-2">    ┌─────────┐       ┌─────────┐       ┌─────────┐</p>
-<p class="mb-2">    ┌─────────┐       ┌─────────┐       ┌─────────┐</p>
-<p class="mb-2">    │ Server A│       │ Server B│       │ Server C│</p>
-<p class="mb-2">    │ Server A│       │ Server B│       │ Server C│</p>
-<p class="mb-2">    │ 10 req  │       │ 15 req  │       │ 8 req   │</p>
-<p class="mb-2">    │ 10 req  │       │ 15 req  │       │ 8 req   │</p>
-<p class="mb-2">    │ (权重2) │       │ (权重3) │       │ (权重1) │</p>
-<p class="mb-2">    │ (权重2) │       │ (权重3) │       │ (权重1) │</p>
-<p class="mb-2">    └─────────┘       └─────────┘       └─────────┘</p>
-<p class="mb-2">    └─────────┘       └─────────┘       └─────────┘</p>
-<pre><code></code></pre>
-<br>
+<pre><code>负载均衡示意：
+                    ┌─────────────┐
+                    │ Load        │
+                    │ Balancer    │
+                    └──────┬──────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         │                 │                 │
+         ▼                 ▼                 ▼
+    ┌─────────┐       ┌─────────┐       ┌─────────┐
+    │ Server A│       │ Server B│       │ Server C│
+    │ 10 req  │       │ 15 req  │       │ 8 req   │
+    │ (权重2) │       │ (权重3) │       │ (权重1) │
+    └─────────┘       └─────────┘       └─────────┘</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.2 熔断器模式（Circuit Breaker）</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.2 熔断器模式（Circuit Breaker）</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">Python 熔断器实现</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">Python 熔断器实现</h1>
-<p class="mb-2">import time</p>
-<p class="mb-2">import time</p>
-<p class="mb-2">from enum import Enum</p>
-<p class="mb-2">from enum import Enum</p>
-<p class="mb-2">from functools import wraps</p>
-<p class="mb-2">from functools import wraps</p>
-<br>
-<br>
-<p class="mb-2">class CircuitState(Enum):</p>
-<p class="mb-2">class CircuitState(Enum):</p>
-<p class="mb-2">    CLOSED = &quot;closed&quot;      # 正常状态</p>
-<p class="mb-2">    CLOSED = &quot;closed&quot;      # 正常状态</p>
-<p class="mb-2">    OPEN = &quot;open&quot;          # 熔断状态</p>
-<p class="mb-2">    OPEN = &quot;open&quot;          # 熔断状态</p>
-<p class="mb-2">    HALF_OPEN = &quot;half_open&quot;  # 半开状态</p>
-<p class="mb-2">    HALF_OPEN = &quot;half_open&quot;  # 半开状态</p>
-<br>
-<br>
-<p class="mb-2">class CircuitBreaker:</p>
-<p class="mb-2">class CircuitBreaker:</p>
-<p class="mb-2">    def __init__(self, failure_threshold=5, timeout=60):</p>
-<p class="mb-2">    def __init__(self, failure_threshold=5, timeout=60):</p>
-<p class="mb-2">        self.failure_threshold = failure_threshold</p>
-<p class="mb-2">        self.failure_threshold = failure_threshold</p>
-<p class="mb-2">        self.timeout = timeout</p>
-<p class="mb-2">        self.timeout = timeout</p>
-<p class="mb-2">        self.failure_count = 0</p>
-<p class="mb-2">        self.failure_count = 0</p>
-<p class="mb-2">        self.last_failure_time = None</p>
-<p class="mb-2">        self.last_failure_time = None</p>
-<p class="mb-2">        self.state = CircuitState.CLOSED</p>
-<p class="mb-2">        self.state = CircuitState.CLOSED</p>
-<br>
-<br>
-<p class="mb-2">    def call(self, func, *args, **kwargs):</p>
-<p class="mb-2">    def call(self, func, *args, **kwargs):</p>
-<p class="mb-2">        if self.state == CircuitState.OPEN:</p>
-<p class="mb-2">        if self.state == CircuitState.OPEN:</p>
-<p class="mb-2">            if time.time() - self.last_failure_time &gt;= self.timeout:</p>
-<p class="mb-2">            if time.time() - self.last_failure_time &gt;= self.timeout:</p>
-<p class="mb-2">                self.state = CircuitState.HALF_OPEN</p>
-<p class="mb-2">                self.state = CircuitState.HALF_OPEN</p>
-<p class="mb-2">            else:</p>
-<p class="mb-2">            else:</p>
-<p class="mb-2">                raise Exception(&quot;Circuit breaker is OPEN&quot;)</p>
-<p class="mb-2">                raise Exception(&quot;Circuit breaker is OPEN&quot;)</p>
-<br>
-<br>
-<p class="mb-2">        try:</p>
-<p class="mb-2">        try:</p>
-<p class="mb-2">            result = func(*args, **kwargs)</p>
-<p class="mb-2">            result = func(*args, **kwargs)</p>
-<p class="mb-2">            self._on_success()</p>
-<p class="mb-2">            self._on_success()</p>
-<p class="mb-2">            return result</p>
-<p class="mb-2">            return result</p>
-<p class="mb-2">        except Exception as e:</p>
-<p class="mb-2">        except Exception as e:</p>
-<p class="mb-2">            self._on_failure()</p>
-<p class="mb-2">            self._on_failure()</p>
-<p class="mb-2">            raise e</p>
-<p class="mb-2">            raise e</p>
-<br>
-<br>
-<p class="mb-2">    def _on_success(self):</p>
-<p class="mb-2">    def _on_success(self):</p>
-<p class="mb-2">        self.failure_count = 0</p>
-<p class="mb-2">        self.failure_count = 0</p>
-<p class="mb-2">        self.state = CircuitState.CLOSED</p>
-<p class="mb-2">        self.state = CircuitState.CLOSED</p>
-<br>
-<br>
-<p class="mb-2">    def _on_failure(self):</p>
-<p class="mb-2">    def _on_failure(self):</p>
-<p class="mb-2">        self.failure_count += 1</p>
-<p class="mb-2">        self.failure_count += 1</p>
-<p class="mb-2">        self.last_failure_time = time.time()</p>
-<p class="mb-2">        self.last_failure_time = time.time()</p>
-<p class="mb-2">        if self.failure_count &gt;= self.failure_threshold:</p>
-<p class="mb-2">        if self.failure_count &gt;= self.failure_threshold:</p>
-<p class="mb-2">            self.state = CircuitState.OPEN</p>
-<p class="mb-2">            self.state = CircuitState.OPEN</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">使用示例</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">使用示例</h1>
-<p class="mb-2">breaker = CircuitBreaker(failure_threshold=3, timeout=30)</p>
-<p class="mb-2">breaker = CircuitBreaker(failure_threshold=3, timeout=30)</p>
-<br>
-<br>
-<p class="mb-2">@wraps(some_function)</p>
-<p class="mb-2">@wraps(some_function)</p>
-<p class="mb-2">def resilient_function(*args, **kwargs):</p>
-<p class="mb-2">def resilient_function(*args, **kwargs):</p>
-<p class="mb-2">    return breaker.call(some_function, *args, **kwargs)</p>
-<p class="mb-2">    return breaker.call(some_function, *args, **kwargs)</p>
-<pre><code></code></pre>
-<br>
+<pre><code># Python 熔断器实现
+import time
+from enum import Enum
+from functools import wraps
+
+class CircuitState(Enum):
+    CLOSED = &quot;closed&quot;      # 正常状态
+    OPEN = &quot;open&quot;          # 熔断状态
+    HALF_OPEN = &quot;half_open&quot;  # 半开状态
+
+class CircuitBreaker:
+    def __init__(self, failure_threshold=5, timeout=60):
+        self.failure_threshold = failure_threshold
+        self.timeout = timeout
+        self.failure_count = 0
+        self.last_failure_time = None
+        self.state = CircuitState.CLOSED
+    
+    def call(self, func, *args, **kwargs):
+        if self.state == CircuitState.OPEN:
+            if time.time() - self.last_failure_time &gt;= self.timeout:
+                self.state = CircuitState.HALF_OPEN
+            else:
+                raise Exception(&quot;Circuit breaker is OPEN&quot;)
+        
+        try:
+            result = func(*args, **kwargs)
+            self._on_success()
+            return result
+        except Exception as e:
+            self._on_failure()
+            raise e
+    
+    def _on_success(self):
+        self.failure_count = 0
+        self.state = CircuitState.CLOSED
+    
+    def _on_failure(self):
+        self.failure_count += 1
+        self.last_failure_time = time.time()
+        if self.failure_count &gt;= self.failure_threshold:
+            self.state = CircuitState.OPEN
+
+# 使用示例
+breaker = CircuitBreaker(failure_threshold=3, timeout=30)
+
+@wraps(some_function)
+def resilient_function(*args, **kwargs):
+    return breaker.call(some_function, *args, **kwargs)</code></pre>
 <br>
 <h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.3 限流策略</h4>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.3 限流策略</h4>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">import time</p>
-<p class="mb-2">import time</p>
-<p class="mb-2">from collections import defaultdict</p>
-<p class="mb-2">from collections import defaultdict</p>
-<p class="mb-2">from threading import Lock</p>
-<p class="mb-2">from threading import Lock</p>
-<br>
-<br>
-<p class="mb-2">class RateLimiter:</p>
-<p class="mb-2">class RateLimiter:</p>
-<p class="mb-2">    def __init__(self, max_requests, window_seconds):</p>
-<p class="mb-2">    def __init__(self, max_requests, window_seconds):</p>
-<p class="mb-2">        self.max_requests = max_requests</p>
-<p class="mb-2">        self.max_requests = max_requests</p>
-<p class="mb-2">        self.window_seconds = window_seconds</p>
-<p class="mb-2">        self.window_seconds = window_seconds</p>
-<p class="mb-2">        self.requests = defaultdict(list)</p>
-<p class="mb-2">        self.requests = defaultdict(list)</p>
-<p class="mb-2">        self.lock = Lock()</p>
-<p class="mb-2">        self.lock = Lock()</p>
-<br>
-<br>
-<p class="mb-2">    def is_allowed(self, key):</p>
-<p class="mb-2">    def is_allowed(self, key):</p>
-<p class="mb-2">        with self.lock:</p>
-<p class="mb-2">        with self.lock:</p>
-<p class="mb-2">            now = time.time()</p>
-<p class="mb-2">            now = time.time()</p>
-<p class="mb-2">            # 清理过期请求记录</p>
-<p class="mb-2">            # 清理过期请求记录</p>
-<p class="mb-2">            self.requests[key] = [</p>
-<p class="mb-2">            self.requests[key] = [</p>
-<p class="mb-2">                req_time for req_time in self.requests[key]</p>
-<p class="mb-2">                req_time for req_time in self.requests[key]</p>
-<p class="mb-2">                if now - req_time &lt; self.window_seconds</p>
-<p class="mb-2">                if now - req_time &lt; self.window_seconds</p>
-<p class="mb-2">            ]</p>
-<p class="mb-2">            ]</p>
-<br>
-<br>
-<p class="mb-2">            if len(self.requests[key]) &lt; self.max_requests:</p>
-<p class="mb-2">            if len(self.requests[key]) &lt; self.max_requests:</p>
-<p class="mb-2">                self.requests[key].append(now)</p>
-<p class="mb-2">                self.requests[key].append(now)</p>
-<p class="mb-2">                return True</p>
-<p class="mb-2">                return True</p>
-<p class="mb-2">            return False</p>
-<p class="mb-2">            return False</p>
-<br>
-<br>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">使用示例</h1>
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">使用示例</h1>
-<p class="mb-2">limiter = RateLimiter(max_requests=100, window_seconds=60)</p>
-<p class="mb-2">limiter = RateLimiter(max_requests=100, window_seconds=60)</p>
-<br>
-<br>
-<p class="mb-2">def rate_limit(key):</p>
-<p class="mb-2">def rate_limit(key):</p>
-<p class="mb-2">    def decorator(func):</p>
-<p class="mb-2">    def decorator(func):</p>
-<p class="mb-2">        @wraps(func)</p>
-<p class="mb-2">        @wraps(func)</p>
-<p class="mb-2">        def wrapper(*args, **kwargs):</p>
-<p class="mb-2">        def wrapper(*args, **kwargs):</p>
-<p class="mb-2">            if not limiter.is_allowed(key):</p>
-<p class="mb-2">            if not limiter.is_allowed(key):</p>
-<p class="mb-2">                return {&quot;error&quot;: &quot;Rate limit exceeded&quot;}, 429</p>
-<p class="mb-2">                return {&quot;error&quot;: &quot;Rate limit exceeded&quot;}, 429</p>
-<p class="mb-2">            return func(*args, **kwargs)</p>
-<p class="mb-2">            return func(*args, **kwargs)</p>
-<p class="mb-2">        return wrapper</p>
-<p class="mb-2">        return wrapper</p>
-<p class="mb-2">    return decorator</p>
-<p class="mb-2">    return decorator</p>
-<br>
-<br>
-<p class="mb-2">@app.route(&quot;/api/data&quot;)</p>
-<p class="mb-2">@app.route(&quot;/api/data&quot;)</p>
-<p class="mb-2">@rate_limit(&quot;api_data&quot;)</p>
-<p class="mb-2">@rate_limit(&quot;api_data&quot;)</p>
-<p class="mb-2">def get_data():</p>
-<p class="mb-2">def get_data():</p>
-<p class="mb-2">    return {&quot;data&quot;: &quot;...&quot;}</p>
-<p class="mb-2">    return {&quot;data&quot;: &quot;...&quot;}</p>
-<pre><code></code></pre>
-<br>
+<pre><code>import time
+from collections import defaultdict
+from threading import Lock
+
+class RateLimiter:
+    def __init__(self, max_requests, window_seconds):
+        self.max_requests = max_requests
+        self.window_seconds = window_seconds
+        self.requests = defaultdict(list)
+        self.lock = Lock()
+    
+    def is_allowed(self, key):
+        with self.lock:
+            now = time.time()
+            # 清理过期请求记录
+            self.requests[key] = [
+                req_time for req_time in self.requests[key]
+                if now - req_time &lt; self.window_seconds
+            ]
+            
+            if len(self.requests[key]) &lt; self.max_requests:
+                self.requests[key].append(now)
+                return True
+            return False
+
+# 使用示例
+limiter = RateLimiter(max_requests=100, window_seconds=60)
+
+def rate_limit(key):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if not limiter.is_allowed(key):
+                return {&quot;error&quot;: &quot;Rate limit exceeded&quot;}, 429
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+@app.route(&quot;/api/data&quot;)
+@rate_limit(&quot;api_data&quot;)
+def get_data():
+    return {&quot;data&quot;: &quot;...&quot;}</code></pre>
 <br>
 <p class="mb-2">---</p>
-<br>
 <br>
 <h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
-<br>
 <br>
 <h3 class="font-heading text-xl font-semibold mt-6 mb-3">全栈架构知识图谱</h3>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">全栈架构知识图谱</h3>
 <br>
-<br>
-<pre><code></code></pre>
-<p class="mb-2">全栈架构与DevOps</p>
-<p class="mb-2">全栈架构与DevOps</p>
-<p class="mb-2">├── 全栈架构模式</p>
-<p class="mb-2">├── 全栈架构模式</p>
-<p class="mb-2">│   ├── SSR/CSR/SSG（渲染策略）</p>
-<p class="mb-2">│   ├── SSR/CSR/SSG（渲染策略）</p>
-<p class="mb-2">│   ├── BFF（Backend For Frontend）</p>
-<p class="mb-2">│   ├── BFF（Backend For Frontend）</p>
-<p class="mb-2">│   └── 微前端（Module Federation）</p>
-<p class="mb-2">│   └── 微前端（Module Federation）</p>
-<p class="mb-2">│</p>
-<p class="mb-2">│</p>
-<p class="mb-2">├── 部署与DevOps</p>
-<p class="mb-2">├── 部署与DevOps</p>
-<p class="mb-2">│   ├── Docker（容器化）</p>
-<p class="mb-2">│   ├── Docker（容器化）</p>
-<p class="mb-2">│   ├── Kubernetes（编排）</p>
-<p class="mb-2">│   ├── Kubernetes（编排）</p>
-<p class="mb-2">│   ├── CI/CD（自动化流水线）</p>
-<p class="mb-2">│   ├── CI/CD（自动化流水线）</p>
-<p class="mb-2">│   └── 云原生（12要素）</p>
-<p class="mb-2">│   └── 云原生（12要素）</p>
-<p class="mb-2">│</p>
-<p class="mb-2">│</p>
-<p class="mb-2">└── 架构设计模式</p>
-<p class="mb-2">└── 架构设计模式</p>
-<p class="mb-2">    ├── 前端设计模式（观察者、装饰器）</p>
-<p class="mb-2">    ├── 前端设计模式（观察者、装饰器）</p>
-<p class="mb-2">    ├── 后端设计模式（DI、Repository）</p>
-<p class="mb-2">    ├── 后端设计模式（DI、Repository）</p>
-<p class="mb-2">    └── 分布式系统（负载均衡、熔断、限流）</p>
-<p class="mb-2">    └── 分布式系统（负载均衡、熔断、限流）</p>
-<pre><code></code></pre>
-<br>
+<pre><code>全栈架构与DevOps
+├── 全栈架构模式
+│   ├── SSR/CSR/SSG（渲染策略）
+│   ├── BFF（Backend For Frontend）
+│   └── 微前端（Module Federation）
+│
+├── 部署与DevOps
+│   ├── Docker（容器化）
+│   ├── Kubernetes（编排）
+│   ├── CI/CD（自动化流水线）
+│   └── 云原生（12要素）
+│
+└── 架构设计模式
+    ├── 前端设计模式（观察者、装饰器）
+    ├── 后端设计模式（DI、Repository）
+    └── 分布式系统（负载均衡、熔断、限流）</code></pre>
 <br>
 <p class="mb-2">---</p>
 <br>
-<br>
 <p class="mb-2">*文档版本：2024.12*</p>
-<p class="mb-2">*文档版本：2024.12*</p>
-<br>
 <br>
 <p class="mb-2">---</p>
 <br>
-<br>
-<blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
 <blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
 <br>
 </div></article></main>
