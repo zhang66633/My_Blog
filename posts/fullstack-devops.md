@@ -1,101 +1,91 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="zhang66633">
-  <title>全栈架构与 DevOps — My Tech Blog</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{accent:"#2563EB","accent-hover":"#1D4ED8","text-primary":"#18181B",secondary:"#6B7280"}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:"DM Sans",sans-serif;background-color:#FAFAFA}
-    h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif}
-    pre{background:#1e1e2e;color:#cdd6f4;padding:1em 1.25em;border-radius:8px;overflow-x:auto;font-size:0.875em;line-height:1.5;margin:1em 0}
-    code{background:#e5e7eb;padding:0.15em 0.4em;border-radius:4px;font-size:0.9em}
-    pre code{background:transparent;padding:0;font-size:inherit}
-    table{border-collapse:collapse;width:100%;margin:1em 0}
-    th,td{border:1px solid #d1d5db;padding:0.5em 0.75em;text-align:left}
-    th{background:#f3f4f6;font-weight:600}
-    blockquote{border-left:3px solid #2563EB;padding:0.5em 1em;color:#6b7280;margin:1em 0}
-    article a{color:#2563EB;text-decoration:underline}
-  </style>
-</head>
-<body class="min-h-screen flex flex-col">
-<nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm"><div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="../index.html" class="text-accent hover:text-accent-hover font-medium">&larr; 返回博客</a><span class="text-sm text-secondary">CI/CD, Docker, Kubernetes, Cloud Native</span></div></nav>
-<main class="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12"><article><h1 class="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3">全栈架构与 DevOps</h1><p class="text-secondary text-sm mb-8">2026-06-17</p><div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-10 shadow-sm leading-relaxed text-text-primary">
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">全栈架构与 DevOps</h1>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
-<br>
-<p class="mb-2">1. [全栈架构模式](#1-全栈架构模式)</p>
-<p class="mb-2">2. [部署与 DevOps](#2-部署与-devops)</p>
-<p class="mb-2">3. [架构设计模式](#3-架构设计模式)</p>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. 全栈架构模式</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 SSR vs CSR vs SSG 适用场景</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 三种渲染模式对比</h4>
-<br>
-<table class="my-4 w-full"><tr><td>模式</td><td>全称</td><td>首屏渲染</td><td>交互性</td><td>SEO</td><td>适用场景</td></tr>
-<tr><td>**CSR**</td><td>Client-Side Rendering</td><td>慢（需等 JS 下载执行）</td><td>高</td><td>差</td><td>后台系统、SPA</td></tr>
-<tr><td>**SSR**</td><td>Server-Side Rendering</td><td>快</td><td>高</td><td>好</td><td>动态内容、用户个性化</td></tr>
-<tr><td>**SSG**</td><td>Static Site Generation</td><td>最快</td><td>中</td><td>最好</td><td>静态站点、博客、文档</td></tr></table>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 CSR 实现（React SPA）</h4>
-<br>
-<pre><code>// React + Vite 实现 CSR
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191110102MACQD9K64018705
+    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/全栈架构与DevOps.md
+    ReservedCode1: ""
+    ContentPropagator: 001191110102MACQD9K64028705
+    PropagateID: 0#1781573275986
+    ReservedCode2: ""
+---
+# 全栈架构与 DevOps
+
+## 目录
+
+1. [全栈架构模式](#1-全栈架构模式)
+2. [部署与 DevOps](#2-部署与-devops)
+3. [架构设计模式](#3-架构设计模式)
+
+---
+
+## 1. 全栈架构模式
+
+### 1.1 SSR vs CSR vs SSG 适用场景
+
+#### 1.1.1 三种渲染模式对比
+
+| 模式 | 全称 | 首屏渲染 | 交互性 | SEO | 适用场景 |
+|------|------|---------|--------|-----|---------|
+| **CSR** | Client-Side Rendering | 慢（需等 JS 下载执行） | 高 | 差 | 后台系统、SPA |
+| **SSR** | Server-Side Rendering | 快 | 高 | 好 | 动态内容、用户个性化 |
+| **SSG** | Static Site Generation | 最快 | 中 | 最好 | 静态站点、博客、文档 |
+
+#### 1.1.2 CSR 实现（React SPA）
+
+```javascript
+// React + Vite 实现 CSR
 // src/App.jsx
-import React, { useState, useEffect } from &#x27;react&#x27;;
+import React, { useState, useEffect } from 'react';
 
 function App() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
 
     // 客户端数据获取
-    useEffect(() =&gt; {
-        fetch(&#x27;/api/data&#x27;)
-            .then(res =&gt; res.json())
-            .then(data =&gt; {
+    useEffect(() => {
+        fetch('/api/data')
+            .then(res => res.json())
+            .then(data => {
                 setData(data);
                 setLoading(false);
             });
     }, []);
 
-    if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+    if (loading) return <div>Loading...</div>;
 
     return (
-        &lt;div&gt;
-            &lt;h1&gt;CSR Application&lt;/h1&gt;
-            {data &amp;&amp; &lt;p&gt;{data.message}&lt;/p&gt;}
-        &lt;/div&gt;
+        <div>
+            <h1>CSR Application</h1>
+            {data && <p>{data.message}</p>}
+        </div>
     );
 }
 
-export default App;</code></pre>
-<br>
-<pre><code>// vite.config.js
-import { defineConfig } from &#x27;vite&#x27;;
-import react from &#x27;@vitejs/plugin-react&#x27;;
+export default App;
+```
+
+```javascript
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [react()],
     build: {
-        outDir: &#x27;dist&#x27;,
+        outDir: 'dist',
         // CSR 模式：所有资源从相对路径加载
     }
-});</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 SSR 实现（Next.js）</h4>
-<br>
-<pre><code>// pages/index.js - Next.js SSR
+});
+```
+
+#### 1.1.3 SSR 实现（Next.js）
+
+```javascript
+// pages/index.js - Next.js SSR
 // 每次请求都会在服务端执行
 export async function getServerSideProps() {
     // 服务端直接查询数据库
-    const res = await fetch(&#x27;http://internal-api/data&#x27;);
+    const res = await fetch('http://internal-api/data');
     const data = await res.json();
 
     return {
@@ -105,20 +95,22 @@ export async function getServerSideProps() {
 
 export default function Home({ data }) {
     return (
-        &lt;div&gt;
-            &lt;h1&gt;SSR Page&lt;/h1&gt;
-            &lt;p&gt;{data.message}&lt;/p&gt;
-        &lt;/div&gt;
+        <div>
+            <h1>SSR Page</h1>
+            <p>{data.message}</p>
+        </div>
     );
-}</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.4 SSG 实现（Next.js）</h4>
-<br>
-<pre><code>// pages/about.js - Next.js SSG
+}
+```
+
+#### 1.1.4 SSG 实现（Next.js）
+
+```javascript
+// pages/about.js - Next.js SSG
 // 构建时生成，部署后无需服务端
 export async function getStaticProps() {
     // 构建时执行一次
-    const data = await fetch(&#x27;http://api/data&#x27;).then(r =&gt; r.json());
+    const data = await fetch('http://api/data').then(r => r.json());
 
     return {
         props: { data },
@@ -129,18 +121,20 @@ export async function getStaticProps() {
 
 export default function About({ data }) {
     return (
-        &lt;div&gt;
-            &lt;h1&gt;About (Static)&lt;/h1&gt;
-            &lt;p&gt;{data.content}&lt;/p&gt;
-        &lt;/div&gt;
+        <div>
+            <h1>About (Static)</h1>
+            <p>{data.content}</p>
+        </div>
     );
-}</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.2 BFF（Backend For Frontend）模式</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.1 BFF 架构设计</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+}
+```
+
+### 1.2 BFF（Backend For Frontend）模式
+
+#### 1.2.1 BFF 架构设计
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                      BFF 架构模式                            │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -174,19 +168,21 @@ export default function About({ data }) {
 │  2. 定制化返回字段（iOS 不需要 web 特有字段）                 │
 │  3. 统一认证、日志、监控                                      │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.2 BFF 实现示例</h4>
-<br>
-<pre><code>// bff/src/routes/web.ts
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 1.2.2 BFF 实现示例
+
+```typescript
+// bff/src/routes/web.ts
 // Web 端 BFF - 返回完整数据（SEO 需要）
-import { Router } from &#x27;express&#x27;;
-import { userService } from &#x27;../services/user&#x27;;
-import { productService } from &#x27;../services/product&#x27;;
+import { Router } from 'express';
+import { userService } from '../services/user';
+import { productService } from '../services/product';
 
 const router = Router();
 
-router.get(&#x27;/home&#x27;, async (req, res) =&gt; {
+router.get('/home', async (req, res) => {
     // Web 端需要完整的 SEO 数据
     const [user, products, banners] = await Promise.all([
         userService.getRecommendUsers(),
@@ -198,21 +194,23 @@ router.get(&#x27;/home&#x27;, async (req, res) =&gt; {
         user,
         products,
         banners,  // Web 特有
-        meta: { title: &#x27;Home&#x27;, description: &#x27;...&#x27; }  // Web 特有 SEO
+        meta: { title: 'Home', description: '...' }  // Web 特有 SEO
     });
 });
 
-export default router;</code></pre>
-<br>
-<pre><code>// bff/src/routes/mobile.ts
+export default router;
+```
+
+```typescript
+// bff/src/routes/mobile.ts
 // 移动端 BFF - 返回精简数据
-import { Router } from &#x27;express&#x27;;
-import { userService } from &#x27;../services/user&#x27;;
-import { productService } from &#x27;../services/product&#x27;;
+import { Router } from 'express';
+import { userService } from '../services/user';
+import { productService } from '../services/product';
 
 const router = Router();
 
-router.get(&#x27;/home&#x27;, async (req, res) =&gt; {
+router.get('/home', async (req, res) => {
     // 移动端不需要 SEO，专注于性能
     const [user, products] = await Promise.all([
         userService.getRecommendUsers({ limit: 5 }),
@@ -223,17 +221,19 @@ router.get(&#x27;/home&#x27;, async (req, res) =&gt; {
     res.json({
         user,
         products,
-        version: &#x27;2.0&#x27;  // 移动端特有
+        version: '2.0'  // 移动端特有
     });
 });
 
-export default router;</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.3 微前端架构设计与实现</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.1 微前端解决的问题</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+export default router;
+```
+
+### 1.3 微前端架构设计与实现
+
+#### 1.3.1 微前端解决的问题
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    微前端架构价值                              │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -249,99 +249,108 @@ export default router;</code></pre>
 │  ├── 团队自治（按业务/功能划分）                              │
 │  └── 增量升级（逐步迁移新技术）                               │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.2 微前端实现方案对比</h4>
-<br>
-<table class="my-4 w-full"><tr><td>方案</td><td>原理</td><td>优点</td><td>缺点</td></tr>
-<tr><td>**iframe**</td><td>浏览器原生隔离</td><td>实现简单，完全隔离</td><td>通信困难，性能差</td></tr>
-<tr><td>**Web Components**</td><td>原生组件标准</td><td>原生支持，通用性强</td><td>生态不成熟</td></tr>
-<tr><td>**Module Federation**</td><td>Webpack 运行时共享</td><td>性能好，生态成熟</td><td>配置复杂</td></tr>
-<tr><td>**qiankun**</td><td>基于 Single-SPA 封装</td><td>封装完善，文档好</td><td>依赖 Single-SPA</td></tr></table>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.3 Module Federation 实现示例</h4>
-<br>
-<pre><code>// 主应用 webpack.config.js
-const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);
-const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 1.3.2 微前端实现方案对比
+
+| 方案 | 原理 | 优点 | 缺点 |
+|------|------|------|------|
+| **iframe** | 浏览器原生隔离 | 实现简单，完全隔离 | 通信困难，性能差 |
+| **Web Components** | 原生组件标准 | 原生支持，通用性强 | 生态不成熟 |
+| **Module Federation** | Webpack 运行时共享 | 性能好，生态成熟 | 配置复杂 |
+| **qiankun** | 基于 Single-SPA 封装 | 封装完善，文档好 | 依赖 Single-SPA |
+
+#### 1.3.3 Module Federation 实现示例
+
+```javascript
+// 主应用 webpack.config.js
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: &#x27;development&#x27;,
+    mode: 'development',
     devServer: { port: 3000 },
     plugins: [
         new ModuleFederationPlugin({
-            name: &#x27;host&#x27;,
+            name: 'host',
             remotes: {
                 // 声明远程应用
-                dashboard: &#x27;dashboard@http://localhost:3001/remoteEntry.js&#x27;,
-                admin: &#x27;admin@http://localhost:3002/remoteEntry.js&#x27;
+                dashboard: 'dashboard@http://localhost:3001/remoteEntry.js',
+                admin: 'admin@http://localhost:3002/remoteEntry.js'
             },
-            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;, &#x27;react-router-dom&#x27;]
+            shared: ['react', 'react-dom', 'react-router-dom']
         }),
         new HtmlWebpackPlugin({
-            template: &#x27;./index.html&#x27;
+            template: './index.html'
         })
     ]
-};</code></pre>
-<br>
-<pre><code>// 子应用（Dashboard）webpack.config.js
-const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);
-const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);
+};
+```
+
+```javascript
+// 子应用（Dashboard）webpack.config.js
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: &#x27;development&#x27;,
+    mode: 'development',
     devServer: { port: 3001 },
     plugins: [
         new ModuleFederationPlugin({
-            name: &#x27;dashboard&#x27;,
-            filename: &#x27;remoteEntry.js&#x27;,  // 暴露给主应用的入口
+            name: 'dashboard',
+            filename: 'remoteEntry.js',  // 暴露给主应用的入口
             exposes: {
                 // 暴露组件
-                &#x27;./Dashboard&#x27;: &#x27;./src/Dashboard&#x27;,
-                &#x27;./DashboardStats&#x27;: &#x27;./src/components/Stats&#x27;
+                './Dashboard': './src/Dashboard',
+                './DashboardStats': './src/components/Stats'
             },
-            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]
+            shared: ['react', 'react-dom']
         }),
         new HtmlWebpackPlugin({
-            template: &#x27;./index.html&#x27;
+            template: './index.html'
         })
     ]
-};</code></pre>
-<br>
-<pre><code>// 主应用中使用子应用组件
-import React, { Suspense } from &#x27;react&#x27;;
+};
+```
+
+```jsx
+// 主应用中使用子应用组件
+import React, { Suspense } from 'react';
 
 // 使用 React.lazy 懒加载远程组件
-const Dashboard = React.lazy(() =&gt; import(&#x27;dashboard/Dashboard&#x27;));
-const DashboardStats = React.lazy(() =&gt; import(&#x27;dashboard/DashboardStats&#x27;));
+const Dashboard = React.lazy(() => import('dashboard/Dashboard'));
+const DashboardStats = React.lazy(() => import('dashboard/DashboardStats'));
 
 function App() {
     return (
-        &lt;div className=&quot;app&quot;&gt;
-            &lt;header&gt;Main Application Header&lt;/header&gt;
+        <div className="app">
+            <header>Main Application Header</header>
             
-            &lt;main&gt;
-                &lt;Suspense fallback={&lt;div&gt;Loading Dashboard...&lt;/div&gt;}&gt;
-                    &lt;Dashboard title=&quot;Sales Overview&quot; /&gt;
-                &lt;/Suspense&gt;
+            <main>
+                <Suspense fallback={<div>Loading Dashboard...</div>}>
+                    <Dashboard title="Sales Overview" />
+                </Suspense>
                 
-                &lt;Suspense fallback={&lt;div&gt;Loading Stats...&lt;/div&gt;}&gt;
-                    &lt;DashboardStats /&gt;
-                &lt;/Suspense&gt;
-            &lt;/main&gt;
-        &lt;/div&gt;
+                <Suspense fallback={<div>Loading Stats...</div>}>
+                    <DashboardStats />
+                </Suspense>
+            </main>
+        </div>
     );
-}</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. 部署与 DevOps</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 Docker 容器化核心概念</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 Docker vs 传统部署</h4>
-<br>
-<pre><code>传统部署问题：
+}
+```
+
+---
+
+## 2. 部署与 DevOps
+
+### 2.1 Docker 容器化核心概念
+
+#### 2.1.1 Docker vs 传统部署
+
+```
+传统部署问题：
 ┌─────────────────────────────────────────────────────────────┐
 │  服务器 A: Python 3.8 + Django + PostgreSQL 12              │
 │  服务器 B: Python 3.9 + Flask + MySQL 8                      │
@@ -375,11 +384,13 @@ Docker 容器化：
 • 资源隔离（应用间互不干扰）
 • 快速部署（镜像拉取即用）
 • 弹性伸缩（容器可快速扩缩）                                    │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 Dockerfile 编写</h4>
-<br>
-<pre><code># Dockerfile 示例 - Node.js 应用
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 2.1.2 Dockerfile 编写
+
+```dockerfile
+# Dockerfile 示例 - Node.js 应用
 # 阶段一：构建
 FROM node:18-alpine AS builder
 
@@ -399,7 +410,7 @@ FROM node:18-alpine AS runner
 WORKDIR /app
 
 # 创建非 root 用户（安全）
-RUN addgroup -g 1001 -S nodejs &amp;&amp; \
+RUN addgroup -g 1001 -S nodejs && \
     adduser -S nextjs -u 1001
 
 # 从构建阶段复制产物
@@ -414,19 +425,21 @@ USER nextjs
 EXPOSE 3000
 
 # 启动命令
-CMD [&quot;node&quot;, &quot;dist/server.js&quot;]</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.3 Docker Compose 编排</h4>
-<br>
-<pre><code># docker-compose.yml
-version: &#x27;3.8&#x27;
+CMD ["node", "dist/server.js"]
+```
+
+#### 2.1.3 Docker Compose 编排
+
+```yaml
+# docker-compose.yml
+version: '3.8'
 
 services:
   # 应用服务
   web:
     build: .
     ports:
-      - &quot;3000:3000&quot;
+      - "3000:3000"
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://postgres:password@db:5432/myapp
@@ -465,8 +478,8 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - &quot;80:80&quot;
-      - &quot;443:443&quot;
+      - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./ssl:/etc/nginx/ssl:ro
@@ -482,13 +495,15 @@ volumes:
 
 networks:
   app-network:
-    driver: bridge</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 Kubernetes 架构设计</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 Kubernetes 核心概念</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+    driver: bridge
+```
+
+### 2.2 Kubernetes 架构设计
+
+#### 2.2.1 Kubernetes 核心概念
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    Kubernetes 架构                          │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -534,11 +549,13 @@ networks:
 • Deployment: 声明式更新，副本管理
 • Ingress: HTTP/HTTPS 路由
 • ConfigMap/Secret: 配置管理
-• PersistentVolume: 持久化存储</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 Kubernetes 资源定义</h4>
-<br>
-<pre><code># deployment.yaml
+• PersistentVolume: 持久化存储
+```
+
+#### 2.2.2 Kubernetes 资源定义
+
+```yaml
+# deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -562,7 +579,7 @@ spec:
             - containerPort: 3000
           env:
             - name: NODE_ENV
-              value: &quot;production&quot;
+              value: "production"
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
@@ -570,11 +587,11 @@ spec:
                   key: url
           resources:
             requests:
-              memory: &quot;256Mi&quot;
-              cpu: &quot;250m&quot;
+              memory: "256Mi"
+              cpu: "250m"
             limits:
-              memory: &quot;512Mi&quot;
-              cpu: &quot;500m&quot;
+              memory: "512Mi"
+              cpu: "500m"
           livenessProbe:
             httpGet:
               path: /health
@@ -586,9 +603,11 @@ spec:
               path: /ready
               port: 3000
             initialDelaySeconds: 5
-            periodSeconds: 3</code></pre>
-<br>
-<pre><code># service.yaml
+            periodSeconds: 3
+```
+
+```yaml
+# service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -600,16 +619,18 @@ spec:
     - protocol: TCP
       port: 80        # Service 端口
       targetPort: 3000  # 容器端口
-  type: ClusterIP</code></pre>
-<br>
-<pre><code># ingress.yaml
+  type: ClusterIP
+```
+
+```yaml
+# ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: web-app-ingress
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: &quot;true&quot;
-    cert-manager.io/cluster-issuer: &quot;letsencrypt-prod&quot;
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
   tls:
@@ -626,13 +647,15 @@ spec:
               service:
                 name: web-app-service
                 port:
-                  number: 80</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.3 CI/CD 流程设计</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.1 完整 CI/CD 流程</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+                  number: 80
+```
+
+### 2.3 CI/CD 流程设计
+
+#### 2.3.1 完整 CI/CD 流程
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    CI/CD 完整流程                           │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -683,11 +706,13 @@ spec:
 │      │                   │                            │    │
 │      └───────────────────┴────────────────────────────┘    │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.2 GitHub Actions 示例</h4>
-<br>
-<pre><code># .github/workflows/ci.yml
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 2.3.2 GitHub Actions 示例
+
+```yaml
+# .github/workflows/ci.yml
 name: CI/CD Pipeline
 
 on:
@@ -710,8 +735,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: &#x27;18&#x27;
-          cache: &#x27;npm&#x27;
+          node-version: '18'
+          cache: 'npm'
       
       - name: Install dependencies
         run: npm ci
@@ -732,8 +757,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: &#x27;18&#x27;
-          cache: &#x27;npm&#x27;
+          node-version: '18'
+          cache: 'npm'
       
       - name: Install dependencies
         run: npm ci
@@ -753,7 +778,7 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == &#x27;refs/heads/main&#x27;
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       
@@ -791,7 +816,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-push
-    if: github.ref == &#x27;refs/heads/main&#x27;
+    if: github.ref == 'refs/heads/main'
     environment: production
     steps:
       - uses: actions/checkout@v3
@@ -801,36 +826,39 @@ jobs:
       
       - name: Configure kubectl
         run: |
-          echo &quot;${{ secrets.KUBE_CONFIG }}&quot; | base64 -d &gt; kubeconfig
-          echo &quot;KUBECONFIG=$(pwd)/kubeconfig&quot; &gt;&gt; $GITHUB_ENV
+          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > kubeconfig
+          echo "KUBECONFIG=$(pwd)/kubeconfig" >> $GITHUB_ENV
       
       - name: Deploy to production
         run: |
           kubectl set image deployment/web-app \
             web-app=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          kubectl rollout status deployment/web-app --timeout=300s</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.4 云原生架构设计原则</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.4.1 云原生十二要素</h4>
-<br>
-<table class="my-4 w-full"><tr><td>要素</td><td>说明</td><td>实践</td></tr>
-<tr><td>**基准代码**</td><td>一份基准代码，多分部署</td><td>Git 管理，CI/CD 流水线</td></tr>
-<tr><td>**依赖**</td><td>显式声明依赖</td><td>package.json, requirements.txt</td></tr>
-<tr><td>**配置**</td><td>环境变量存储配置</td><td>ConfigMap, Secret</td></tr>
-<tr><td>**后端服务**</td><td>把后端服务当作附加资源</td><td>数据库、缓存作为服务引用</td></tr>
-<tr><td>**构建/发布/运行**</td><td>严格分离构建和运行阶段</td><td>Docker 镜像分层</td></tr>
-<tr><td>**进程**</td><td>应用作为一个或多个无状态进程</td><td>容器无状态设计</td></tr>
-<tr><td>**端口绑定**</td><td>通过端口绑定导出服务</td><td>Service 暴露</td></tr>
-<tr><td>**并发**</td><td>通过进程模型扩展</td><td>Kubernetes HPA</td></tr>
-<tr><td>**易处理**</td><td>快速启动和优雅停止</td><td>优雅关闭信号处理</td></tr>
-<tr><td>**开发/生产对等**</td><td>开发/ staging /生产环境一致</td><td>容器镜像统一</td></tr>
-<tr><td>**日志**</td><td>把日志当作事件流</td><td>stdout 输出，ELK 收集</td></tr>
-<tr><td>**管理进程**</td><td>后台管理任务作为一次性进程</td><td>Kubernetes Job</td></tr></table>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.4.2 微服务设计原则</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+          kubectl rollout status deployment/web-app --timeout=300s
+```
+
+### 2.4 云原生架构设计原则
+
+#### 2.4.1 云原生十二要素
+
+| 要素 | 说明 | 实践 |
+|------|------|------|
+| **基准代码** | 一份基准代码，多分部署 | Git 管理，CI/CD 流水线 |
+| **依赖** | 显式声明依赖 | package.json, requirements.txt |
+| **配置** | 环境变量存储配置 | ConfigMap, Secret |
+| **后端服务** | 把后端服务当作附加资源 | 数据库、缓存作为服务引用 |
+| **构建/发布/运行** | 严格分离构建和运行阶段 | Docker 镜像分层 |
+| **进程** | 应用作为一个或多个无状态进程 | 容器无状态设计 |
+| **端口绑定** | 通过端口绑定导出服务 | Service 暴露 |
+| **并发** | 通过进程模型扩展 | Kubernetes HPA |
+| **易处理** | 快速启动和优雅停止 | 优雅关闭信号处理 |
+| **开发/生产对等** | 开发/ staging /生产环境一致 | 容器镜像统一 |
+| **日志** | 把日志当作事件流 | stdout 输出，ELK 收集 |
+| **管理进程** | 后台管理任务作为一次性进程 | Kubernetes Job |
+
+#### 2.4.2 微服务设计原则
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    微服务设计原则                            │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -860,27 +888,30 @@ jobs:
 │     │ A     │────▶│  Kafka  │────▶│ B     │               │
 │     └───────┘     └─────────┘     └───────┘               │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. 架构设计模式</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 设计模式在前端的应用</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 常见设计模式</h4>
-<br>
-<table class="my-4 w-full"><tr><td>模式</td><td>前端应用场景</td><td>示例</td></tr>
-<tr><td>**单例模式**</td><td>全局状态、弹窗管理器</td><td>Redux Store、Modal</td></tr>
-<tr><td>**工厂模式**</td><td>创建不同类型组件</td><td>React.createElement</td></tr>
-<tr><td>**观察者模式**</td><td>响应式数据绑定</td><td>Vue 响应式原理、EventEmitter</td></tr>
-<tr><td>**策略模式**</td><td>表单验证规则切换</td><td>不同验证策略</td></tr>
-<tr><td>**装饰器模式**</td><td>HOC、装饰器</td><td>@withStyles、@observer</td></tr>
-<tr><td>**组合模式**</td><td>组件树结构</td><td>React Props.children</td></tr></table>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 观察者模式实现</h4>
-<br>
-<pre><code>// 简单的观察者模式实现
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 3. 架构设计模式
+
+### 3.1 设计模式在前端的应用
+
+#### 3.1.1 常见设计模式
+
+| 模式 | 前端应用场景 | 示例 |
+|------|------------|------|
+| **单例模式** | 全局状态、弹窗管理器 | Redux Store、Modal |
+| **工厂模式** | 创建不同类型组件 | React.createElement |
+| **观察者模式** | 响应式数据绑定 | Vue 响应式原理、EventEmitter |
+| **策略模式** | 表单验证规则切换 | 不同验证策略 |
+| **装饰器模式** | HOC、装饰器 | @withStyles、@observer |
+| **组合模式** | 组件树结构 | React Props.children |
+
+#### 3.1.2 观察者模式实现
+
+```javascript
+// 简单的观察者模式实现
 class EventEmitter {
     constructor() {
         this.events = {};
@@ -892,21 +923,21 @@ class EventEmitter {
         }
         this.events[event].push(callback);
         // 返回取消订阅函数
-        return () =&gt; this.off(event, callback);
+        return () => this.off(event, callback);
     }
     
     off(event, callback) {
         if (!this.events[event]) return;
-        this.events[event] = this.events[event].filter(cb =&gt; cb !== callback);
+        this.events[event] = this.events[event].filter(cb => cb !== callback);
     }
     
     emit(event, ...args) {
         if (!this.events[event]) return;
-        this.events[event].forEach(callback =&gt; callback(...args));
+        this.events[event].forEach(callback => callback(...args));
     }
     
     once(event, callback) {
-        const wrapper = (...args) =&gt; {
+        const wrapper = (...args) => {
             callback(...args);
             this.off(event, wrapper);
         };
@@ -918,25 +949,27 @@ class EventEmitter {
 const emitter = new EventEmitter();
 
 // 订阅
-const unsubscribe = emitter.on(&#x27;user:login&#x27;, (user) =&gt; {
-    console.log(&#x27;User logged in:&#x27;, user.name);
+const unsubscribe = emitter.on('user:login', (user) => {
+    console.log('User logged in:', user.name);
 });
 
 // 发布
-emitter.emit(&#x27;user:login&#x27;, { name: &#x27;John&#x27; });
+emitter.emit('user:login', { name: 'John' });
 
 // 取消订阅
-unsubscribe();</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 装饰器模式（HOC）</h4>
-<br>
-<pre><code>// 高阶组件 (Higher-Order Component)
+unsubscribe();
+```
+
+#### 3.1.3 装饰器模式（HOC）
+
+```javascript
+// 高阶组件 (Higher-Order Component)
 function withLoading(WrappedComponent) {
     return function WithLoadingComponent({ isLoading, ...props }) {
         if (isLoading) {
-            return &lt;div className=&quot;loading-spinner&quot;&gt;Loading...&lt;/div&gt;;
+            return <div className="loading-spinner">Loading...</div>;
         }
-        return &lt;WrappedComponent {...props} /&gt;;
+        return <WrappedComponent {...props} />;
     };
 }
 
@@ -944,9 +977,9 @@ function withLoading(WrappedComponent) {
 function withAuth(WrappedComponent) {
     return function AuthComponent({ isAuthenticated, ...props }) {
         if (!isAuthenticated) {
-            return &lt;div&gt;Please login first&lt;/div&gt;;
+            return <div>Please login first</div>;
         }
-        return &lt;WrappedComponent {...props} /&gt;;
+        return <WrappedComponent {...props} />;
     };
 }
 
@@ -954,21 +987,23 @@ function withAuth(WrappedComponent) {
 const EnhancedUserList = withAuth(withLoading(UserList));
 
 // 渲染
-&lt;EnhancedUserList isLoading={true} isAuthenticated={true} /&gt;</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 设计模式在后端的应用</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 依赖注入模式</h4>
-<br>
-<pre><code>// TypeScript 依赖注入示例
-import { Injectable, Inject } from &#x27;@nestjs/common&#x27;;
+<EnhancedUserList isLoading={true} isAuthenticated={true} />
+```
+
+### 3.2 设计模式在后端的应用
+
+#### 3.2.1 依赖注入模式
+
+```typescript
+// TypeScript 依赖注入示例
+import { Injectable, Inject } from '@nestjs/common';
 
 // 定义 Token
-const DATABASE_TOKEN = &#x27;DATABASE&#x27;;
+const DATABASE_TOKEN = 'DATABASE';
 
 // 接口定义
 interface Database {
-    query(sql: string): Promise&lt;any&gt;;
+    query(sql: string): Promise<any>;
 }
 
 // 实现
@@ -987,7 +1022,7 @@ class UserService {
     ) {}
     
     async findUsers() {
-        return this.db.query(&#x27;SELECT * FROM users&#x27;);
+        return this.db.query('SELECT * FROM users');
     }
 }
 
@@ -998,16 +1033,18 @@ class UserService {
         UserService
     ]
 })
-export class AppModule {}</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 仓储模式（Repository Pattern）</h4>
-<br>
-<pre><code>// 仓储接口
+export class AppModule {}
+```
+
+#### 3.2.2 仓储模式（Repository Pattern）
+
+```typescript
+// 仓储接口
 interface UserRepository {
-    findById(id: number): Promise&lt;User | null&gt;;
-    findAll(): Promise&lt;User[]&gt;;
-    save(user: User): Promise&lt;User&gt;;
-    delete(id: number): Promise&lt;void&gt;;
+    findById(id: number): Promise<User | null>;
+    findAll(): Promise<User[]>;
+    save(user: User): Promise<User>;
+    delete(id: number): Promise<void>;
 }
 
 // 仓储实现
@@ -1015,22 +1052,22 @@ interface UserRepository {
 class TypeORMUserRepository implements UserRepository {
     constructor(
         @InjectRepository(User)
-        private ormRepo: Repository&lt;User&gt;
+        private ormRepo: Repository<User>
     ) {}
     
-    async findById(id: number): Promise&lt;User | null&gt; {
+    async findById(id: number): Promise<User | null> {
         return this.ormRepo.findOne({ where: { id } });
     }
     
-    async findAll(): Promise&lt;User[]&gt; {
+    async findAll(): Promise<User[]> {
         return this.ormRepo.find();
     }
     
-    async save(user: User): Promise&lt;User&gt; {
+    async save(user: User): Promise<User> {
         return this.ormRepo.save(user);
     }
     
-    async delete(id: number): Promise&lt;void&gt; {
+    async delete(id: number): Promise<void> {
         await this.ormRepo.delete(id);
     }
 }
@@ -1045,24 +1082,27 @@ class UserService {
     async getUserWithOrders(userId: number) {
         const user = await this.userRepo.findById(userId);
         if (!user) {
-            throw new NotFoundException(&#x27;User not found&#x27;);
+            throw new NotFoundException('User not found');
         }
         const orders = await this.orderRepo.findByUser(userId);
         return { user, orders };
     }
-}</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.3 分布式系统核心概念</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.1 负载均衡算法</h4>
-<br>
-<table class="my-4 w-full"><tr><td>算法</td><td>原理</td><td>优点</td><td>缺点</td></tr>
-<tr><td>**轮询 (Round Robin)**</td><td>依次分配请求</td><td>简单、均匀</td><td>不考虑服务器负载</td></tr>
-<tr><td>**加权轮询**</td><td>按权重分配</td><td>可控制比例</td><td>权重固定</td></tr>
-<tr><td>**最少连接**</td><td>分配给连接数最少的</td><td>动态平衡</td><td>实现复杂</td></tr>
-<tr><td>**IP 哈希**</td><td>同一 IP 固定到某服务器</td><td>Session 保持</td><td>可能不均匀</td></tr></table>
-<br>
-<pre><code>负载均衡示意：
+}
+```
+
+### 3.3 分布式系统核心概念
+
+#### 3.3.1 负载均衡算法
+
+| 算法 | 原理 | 优点 | 缺点 |
+|------|------|------|------|
+| **轮询 (Round Robin)** | 依次分配请求 | 简单、均匀 | 不考虑服务器负载 |
+| **加权轮询** | 按权重分配 | 可控制比例 | 权重固定 |
+| **最少连接** | 分配给连接数最少的 | 动态平衡 | 实现复杂 |
+| **IP 哈希** | 同一 IP 固定到某服务器 | Session 保持 | 可能不均匀 |
+
+```
+负载均衡示意：
                     ┌─────────────┐
                     │ Load        │
                     │ Balancer    │
@@ -1075,19 +1115,21 @@ class UserService {
     │ Server A│       │ Server B│       │ Server C│
     │ 10 req  │       │ 15 req  │       │ 8 req   │
     │ (权重2) │       │ (权重3) │       │ (权重1) │
-    └─────────┘       └─────────┘       └─────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.2 熔断器模式（Circuit Breaker）</h4>
-<br>
-<pre><code># Python 熔断器实现
+    └─────────┘       └─────────┘       └─────────┘
+```
+
+#### 3.3.2 熔断器模式（Circuit Breaker）
+
+```python
+# Python 熔断器实现
 import time
 from enum import Enum
 from functools import wraps
 
 class CircuitState(Enum):
-    CLOSED = &quot;closed&quot;      # 正常状态
-    OPEN = &quot;open&quot;          # 熔断状态
-    HALF_OPEN = &quot;half_open&quot;  # 半开状态
+    CLOSED = "closed"      # 正常状态
+    OPEN = "open"          # 熔断状态
+    HALF_OPEN = "half_open"  # 半开状态
 
 class CircuitBreaker:
     def __init__(self, failure_threshold=5, timeout=60):
@@ -1099,10 +1141,10 @@ class CircuitBreaker:
     
     def call(self, func, *args, **kwargs):
         if self.state == CircuitState.OPEN:
-            if time.time() - self.last_failure_time &gt;= self.timeout:
+            if time.time() - self.last_failure_time >= self.timeout:
                 self.state = CircuitState.HALF_OPEN
             else:
-                raise Exception(&quot;Circuit breaker is OPEN&quot;)
+                raise Exception("Circuit breaker is OPEN")
         
         try:
             result = func(*args, **kwargs)
@@ -1119,7 +1161,7 @@ class CircuitBreaker:
     def _on_failure(self):
         self.failure_count += 1
         self.last_failure_time = time.time()
-        if self.failure_count &gt;= self.failure_threshold:
+        if self.failure_count >= self.failure_threshold:
             self.state = CircuitState.OPEN
 
 # 使用示例
@@ -1127,11 +1169,13 @@ breaker = CircuitBreaker(failure_threshold=3, timeout=30)
 
 @wraps(some_function)
 def resilient_function(*args, **kwargs):
-    return breaker.call(some_function, *args, **kwargs)</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.3.3 限流策略</h4>
-<br>
-<pre><code>import time
+    return breaker.call(some_function, *args, **kwargs)
+```
+
+#### 3.3.3 限流策略
+
+```python
+import time
 from collections import defaultdict
 from threading import Lock
 
@@ -1148,10 +1192,10 @@ class RateLimiter:
             # 清理过期请求记录
             self.requests[key] = [
                 req_time for req_time in self.requests[key]
-                if now - req_time &lt; self.window_seconds
+                if now - req_time < self.window_seconds
             ]
             
-            if len(self.requests[key]) &lt; self.max_requests:
+            if len(self.requests[key]) < self.max_requests:
                 self.requests[key].append(now)
                 return True
             return False
@@ -1164,23 +1208,25 @@ def rate_limit(key):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if not limiter.is_allowed(key):
-                return {&quot;error&quot;: &quot;Rate limit exceeded&quot;}, 429
+                return {"error": "Rate limit exceeded"}, 429
             return func(*args, **kwargs)
         return wrapper
     return decorator
 
-@app.route(&quot;/api/data&quot;)
-@rate_limit(&quot;api_data&quot;)
+@app.route("/api/data")
+@rate_limit("api_data")
 def get_data():
-    return {&quot;data&quot;: &quot;...&quot;}</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">全栈架构知识图谱</h3>
-<br>
-<pre><code>全栈架构与DevOps
+    return {"data": "..."}
+```
+
+---
+
+## 总结
+
+### 全栈架构知识图谱
+
+```
+全栈架构与DevOps
 ├── 全栈架构模式
 │   ├── SSR/CSR/SSG（渲染策略）
 │   ├── BFF（Backend For Frontend）
@@ -1195,16 +1241,13 @@ def get_data():
 └── 架构设计模式
     ├── 前端设计模式（观察者、装饰器）
     ├── 后端设计模式（DI、Repository）
-    └── 分布式系统（负载均衡、熔断、限流）</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<p class="mb-2">*文档版本：2024.12*</p>
-<br>
-<p class="mb-2">---</p>
-<br>
-<blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
-<br>
-</div></article></main>
-<footer class="text-center text-sm text-secondary py-8 border-t border-gray-200 mt-8"><p>&copy; 2026 My Tech Blog. Built with Tailwind CSS.</p></footer>
-</body></html>
+    └── 分布式系统（负载均衡、熔断、限流）
+```
+
+---
+
+*文档版本：2024.12*
+
+---
+
+> 本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。

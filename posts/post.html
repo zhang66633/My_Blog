@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="zhang66633">
+  <title>文章 — My Tech Blog</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            body: ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            accent: '#2563EB',
+            'accent-hover': '#1D4ED8',
+            'text-primary': '#18181B',
+            secondary: '#6B7280',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+
+  <!-- marked.js -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- highlight.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background-color: #FAFAFA; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+
+    /* Article content styling */
+    .article-content h1 { font-size: 2rem; font-weight: 700; margin: 2rem 0 1rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; }
+    .article-content h2 { font-size: 1.5rem; font-weight: 700; margin: 1.75rem 0 0.75rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; }
+    .article-content h3 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+    .article-content h4 { font-size: 1.1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    .article-content p { margin-bottom: 0.75rem; line-height: 1.8; }
+    .article-content ul, .article-content ol { margin: 0.75rem 0; padding-left: 1.5rem; }
+    .article-content li { margin-bottom: 0.35rem; line-height: 1.7; }
+    .article-content pre { margin: 1rem 0; border-radius: 8px; }
+    .article-content pre code { font-size: 0.875rem; line-height: 1.6; padding: 1.25rem !important; }
+    .article-content :not(pre) > code { background: #e5e7eb; padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; color: #18181B; }
+    .article-content table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    .article-content th, .article-content td { border: 1px solid #d1d5db; padding: 0.5em 0.75em; text-align: left; }
+    .article-content th { background: #f3f4f6; font-weight: 600; }
+    .article-content blockquote { border-left: 3px solid #2563EB; padding: 0.5em 1em; color: #6b7280; margin: 1em 0; background: #f9fafb; border-radius: 0 8px 8px 0; }
+    .article-content a { color: #2563EB; text-decoration: underline; }
+    .article-content img { max-width: 100%; border-radius: 8px; margin: 1rem 0; }
+
+    /* Loading / Error states */
+    .loading-spinner { border: 3px solid #e5e7eb; border-top-color: #2563EB; border-radius: 50%; width: 32px; height: 32px; animation: spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-accent hover:text-accent-hover font-medium transition-colors duration-200">&larr; 返回博客</a>
+      <span id="post-meta" class="text-sm text-secondary"></span>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <article>
+      <div id="post-title-area">
+        <h1 id="post-title" class="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3"></h1>
+        <p class="text-secondary text-sm mb-8">2026-06-17</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-10 shadow-sm">
+        <div id="loading" class="flex items-center justify-center py-16">
+          <div class="loading-spinner"></div>
+        </div>
+        <div id="post-body" class="article-content leading-relaxed text-text-primary" style="display:none"></div>
+        <div id="error" class="text-center py-16 text-secondary" style="display:none">
+          <p class="text-lg mb-2">文章加载失败</p>
+          <p class="text-sm" id="error-msg"></p>
+          <a href="index.html" class="inline-block mt-4 text-accent hover:underline">&larr; 返回博客首页</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="text-center text-sm text-secondary py-8 border-t border-gray-200 mt-8">
+    <p>&copy; 2026 My Tech Blog. Built with Tailwind CSS.</p>
+  </footer>
+
+  <script>
+    // Configure marked.js
+    marked.setOptions({
+      highlight: function(code, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(code, { language: lang }).value;
+          } catch (e) {}
+        }
+        return hljs.highlightAuto(code).value;
+      },
+      breaks: true,
+      gfm: true,
+    });
+
+    // Get post filename from URL parameter ?p=xxx
+    const params = new URLSearchParams(window.location.search);
+    const postName = params.get('p');
+    const titleEl = document.getElementById('post-title');
+    const metaEl = document.getElementById('post-meta');
+    const bodyEl = document.getElementById('post-body');
+    const loadingEl = document.getElementById('loading');
+    const errorEl = document.getElementById('error');
+    const errorMsg = document.getElementById('error-msg');
+
+    if (!postName) {
+      showError('未指定文章。请在 URL 中添加 ?p=文章名');
+    } else {
+      const mdUrl = postName + '.md';
+      document.title = '加载中... — My Tech Blog';
+
+      fetch(mdUrl)
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+          return res.text();
+        })
+        .then(md => {
+          // Strip YAML frontmatter
+          let content = md;
+          while (content.trimStart().startsWith('---')) {
+            const idx = content.indexOf('---', 3);
+            if (idx === -1) break;
+            content = content.substring(idx + 3).trimStart();
+          }
+
+          // Extract first # heading as title
+          const headingMatch = content.match(/^#\s+(.+)$/m);
+          const title = headingMatch ? headingMatch[1] : postName;
+
+          // Render
+          const html = marked.parse(content);
+          document.title = title + ' — My Tech Blog';
+          titleEl.textContent = title;
+          metaEl.textContent = postName;
+          bodyEl.innerHTML = html;
+          loadingEl.style.display = 'none';
+          bodyEl.style.display = 'block';
+        })
+        .catch(err => {
+          showError('无法加载文章：' + err.message);
+        });
+    }
+
+    function showError(msg) {
+      loadingEl.style.display = 'none';
+      errorEl.style.display = 'block';
+      errorMsg.textContent = msg;
+      document.title = '错误 — My Tech Blog';
+    }
+  </script>
+</body>
+</html>

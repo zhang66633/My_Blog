@@ -1,47 +1,32 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="zhang66633">
-  <title>后端架构深度解析 — My Tech Blog</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{accent:"#2563EB","accent-hover":"#1D4ED8","text-primary":"#18181B",secondary:"#6B7280"}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
-  <style>
-    body{font-family:"DM Sans",sans-serif;background-color:#FAFAFA}
-    h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif}
-    pre{background:#1e1e2e;color:#cdd6f4;padding:1em 1.25em;border-radius:8px;overflow-x:auto;font-size:0.875em;line-height:1.5;margin:1em 0}
-    code{background:#e5e7eb;padding:0.15em 0.4em;border-radius:4px;font-size:0.9em}
-    pre code{background:transparent;padding:0;font-size:inherit}
-    table{border-collapse:collapse;width:100%;margin:1em 0}
-    th,td{border:1px solid #d1d5db;padding:0.5em 0.75em;text-align:left}
-    th{background:#f3f4f6;font-weight:600}
-    blockquote{border-left:3px solid #2563EB;padding:0.5em 1em;color:#6b7280;margin:1em 0}
-    article a{color:#2563EB;text-decoration:underline}
-  </style>
-</head>
-<body class="min-h-screen flex flex-col">
-<nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm"><div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="../index.html" class="text-accent hover:text-accent-hover font-medium">&larr; 返回博客</a><span class="text-sm text-secondary">Node.js, Microservices, API Design</span></div></nav>
-<main class="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12"><article><h1 class="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3">后端架构深度解析</h1><p class="text-secondary text-sm mb-8">2026-06-17</p><div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-10 shadow-sm leading-relaxed text-text-primary">
-<h1 class="font-heading text-3xl font-bold mt-8 mb-4">后端架构深度解析</h1>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
-<br>
-<p class="mb-2">1. [Node.js 生态](#1-nodejs-生态)</p>
-<p class="mb-2">2. [Python FastAPI](#2-python-fastapi)</p>
-<p class="mb-2">3. [Go 语言架构](#3-go-语言架构)</p>
-<p class="mb-2">4. [API 设计](#4-api-设计)</p>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. Node.js 生态</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 Express / Fastify / Nest.js 架构对比</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 三者定位差异</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191110102MACQD9K64018705
+    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/后端架构深度解析.md
+    ReservedCode1: ""
+    ContentPropagator: 001191110102MACQD9K64028705
+    PropagateID: 0#1781573300979
+    ReservedCode2: ""
+---
+# 后端架构深度解析
+
+## 目录
+
+1. [Node.js 生态](#1-nodejs-生态)
+2. [Python FastAPI](#2-python-fastapi)
+3. [Go 语言架构](#3-go-语言架构)
+4. [API 设计](#4-api-设计)
+
+---
+
+## 1. Node.js 生态
+
+### 1.1 Express / Fastify / Nest.js 架构对比
+
+#### 1.1.1 三者定位差异
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    Node.js 框架生态                          │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -56,23 +41,26 @@
 │   2009 年           2017 年             2016 年             │
 │   Ryan Dahl         Kamil Myśliwiak    Matteo Collina       │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 核心架构对比</h4>
-<br>
-<table class="my-4 w-full"><tr><td>维度</td><td>Express</td><td>Fastify</td><td>NestJS</td></tr>
-<tr><td>**性能**</td><td>中等</td><td>最高</td><td>中等</td></tr>
-<tr><td>**上手难度**</td><td>低</td><td>低</td><td>高</td></tr>
-<tr><td>**TypeScript**</td><td>可选</td><td>可选</td><td>首选</td></tr>
-<tr><td>**ORM 集成**</td><td>自由选择</td><td>自由选择</td><td>内置 TypeORM/Prisma</td></tr>
-<tr><td>**架构模式**</td><td>无限制</td><td>无限制</td><td>模块化/依赖注入</td></tr>
-<tr><td>**适用场景**</td><td>快速原型、小型项目</td><td>高性能 API</td><td>企业级应用</td></tr></table>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 Express 架构解析</h4>
-<br>
-<p class="mb-2">Express 的核心是**中间件模式**：</p>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 1.1.2 核心架构对比
+
+| 维度 | Express | Fastify | NestJS |
+|------|---------|---------|--------|
+| **性能** | 中等 | 最高 | 中等 |
+| **上手难度** | 低 | 低 | 高 |
+| **TypeScript** | 可选 | 可选 | 首选 |
+| **ORM 集成** | 自由选择 | 自由选择 | 内置 TypeORM/Prisma |
+| **架构模式** | 无限制 | 无限制 | 模块化/依赖注入 |
+| **适用场景** | 快速原型、小型项目 | 高性能 API | 企业级应用 |
+
+#### 1.1.3 Express 架构解析
+
+Express 的核心是**中间件模式**：
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    Express 中间件模式                        │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -97,102 +85,111 @@
 │           ▼                                                │
 │  Response                                                   │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<p class="mb-2">**代码示例**：</p>
-<br>
-<pre><code>// app.js
-const express = require(&#x27;express&#x27;);
+└─────────────────────────────────────────────────────────────┘
+```
+
+**代码示例**：
+
+```javascript
+// app.js
+const express = require('express');
 const app = express();
 
 // 中间件：请求体解析
 app.use(express.json());
 
 // 中间件：日志记录
-app.use((req, res, next) =&gt; {
+app.use((req, res, next) => {
     console.log(`${req.method} ${req.path}`);
     next();  // 必须调用 next() 传递控制权
 });
 
 // 中间件：身份验证（简化版）
-const authenticate = (req, res, next) =&gt; {
+const authenticate = (req, res, next) => {
     const token = req.headers.authorization;
-    if (token === &#x27;valid-token&#x27;) {
+    if (token === 'valid-token') {
         next();
     } else {
-        res.status(401).json({ error: &#x27;Unauthorized&#x27; });
+        res.status(401).json({ error: 'Unauthorized' });
     }
 };
 
 // 路由处理器
-app.get(&#x27;/api/users&#x27;, authenticate, (req, res) =&gt; {
-    res.json([{ id: 1, name: &#x27;John&#x27; }]);
+app.get('/api/users', authenticate, (req, res) => {
+    res.json([{ id: 1, name: 'John' }]);
 });
 
 // 错误处理中间件（必须 4 个参数）
-app.use((err, req, res, next) =&gt; {
+app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ error: &#x27;Something went wrong!&#x27; });
+    res.status(500).json({ error: 'Something went wrong!' });
 });
 
-app.listen(3000);</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.4 Fastify 架构解析</h4>
-<br>
-<p class="mb-2">Fastify 的核心优势是**高性能**和**低开销**：</p>
-<br>
-<pre><code>// server.js
-const fastify = require(&#x27;fastify&#x27;)({ 
+app.listen(3000);
+```
+
+#### 1.1.4 Fastify 架构解析
+
+Fastify 的核心优势是**高性能**和**低开销**：
+
+```javascript
+// server.js
+const fastify = require('fastify')({ 
     logger: true  // 内置日志，性能优化
 });
 
+
 // 路由定义 - 使用 async/await
-fastify.get(&#x27;/api/users&#x27;, async (request, reply) =&gt; {
-    return [{ id: 1, name: &#x27;John&#x27; }];  // 直接返回自动序列化
+fastify.get('/api/users', async (request, reply) => {
+    return [{ id: 1, name: 'John' }];  // 直接返回自动序列化
 });
 
 // 路由前缀
-const userRoutes = require(&#x27;./routes/users&#x27;);
-fastify.register(userRoutes, { prefix: &#x27;/api/v1&#x27; });
+const userRoutes = require('./routes/users');
+fastify.register(userRoutes, { prefix: '/api/v1' });
 
 // 启动服务器
-const start = async () =&gt; {
+const start = async () => {
     try {
         await fastify.listen({ port: 3000 });
-        console.log(&#x27;Server running at http://localhost:3000&#x27;);
+        console.log('Server running at http://localhost:3000');
     } catch (err) {
         fastify.log.error(err);
         process.exit(1);
     }
 };
-start();</code></pre>
-<br>
-<pre><code>// routes/users.js
-const userRoutes = async (fastify, options) =&gt; {
+start();
+```
+
+```javascript
+// routes/users.js
+const userRoutes = async (fastify, options) => {
     // GET /api/v1/users
-    fastify.get(&#x27;/users&#x27;, async (request, reply) =&gt; {
-        const users = await fastify.db.query(&#x27;SELECT * FROM users&#x27;);
+    fastify.get('/users', async (request, reply) => {
+        const users = await fastify.db.query('SELECT * FROM users');
         return users;
     });
     
     // GET /api/v1/users/:id
-    fastify.get(&#x27;/users/:id&#x27;, async (request, reply) =&gt; {
+    fastify.get('/users/:id', async (request, reply) => {
         const { id } = request.params;
         const user = await fastify.db.query(
-            &#x27;SELECT * FROM users WHERE id = ?&#x27;, 
+            'SELECT * FROM users WHERE id = ?', 
             [id]
         );
         return user;
     });
 };
 
-module.exports = userRoutes;</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.5 NestJS 架构解析</h4>
-<br>
-<p class="mb-2">NestJS 采用了**模块化 + 依赖注入**的架构：</p>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+module.exports = userRoutes;
+```
+
+#### 1.1.5 NestJS 架构解析
+
+NestJS 采用了**模块化 + 依赖注入**的架构：
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    NestJS 架构                              │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -212,16 +209,18 @@ module.exports = userRoutes;</code></pre>
 │  Repository: 数据库操作                                      │
 │  Module: 功能模块封装                                        │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<p class="mb-2">**代码示例**：</p>
-<br>
-<pre><code>// users.module.ts
-import { Module } from &#x27;@nestjs/common&#x27;;
-import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
-import { User } from &#x27;./user.entity&#x27;;
-import { UsersController } from &#x27;./users.controller&#x27;;
-import { UsersService } from &#x27;./users.service&#x27;;
+└─────────────────────────────────────────────────────────────┘
+```
+
+**代码示例**：
+
+```typescript
+// users.module.ts
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './user.entity';
+import { UsersController } from './users.controller';
+import { UsersService } from './users.service';
 
 @Module({
     imports: [TypeOrmModule.forFeature([User])],
@@ -229,41 +228,45 @@ import { UsersService } from &#x27;./users.service&#x27;;
     providers: [UsersService],
     exports: [UsersService]  // 供其他模块使用
 })
-export class UsersModule {}</code></pre>
-<br>
-<pre><code>// users.service.ts
-import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import { Repository } from &#x27;typeorm&#x27;;
-import { User } from &#x27;./user.entity&#x27;;
+export class UsersModule {}
+```
+
+```typescript
+// users.service.ts
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
     constructor(
         @InjectRepository(User)
-        private usersRepository: Repository&lt;User&gt;,
+        private usersRepository: Repository<User>,
     ) {}
     
-    async findAll(): Promise&lt;User[]&gt; {
+    async findAll(): Promise<User[]> {
         return this.usersRepository.find();
     }
     
-    async findOne(id: number): Promise&lt;User&gt; {
+    async findOne(id: number): Promise<User> {
         return this.usersRepository.findOne({ where: { id } });
     }
     
-    async create(data: Partial&lt;User&gt;): Promise&lt;User&gt; {
+    async create(data: Partial<User>): Promise<User> {
         const user = this.usersRepository.create(data);
         return this.usersRepository.save(user);
     }
-}</code></pre>
-<br>
-<pre><code>// users.controller.ts
-import { Controller, Get, Post, Body, Param, ParseIntPipe } from &#x27;@nestjs/common&#x27;;
-import { UsersService } from &#x27;./users.service&#x27;;
-import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;
+}
+```
 
-@Controller(&#x27;users&#x27;)
+```typescript
+// users.controller.ts
+import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
+import { UsersService } from './users.service';
+import { CreateUserDto } from './dto/create-user.dto';
+
+@Controller('users')
 export class UsersController {
     constructor(private readonly usersService: UsersService) {}
     
@@ -272,8 +275,8 @@ export class UsersController {
         return this.usersService.findAll();
     }
     
-    @Get(&#x27;:id&#x27;)
-    async findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    @Get(':id')
+    async findOne(@Param('id', ParseIntPipe) id: number) {
         return this.usersService.findOne(id);
     }
     
@@ -281,17 +284,19 @@ export class UsersController {
     async create(@Body() createUserDto: CreateUserDto) {
         return this.usersService.create(createUserDto);
     }
-}</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. Python FastAPI</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 异步架构</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 同步 vs 异步对比</h4>
-<br>
-<pre><code>同步模式 (Sync)：
+}
+```
+
+---
+
+## 2. Python FastAPI
+
+### 2.1 异步架构
+
+#### 2.1.1 同步 vs 异步对比
+
+```
+同步模式 (Sync)：
 ┌──────────────────────────────────────────────────────┐
 │                                                      │
 │  Request A → [====处理====] → Response A            │
@@ -316,11 +321,13 @@ export class UsersController {
 │                                                      │
 │  优势：并发处理，资源利用率高                          │
 │                                                      │
-└──────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 FastAPI 异步实现</h4>
-<br>
-<pre><code># main.py
+└──────────────────────────────────────────────────────┘
+```
+
+#### 2.1.2 FastAPI 异步实现
+
+```python
+# main.py
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 import asyncio
@@ -328,20 +335,20 @@ import asyncio
 app = FastAPI()
 
 # 同步函数 - 会阻塞事件循环
-@app.get(&quot;/sync-task&quot;)
+@app.get("/sync-task")
 def sync_task():
     # 模拟耗时操作
     result = 0
     for i in range(1000000):
         result += i
-    return {&quot;result&quot;: result, &quot;type&quot;: &quot;sync&quot;}
+    return {"result": result, "type": "sync"}
 
 # 异步函数 - 非阻塞
-@app.get(&quot;/async-task&quot;)
+@app.get("/async-task")
 async def async_task():
     # 模拟异步 IO 操作（如数据库查询）
     await asyncio.sleep(2)  # 不会阻塞其他请求
-    return {&quot;result&quot;: &quot;done&quot;, &quot;type&quot;: &quot;async&quot;}
+    return {"result": "done", "type": "async"}
 
 # 依赖注入示例
 from typing import Optional
@@ -354,47 +361,49 @@ async def get_db():
     finally:
         await db.close()
 
-@app.get(&quot;/users/{user_id}&quot;)
+@app.get("/users/{user_id}")
 async def get_user(user_id: int, db = Depends(get_db)):
-    user = await db.query(&quot;SELECT * FROM users WHERE id = ?&quot;, user_id)
-    return user</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 类型安全设计</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 Pydantic 模型</h4>
-<br>
-<p class="mb-2">FastAPI 使用 Pydantic 进行**运行时类型验证**：</p>
-<br>
-<pre><code># schemas.py
+    user = await db.query("SELECT * FROM users WHERE id = ?", user_id)
+    return user
+```
+
+### 2.2 类型安全设计
+
+#### 2.2.1 Pydantic 模型
+
+FastAPI 使用 Pydantic 进行**运行时类型验证**：
+
+```python
+# schemas.py
 from pydantic import BaseModel, EmailStr, Field, validator
 from typing import Optional, List
 from datetime import datetime
 
 class UserBase(BaseModel):
-    &quot;&quot;&quot;基础用户模型&quot;&quot;&quot;
+    """基础用户模型"""
     email: EmailStr  # 邮箱格式验证
     username: str = Field(..., min_length=3, max_length=50)
     age: Optional[int] = Field(None, ge=0, le=150)  # 可选，范围验证
     
-    @validator(&#x27;username&#x27;)
+    @validator('username')
     def username_alphanumeric(cls, v):
-        assert v.isalnum(), &#x27;Username must be alphanumeric&#x27;
+        assert v.isalnum(), 'Username must be alphanumeric'
         return v.lower()
 
 class UserCreate(UserBase):
-    &quot;&quot;&quot;创建用户&quot;&quot;&quot;
+    """创建用户"""
     password: str = Field(..., min_length=8)
     
-    @validator(&#x27;password&#x27;)
+    @validator('password')
     def password_strength(cls, v):
         if not any(c.isupper() for c in v):
-            raise ValueError(&#x27;Password must contain uppercase&#x27;)
+            raise ValueError('Password must contain uppercase')
         if not any(c.isdigit() for c in v):
-            raise ValueError(&#x27;Password must contain digit&#x27;)
+            raise ValueError('Password must contain digit')
         return v
 
 class UserResponse(UserBase):
-    &quot;&quot;&quot;用户响应（不包含密码）&quot;&quot;&quot;
+    """用户响应（不包含密码）"""
     id: int
     created_at: datetime
     
@@ -409,15 +418,17 @@ class OrderCreate(BaseModel):
     items: List[OrderItem]
     shipping_address: str
     
-    @validator(&#x27;items&#x27;)
+    @validator('items')
     def validate_items(cls, v):
         if not v:
-            raise ValueError(&#x27;Order must have at least one item&#x27;)
-        return v</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 API 路由中使用</h4>
-<br>
-<pre><code># main.py
+            raise ValueError('Order must have at least one item')
+        return v
+```
+
+#### 2.2.2 API 路由中使用
+
+```python
+# main.py
 from fastapi import FastAPI, HTTPException, Depends, status
 from schemas import UserCreate, UserResponse, OrderCreate
 
@@ -427,16 +438,16 @@ app = FastAPI()
 users_db = {}
 orders_db = {}
 
-@app.post(&quot;/users/&quot;, response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+@app.post("/users/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserCreate):
-    &quot;&quot;&quot;
+    """
     创建用户
     - 自动验证请求体
     - 自动序列化响应
     - 自动生成 OpenAPI 文档
-    &quot;&quot;&quot;
+    """
     if user.email in users_db:
-        raise HTTPException(status_code=400, detail=&quot;Email already registered&quot;)
+        raise HTTPException(status_code=400, detail="Email already registered")
     
     user_id = len(users_db) + 1
     new_user = UserResponse(
@@ -449,17 +460,19 @@ async def create_user(user: UserCreate):
     users_db[user.email] = new_user
     return new_user
 
-@app.post(&quot;/orders/&quot;)
+@app.post("/orders/")
 async def create_order(order: OrderCreate):
     order_id = len(orders_db) + 1
     orders_db[order_id] = order
-    return {&quot;order_id&quot;: order_id, &quot;status&quot;: &quot;created&quot;}</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.3 依赖注入系统</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.1 依赖注入原理</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+    return {"order_id": order_id, "status": "created"}
+```
+
+### 2.3 依赖注入系统
+
+#### 2.3.1 依赖注入原理
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                   FastAPI 依赖注入系统                        │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -480,11 +493,13 @@ async def create_order(order: OrderCreate):
 │            ▼                                               │
 │   Response                                                   │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.2 实际应用示例</h4>
-<br>
-<pre><code># dependencies.py
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 2.3.2 实际应用示例
+
+```python
+# dependencies.py
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Optional
@@ -506,7 +521,7 @@ async def get_current_user(
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=&quot;Invalid authentication credentials&quot;
+            detail="Invalid authentication credentials"
         )
     return user
 
@@ -515,36 +530,40 @@ async def get_admin_user(current_user = Depends(get_current_user)):
     if not current_user.is_admin:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail=&quot;Not enough permissions&quot;
+            detail="Not enough permissions"
         )
-    return current_user</code></pre>
-<br>
-<pre><code># main.py
+    return current_user
+```
+
+```python
+# main.py
 from dependencies import get_db, get_current_user, get_admin_user
 
-@app.get(&quot;/profile&quot;)
+@app.get("/profile")
 async def get_profile(current_user = Depends(get_current_user)):
-    &quot;&quot;&quot;需要登录&quot;&quot;&quot;
+    """需要登录"""
     return current_user
 
-@app.delete(&quot;/users/{user_id}&quot;)
+@app.delete("/users/{user_id}")
 async def delete_user(
     user_id: int,
     current_user = Depends(get_admin_user)
 ):
-    &quot;&quot;&quot;需要管理员权限&quot;&quot;&quot;
+    """需要管理员权限"""
     await db.delete_user(user_id)
-    return {&quot;status&quot;: &quot;deleted&quot;}</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. Go 语言架构</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 Goroutine 并发模型</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 Go 并发 vs 传统线程</h4>
-<br>
-<pre><code>传统线程模型（Thread）：
+    return {"status": "deleted"}
+```
+
+---
+
+## 3. Go 语言架构
+
+### 3.1 Goroutine 并发模型
+
+#### 3.1.1 Go 并发 vs 传统线程
+
+```
+传统线程模型（Thread）：
 ┌─────────────────────────────────────────────────────────────┐
 │  Thread 1 → [Stack 1MB] ──────────────────────────────────  │
 │  Thread 2 → [Stack 1MB] ──────────────────────────────────  │
@@ -572,16 +591,18 @@ Goroutine 模型：
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
 │  优势：内存占用小（2KB 栈），创建成本低（μs 级）              │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 Goroutine 代码示例</h4>
-<br>
-<pre><code>package main
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### 3.1.2 Goroutine 代码示例
+
+```go
+package main
 
 import (
-    &quot;fmt&quot;
-    &quot;sync&quot;
-    &quot;time&quot;
+    "fmt"
+    "sync"
+    "time"
 )
 
 func main() {
@@ -589,46 +610,48 @@ func main() {
     var wg sync.WaitGroup
     
     // 启动 5 个并发任务
-    for i := 1; i &lt;= 5; i++ {
+    for i := 1; i <= 5; i++ {
         wg.Add(1)  // 增加计数器
         
         go func(id int) {
             defer wg.Done()  // 完成时减少计数器
-            fmt.Printf(&quot;Task %d started\n&quot;, id)
+            fmt.Printf("Task %d started\n", id)
             
             // 模拟耗时操作
             time.Sleep(time.Second)
             
-            fmt.Printf(&quot;Task %d completed\n&quot;, id)
+            fmt.Printf("Task %d completed\n", id)
         }(i)
     }
     
     // 等待所有任务完成
     wg.Wait()
-    fmt.Println(&quot;All tasks completed&quot;)
-}</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 Channel 通信</h4>
-<br>
-<pre><code>package main
+    fmt.Println("All tasks completed")
+}
+```
 
-import &quot;fmt&quot;
+#### 3.1.3 Channel 通信
+
+```go
+package main
+
+import "fmt"
 
 // 生产者函数
-func producer(ch chan&lt;- int) {
-    for i := 1; i &lt;= 5; i++ {
-        ch &lt;- i  // 发送数据到 channel
-        fmt.Printf(&quot;Produced: %d\n&quot;, i)
+func producer(ch chan<- int) {
+    for i := 1; i <= 5; i++ {
+        ch <- i  // 发送数据到 channel
+        fmt.Printf("Produced: %d\n", i)
     }
     close(ch)  // 关闭 channel
 }
 
 // 消费者函数
-func consumer(ch &lt;-chan int, done chan&lt;- bool) {
+func consumer(ch <-chan int, done chan<- bool) {
     for v := range ch {  // 持续读取直到 channel 关闭
-        fmt.Printf(&quot;Consumed: %d\n&quot;, v)
+        fmt.Printf("Consumed: %d\n", v)
     }
-    done &lt;- true
+    done <- true
 }
 
 func main() {
@@ -640,15 +663,17 @@ func main() {
     go producer(ch)
     go consumer(ch, done)
     
-    &lt;-done  // 等待消费者完成
-    fmt.Println(&quot;Done&quot;)
-}</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 微服务架构</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 Go 微服务项目结构</h4>
-<br>
-<pre><code>user-service/
+    <-done  // 等待消费者完成
+    fmt.Println("Done")
+}
+```
+
+### 3.2 微服务架构
+
+#### 3.2.1 Go 微服务项目结构
+
+```
+user-service/
 ├── cmd/
 │   └── server/
 │       └── main.go          # 程序入口
@@ -670,29 +695,31 @@ func main() {
 │   └── response/
 │       └── response.go      # 统一响应格式
 ├── go.mod
-└── go.sum</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 核心代码实现</h4>
-<br>
-<p class="mb-2">**main.go 入口**：</p>
-<br>
-<pre><code>package main
+└── go.sum
+```
+
+#### 3.2.2 核心代码实现
+
+**main.go 入口**：
+
+```go
+package main
 
 import (
-    &quot;log&quot;
-    &quot;os&quot;
-    &quot;user-service/internal/config&quot;
-    &quot;user-service/internal/handler&quot;
-    &quot;user-service/internal/middleware&quot;
-    &quot;user-service/internal/repository&quot;
-    &quot;user-service/internal/service&quot;
+    "log"
+    "os"
+    "user-service/internal/config"
+    "user-service/internal/handler"
+    "user-service/internal/middleware"
+    "user-service/internal/repository"
+    "user-service/internal/service"
     
-    &quot;github.com/gin-gonic/gin&quot;
+    "github.com/gin-gonic/gin"
 )
 
 func main() {
     // 加载配置
-    cfg := config.Load(os.Getenv(&quot;CONFIG_PATH&quot;))
+    cfg := config.Load(os.Getenv("CONFIG_PATH"))
     
     // 初始化层
     repo := repository.NewUserRepository(cfg.Database)
@@ -708,37 +735,39 @@ func main() {
     r.Use(middleware.CORS())
     
     // 路由组
-    api := r.Group(&quot;/api/v1&quot;)
+    api := r.Group("/api/v1")
     {
-        users := api.Group(&quot;/users&quot;)
+        users := api.Group("/users")
         {
-            users.POST(&quot;&quot;, hdlr.Create)
-            users.GET(&quot;/:id&quot;, hdlr.GetByID)
-            users.PUT(&quot;/:id&quot;, hdlr.Update)
-            users.DELETE(&quot;/:id&quot;, hdlr.Delete)
+            users.POST("", hdlr.Create)
+            users.GET("/:id", hdlr.GetByID)
+            users.PUT("/:id", hdlr.Update)
+            users.DELETE("/:id", hdlr.Delete)
         }
     }
     
     // 启动服务器
-    log.Printf(&quot;Server starting on :%s&quot;, cfg.Server.Port)
-    if err := r.Run(&quot;:&quot; + cfg.Server.Port); err != nil {
-        log.Fatalf(&quot;Failed to start server: %v&quot;, err)
+    log.Printf("Server starting on :%s", cfg.Server.Port)
+    if err := r.Run(":" + cfg.Server.Port); err != nil {
+        log.Fatalf("Failed to start server: %v", err)
     }
-}</code></pre>
-<br>
-<p class="mb-2">**Service 层**：</p>
-<br>
-<pre><code>package service
+}
+```
+
+**Service 层**：
+
+```go
+package service
 
 import (
-    &quot;errors&quot;
-    &quot;user-service/internal/model&quot;
-    &quot;user-service/internal/repository&quot;
+    "errors"
+    "user-service/internal/model"
+    "user-service/internal/repository"
 )
 
 var (
-    ErrNotFound     = errors.New(&quot;user not found&quot;)
-    ErrEmailExisted  = errors.New(&quot;email already exists&quot;)
+    ErrNotFound     = errors.New("user not found")
+    ErrEmailExisted  = errors.New("email already exists")
 )
 
 type UserService interface {
@@ -753,7 +782,7 @@ type userService struct {
 }
 
 func NewUserService(repo repository.UserRepository) UserService {
-    return &amp;userService{repo: repo}
+    return &userService{repo: repo}
 }
 
 func (s *userService) Create(req *model.CreateUserRequest) (*model.User, error) {
@@ -763,7 +792,7 @@ func (s *userService) Create(req *model.CreateUserRequest) (*model.User, error) 
     }
     
     // 创建用户
-    user := &amp;model.User{
+    user := &model.User{
         Email:    req.Email,
         Username: req.Username,
     }
@@ -781,27 +810,30 @@ func (s *userService) GetByID(id uint) (*model.User, error) {
         return nil, ErrNotFound
     }
     return user, nil
-}</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">4. API 设计</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.1 REST / GraphQL / gRPC 对比</h3>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.1 协议特性对比</h4>
-<br>
-<table class="my-4 w-full"><tr><td>维度</td><td>REST</td><td>GraphQL</td><td>gRPC</td></tr>
-<tr><td>**传输协议**</td><td>HTTP/1.1</td><td>HTTP/1.1</td><td>HTTP/2</td></tr>
-<tr><td>**数据格式**</td><td>JSON/XML</td><td>JSON</td><td>Protocol Buffers</td></tr>
-<tr><td>**设计风格**</td><td>资源导向</td><td>查询导向</td><td>接口导向</td></tr>
-<tr><td>**优势**</td><td>简单、缓存好</td><td>灵活、按需取</td><td>高性能、低延迟</td></tr>
-<tr><td>**劣势**</td><td>过度/不足获取</td><td>复杂度高、缓存难</td><td>学习曲线陡</td></tr>
-<tr><td>**适用场景**</td><td>通用 Web API</td><td>多端差异大</td><td>微服务间通信</td></tr></table>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.2 REST API 设计</h4>
-<br>
-<pre><code>┌─────────────────────────────────────────────────────────────┐
+}
+```
+
+---
+
+## 4. API 设计
+
+### 4.1 REST / GraphQL / gRPC 对比
+
+#### 4.1.1 协议特性对比
+
+| 维度 | REST | GraphQL | gRPC |
+|------|------|---------|------|
+| **传输协议** | HTTP/1.1 | HTTP/1.1 | HTTP/2 |
+| **数据格式** | JSON/XML | JSON | Protocol Buffers |
+| **设计风格** | 资源导向 | 查询导向 | 接口导向 |
+| **优势** | 简单、缓存好 | 灵活、按需取 | 高性能、低延迟 |
+| **劣势** | 过度/不足获取 | 复杂度高、缓存难 | 学习曲线陡 |
+| **适用场景** | 通用 Web API | 多端差异大 | 微服务间通信 |
+
+#### 4.1.2 REST API 设计
+
+```
+┌─────────────────────────────────────────────────────────────┐
 │                    REST API 设计规范                         │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -827,11 +859,13 @@ func (s *userService) GetByID(id uint) (*model.User, error) {
 │  │  500 Server Error 服务器错误                         │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-<br>
-<p class="mb-2">**REST API 示例**：</p>
-<br>
-<pre><code># 使用 FastAPI
+└─────────────────────────────────────────────────────────────┘
+```
+
+**REST API 示例**：
+
+```python
+# 使用 FastAPI
 from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 
@@ -860,30 +894,30 @@ class UserResponse(BaseModel):
 users_db = {}
 next_id = 1
 
-@app.post(&quot;/users/&quot;, response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+@app.post("/users/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def create_user(user: UserCreate):
     global next_id
     
     # 检查邮箱是否已存在
     for u in users_db.values():
         if u.email == user.email:
-            raise HTTPException(status_code=400, detail=&quot;Email already exists&quot;)
+            raise HTTPException(status_code=400, detail="Email already exists")
     
     new_user = UserResponse(id=next_id, **user.model_dump())
     users_db[next_id] = new_user
     next_id += 1
     return new_user
 
-@app.get(&quot;/users/{user_id}&quot;, response_model=UserResponse)
+@app.get("/users/{user_id}", response_model=UserResponse)
 def get_user(user_id: int):
     if user_id not in users_db:
-        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)
+        raise HTTPException(status_code=404, detail="User not found")
     return users_db[user_id]
 
-@app.put(&quot;/users/{user_id}&quot;, response_model=UserResponse)
+@app.put("/users/{user_id}", response_model=UserResponse)
 def update_user(user_id: int, user: UserUpdate):
     if user_id not in users_db:
-        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)
+        raise HTTPException(status_code=404, detail="User not found")
     
     existing_user = users_db[user_id]
     update_data = user.model_dump(exclude_unset=True)
@@ -893,15 +927,17 @@ def update_user(user_id: int, user: UserUpdate):
     
     return existing_user
 
-@app.delete(&quot;/users/{user_id}&quot;, status_code=status.HTTP_204_NO_CONTENT)
+@app.delete("/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_user(user_id: int):
     if user_id not in users_db:
-        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)
-    del users_db[user_id]</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.3 GraphQL 设计</h4>
-<br>
-<pre><code># schema.graphql
+        raise HTTPException(status_code=404, detail="User not found")
+    del users_db[user_id]
+```
+
+#### 4.1.3 GraphQL 设计
+
+```graphql
+# schema.graphql
 
 type User {
   id: ID!
@@ -952,13 +988,15 @@ input CreateUserInput {
 input UpdateUserInput {
   email: String
   username: String
-}</code></pre>
-<br>
-<p class="mb-2">**GraphQL 客户端查询示例**：</p>
-<br>
-<pre><code># 客户端查询 - 按需取字段
+}
+```
+
+**GraphQL 客户端查询示例**：
+
+```graphql
+# 客户端查询 - 按需取字段
 query {
-  user(id: &quot;1&quot;) {
+  user(id: "1") {
     id
     username
     email
@@ -967,7 +1005,7 @@ query {
 
 # 嵌套查询 - 一并获取关联数据
 query {
-  user(id: &quot;1&quot;) {
+  user(id: "1") {
     id
     username
     posts {
@@ -981,16 +1019,18 @@ query {
       }
     }
   }
-}</code></pre>
-<br>
-<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.4 gRPC 设计</h4>
-<br>
-<pre><code>// user.proto
-syntax = &quot;proto3&quot;;
+}
+```
+
+#### 4.1.4 gRPC 设计
+
+```protobuf
+// user.proto
+syntax = "proto3";
 
 package user;
 
-option go_package = &quot;github.com/example/user-service/proto&quot;;
+option go_package = "github.com/example/user-service/proto";
 
 // 用户消息
 message User {
@@ -1025,19 +1065,21 @@ service UserService {
     rpc GetUser(GetUserRequest) returns (UserResponse);
     // 流式获取用户列表
     rpc ListUsers(ListUsersRequest) returns (stream UserResponse);
-}</code></pre>
-<br>
-<p class="mb-2">**Go gRPC 服务器实现**：</p>
-<br>
-<pre><code>package main
+}
+```
+
+**Go gRPC 服务器实现**：
+
+```go
+package main
 
 import (
-    &quot;context&quot;
-    &quot;log&quot;
-    &quot;net&quot;
+    "context"
+    "log"
+    "net"
     
-    &quot;github.com/example/user-service/proto&quot;
-    &quot;google.golang.org/grpc&quot;
+    "github.com/example/user-service/proto"
+    "google.golang.org/grpc"
 )
 
 type userServer struct {
@@ -1046,26 +1088,26 @@ type userServer struct {
 }
 
 func (s *userServer) CreateUser(ctx context.Context, req *proto.CreateUserRequest) (*proto.UserResponse, error) {
-    user := &amp;proto.User{
+    user := &proto.User{
         Id:       generateID(),
         Email:    req.Email,
         Username: req.Username,
     }
     s.users[user.Id] = user
-    return &amp;proto.UserResponse{User: user}, nil
+    return &proto.UserResponse{User: user}, nil
 }
 
 func (s *userServer) GetUser(ctx context.Context, req *proto.GetUserRequest) (*proto.UserResponse, error) {
     user, ok := s.users[req.Id]
     if !ok {
-        return nil, fmt.Errorf(&quot;user not found&quot;)
+        return nil, fmt.Errorf("user not found")
     }
-    return &amp;proto.UserResponse{User: user}, nil
+    return &proto.UserResponse{User: user}, nil
 }
 
 func (s *userServer) ListUsers(req *proto.ListUsersRequest, stream proto.UserService_ListUsersServer) error {
     for _, user := range s.users {
-        if err := stream.Send(&amp;proto.UserResponse{User: user}); err != nil {
+        if err := stream.Send(&proto.UserResponse{User: user}); err != nil {
             return err
         }
     }
@@ -1073,20 +1115,22 @@ func (s *userServer) ListUsers(req *proto.ListUsersRequest, stream proto.UserSer
 }
 
 func main() {
-    lis, _ := net.Listen(&quot;tcp&quot;, &quot;:50051&quot;)
+    lis, _ := net.Listen("tcp", ":50051")
     s := grpc.NewServer()
-    proto.RegisterUserServiceServer(s, &amp;userServer{})
-    log.Printf(&quot;Server starting on :50051&quot;)
+    proto.RegisterUserServiceServer(s, &userServer{})
+    log.Printf("Server starting on :50051")
     s.Serve(lis)
-}</code></pre>
-<br>
-<p class="mb-2">---</p>
-<br>
-<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">后端架构知识图谱</h3>
-<br>
-<pre><code>后端架构
+}
+```
+
+---
+
+## 总结
+
+### 后端架构知识图谱
+
+```
+后端架构
 ├── Node.js 生态
 │   ├── Express（中间件模式、灵活）
 │   ├── Fastify（高性能、低开销）
@@ -1105,23 +1149,20 @@ func main() {
 └── API 设计
     ├── REST（资源导向）
     ├── GraphQL（按需查询）
-    └── gRPC（高性能通信）</code></pre>
-<br>
-<h3 class="font-heading text-xl font-semibold mt-6 mb-3">学习建议</h3>
-<br>
-<p class="mb-2">1. **Node.js**: 从 Express 入手，理解中间件模式后再学 NestJS</p>
-<p class="mb-2">2. **FastAPI**: 重点掌握异步编程和 Pydantic 模型</p>
-<p class="mb-2">3. **Go**: 理解 Goroutine 和 Channel 的并发模型</p>
-<p class="mb-2">4. **API 设计**: 根据业务场景选择合适的协议</p>
-<br>
-<p class="mb-2">---</p>
-<br>
-<p class="mb-2">*文档版本：2024.12*</p>
-<br>
-<p class="mb-2">---</p>
-<br>
-<blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
-<br>
-</div></article></main>
-<footer class="text-center text-sm text-secondary py-8 border-t border-gray-200 mt-8"><p>&copy; 2026 My Tech Blog. Built with Tailwind CSS.</p></footer>
-</body></html>
+    └── gRPC（高性能通信）
+```
+
+### 学习建议
+
+1. **Node.js**: 从 Express 入手，理解中间件模式后再学 NestJS
+2. **FastAPI**: 重点掌握异步编程和 Pydantic 模型
+3. **Go**: 理解 Goroutine 和 Channel 的并发模型
+4. **API 设计**: 根据业务场景选择合适的协议
+
+---
+
+*文档版本：2024.12*
+
+---
+
+> 本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。
