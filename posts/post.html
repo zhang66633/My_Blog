@@ -49,8 +49,9 @@
     .article-content p { margin-bottom: 0.75rem; line-height: 1.8; }
     .article-content ul, .article-content ol { margin: 0.75rem 0; padding-left: 1.5rem; }
     .article-content li { margin-bottom: 0.35rem; line-height: 1.7; }
-    .article-content pre { margin: 1rem 0; border-radius: 8px; }
-    .article-content pre code { font-size: 0.875rem; line-height: 1.6; padding: 1.25rem !important; }
+    /* Code block — editor-like dark theme */
+    .article-content pre { margin: 1rem 0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+    .article-content pre code { font-size: 0.875rem; line-height: 1.65; padding: 1.25rem 1.5rem !important; display: block; }
     .article-content :not(pre) > code { background: #e5e7eb; padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.9em; color: #18181B; }
     .article-content table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
     .article-content th, .article-content td { border: 1px solid #d1d5db; padding: 0.5em 0.75em; text-align: left; }
@@ -153,6 +154,8 @@
           titleEl.textContent = title;
           metaEl.textContent = postName;
           bodyEl.innerHTML = html;
+          // Add hljs class for highlight.js full theming (dark background, etc.)
+          bodyEl.querySelectorAll('pre code').forEach(code => code.classList.add('hljs'));
           loadingEl.style.display = 'none';
           bodyEl.style.display = 'block';
         })
