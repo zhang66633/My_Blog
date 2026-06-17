@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="zhang66633">
+  <title>前端架构深度解析 — My Tech Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{accent:'#2563EB','accent-hover':'#1D4ED8','text-primary':'#18181B',secondary:'#6B7280'}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'DM Sans',sans-serif;background-color:#FAFAFA}
+    h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+    pre{background:#1e1e2e;color:#cdd6f4;padding:1em 1.25em;border-radius:8px;overflow-x:auto;font-size:0.875em;line-height:1.5;margin:1em 0}
+    code{background:#e5e7eb;padding:0.15em 0.4em;border-radius:4px;font-size:0.9em}
+    pre code{background:transparent;padding:0;font-size:inherit}
+    table{border-collapse:collapse;width:100%;margin:1em 0}
+    th,td{border:1px solid #d1d5db;padding:0.5em 0.75em;text-align:left}
+    th{background:#f3f4f6;font-weight:600}
+    blockquote{border-left:3px solid #2563EB;padding:0.5em 1em;color:#6b7280;margin:1em 0}
+    article a{color:#2563EB;text-decoration:underline}
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm"><div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="../index.html" class="text-accent hover:text-accent-hover font-medium">&larr; 返回博客</a><span class="text-sm text-secondary">React, CSS, Web Performance, Frontend Engineering</span></div></nav>
+<main class="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12"><article><h1 class="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3">前端架构深度解析</h1><p class="text-secondary text-sm mb-8">2026-06-17</p><div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-10 shadow-sm leading-relaxed text-text-primary">
+<p class="mb-2">---</p>
+<p class="mb-2">AIGC:</p>
+<p class="mb-2">AIGC:</p>
+<p class="mb-2">    Label: &quot;1&quot;</p>
+<p class="mb-2">    Label: &quot;1&quot;</p>
+<p class="mb-2">    ContentProducer: 001191110102MACQD9K64018705</p>
+<p class="mb-2">    ContentProducer: 001191110102MACQD9K64018705</p>
+<p class="mb-2">    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/前端架构深度解析.md</p>
+<p class="mb-2">    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/前端架构深度解析.md</p>
+<p class="mb-2">    ReservedCode1: &quot;&quot;</p>
+<p class="mb-2">    ReservedCode1: &quot;&quot;</p>
+<p class="mb-2">    ContentPropagator: 001191110102MACQD9K64028705</p>
+<p class="mb-2">    ContentPropagator: 001191110102MACQD9K64028705</p>
+<p class="mb-2">    PropagateID: 0#1781573295703</p>
+<p class="mb-2">    PropagateID: 0#1781573295703</p>
+<p class="mb-2">    ReservedCode2: &quot;&quot;</p>
+<p class="mb-2">    ReservedCode2: &quot;&quot;</p>
+<p class="mb-2">---</p>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">前端架构深度解析</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">前端架构深度解析</h1>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
+<br>
+<br>
+<p class="mb-2">1. [React 生态](#1-react-生态)</p>
+<p class="mb-2">1. [React 生态](#1-react-生态)</p>
+<p class="mb-2">2. [Vue 生态](#2-vue-生态)</p>
+<p class="mb-2">2. [Vue 生态](#2-vue-生态)</p>
+<p class="mb-2">3. [Next.js 架构](#3-nextjs-架构)</p>
+<p class="mb-2">3. [Next.js 架构](#3-nextjs-架构)</p>
+<p class="mb-2">4. [前端架构模式](#4-前端架构模式)</p>
+<p class="mb-2">4. [前端架构模式](#4-前端架构模式)</p>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. React 生态</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. React 生态</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 组件化设计思想</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 组件化设计思想</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 组件化的本质</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 组件化的本质</h4>
+<br>
+<br>
+<p class="mb-2">组件化是 React 的核心思想，它的本质是**&quot;分而治之&quot;**——将复杂的 UI 拆分为独立、可复用的小单元。</p>
+<p class="mb-2">组件化是 React 的核心思想，它的本质是**&quot;分而治之&quot;**——将复杂的 UI 拆分为独立、可复用的小单元。</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                   App (根组件)                        │</p>
+<p class="mb-2">│                   App (根组件)                        │</p>
+<p class="mb-2">│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  │</p>
+<p class="mb-2">│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  │</p>
+<p class="mb-2">│  │  Header     │  │   Main      │  │   Footer    │  │</p>
+<p class="mb-2">│  │  Header     │  │   Main      │  │   Footer    │  │</p>
+<p class="mb-2">│  │  导航栏      │  │  主内容区    │  │   底部      │  │</p>
+<p class="mb-2">│  │  导航栏      │  │  主内容区    │  │   底部      │  │</p>
+<p class="mb-2">│  └─────────────┘  └──────┬──────┘  └─────────────┘  │</p>
+<p class="mb-2">│  └─────────────┘  └──────┬──────┘  └─────────────┘  │</p>
+<p class="mb-2">│                         │                           │</p>
+<p class="mb-2">│                         │                           │</p>
+<p class="mb-2">│              ┌──────────┼──────────┐                │</p>
+<p class="mb-2">│              ┌──────────┼──────────┐                │</p>
+<p class="mb-2">│              ▼          ▼          ▼                │</p>
+<p class="mb-2">│              ▼          ▼          ▼                │</p>
+<p class="mb-2">│         ┌────────┐ ┌────────┐ ┌────────┐           │</p>
+<p class="mb-2">│         ┌────────┐ ┌────────┐ ┌────────┐           │</p>
+<p class="mb-2">│         │ Sidebar│ │ Content│ │ Ad     │           │</p>
+<p class="mb-2">│         │ Sidebar│ │ Content│ │ Ad     │           │</p>
+<p class="mb-2">│         │ 侧边栏  │ │ 主内容  │ │ 广告位  │           │</p>
+<p class="mb-2">│         │ 侧边栏  │ │ 主内容  │ │ 广告位  │           │</p>
+<p class="mb-2">│         └────────┘ └────────┘ └────────┘           │</p>
+<p class="mb-2">│         └────────┘ └────────┘ └────────┘           │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 React 组件的两种形式</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 React 组件的两种形式</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// 方式一：类组件 (Class Component)</p>
+<p class="mb-2">// 方式一：类组件 (Class Component)</p>
+<p class="mb-2">class UserCard extends React.Component {</p>
+<p class="mb-2">class UserCard extends React.Component {</p>
+<p class="mb-2">    constructor(props) {</p>
+<p class="mb-2">    constructor(props) {</p>
+<p class="mb-2">        super(props);</p>
+<p class="mb-2">        super(props);</p>
+<p class="mb-2">        this.state = { age: props.age };  // 内部状态</p>
+<p class="mb-2">        this.state = { age: props.age };  // 内部状态</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    render() {</p>
+<p class="mb-2">    render() {</p>
+<p class="mb-2">        return (</p>
+<p class="mb-2">        return (</p>
+<p class="mb-2">            &lt;div className=&quot;user-card&quot;&gt;</p>
+<p class="mb-2">            &lt;div className=&quot;user-card&quot;&gt;</p>
+<p class="mb-2">                &lt;h2&gt;{this.props.name}&lt;/h2&gt;</p>
+<p class="mb-2">                &lt;h2&gt;{this.props.name}&lt;/h2&gt;</p>
+<p class="mb-2">                &lt;p&gt;Age: {this.state.age}&lt;/p&gt;</p>
+<p class="mb-2">                &lt;p&gt;Age: {this.state.age}&lt;/p&gt;</p>
+<p class="mb-2">                &lt;button onClick={() =&gt; this.setState({ age: this.state.age + 1 })}&gt;</p>
+<p class="mb-2">                &lt;button onClick={() =&gt; this.setState({ age: this.state.age + 1 })}&gt;</p>
+<p class="mb-2">                    长大一岁</p>
+<p class="mb-2">                    长大一岁</p>
+<p class="mb-2">                &lt;/button&gt;</p>
+<p class="mb-2">                &lt;/button&gt;</p>
+<p class="mb-2">            &lt;/div&gt;</p>
+<p class="mb-2">            &lt;/div&gt;</p>
+<p class="mb-2">        );</p>
+<p class="mb-2">        );</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 方式二：函数组件 + Hooks (Function Component)</p>
+<p class="mb-2">// 方式二：函数组件 + Hooks (Function Component)</p>
+<p class="mb-2">function UserCard({ name, initialAge }) {</p>
+<p class="mb-2">function UserCard({ name, initialAge }) {</p>
+<p class="mb-2">    const [age, setAge] = useState(initialAge);  // useState Hook</p>
+<p class="mb-2">    const [age, setAge] = useState(initialAge);  // useState Hook</p>
+<br>
+<br>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;div className=&quot;user-card&quot;&gt;</p>
+<p class="mb-2">        &lt;div className=&quot;user-card&quot;&gt;</p>
+<p class="mb-2">            &lt;h2&gt;{name}&lt;/h2&gt;</p>
+<p class="mb-2">            &lt;h2&gt;{name}&lt;/h2&gt;</p>
+<p class="mb-2">            &lt;p&gt;Age: {age}&lt;/p&gt;</p>
+<p class="mb-2">            &lt;p&gt;Age: {age}&lt;/p&gt;</p>
+<p class="mb-2">            &lt;button onClick={() =&gt; setAge(age + 1)}&gt;</p>
+<p class="mb-2">            &lt;button onClick={() =&gt; setAge(age + 1)}&gt;</p>
+<p class="mb-2">                长大一岁</p>
+<p class="mb-2">                长大一岁</p>
+<p class="mb-2">            &lt;/button&gt;</p>
+<p class="mb-2">            &lt;/button&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 组件设计原则</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 组件设计原则</h4>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>原则</td><td>说明</td><td>示例</td></tr>
+<tr><td>原则</td><td>说明</td><td>示例</td></tr>
+<tr><td>**单一职责**</td><td>每个组件只做一件事</td><td>`UserCard` 只负责展示用户信息</td></tr>
+<tr><td>**单一职责**</td><td>每个组件只做一件事</td><td>`UserCard` 只负责展示用户信息</td></tr>
+<tr><td>**开闭原则**</td><td>对扩展开放，对修改关闭</td><td>通过 props 传入不同配置</td></tr>
+<tr><td>**开闭原则**</td><td>对扩展开放，对修改关闭</td><td>通过 props 传入不同配置</td></tr>
+<tr><td>**依赖倒置**</td><td>依赖抽象而非具体</td><td>使用 Render Props / Children</td></tr>
+<tr><td>**依赖倒置**</td><td>依赖抽象而非具体</td><td>使用 Render Props / Children</td></tr></table>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// 依赖倒置示例：通过 children 实现灵活布局</p>
+<p class="mb-2">// 依赖倒置示例：通过 children 实现灵活布局</p>
+<p class="mb-2">function Card({ children, title }) {</p>
+<p class="mb-2">function Card({ children, title }) {</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;div className=&quot;card&quot;&gt;</p>
+<p class="mb-2">        &lt;div className=&quot;card&quot;&gt;</p>
+<p class="mb-2">            {title &amp;&amp; &lt;div className=&quot;card-header&quot;&gt;{title}&lt;/div&gt;}</p>
+<p class="mb-2">            {title &amp;&amp; &lt;div className=&quot;card-header&quot;&gt;{title}&lt;/div&gt;}</p>
+<p class="mb-2">            &lt;div className=&quot;card-body&quot;&gt;</p>
+<p class="mb-2">            &lt;div className=&quot;card-body&quot;&gt;</p>
+<p class="mb-2">                {children}  {/* children 是抽象的，不关心具体内容 */}</p>
+<p class="mb-2">                {children}  {/* children 是抽象的，不关心具体内容 */}</p>
+<p class="mb-2">            &lt;/div&gt;</p>
+<p class="mb-2">            &lt;/div&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 使用时完全灵活</p>
+<p class="mb-2">// 使用时完全灵活</p>
+<p class="mb-2">&lt;Card title=&quot;用户信息&quot;&gt;</p>
+<p class="mb-2">&lt;Card title=&quot;用户信息&quot;&gt;</p>
+<p class="mb-2">    &lt;UserForm /&gt;  {/* 可以是表单 */}</p>
+<p class="mb-2">    &lt;UserForm /&gt;  {/* 可以是表单 */}</p>
+<p class="mb-2">&lt;/Card&gt;</p>
+<p class="mb-2">&lt;/Card&gt;</p>
+<br>
+<br>
+<p class="mb-2">&lt;Card title=&quot;统计&quot;&gt;</p>
+<p class="mb-2">&lt;Card title=&quot;统计&quot;&gt;</p>
+<p class="mb-2">    &lt;Chart data={data} /&gt;  {/* 也可以是图表 */}</p>
+<p class="mb-2">    &lt;Chart data={data} /&gt;  {/* 也可以是图表 */}</p>
+<p class="mb-2">&lt;/Card&gt;</p>
+<p class="mb-2">&lt;/Card&gt;</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.2 状态管理</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.2 状态管理</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.1 React 内置状态管理演进</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.1 React 内置状态管理演进</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">React 状态管理演进：</p>
+<p class="mb-2">React 状态管理演进：</p>
+<br>
+<br>
+<p class="mb-2">useState → useReducer → useContext → useReducer + Context → 外部状态库</p>
+<p class="mb-2">useState → useReducer → useContext → useReducer + Context → 外部状态库</p>
+<p class="mb-2">(局部状态)  (复杂局部)   (跨组件)     (全局状态)          (Redux/Zustand)</p>
+<p class="mb-2">(局部状态)  (复杂局部)   (跨组件)     (全局状态)          (Redux/Zustand)</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.2 三种状态管理方案对比</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.2 三种状态管理方案对比</h4>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>方案</td><td>适用场景</td><td>优点</td><td>缺点</td></tr>
+<tr><td>方案</td><td>适用场景</td><td>优点</td><td>缺点</td></tr>
+<tr><td>**useState**</td><td>组件内部状态</td><td>简单、直观</td><td>无法跨组件共享</td></tr>
+<tr><td>**useState**</td><td>组件内部状态</td><td>简单、直观</td><td>无法跨组件共享</td></tr>
+<tr><td>**useContext + useReducer**</td><td>中小型应用</td><td>无需第三方库</td><td>样板代码多</td></tr>
+<tr><td>**useContext + useReducer**</td><td>中小型应用</td><td>无需第三方库</td><td>样板代码多</td></tr>
+<tr><td>**Redux Toolkit**</td><td>大型复杂应用</td><td>生态成熟、调试方便</td><td>配置复杂</td></tr>
+<tr><td>**Redux Toolkit**</td><td>大型复杂应用</td><td>生态成熟、调试方便</td><td>配置复杂</td></tr>
+<tr><td>**Zustand**</td><td>中大型应用</td><td>轻量、API 简洁</td><td>生态较弱</td></tr>
+<tr><td>**Zustand**</td><td>中大型应用</td><td>轻量、API 简洁</td><td>生态较弱</td></tr>
+<tr><td>**Jotai**</td><td>原子化状态</td><td>细粒度订阅、性能好</td><td>概念新、学习成本</td></tr>
+<tr><td>**Jotai**</td><td>原子化状态</td><td>细粒度订阅、性能好</td><td>概念新、学习成本</td></tr></table>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.3 实战对比</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.2.3 实战对比</h4>
+<br>
+<br>
+<p class="mb-2">**useState（局部状态）**：</p>
+<p class="mb-2">**useState（局部状态）**：</p>
+<pre><code></code></pre>
+<p class="mb-2">function Counter() {</p>
+<p class="mb-2">function Counter() {</p>
+<p class="mb-2">    const [count, setCount] = useState(0);</p>
+<p class="mb-2">    const [count, setCount] = useState(0);</p>
+<br>
+<br>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;button onClick={() =&gt; setCount(count + 1)}&gt;</p>
+<p class="mb-2">        &lt;button onClick={() =&gt; setCount(count + 1)}&gt;</p>
+<p class="mb-2">            Clicked {count} times</p>
+<p class="mb-2">            Clicked {count} times</p>
+<p class="mb-2">        &lt;/button&gt;</p>
+<p class="mb-2">        &lt;/button&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**useContext（跨组件状态共享）**：</p>
+<p class="mb-2">**useContext（跨组件状态共享）**：</p>
+<pre><code></code></pre>
+<p class="mb-2">// 1. 创建 Context</p>
+<p class="mb-2">// 1. 创建 Context</p>
+<p class="mb-2">const ThemeContext = React.createContext(&#x27;light&#x27;);</p>
+<p class="mb-2">const ThemeContext = React.createContext(&#x27;light&#x27;);</p>
+<br>
+<br>
+<p class="mb-2">// 2. Provider 包裹</p>
+<p class="mb-2">// 2. Provider 包裹</p>
+<p class="mb-2">function App() {</p>
+<p class="mb-2">function App() {</p>
+<p class="mb-2">    const [theme, setTheme] = useState(&#x27;dark&#x27;);</p>
+<p class="mb-2">    const [theme, setTheme] = useState(&#x27;dark&#x27;);</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;</p>
+<p class="mb-2">        &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;</p>
+<p class="mb-2">            &lt;MainPage /&gt;</p>
+<p class="mb-2">            &lt;MainPage /&gt;</p>
+<p class="mb-2">        &lt;/ThemeContext.Provider&gt;</p>
+<p class="mb-2">        &lt;/ThemeContext.Provider&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 3. 子组件消费</p>
+<p class="mb-2">// 3. 子组件消费</p>
+<p class="mb-2">function Header() {</p>
+<p class="mb-2">function Header() {</p>
+<p class="mb-2">    const { theme, setTheme } = useContext(ThemeContext);</p>
+<p class="mb-2">    const { theme, setTheme } = useContext(ThemeContext);</p>
+<p class="mb-2">    return &lt;div className={`header ${theme}`}&gt;...&lt;/div&gt;;</p>
+<p class="mb-2">    return &lt;div className={`header ${theme}`}&gt;...&lt;/div&gt;;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**Redux Toolkit（全局状态）**：</p>
+<p class="mb-2">**Redux Toolkit（全局状态）**：</p>
+<pre><code></code></pre>
+<p class="mb-2">// store/index.js</p>
+<p class="mb-2">// store/index.js</p>
+<p class="mb-2">import { createSlice, configureStore } from &#x27;@reduxjs/toolkit&#x27;;</p>
+<p class="mb-2">import { createSlice, configureStore } from &#x27;@reduxjs/toolkit&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">const counterSlice = createSlice({</p>
+<p class="mb-2">const counterSlice = createSlice({</p>
+<p class="mb-2">    name: &#x27;counter&#x27;,</p>
+<p class="mb-2">    name: &#x27;counter&#x27;,</p>
+<p class="mb-2">    initialState: { value: 0 },</p>
+<p class="mb-2">    initialState: { value: 0 },</p>
+<p class="mb-2">    reducers: {</p>
+<p class="mb-2">    reducers: {</p>
+<p class="mb-2">        increment: (state) =&gt; { state.value += 1; },</p>
+<p class="mb-2">        increment: (state) =&gt; { state.value += 1; },</p>
+<p class="mb-2">        decrement: (state) =&gt; { state.value -= 1; }</p>
+<p class="mb-2">        decrement: (state) =&gt; { state.value -= 1; }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">export const { increment, decrement } = counterSlice.actions;</p>
+<p class="mb-2">export const { increment, decrement } = counterSlice.actions;</p>
+<p class="mb-2">export const store = configureStore({</p>
+<p class="mb-2">export const store = configureStore({</p>
+<p class="mb-2">    reducer: counterSlice.reducer</p>
+<p class="mb-2">    reducer: counterSlice.reducer</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// 组件中使用</p>
+<p class="mb-2">// 组件中使用</p>
+<p class="mb-2">import { useSelector, useDispatch } from &#x27;react-redux&#x27;;</p>
+<p class="mb-2">import { useSelector, useDispatch } from &#x27;react-redux&#x27;;</p>
+<p class="mb-2">import { increment, decrement } from &#x27;./store&#x27;;</p>
+<p class="mb-2">import { increment, decrement } from &#x27;./store&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">function Counter() {</p>
+<p class="mb-2">function Counter() {</p>
+<p class="mb-2">    const count = useSelector(state =&gt; state.value);</p>
+<p class="mb-2">    const count = useSelector(state =&gt; state.value);</p>
+<p class="mb-2">    const dispatch = useDispatch();</p>
+<p class="mb-2">    const dispatch = useDispatch();</p>
+<br>
+<br>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;button onClick={() =&gt; dispatch(increment())}&gt;</p>
+<p class="mb-2">        &lt;button onClick={() =&gt; dispatch(increment())}&gt;</p>
+<p class="mb-2">            {count}</p>
+<p class="mb-2">            {count}</p>
+<p class="mb-2">        &lt;/button&gt;</p>
+<p class="mb-2">        &lt;/button&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**Zustand（轻量全局状态）**：</p>
+<p class="mb-2">**Zustand（轻量全局状态）**：</p>
+<pre><code></code></pre>
+<p class="mb-2">// store/useStore.js</p>
+<p class="mb-2">// store/useStore.js</p>
+<p class="mb-2">import { create } from &#x27;zustand&#x27;;</p>
+<p class="mb-2">import { create } from &#x27;zustand&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">const useStore = create((set) =&gt; ({</p>
+<p class="mb-2">const useStore = create((set) =&gt; ({</p>
+<p class="mb-2">    count: 0,</p>
+<p class="mb-2">    count: 0,</p>
+<p class="mb-2">    increment: () =&gt; set((state) =&gt; ({ count: state.count + 1 })),</p>
+<p class="mb-2">    increment: () =&gt; set((state) =&gt; ({ count: state.count + 1 })),</p>
+<p class="mb-2">    decrement: () =&gt; set((state) =&gt; ({ count: state.count - 1 }))</p>
+<p class="mb-2">    decrement: () =&gt; set((state) =&gt; ({ count: state.count - 1 }))</p>
+<p class="mb-2">}));</p>
+<p class="mb-2">}));</p>
+<br>
+<br>
+<p class="mb-2">// 组件中使用 - 简洁！</p>
+<p class="mb-2">// 组件中使用 - 简洁！</p>
+<p class="mb-2">function Counter() {</p>
+<p class="mb-2">function Counter() {</p>
+<p class="mb-2">    const { count, increment, decrement } = useStore();</p>
+<p class="mb-2">    const { count, increment, decrement } = useStore();</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;button onClick={increment}&gt;{count}&lt;/button&gt;</p>
+<p class="mb-2">        &lt;button onClick={increment}&gt;{count}&lt;/button&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.3 虚拟 DOM 核心原理</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.3 虚拟 DOM 核心原理</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.1 为什么需要虚拟 DOM</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.1 为什么需要虚拟 DOM</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">传统 DOM 操作 vs 虚拟 DOM：</p>
+<p class="mb-2">传统 DOM 操作 vs 虚拟 DOM：</p>
+<br>
+<br>
+<p class="mb-2">传统方式：</p>
+<p class="mb-2">传统方式：</p>
+<p class="mb-2">  更新数据 → 重新渲染整个组件 → 直接操作 DOM → 性能差</p>
+<p class="mb-2">  更新数据 → 重新渲染整个组件 → 直接操作 DOM → 性能差</p>
+<br>
+<br>
+<p class="mb-2">虚拟 DOM 方式：</p>
+<p class="mb-2">虚拟 DOM 方式：</p>
+<p class="mb-2">  更新数据 → 创建新虚拟 DOM → Diff 算法对比 → 最小化真实 DOM 操作 → 性能好</p>
+<p class="mb-2">  更新数据 → 创建新虚拟 DOM → Diff 算法对比 → 最小化真实 DOM 操作 → 性能好</p>
+<br>
+<br>
+<p class="mb-2">关键：减少直接 DOM 操作的次数</p>
+<p class="mb-2">关键：减少直接 DOM 操作的次数</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.2 虚拟 DOM 工作流程</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.2 虚拟 DOM 工作流程</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌──────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌──────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                   虚拟 DOM 工作流程                        │</p>
+<p class="mb-2">│                   虚拟 DOM 工作流程                        │</p>
+<p class="mb-2">├──────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├──────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                          │</p>
+<p class="mb-2">│                                                          │</p>
+<p class="mb-2">│  1. state 变化                                           │</p>
+<p class="mb-2">│  1. state 变化                                           │</p>
+<p class="mb-2">│     │                                                   │</p>
+<p class="mb-2">│     │                                                   │</p>
+<p class="mb-2">│     ▼                                                   │</p>
+<p class="mb-2">│     ▼                                                   │</p>
+<p class="mb-2">│  2. render() 生成新的虚拟 DOM 树                          │</p>
+<p class="mb-2">│  2. render() 生成新的虚拟 DOM 树                          │</p>
+<p class="mb-2">│     │                                                   │</p>
+<p class="mb-2">│     │                                                   │</p>
+<p class="mb-2">│     ▼                                                   │</p>
+<p class="mb-2">│     ▼                                                   │</p>
+<p class="mb-2">│  ┌─────────────────┐    ┌─────────────────┐              │</p>
+<p class="mb-2">│  ┌─────────────────┐    ┌─────────────────┐              │</p>
+<p class="mb-2">│  │   旧虚拟 DOM     │    │   新虚拟 DOM     │              │</p>
+<p class="mb-2">│  │   旧虚拟 DOM     │    │   新虚拟 DOM     │              │</p>
+<p class="mb-2">│  │   (VTree A)     │    │   (VTree B)     │              │</p>
+<p class="mb-2">│  │   (VTree A)     │    │   (VTree B)     │              │</p>
+<p class="mb-2">│  └────────┬───────┘    └────────┬───────┘              │</p>
+<p class="mb-2">│  └────────┬───────┘    └────────┬───────┘              │</p>
+<p class="mb-2">│           │                      │                       │</p>
+<p class="mb-2">│           │                      │                       │</p>
+<p class="mb-2">│           └──────────┬───────────┘                       │</p>
+<p class="mb-2">│           └──────────┬───────────┘                       │</p>
+<p class="mb-2">│                      ▼                                  │</p>
+<p class="mb-2">│                      ▼                                  │</p>
+<p class="mb-2">│              3. Diff 算法对比                             │</p>
+<p class="mb-2">│              3. Diff 算法对比                             │</p>
+<p class="mb-2">│                  (同层对比 + Key 优化)                    │</p>
+<p class="mb-2">│                  (同层对比 + Key 优化)                    │</p>
+<p class="mb-2">│                      │                                  │</p>
+<p class="mb-2">│                      │                                  │</p>
+<p class="mb-2">│                      ▼                                  │</p>
+<p class="mb-2">│                      ▼                                  │</p>
+<p class="mb-2">│              4. 计算最小更新补丁                          │</p>
+<p class="mb-2">│              4. 计算最小更新补丁                          │</p>
+<p class="mb-2">│                  (Patch)                                 │</p>
+<p class="mb-2">│                  (Patch)                                 │</p>
+<p class="mb-2">│                      │                                  │</p>
+<p class="mb-2">│                      │                                  │</p>
+<p class="mb-2">│                      ▼                                  │</p>
+<p class="mb-2">│                      ▼                                  │</p>
+<p class="mb-2">│  5. 只更新实际需要改变的 DOM 节点                         │</p>
+<p class="mb-2">│  5. 只更新实际需要改变的 DOM 节点                         │</p>
+<p class="mb-2">│                                                          │</p>
+<p class="mb-2">│                                                          │</p>
+<p class="mb-2">└──────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└──────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.3 Diff 算法核心策略</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.3 Diff 算法核心策略</h4>
+<br>
+<br>
+<p class="mb-2">React 的 Diff 算法遵循三个策略：</p>
+<p class="mb-2">React 的 Diff 算法遵循三个策略：</p>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>策略</td><td>说明</td><td>示例</td></tr>
+<tr><td>策略</td><td>说明</td><td>示例</td></tr>
+<tr><td>**Tree Diff**</td><td>只对比同层节点，不同层级不对比</td><td>跨层级移动会删除重建</td></tr>
+<tr><td>**Tree Diff**</td><td>只对比同层节点，不同层级不对比</td><td>跨层级移动会删除重建</td></tr>
+<tr><td>**Component Diff**</td><td>同组件类型继续对比，不同则替换</td><td>`&lt;A /&gt;` 变成 `&lt;B /&gt;` 会完全替换</td></tr>
+<tr><td>**Component Diff**</td><td>同组件类型继续对比，不同则替换</td><td>`&lt;A /&gt;` 变成 `&lt;B /&gt;` 会完全替换</td></tr>
+<tr><td>**Element Diff**</td><td>同层同级的元素通过 Key 区分</td><td>有 Key 可以复用、移动，无 Key 则重建</td></tr>
+<tr><td>**Element Diff**</td><td>同层同级的元素通过 Key 区分</td><td>有 Key 可以复用、移动，无 Key 则重建</td></tr></table>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// Key 的重要性示例</p>
+<p class="mb-2">// Key 的重要性示例</p>
+<p class="mb-2">// 无 Key：每次都是新创建</p>
+<p class="mb-2">// 无 Key：每次都是新创建</p>
+<p class="mb-2">{users.map(user =&gt; &lt;UserItem name={user.name} /&gt;)}</p>
+<p class="mb-2">{users.map(user =&gt; &lt;UserItem name={user.name} /&gt;)}</p>
+<p class="mb-2">//            ↑ 没有 key，React 认为都是新的</p>
+<p class="mb-2">//            ↑ 没有 key，React 认为都是新的</p>
+<br>
+<br>
+<p class="mb-2">// 有 Key：可以复用和移动</p>
+<p class="mb-2">// 有 Key：可以复用和移动</p>
+<p class="mb-2">{users.map(user =&gt; &lt;UserItem key={user.id} name={user.name} /&gt;)}</p>
+<p class="mb-2">{users.map(user =&gt; &lt;UserItem key={user.id} name={user.name} /&gt;)}</p>
+<p class="mb-2">//                   ↑ 有 key，React 知道是同一个组件</p>
+<p class="mb-2">//                   ↑ 有 key，React 知道是同一个组件</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.4 虚拟 DOM 代码模拟</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.3.4 虚拟 DOM 代码模拟</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// 简化版虚拟 DOM 实现</p>
+<p class="mb-2">// 简化版虚拟 DOM 实现</p>
+<p class="mb-2">class VNode {</p>
+<p class="mb-2">class VNode {</p>
+<p class="mb-2">    constructor(tag, props, children) {</p>
+<p class="mb-2">    constructor(tag, props, children) {</p>
+<p class="mb-2">        this.tag = tag;</p>
+<p class="mb-2">        this.tag = tag;</p>
+<p class="mb-2">        this.props = props;</p>
+<p class="mb-2">        this.props = props;</p>
+<p class="mb-2">        this.children = children;</p>
+<p class="mb-2">        this.children = children;</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    // 渲染为真实 DOM</p>
+<p class="mb-2">    // 渲染为真实 DOM</p>
+<p class="mb-2">    render() {</p>
+<p class="mb-2">    render() {</p>
+<p class="mb-2">        const el = document.createElement(this.tag);</p>
+<p class="mb-2">        const el = document.createElement(this.tag);</p>
+<br>
+<br>
+<p class="mb-2">        // 设置属性</p>
+<p class="mb-2">        // 设置属性</p>
+<p class="mb-2">        for (const [key, value] of Object.entries(this.props)) {</p>
+<p class="mb-2">        for (const [key, value] of Object.entries(this.props)) {</p>
+<p class="mb-2">            if (key.startsWith(&#x27;on&#x27;)) {</p>
+<p class="mb-2">            if (key.startsWith(&#x27;on&#x27;)) {</p>
+<p class="mb-2">                el.addEventListener(key.slice(2).toLowerCase(), value);</p>
+<p class="mb-2">                el.addEventListener(key.slice(2).toLowerCase(), value);</p>
+<p class="mb-2">            } else {</p>
+<p class="mb-2">            } else {</p>
+<p class="mb-2">                el.setAttribute(key, value);</p>
+<p class="mb-2">                el.setAttribute(key, value);</p>
+<p class="mb-2">            }</p>
+<p class="mb-2">            }</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">        }</p>
+<br>
+<br>
+<p class="mb-2">        // 渲染子节点</p>
+<p class="mb-2">        // 渲染子节点</p>
+<p class="mb-2">        this.children.forEach(child =&gt; {</p>
+<p class="mb-2">        this.children.forEach(child =&gt; {</p>
+<p class="mb-2">            if (child instanceof VNode) {</p>
+<p class="mb-2">            if (child instanceof VNode) {</p>
+<p class="mb-2">                el.appendChild(child.render());</p>
+<p class="mb-2">                el.appendChild(child.render());</p>
+<p class="mb-2">            } else {</p>
+<p class="mb-2">            } else {</p>
+<p class="mb-2">                el.appendChild(document.createTextNode(child));</p>
+<p class="mb-2">                el.appendChild(document.createTextNode(child));</p>
+<p class="mb-2">            }</p>
+<p class="mb-2">            }</p>
+<p class="mb-2">        });</p>
+<p class="mb-2">        });</p>
+<br>
+<br>
+<p class="mb-2">        return el;</p>
+<p class="mb-2">        return el;</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 创建虚拟 DOM</p>
+<p class="mb-2">// 创建虚拟 DOM</p>
+<p class="mb-2">const vdom = new VNode(&#x27;div&#x27;, { class: &#x27;container&#x27; }, [</p>
+<p class="mb-2">const vdom = new VNode(&#x27;div&#x27;, { class: &#x27;container&#x27; }, [</p>
+<p class="mb-2">    new VNode(&#x27;h1&#x27;, {}, [&#x27;Hello&#x27;]),</p>
+<p class="mb-2">    new VNode(&#x27;h1&#x27;, {}, [&#x27;Hello&#x27;]),</p>
+<p class="mb-2">    new VNode(&#x27;button&#x27;, { onClick: () =&gt; alert(&#x27;clicked!&#x27;) }, [&#x27;Click me&#x27;])</p>
+<p class="mb-2">    new VNode(&#x27;button&#x27;, { onClick: () =&gt; alert(&#x27;clicked!&#x27;) }, [&#x27;Click me&#x27;])</p>
+<p class="mb-2">]);</p>
+<p class="mb-2">]);</p>
+<br>
+<br>
+<p class="mb-2">// 渲染到页面</p>
+<p class="mb-2">// 渲染到页面</p>
+<p class="mb-2">document.getElementById(&#x27;app&#x27;).appendChild(vdom.render());</p>
+<p class="mb-2">document.getElementById(&#x27;app&#x27;).appendChild(vdom.render());</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. Vue 生态</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. Vue 生态</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 响应式原理</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 响应式原理</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 Vue 2 vs Vue 3 响应式对比</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 Vue 2 vs Vue 3 响应式对比</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">Vue 2 响应式：</p>
+<p class="mb-2">Vue 2 响应式：</p>
+<p class="mb-2">  Object.defineProperty()  →  无法监听数组下标、需 Vue.set</p>
+<p class="mb-2">  Object.defineProperty()  →  无法监听数组下标、需 Vue.set</p>
+<br>
+<br>
+<p class="mb-2">Vue 3 响应式：</p>
+<p class="mb-2">Vue 3 响应式：</p>
+<p class="mb-2">  Proxy  →  真正拦截所有操作、支持数组、可嵌套监听</p>
+<p class="mb-2">  Proxy  →  真正拦截所有操作、支持数组、可嵌套监听</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 Vue 3 响应式原理</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 Vue 3 响应式原理</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// 简化版响应式系统实现</p>
+<p class="mb-2">// 简化版响应式系统实现</p>
+<p class="mb-2">function reactive(obj) {</p>
+<p class="mb-2">function reactive(obj) {</p>
+<p class="mb-2">    // 使用 Proxy 拦截对象的读写操作</p>
+<p class="mb-2">    // 使用 Proxy 拦截对象的读写操作</p>
+<p class="mb-2">    return new Proxy(obj, {</p>
+<p class="mb-2">    return new Proxy(obj, {</p>
+<p class="mb-2">        get(target, key, receiver) {</p>
+<p class="mb-2">        get(target, key, receiver) {</p>
+<p class="mb-2">            const result = Reflect.get(target, key, receiver);</p>
+<p class="mb-2">            const result = Reflect.get(target, key, receiver);</p>
+<br>
+<br>
+<p class="mb-2">            // 依赖收集：记录谁在读取这个属性</p>
+<p class="mb-2">            // 依赖收集：记录谁在读取这个属性</p>
+<p class="mb-2">            if (activeEffect) {</p>
+<p class="mb-2">            if (activeEffect) {</p>
+<p class="mb-2">                // 将当前 effect 注册到 target[key] 的依赖列表</p>
+<p class="mb-2">                // 将当前 effect 注册到 target[key] 的依赖列表</p>
+<p class="mb-2">                track(target, key);</p>
+<p class="mb-2">                track(target, key);</p>
+<p class="mb-2">            }</p>
+<p class="mb-2">            }</p>
+<br>
+<br>
+<p class="mb-2">            // 如果是对象，递归包装成响应式</p>
+<p class="mb-2">            // 如果是对象，递归包装成响应式</p>
+<p class="mb-2">            if (typeof result === &#x27;object&#x27; &amp;&amp; result !== null) {</p>
+<p class="mb-2">            if (typeof result === &#x27;object&#x27; &amp;&amp; result !== null) {</p>
+<p class="mb-2">                return reactive(result);</p>
+<p class="mb-2">                return reactive(result);</p>
+<p class="mb-2">            }</p>
+<p class="mb-2">            }</p>
+<br>
+<br>
+<p class="mb-2">            return result;</p>
+<p class="mb-2">            return result;</p>
+<p class="mb-2">        },</p>
+<p class="mb-2">        },</p>
+<br>
+<br>
+<p class="mb-2">        set(target, key, value, receiver) {</p>
+<p class="mb-2">        set(target, key, value, receiver) {</p>
+<p class="mb-2">            const oldValue = target[key];</p>
+<p class="mb-2">            const oldValue = target[key];</p>
+<p class="mb-2">            const result = Reflect.set(target, key, value, receiver);</p>
+<p class="mb-2">            const result = Reflect.set(target, key, value, receiver);</p>
+<br>
+<br>
+<p class="mb-2">            // 触发更新：通知所有依赖这个属性的 effect</p>
+<p class="mb-2">            // 触发更新：通知所有依赖这个属性的 effect</p>
+<p class="mb-2">            if (oldValue !== value) {</p>
+<p class="mb-2">            if (oldValue !== value) {</p>
+<p class="mb-2">                trigger(target, key);</p>
+<p class="mb-2">                trigger(target, key);</p>
+<p class="mb-2">            }</p>
+<p class="mb-2">            }</p>
+<br>
+<br>
+<p class="mb-2">            return result;</p>
+<p class="mb-2">            return result;</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">    });</p>
+<p class="mb-2">    });</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 依赖收集</p>
+<p class="mb-2">// 依赖收集</p>
+<p class="mb-2">let activeEffect = null;</p>
+<p class="mb-2">let activeEffect = null;</p>
+<br>
+<br>
+<p class="mb-2">function effect(fn) {</p>
+<p class="mb-2">function effect(fn) {</p>
+<p class="mb-2">    activeEffect = fn;</p>
+<p class="mb-2">    activeEffect = fn;</p>
+<p class="mb-2">    fn();  // 执行时自动收集依赖</p>
+<p class="mb-2">    fn();  // 执行时自动收集依赖</p>
+<p class="mb-2">    activeEffect = null;</p>
+<p class="mb-2">    activeEffect = null;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 存储依赖关系</p>
+<p class="mb-2">// 存储依赖关系</p>
+<p class="mb-2">const targetMap = new WeakMap();  // target → key → effects[]</p>
+<p class="mb-2">const targetMap = new WeakMap();  // target → key → effects[]</p>
+<br>
+<br>
+<p class="mb-2">function track(target, key) {</p>
+<p class="mb-2">function track(target, key) {</p>
+<p class="mb-2">    // 记录 target.key 被当前 activeEffect 依赖</p>
+<p class="mb-2">    // 记录 target.key 被当前 activeEffect 依赖</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">function trigger(target, key) {</p>
+<p class="mb-2">function trigger(target, key) {</p>
+<p class="mb-2">    // 找出 target.key 的所有依赖 effect 并执行</p>
+<p class="mb-2">    // 找出 target.key 的所有依赖 effect 并执行</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.3 实际使用示例</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.3 实际使用示例</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// 定义响应式数据</p>
+<p class="mb-2">// 定义响应式数据</p>
+<p class="mb-2">const state = reactive({</p>
+<p class="mb-2">const state = reactive({</p>
+<p class="mb-2">    count: 0,</p>
+<p class="mb-2">    count: 0,</p>
+<p class="mb-2">    user: {</p>
+<p class="mb-2">    user: {</p>
+<p class="mb-2">        name: &#x27;John&#x27;,</p>
+<p class="mb-2">        name: &#x27;John&#x27;,</p>
+<p class="mb-2">        age: 25</p>
+<p class="mb-2">        age: 25</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// 定义副作用（自动追踪依赖）</p>
+<p class="mb-2">// 定义副作用（自动追踪依赖）</p>
+<p class="mb-2">effect(() =&gt; {</p>
+<p class="mb-2">effect(() =&gt; {</p>
+<p class="mb-2">    console.log(`Count is: ${state.count}`);</p>
+<p class="mb-2">    console.log(`Count is: ${state.count}`);</p>
+<p class="mb-2">    console.log(`User name: ${state.user.name}`);</p>
+<p class="mb-2">    console.log(`User name: ${state.user.name}`);</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// 触发更新</p>
+<p class="mb-2">// 触发更新</p>
+<p class="mb-2">state.count = 5;  // → 自动打印 &quot;Count is: 5&quot;</p>
+<p class="mb-2">state.count = 5;  // → 自动打印 &quot;Count is: 5&quot;</p>
+<p class="mb-2">//              ↓</p>
+<p class="mb-2">//              ↓</p>
+<p class="mb-2">//         触发 trigger</p>
+<p class="mb-2">//         触发 trigger</p>
+<p class="mb-2">//              ↓</p>
+<p class="mb-2">//              ↓</p>
+<p class="mb-2">//         执行所有依赖 count 的 effect</p>
+<p class="mb-2">//         执行所有依赖 count 的 effect</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 组合式 API 设计思路</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 组合式 API 设计思路</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 组合式 API vs 选项式 API</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 组合式 API vs 选项式 API</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">选项式 API (Options API)：</p>
+<p class="mb-2">选项式 API (Options API)：</p>
+<p class="mb-2">┌─────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────┐</p>
+<p class="mb-2">│  export default {                  │</p>
+<p class="mb-2">│  export default {                  │</p>
+<p class="mb-2">│    data() { return { count: 0 } },  │</p>
+<p class="mb-2">│    data() { return { count: 0 } },  │</p>
+<p class="mb-2">│    methods: { increment() {} },    │  ← 功能分散在不同选项</p>
+<p class="mb-2">│    methods: { increment() {} },    │  ← 功能分散在不同选项</p>
+<p class="mb-2">│    computed: { double() {} },      │</p>
+<p class="mb-2">│    computed: { double() {} },      │</p>
+<p class="mb-2">│    watch: { count() {} }           │</p>
+<p class="mb-2">│    watch: { count() {} }           │</p>
+<p class="mb-2">│  }                                  │</p>
+<p class="mb-2">│  }                                  │</p>
+<p class="mb-2">└─────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────┘</p>
+<br>
+<br>
+<p class="mb-2">组合式 API (Composition API)：</p>
+<p class="mb-2">组合式 API (Composition API)：</p>
+<p class="mb-2">┌─────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────┐</p>
+<p class="mb-2">│  export default {                  │</p>
+<p class="mb-2">│  export default {                  │</p>
+<p class="mb-2">│    setup() {                       │</p>
+<p class="mb-2">│    setup() {                       │</p>
+<p class="mb-2">│      const count = ref(0);         │</p>
+<p class="mb-2">│      const count = ref(0);         │</p>
+<p class="mb-2">│      const double = computed(() =&gt; count.value * 2);</p>
+<p class="mb-2">│      const double = computed(() =&gt; count.value * 2);</p>
+<p class="mb-2">│      const increment = () =&gt; count.value++;</p>
+<p class="mb-2">│      const increment = () =&gt; count.value++;</p>
+<p class="mb-2">│                              │</p>
+<p class="mb-2">│                              │</p>
+<p class="mb-2">│      watch(count, (newVal) =&gt; {});│  ← 相关逻辑可以组合在一起</p>
+<p class="mb-2">│      watch(count, (newVal) =&gt; {});│  ← 相关逻辑可以组合在一起</p>
+<p class="mb-2">│                              │</p>
+<p class="mb-2">│                              │</p>
+<p class="mb-2">│      return { count, double, increment };│</p>
+<p class="mb-2">│      return { count, double, increment };│</p>
+<p class="mb-2">│    }                                 │</p>
+<p class="mb-2">│    }                                 │</p>
+<p class="mb-2">│  }                                   │</p>
+<p class="mb-2">│  }                                   │</p>
+<p class="mb-2">└─────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 组合式 API 核心函数</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 组合式 API 核心函数</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">import { </p>
+<p class="mb-2">import { </p>
+<p class="mb-2">    ref,           // 创建响应式引用</p>
+<p class="mb-2">    ref,           // 创建响应式引用</p>
+<p class="mb-2">    reactive,      // 创建响应式对象</p>
+<p class="mb-2">    reactive,      // 创建响应式对象</p>
+<p class="mb-2">    computed,      // 创建计算属性</p>
+<p class="mb-2">    computed,      // 创建计算属性</p>
+<p class="mb-2">    watch,         // 监听变化</p>
+<p class="mb-2">    watch,         // 监听变化</p>
+<p class="mb-2">    onMounted,     // 生命周期钩子</p>
+<p class="mb-2">    onMounted,     // 生命周期钩子</p>
+<p class="mb-2">    toRefs         // 解构响应式对象</p>
+<p class="mb-2">    toRefs         // 解构响应式对象</p>
+<p class="mb-2">} from &#x27;vue&#x27;;</p>
+<p class="mb-2">} from &#x27;vue&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">// ref: 基础类型响应式</p>
+<p class="mb-2">// ref: 基础类型响应式</p>
+<p class="mb-2">const count = ref(0);</p>
+<p class="mb-2">const count = ref(0);</p>
+<p class="mb-2">console.log(count.value);  // 访问值需要 .value</p>
+<p class="mb-2">console.log(count.value);  // 访问值需要 .value</p>
+<br>
+<br>
+<p class="mb-2">// reactive: 对象响应式</p>
+<p class="mb-2">// reactive: 对象响应式</p>
+<p class="mb-2">const state = reactive({</p>
+<p class="mb-2">const state = reactive({</p>
+<p class="mb-2">    count: 0,</p>
+<p class="mb-2">    count: 0,</p>
+<p class="mb-2">    user: { name: &#x27;John&#x27; }</p>
+<p class="mb-2">    user: { name: &#x27;John&#x27; }</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// computed: 计算属性</p>
+<p class="mb-2">// computed: 计算属性</p>
+<p class="mb-2">const doubleCount = computed(() =&gt; count.value * 2);</p>
+<p class="mb-2">const doubleCount = computed(() =&gt; count.value * 2);</p>
+<br>
+<br>
+<p class="mb-2">// watch: 监听器</p>
+<p class="mb-2">// watch: 监听器</p>
+<p class="mb-2">watch(count, (newVal, oldVal) =&gt; {</p>
+<p class="mb-2">watch(count, (newVal, oldVal) =&gt; {</p>
+<p class="mb-2">    console.log(`count changed from ${oldVal} to ${newVal}`);</p>
+<p class="mb-2">    console.log(`count changed from ${oldVal} to ${newVal}`);</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// 生命周期钩子</p>
+<p class="mb-2">// 生命周期钩子</p>
+<p class="mb-2">onMounted(() =&gt; {</p>
+<p class="mb-2">onMounted(() =&gt; {</p>
+<p class="mb-2">    console.log(&#x27;Component mounted!&#x27;);</p>
+<p class="mb-2">    console.log(&#x27;Component mounted!&#x27;);</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.3 逻辑复用：Composables</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.3 逻辑复用：Composables</h4>
+<br>
+<br>
+<p class="mb-2">组合式 API 的最大优势是**逻辑复用**：</p>
+<p class="mb-2">组合式 API 的最大优势是**逻辑复用**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// composables/useCounter.js</p>
+<p class="mb-2">// composables/useCounter.js</p>
+<p class="mb-2">import { ref, computed } from &#x27;vue&#x27;;</p>
+<p class="mb-2">import { ref, computed } from &#x27;vue&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">export function useCounter(initialValue = 0) {</p>
+<p class="mb-2">export function useCounter(initialValue = 0) {</p>
+<p class="mb-2">    const count = ref(initialValue);</p>
+<p class="mb-2">    const count = ref(initialValue);</p>
+<p class="mb-2">    const double = computed(() =&gt; count.value * 2);</p>
+<p class="mb-2">    const double = computed(() =&gt; count.value * 2);</p>
+<br>
+<br>
+<p class="mb-2">    function increment() {</p>
+<p class="mb-2">    function increment() {</p>
+<p class="mb-2">        count.value++;</p>
+<p class="mb-2">        count.value++;</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    function decrement() {</p>
+<p class="mb-2">    function decrement() {</p>
+<p class="mb-2">        count.value--;</p>
+<p class="mb-2">        count.value--;</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    function reset() {</p>
+<p class="mb-2">    function reset() {</p>
+<p class="mb-2">        count.value = initialValue;</p>
+<p class="mb-2">        count.value = initialValue;</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    return { count, double, increment, decrement, reset };</p>
+<p class="mb-2">    return { count, double, increment, decrement, reset };</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 在组件中使用</p>
+<p class="mb-2">// 在组件中使用</p>
+<p class="mb-2">import { useCounter } from &#x27;@/composables/useCounter&#x27;;</p>
+<p class="mb-2">import { useCounter } from &#x27;@/composables/useCounter&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">export default {</p>
+<p class="mb-2">export default {</p>
+<p class="mb-2">    setup() {</p>
+<p class="mb-2">    setup() {</p>
+<p class="mb-2">        // 可以在多个组件中复用同一个逻辑</p>
+<p class="mb-2">        // 可以在多个组件中复用同一个逻辑</p>
+<p class="mb-2">        const { count, double, increment } = useCounter(10);</p>
+<p class="mb-2">        const { count, double, increment } = useCounter(10);</p>
+<br>
+<br>
+<p class="mb-2">        return { count, double, increment };</p>
+<p class="mb-2">        return { count, double, increment };</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">};</p>
+<p class="mb-2">};</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. Next.js 架构</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. Next.js 架构</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 SSR/SSG/ISR 架构对比</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 SSR/SSG/ISR 架构对比</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 三种渲染模式概览</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 三种渲染模式概览</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                        渲染模式对比                               │</p>
+<p class="mb-2">│                        渲染模式对比                               │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│  SSR (Server-Side Rendering)                                   │</p>
+<p class="mb-2">│  SSR (Server-Side Rendering)                                   │</p>
+<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐      │</p>
+<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐      │</p>
+<p class="mb-2">│  │ Request │───▶│  Server │───▶│ Render  │───▶│ Response│      │</p>
+<p class="mb-2">│  │ Request │───▶│  Server │───▶│ Render  │───▶│ Response│      │</p>
+<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘    └─────────┘      │</p>
+<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘    └─────────┘      │</p>
+<p class="mb-2">│                      │ ← 每次请求都重新渲染                      │</p>
+<p class="mb-2">│                      │ ← 每次请求都重新渲染                      │</p>
+<p class="mb-2">│                      ↓                                          │</p>
+<p class="mb-2">│                      ↓                                          │</p>
+<p class="mb-2">│                 HTML + Hydration (水合)                         │</p>
+<p class="mb-2">│                 HTML + Hydration (水合)                         │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│  ─────────────────────────────────────────────────────────────  │</p>
+<p class="mb-2">│  ─────────────────────────────────────────────────────────────  │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│  SSG (Static Site Generation)                                  │</p>
+<p class="mb-2">│  SSG (Static Site Generation)                                  │</p>
+<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐      │</p>
+<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐      │</p>
+<p class="mb-2">│  │ Build   │───▶│  HTML  │───▶│ Deploy  │───▶│  CDN   │      │</p>
+<p class="mb-2">│  │ Build   │───▶│  HTML  │───▶│ Deploy  │───▶│  CDN   │      │</p>
+<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘    └─────────┘      │</p>
+<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘    └─────────┘      │</p>
+<p class="mb-2">│                      │ ← 构建时生成一次，永久缓存                 │</p>
+<p class="mb-2">│                      │ ← 构建时生成一次，永久缓存                 │</p>
+<p class="mb-2">│                      ↓                                          │</p>
+<p class="mb-2">│                      ↓                                          │</p>
+<p class="mb-2">│                 静态 HTML (极快!)                                │</p>
+<p class="mb-2">│                 静态 HTML (极快!)                                │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│  ─────────────────────────────────────────────────────────────  │</p>
+<p class="mb-2">│  ─────────────────────────────────────────────────────────────  │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│  ISR (Incremental Static Regeneration)                          │</p>
+<p class="mb-2">│  ISR (Incremental Static Regeneration)                          │</p>
+<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐      │</p>
+<p class="mb-2">│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐      │</p>
+<p class="mb-2">│  │ Request │───▶│  Cache │───▶│  Revalidate│───▶│ Response│   │</p>
+<p class="mb-2">│  │ Request │───▶│  Cache │───▶│  Revalidate│───▶│ Response│   │</p>
+<p class="mb-2">│  │         │    │  Check │    │  (后台)   │    │         │   │</p>
+<p class="mb-2">│  │         │    │  Check │    │  (后台)   │    │         │   │</p>
+<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘    └─────────┘      │</p>
+<p class="mb-2">│  └─────────┘    └─────────┘    └─────────┘    └─────────┘      │</p>
+<p class="mb-2">│                      │ ← 缓存 + 按需重新生成                      │</p>
+<p class="mb-2">│                      │ ← 缓存 + 按需重新生成                      │</p>
+<p class="mb-2">│                      ↓                                          │</p>
+<p class="mb-2">│                      ↓                                          │</p>
+<p class="mb-2">│                 静态 HTML + 自动更新                             │</p>
+<p class="mb-2">│                 静态 HTML + 自动更新                             │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">│                                                                 │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 适用场景对比</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 适用场景对比</h4>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>渲染模式</td><td>适用场景</td><td>数据特点</td><td>TTFB</td><td>缓存难度</td></tr>
+<tr><td>渲染模式</td><td>适用场景</td><td>数据特点</td><td>TTFB</td><td>缓存难度</td></tr>
+<tr><td>**SSR**</td><td>需实时数据的页面</td><td>频繁变化</td><td>慢</td><td>易</td></tr>
+<tr><td>**SSR**</td><td>需实时数据的页面</td><td>频繁变化</td><td>慢</td><td>易</td></tr>
+<tr><td>**SSG**</td><td>静态内容、文档、博客</td><td>不变</td><td>最快</td><td>最易</td></tr>
+<tr><td>**SSG**</td><td>静态内容、文档、博客</td><td>不变</td><td>最快</td><td>最易</td></tr>
+<tr><td>**ISR**</td><td>频繁更新但不需实时的内容</td><td>定期更新</td><td>快</td><td>中</td></tr>
+<tr><td>**ISR**</td><td>频繁更新但不需实时的内容</td><td>定期更新</td><td>快</td><td>中</td></tr></table>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 Next.js 代码实现</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 Next.js 代码实现</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// pages/index.js - SSR (Server-Side Rendering)</p>
+<p class="mb-2">// pages/index.js - SSR (Server-Side Rendering)</p>
+<p class="mb-2">// 每次请求都会执行</p>
+<p class="mb-2">// 每次请求都会执行</p>
+<p class="mb-2">export async function getServerSideProps() {</p>
+<p class="mb-2">export async function getServerSideProps() {</p>
+<p class="mb-2">    const res = await fetch(&#x27;https://api.example.com/data&#x27;);</p>
+<p class="mb-2">    const res = await fetch(&#x27;https://api.example.com/data&#x27;);</p>
+<p class="mb-2">    const data = await res.json();</p>
+<p class="mb-2">    const data = await res.json();</p>
+<br>
+<br>
+<p class="mb-2">    return {</p>
+<p class="mb-2">    return {</p>
+<p class="mb-2">        props: { data }  // 传递给组件的 props</p>
+<p class="mb-2">        props: { data }  // 传递给组件的 props</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">export default function Home({ data }) {</p>
+<p class="mb-2">export default function Home({ data }) {</p>
+<p class="mb-2">    return &lt;div&gt;{data.message}&lt;/div&gt;;</p>
+<p class="mb-2">    return &lt;div&gt;{data.message}&lt;/div&gt;;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// pages/about.js - SSG (Static Site Generation)</p>
+<p class="mb-2">// pages/about.js - SSG (Static Site Generation)</p>
+<p class="mb-2">// 构建时生成一次</p>
+<p class="mb-2">// 构建时生成一次</p>
+<p class="mb-2">export async function getStaticProps() {</p>
+<p class="mb-2">export async function getStaticProps() {</p>
+<p class="mb-2">    const res = await fetch(&#x27;https://api.example.com/static-data&#x27;);</p>
+<p class="mb-2">    const res = await fetch(&#x27;https://api.example.com/static-data&#x27;);</p>
+<p class="mb-2">    const data = await res.json();</p>
+<p class="mb-2">    const data = await res.json();</p>
+<br>
+<br>
+<p class="mb-2">    return {</p>
+<p class="mb-2">    return {</p>
+<p class="mb-2">        props: { data },</p>
+<p class="mb-2">        props: { data },</p>
+<p class="mb-2">        revalidate: false  // 不重新生成（完全静态）</p>
+<p class="mb-2">        revalidate: false  // 不重新生成（完全静态）</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">export default function About({ data }) {</p>
+<p class="mb-2">export default function About({ data }) {</p>
+<p class="mb-2">    return &lt;div&gt;{data.content}&lt;/div&gt;;</p>
+<p class="mb-2">    return &lt;div&gt;{data.content}&lt;/div&gt;;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// pages/blog/[id].js - ISR (Incremental Static Regeneration)</p>
+<p class="mb-2">// pages/blog/[id].js - ISR (Incremental Static Regeneration)</p>
+<p class="mb-2">// 按需重新生成，但保留缓存优势</p>
+<p class="mb-2">// 按需重新生成，但保留缓存优势</p>
+<p class="mb-2">export async function getStaticPaths() {</p>
+<p class="mb-2">export async function getStaticPaths() {</p>
+<p class="mb-2">    const res = await fetch(&#x27;https://api.example.com/posts&#x27;);</p>
+<p class="mb-2">    const res = await fetch(&#x27;https://api.example.com/posts&#x27;);</p>
+<p class="mb-2">    const posts = await res.json();</p>
+<p class="mb-2">    const posts = await res.json();</p>
+<br>
+<br>
+<p class="mb-2">    return {</p>
+<p class="mb-2">    return {</p>
+<p class="mb-2">        paths: posts.map(post =&gt; ({ params: { id: post.id } })),</p>
+<p class="mb-2">        paths: posts.map(post =&gt; ({ params: { id: post.id } })),</p>
+<p class="mb-2">        fallback: &#x27;blocking&#x27;  // 新页面按需生成</p>
+<p class="mb-2">        fallback: &#x27;blocking&#x27;  // 新页面按需生成</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">export async function getStaticProps({ params }) {</p>
+<p class="mb-2">export async function getStaticProps({ params }) {</p>
+<p class="mb-2">    const res = await fetch(`https://api.example.com/posts/${params.id}`);</p>
+<p class="mb-2">    const res = await fetch(`https://api.example.com/posts/${params.id}`);</p>
+<p class="mb-2">    const data = await res.json();</p>
+<p class="mb-2">    const data = await res.json();</p>
+<br>
+<br>
+<p class="mb-2">    return {</p>
+<p class="mb-2">    return {</p>
+<p class="mb-2">        props: { post: data },</p>
+<p class="mb-2">        props: { post: data },</p>
+<p class="mb-2">        revalidate: 60  // 60秒后重新生成（后台）</p>
+<p class="mb-2">        revalidate: 60  // 60秒后重新生成（后台）</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">    };</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">export default function BlogPost({ post }) {</p>
+<p class="mb-2">export default function BlogPost({ post }) {</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;div&gt;</p>
+<p class="mb-2">        &lt;div&gt;</p>
+<p class="mb-2">            &lt;h1&gt;{post.title}&lt;/h1&gt;</p>
+<p class="mb-2">            &lt;h1&gt;{post.title}&lt;/h1&gt;</p>
+<p class="mb-2">            &lt;p&gt;{post.content}&lt;/p&gt;</p>
+<p class="mb-2">            &lt;p&gt;{post.content}&lt;/p&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 服务端组件设计</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 服务端组件设计</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 React 服务端组件架构</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 React 服务端组件架构</h4>
+<br>
+<br>
+<p class="mb-2">Next.js 13+ 引入了 React 服务端组件（RSC），实现了**真正的服务端渲染**：</p>
+<p class="mb-2">Next.js 13+ 引入了 React 服务端组件（RSC），实现了**真正的服务端渲染**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                    服务端组件 vs 客户端组件                     │</p>
+<p class="mb-2">│                    服务端组件 vs 客户端组件                     │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  服务端组件 (Server Component)                              │</p>
+<p class="mb-2">│  服务端组件 (Server Component)                              │</p>
+<p class="mb-2">│  ├── 默认类型（.js/.jsx/.ts/.tsx）                          │</p>
+<p class="mb-2">│  ├── 默认类型（.js/.jsx/.ts/.tsx）                          │</p>
+<p class="mb-2">│  ├── 在服务端执行，可访问数据库/文件系统                       │</p>
+<p class="mb-2">│  ├── 在服务端执行，可访问数据库/文件系统                       │</p>
+<p class="mb-2">│  ├── 不能使用 useState、useEffect 等 Hook                    │</p>
+<p class="mb-2">│  ├── 不能使用 useState、useEffect 等 Hook                    │</p>
+<p class="mb-2">│  ├── 不能绑定事件（onClick 等）                              │</p>
+<p class="mb-2">│  ├── 不能绑定事件（onClick 等）                              │</p>
+<p class="mb-2">│  └── 可以 import 客户端组件                                  │</p>
+<p class="mb-2">│  └── 可以 import 客户端组件                                  │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  客户端组件 (Client Component)                              │</p>
+<p class="mb-2">│  客户端组件 (Client Component)                              │</p>
+<p class="mb-2">│  ├── 文件顶部使用 &#x27;use client&#x27; 声明                          │</p>
+<p class="mb-2">│  ├── 文件顶部使用 &#x27;use client&#x27; 声明                          │</p>
+<p class="mb-2">│  ├── 在浏览器执行，可使用所有 React 特性                       │</p>
+<p class="mb-2">│  ├── 在浏览器执行，可使用所有 React 特性                       │</p>
+<p class="mb-2">│  ├── 可以 import 服务端组件                                  │</p>
+<p class="mb-2">│  ├── 可以 import 服务端组件                                  │</p>
+<p class="mb-2">│  └── 负责交互：事件处理、状态管理、动画                        │</p>
+<p class="mb-2">│  └── 负责交互：事件处理、状态管理、动画                        │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 实际应用示例</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 实际应用示例</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// app/page.tsx - 服务端组件（默认）</p>
+<p class="mb-2">// app/page.tsx - 服务端组件（默认）</p>
+<p class="mb-2">// 可以直接访问数据库！</p>
+<p class="mb-2">// 可以直接访问数据库！</p>
+<p class="mb-2">import { db } from &#x27;@/lib/db&#x27;;</p>
+<p class="mb-2">import { db } from &#x27;@/lib/db&#x27;;</p>
+<p class="mb-2">import ArticleList from &#x27;./ArticleList&#x27;;  // 客户端组件</p>
+<p class="mb-2">import ArticleList from &#x27;./ArticleList&#x27;;  // 客户端组件</p>
+<p class="mb-2">import SearchBox from &#x27;./SearchBox&#x27;;      // 客户端组件</p>
+<p class="mb-2">import SearchBox from &#x27;./SearchBox&#x27;;      // 客户端组件</p>
+<br>
+<br>
+<p class="mb-2">export default async function HomePage() {</p>
+<p class="mb-2">export default async function HomePage() {</p>
+<p class="mb-2">    // 直接在服务端查询数据，无需 API</p>
+<p class="mb-2">    // 直接在服务端查询数据，无需 API</p>
+<p class="mb-2">    const articles = await db.query(&#x27;SELECT * FROM articles ORDER BY date DESC&#x27;);</p>
+<p class="mb-2">    const articles = await db.query(&#x27;SELECT * FROM articles ORDER BY date DESC&#x27;);</p>
+<p class="mb-2">    const categories = await db.query(&#x27;SELECT DISTINCT category FROM articles&#x27;);</p>
+<p class="mb-2">    const categories = await db.query(&#x27;SELECT DISTINCT category FROM articles&#x27;);</p>
+<br>
+<br>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;main&gt;</p>
+<p class="mb-2">        &lt;main&gt;</p>
+<p class="mb-2">            {/* 服务端组件：可以在这里使用 Promise，数据流清晰 */}</p>
+<p class="mb-2">            {/* 服务端组件：可以在这里使用 Promise，数据流清晰 */}</p>
+<p class="mb-2">            &lt;h1&gt;Latest Articles&lt;/h1&gt;</p>
+<p class="mb-2">            &lt;h1&gt;Latest Articles&lt;/h1&gt;</p>
+<br>
+<br>
+<p class="mb-2">            {/* 客户端组件：负责交互 */}</p>
+<p class="mb-2">            {/* 客户端组件：负责交互 */}</p>
+<p class="mb-2">            &lt;SearchBox categories={categories} /&gt;</p>
+<p class="mb-2">            &lt;SearchBox categories={categories} /&gt;</p>
+<p class="mb-2">            &lt;ArticleList initialArticles={articles} /&gt;</p>
+<p class="mb-2">            &lt;ArticleList initialArticles={articles} /&gt;</p>
+<p class="mb-2">        &lt;/main&gt;</p>
+<p class="mb-2">        &lt;/main&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// components/ArticleList.tsx - 客户端组件</p>
+<p class="mb-2">// components/ArticleList.tsx - 客户端组件</p>
+<p class="mb-2">&#x27;use client&#x27;;  // 必须声明</p>
+<p class="mb-2">&#x27;use client&#x27;;  // 必须声明</p>
+<br>
+<br>
+<p class="mb-2">import { useState } from &#x27;react&#x27;;</p>
+<p class="mb-2">import { useState } from &#x27;react&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">export default function ArticleList({ initialArticles }) {</p>
+<p class="mb-2">export default function ArticleList({ initialArticles }) {</p>
+<p class="mb-2">    // 客户端状态，用于交互</p>
+<p class="mb-2">    // 客户端状态，用于交互</p>
+<p class="mb-2">    const [filter, setFilter] = useState(&#x27;all&#x27;);</p>
+<p class="mb-2">    const [filter, setFilter] = useState(&#x27;all&#x27;);</p>
+<p class="mb-2">    const [articles, setArticles] = useState(initialArticles);</p>
+<p class="mb-2">    const [articles, setArticles] = useState(initialArticles);</p>
+<br>
+<br>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;div&gt;</p>
+<p class="mb-2">        &lt;div&gt;</p>
+<p class="mb-2">            &lt;select onChange={(e) =&gt; setFilter(e.target.value)}&gt;</p>
+<p class="mb-2">            &lt;select onChange={(e) =&gt; setFilter(e.target.value)}&gt;</p>
+<p class="mb-2">                &lt;option value=&quot;all&quot;&gt;All&lt;/option&gt;</p>
+<p class="mb-2">                &lt;option value=&quot;all&quot;&gt;All&lt;/option&gt;</p>
+<p class="mb-2">                &lt;option value=&quot;tech&quot;&gt;Tech&lt;/option&gt;</p>
+<p class="mb-2">                &lt;option value=&quot;tech&quot;&gt;Tech&lt;/option&gt;</p>
+<p class="mb-2">            &lt;/select&gt;</p>
+<p class="mb-2">            &lt;/select&gt;</p>
+<br>
+<br>
+<p class="mb-2">            {articles.map(article =&gt; (</p>
+<p class="mb-2">            {articles.map(article =&gt; (</p>
+<p class="mb-2">                &lt;div key={article.id}&gt;{article.title}&lt;/div&gt;</p>
+<p class="mb-2">                &lt;div key={article.id}&gt;{article.title}&lt;/div&gt;</p>
+<p class="mb-2">            ))}</p>
+<p class="mb-2">            ))}</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">4. 前端架构模式</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">4. 前端架构模式</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.1 MVC / MVVM 模式</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.1 MVC / MVVM 模式</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.1 MVC 模式</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.1 MVC 模式</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                      MVC 架构                                │</p>
+<p class="mb-2">│                      MVC 架构                                │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│    ┌──────────┐    ┌──────────┐    ┌──────────┐            │</p>
+<p class="mb-2">│    ┌──────────┐    ┌──────────┐    ┌──────────┐            │</p>
+<p class="mb-2">│    │   View   │◀──▶│Controller│◀──▶│   Model  │            │</p>
+<p class="mb-2">│    │   View   │◀──▶│Controller│◀──▶│   Model  │            │</p>
+<p class="mb-2">│    │   视图    │    │  控制器   │    │   模型   │            │</p>
+<p class="mb-2">│    │   视图    │    │  控制器   │    │   模型   │            │</p>
+<p class="mb-2">│    └──────────┘    └──────────┘    └──────────┘            │</p>
+<p class="mb-2">│    └──────────┘    └──────────┘    └──────────┘            │</p>
+<p class="mb-2">│         │                               │                   │</p>
+<p class="mb-2">│         │                               │                   │</p>
+<p class="mb-2">│         │  用户操作                     │ 数据变化通知      │</p>
+<p class="mb-2">│         │  用户操作                     │ 数据变化通知      │</p>
+<p class="mb-2">│         └───────────────────────────────┘                   │</p>
+<p class="mb-2">│         └───────────────────────────────┘                   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  Model: 数据层 + 业务逻辑（和后端 Model 类似）                │</p>
+<p class="mb-2">│  Model: 数据层 + 业务逻辑（和后端 Model 类似）                │</p>
+<p class="mb-2">│  View: UI 渲染，只负责展示                                    │</p>
+<p class="mb-2">│  View: UI 渲染，只负责展示                                    │</p>
+<p class="mb-2">│  Controller: 接收用户输入，调用 Model，更新 View              │</p>
+<p class="mb-2">│  Controller: 接收用户输入，调用 Model，更新 View              │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.2 MVVM 模式</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.2 MVVM 模式</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                      MVVM 架构                                │</p>
+<p class="mb-2">│                      MVVM 架构                                │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│    ┌──────────┐    ┌──────────┐    ┌──────────┐            │</p>
+<p class="mb-2">│    ┌──────────┐    ┌──────────┐    ┌──────────┐            │</p>
+<p class="mb-2">│    │   View   │◀──▶│ ViewModel│◀──▶│   Model  │            │</p>
+<p class="mb-2">│    │   View   │◀──▶│ ViewModel│◀──▶│   Model  │            │</p>
+<p class="mb-2">│    │   视图    │    │ 视图模型  │    │   模型   │            │</p>
+<p class="mb-2">│    │   视图    │    │ 视图模型  │    │   模型   │            │</p>
+<p class="mb-2">│    └──────────┘    └──────────┘    └──────────┘            │</p>
+<p class="mb-2">│    └──────────┘    └──────────┘    └──────────┘            │</p>
+<p class="mb-2">│         │               │                                   │</p>
+<p class="mb-2">│         │               │                                   │</p>
+<p class="mb-2">│         │  双向绑定      │ 单向数据流                        │</p>
+<p class="mb-2">│         │  双向绑定      │ 单向数据流                        │</p>
+<p class="mb-2">│         │◀─────────────▶│                                   │</p>
+<p class="mb-2">│         │◀─────────────▶│                                   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  ViewModel: View 和 Model 之间的&quot;桥梁&quot;                      │</p>
+<p class="mb-2">│  ViewModel: View 和 Model 之间的&quot;桥梁&quot;                      │</p>
+<p class="mb-2">│  ├── 将 Model 数据转换为 View 可用格式                       │</p>
+<p class="mb-2">│  ├── 将 Model 数据转换为 View 可用格式                       │</p>
+<p class="mb-2">│  ├── 将 View 操作转换为 Model 可执行命令                      │</p>
+<p class="mb-2">│  ├── 将 View 操作转换为 Model 可执行命令                      │</p>
+<p class="mb-2">│  └── 实现双向数据绑定（Angular/Vue）                         │</p>
+<p class="mb-2">│  └── 实现双向数据绑定（Angular/Vue）                         │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  典型实现：Angular, Vue, WPF                               │</p>
+<p class="mb-2">│  典型实现：Angular, Vue, WPF                               │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.3 对比与选择</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.3 对比与选择</h4>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>模式</td><td>核心特点</td><td>适用框架</td><td>适用场景</td></tr>
+<tr><td>模式</td><td>核心特点</td><td>适用框架</td><td>适用场景</td></tr>
+<tr><td>**MVC**</td><td>单向数据流，Controller 主导</td><td>Backbone.js</td><td>小型应用</td></tr>
+<tr><td>**MVC**</td><td>单向数据流，Controller 主导</td><td>Backbone.js</td><td>小型应用</td></tr>
+<tr><td>**MVVM**</td><td>双向数据绑定，ViewModel 同步</td><td>Angular, Vue</td><td>中大型应用</td></tr>
+<tr><td>**MVVM**</td><td>双向数据绑定，ViewModel 同步</td><td>Angular, Vue</td><td>中大型应用</td></tr>
+<tr><td>**Flux**</td><td>单向数据流，Store 中心</td><td>React (Redux)</td><td>复杂状态管理</td></tr>
+<tr><td>**Flux**</td><td>单向数据流，Store 中心</td><td>React (Redux)</td><td>复杂状态管理</td></tr>
+<tr><td>**Redux**</td><td>单一数据源，Reducer 纯函数</td><td>React</td><td>超大型应用</td></tr>
+<tr><td>**Redux**</td><td>单一数据源，Reducer 纯函数</td><td>React</td><td>超大型应用</td></tr></table>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.2 模块化联邦</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.2 模块化联邦</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.2.1 模块化联邦解决的问题</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.2.1 模块化联邦解决的问题</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">传统微前端问题：</p>
+<p class="mb-2">传统微前端问题：</p>
+<p class="mb-2">  ├── 技术栈限制（必须用同一套框架）</p>
+<p class="mb-2">  ├── 技术栈限制（必须用同一套框架）</p>
+<p class="mb-2">  ├── 样式冲突（全局 CSS 污染）</p>
+<p class="mb-2">  ├── 样式冲突（全局 CSS 污染）</p>
+<p class="mb-2">  ├── 依赖共享困难</p>
+<p class="mb-2">  ├── 依赖共享困难</p>
+<p class="mb-2">  └── 部署耦合</p>
+<p class="mb-2">  └── 部署耦合</p>
+<br>
+<br>
+<p class="mb-2">Module Federation 解决方案：</p>
+<p class="mb-2">Module Federation 解决方案：</p>
+<p class="mb-2">  ├── 技术栈无关（React/Vue/Angular 混用）</p>
+<p class="mb-2">  ├── 技术栈无关（React/Vue/Angular 混用）</p>
+<p class="mb-2">  ├── 运行时按需加载</p>
+<p class="mb-2">  ├── 运行时按需加载</p>
+<p class="mb-2">  ├── 共享依赖（只需加载一次）</p>
+<p class="mb-2">  ├── 共享依赖（只需加载一次）</p>
+<p class="mb-2">  └── 独立部署（各模块可单独上线）</p>
+<p class="mb-2">  └── 独立部署（各模块可单独上线）</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.2.2 Webpack Module Federation 示例</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.2.2 Webpack Module Federation 示例</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// host/webpack.config.js - 主机应用</p>
+<p class="mb-2">// host/webpack.config.js - 主机应用</p>
+<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
+<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
+<br>
+<br>
+<p class="mb-2">module.exports = {</p>
+<p class="mb-2">module.exports = {</p>
+<p class="mb-2">    plugins: [</p>
+<p class="mb-2">    plugins: [</p>
+<p class="mb-2">        new ModuleFederationPlugin({</p>
+<p class="mb-2">        new ModuleFederationPlugin({</p>
+<p class="mb-2">            name: &#x27;host&#x27;,</p>
+<p class="mb-2">            name: &#x27;host&#x27;,</p>
+<p class="mb-2">            remotes: {</p>
+<p class="mb-2">            remotes: {</p>
+<p class="mb-2">                // 定义远程模块</p>
+<p class="mb-2">                // 定义远程模块</p>
+<p class="mb-2">                remoteApp: &#x27;remoteApp@http://localhost:3001/remoteEntry.js&#x27;</p>
+<p class="mb-2">                remoteApp: &#x27;remoteApp@http://localhost:3001/remoteEntry.js&#x27;</p>
+<p class="mb-2">            },</p>
+<p class="mb-2">            },</p>
+<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]  // 共享依赖</p>
+<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]  // 共享依赖</p>
+<p class="mb-2">        })</p>
+<p class="mb-2">        })</p>
+<p class="mb-2">    ]</p>
+<p class="mb-2">    ]</p>
+<p class="mb-2">};</p>
+<p class="mb-2">};</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// remote/webpack.config.js - 远程模块</p>
+<p class="mb-2">// remote/webpack.config.js - 远程模块</p>
+<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
+<p class="mb-2">const ModuleFederationPlugin = require(&#x27;webpack/lib/container/ModuleFederationPlugin&#x27;);</p>
+<br>
+<br>
+<p class="mb-2">module.exports = {</p>
+<p class="mb-2">module.exports = {</p>
+<p class="mb-2">    plugins: [</p>
+<p class="mb-2">    plugins: [</p>
+<p class="mb-2">        new ModuleFederationPlugin({</p>
+<p class="mb-2">        new ModuleFederationPlugin({</p>
+<p class="mb-2">            name: &#x27;remoteApp&#x27;,</p>
+<p class="mb-2">            name: &#x27;remoteApp&#x27;,</p>
+<p class="mb-2">            filename: &#x27;remoteEntry.js&#x27;,  // 暴露的入口文件</p>
+<p class="mb-2">            filename: &#x27;remoteEntry.js&#x27;,  // 暴露的入口文件</p>
+<p class="mb-2">            exposes: {</p>
+<p class="mb-2">            exposes: {</p>
+<p class="mb-2">                // 暴露哪些组件</p>
+<p class="mb-2">                // 暴露哪些组件</p>
+<p class="mb-2">                &#x27;./Button&#x27;: &#x27;./src/Button&#x27;,</p>
+<p class="mb-2">                &#x27;./Button&#x27;: &#x27;./src/Button&#x27;,</p>
+<p class="mb-2">                &#x27;./Card&#x27;: &#x27;./src/Card&#x27;</p>
+<p class="mb-2">                &#x27;./Card&#x27;: &#x27;./src/Card&#x27;</p>
+<p class="mb-2">            },</p>
+<p class="mb-2">            },</p>
+<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]</p>
+<p class="mb-2">            shared: [&#x27;react&#x27;, &#x27;react-dom&#x27;]</p>
+<p class="mb-2">        })</p>
+<p class="mb-2">        })</p>
+<p class="mb-2">    ]</p>
+<p class="mb-2">    ]</p>
+<p class="mb-2">};</p>
+<p class="mb-2">};</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// host/src/App.jsx - 使用远程组件</p>
+<p class="mb-2">// host/src/App.jsx - 使用远程组件</p>
+<p class="mb-2">import React from &#x27;react&#x27;;</p>
+<p class="mb-2">import React from &#x27;react&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">const Button = React.lazy(() =&gt; import(&#x27;remoteApp/Button&#x27;));</p>
+<p class="mb-2">const Button = React.lazy(() =&gt; import(&#x27;remoteApp/Button&#x27;));</p>
+<p class="mb-2">const Card = React.lazy(() =&gt; import(&#x27;remoteApp/Card&#x27;));</p>
+<p class="mb-2">const Card = React.lazy(() =&gt; import(&#x27;remoteApp/Card&#x27;));</p>
+<br>
+<br>
+<p class="mb-2">function App() {</p>
+<p class="mb-2">function App() {</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">    return (</p>
+<p class="mb-2">        &lt;div&gt;</p>
+<p class="mb-2">        &lt;div&gt;</p>
+<p class="mb-2">            &lt;h1&gt;Host Application&lt;/h1&gt;</p>
+<p class="mb-2">            &lt;h1&gt;Host Application&lt;/h1&gt;</p>
+<p class="mb-2">            &lt;React.Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;</p>
+<p class="mb-2">            &lt;React.Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;</p>
+<p class="mb-2">                &lt;Button onClick={() =&gt; alert(&#x27;clicked!&#x27;)}&gt;</p>
+<p class="mb-2">                &lt;Button onClick={() =&gt; alert(&#x27;clicked!&#x27;)}&gt;</p>
+<p class="mb-2">                    Remote Button</p>
+<p class="mb-2">                    Remote Button</p>
+<p class="mb-2">                &lt;/Button&gt;</p>
+<p class="mb-2">                &lt;/Button&gt;</p>
+<p class="mb-2">                &lt;Card title=&quot;Remote Card&quot;&gt;</p>
+<p class="mb-2">                &lt;Card title=&quot;Remote Card&quot;&gt;</p>
+<p class="mb-2">                    This card is from remote!</p>
+<p class="mb-2">                    This card is from remote!</p>
+<p class="mb-2">                &lt;/Card&gt;</p>
+<p class="mb-2">                &lt;/Card&gt;</p>
+<p class="mb-2">            &lt;/React.Suspense&gt;</p>
+<p class="mb-2">            &lt;/React.Suspense&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">        &lt;/div&gt;</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">    );</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.3 前端架构设计原则</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.3 前端架构设计原则</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.3.1 核心设计原则</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.3.1 核心设计原则</h4>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>原则</td><td>说明</td><td>实践</td></tr>
+<tr><td>原则</td><td>说明</td><td>实践</td></tr>
+<tr><td>**DRY**</td><td>Don&#x27;t Repeat Yourself</td><td>抽取公共组件/工具函数</td></tr>
+<tr><td>**DRY**</td><td>Don&#x27;t Repeat Yourself</td><td>抽取公共组件/工具函数</td></tr>
+<tr><td>**高内聚低耦合**</td><td>相关功能放一起，模块间依赖最小化</td><td>组件独立、Props 传递</td></tr>
+<tr><td>**高内聚低耦合**</td><td>相关功能放一起，模块间依赖最小化</td><td>组件独立、Props 传递</td></tr>
+<tr><td>**关注点分离**</td><td>不同层级职责明确</td><td>展示组件/容器组件分离</td></tr>
+<tr><td>**关注点分离**</td><td>不同层级职责明确</td><td>展示组件/容器组件分离</td></tr>
+<tr><td>**单向数据流**</td><td>数据流向清晰可控</td><td>Redux/Vuex</td></tr>
+<tr><td>**单向数据流**</td><td>数据流向清晰可控</td><td>Redux/Vuex</td></tr>
+<tr><td>**渐进增强**</td><td>先基础后高级</td><td>先实现核心功能，再优化体验</td></tr>
+<tr><td>**渐进增强**</td><td>先基础后高级</td><td>先实现核心功能，再优化体验</td></tr></table>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.3.2 目录结构最佳实践</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.3.2 目录结构最佳实践</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">src/</p>
+<p class="mb-2">src/</p>
+<p class="mb-2">├── components/           # 公共组件</p>
+<p class="mb-2">├── components/           # 公共组件</p>
+<p class="mb-2">│   ├── Button/</p>
+<p class="mb-2">│   ├── Button/</p>
+<p class="mb-2">│   │   ├── index.tsx</p>
+<p class="mb-2">│   │   ├── index.tsx</p>
+<p class="mb-2">│   │   ├── Button.test.tsx</p>
+<p class="mb-2">│   │   ├── Button.test.tsx</p>
+<p class="mb-2">│   │   └── Button.module.css</p>
+<p class="mb-2">│   │   └── Button.module.css</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── pages/ 或 views/      # 页面组件</p>
+<p class="mb-2">├── pages/ 或 views/      # 页面组件</p>
+<p class="mb-2">│   ├── Home/</p>
+<p class="mb-2">│   ├── Home/</p>
+<p class="mb-2">│   ├── Profile/</p>
+<p class="mb-2">│   ├── Profile/</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── hooks/                # 自定义 Hooks</p>
+<p class="mb-2">├── hooks/                # 自定义 Hooks</p>
+<p class="mb-2">│   ├── useAuth.ts</p>
+<p class="mb-2">│   ├── useAuth.ts</p>
+<p class="mb-2">│   ├── useFetch.ts</p>
+<p class="mb-2">│   ├── useFetch.ts</p>
+<p class="mb-2">│   └── useCountdown.ts</p>
+<p class="mb-2">│   └── useCountdown.ts</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── utils/                # 工具函数</p>
+<p class="mb-2">├── utils/                # 工具函数</p>
+<p class="mb-2">│   ├── formatDate.ts</p>
+<p class="mb-2">│   ├── formatDate.ts</p>
+<p class="mb-2">│   ├── validation.ts</p>
+<p class="mb-2">│   ├── validation.ts</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── services/             # API 接口</p>
+<p class="mb-2">├── services/             # API 接口</p>
+<p class="mb-2">│   ├── user.ts</p>
+<p class="mb-2">│   ├── user.ts</p>
+<p class="mb-2">│   ├── product.ts</p>
+<p class="mb-2">│   ├── product.ts</p>
+<p class="mb-2">│   └── apiClient.ts</p>
+<p class="mb-2">│   └── apiClient.ts</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── store/                # 状态管理</p>
+<p class="mb-2">├── store/                # 状态管理</p>
+<p class="mb-2">│   ├── index.ts</p>
+<p class="mb-2">│   ├── index.ts</p>
+<p class="mb-2">│   ├── userSlice.ts</p>
+<p class="mb-2">│   ├── userSlice.ts</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│   └── ...</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── styles/               # 全局样式</p>
+<p class="mb-2">├── styles/               # 全局样式</p>
+<p class="mb-2">│   ├── variables.css</p>
+<p class="mb-2">│   ├── variables.css</p>
+<p class="mb-2">│   └── global.css</p>
+<p class="mb-2">│   └── global.css</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">└── App.tsx</p>
+<p class="mb-2">└── App.tsx</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">前端架构知识图谱</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">前端架构知识图谱</h3>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">前端架构</p>
+<p class="mb-2">前端架构</p>
+<p class="mb-2">├── React 生态</p>
+<p class="mb-2">├── React 生态</p>
+<p class="mb-2">│   ├── 组件化设计（单一职责、复用性）</p>
+<p class="mb-2">│   ├── 组件化设计（单一职责、复用性）</p>
+<p class="mb-2">│   ├── 状态管理（useState → Redux/Zustand）</p>
+<p class="mb-2">│   ├── 状态管理（useState → Redux/Zustand）</p>
+<p class="mb-2">│   └── 虚拟 DOM（Diff 算法、Key 优化）</p>
+<p class="mb-2">│   └── 虚拟 DOM（Diff 算法、Key 优化）</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── Vue 生态</p>
+<p class="mb-2">├── Vue 生态</p>
+<p class="mb-2">│   ├── 响应式原理（Proxy vs defineProperty）</p>
+<p class="mb-2">│   ├── 响应式原理（Proxy vs defineProperty）</p>
+<p class="mb-2">│   └── 组合式 API（逻辑复用、Composables）</p>
+<p class="mb-2">│   └── 组合式 API（逻辑复用、Composables）</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── Next.js</p>
+<p class="mb-2">├── Next.js</p>
+<p class="mb-2">│   ├── SSR（实时数据）</p>
+<p class="mb-2">│   ├── SSR（实时数据）</p>
+<p class="mb-2">│   ├── SSG（静态内容）</p>
+<p class="mb-2">│   ├── SSG（静态内容）</p>
+<p class="mb-2">│   ├── ISR（定期更新）</p>
+<p class="mb-2">│   ├── ISR（定期更新）</p>
+<p class="mb-2">│   └── 服务端组件（App Router）</p>
+<p class="mb-2">│   └── 服务端组件（App Router）</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">└── 架构模式</p>
+<p class="mb-2">└── 架构模式</p>
+<p class="mb-2">    ├── MVC / MVVM</p>
+<p class="mb-2">    ├── MVC / MVVM</p>
+<p class="mb-2">    ├── 模块化联邦（微前端）</p>
+<p class="mb-2">    ├── 模块化联邦（微前端）</p>
+<p class="mb-2">    └── 设计原则（DRY、内聚解耦）</p>
+<p class="mb-2">    └── 设计原则（DRY、内聚解耦）</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">学习建议</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">学习建议</h3>
+<br>
+<br>
+<p class="mb-2">1. **React**: 先掌握 Hooks 和状态管理，再深入虚拟 DOM 原理</p>
+<p class="mb-2">1. **React**: 先掌握 Hooks 和状态管理，再深入虚拟 DOM 原理</p>
+<p class="mb-2">2. **Vue**: 从组合式 API 入手，理解响应式原理</p>
+<p class="mb-2">2. **Vue**: 从组合式 API 入手，理解响应式原理</p>
+<p class="mb-2">3. **Next.js**: 理解不同渲染模式的适用场景</p>
+<p class="mb-2">3. **Next.js**: 理解不同渲染模式的适用场景</p>
+<p class="mb-2">4. **架构**: 多看优秀开源项目，学习它们的目录结构和代码组织</p>
+<p class="mb-2">4. **架构**: 多看优秀开源项目，学习它们的目录结构和代码组织</p>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<p class="mb-2">*文档版本：2024.12*</p>
+<p class="mb-2">*文档版本：2024.12*</p>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
+<blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
+<br>
+</div></article></main>
+<footer class="text-center text-sm text-secondary py-8 border-t border-gray-200 mt-8"><p>&copy; 2026 My Tech Blog. Built with Tailwind CSS.</p></footer>
+</body></html>

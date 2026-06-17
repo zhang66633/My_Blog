@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="zhang66633">
+  <title>后端架构深度解析 — My Tech Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{accent:'#2563EB','accent-hover':'#1D4ED8','text-primary':'#18181B',secondary:'#6B7280'}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'DM Sans',sans-serif;background-color:#FAFAFA}
+    h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+    pre{background:#1e1e2e;color:#cdd6f4;padding:1em 1.25em;border-radius:8px;overflow-x:auto;font-size:0.875em;line-height:1.5;margin:1em 0}
+    code{background:#e5e7eb;padding:0.15em 0.4em;border-radius:4px;font-size:0.9em}
+    pre code{background:transparent;padding:0;font-size:inherit}
+    table{border-collapse:collapse;width:100%;margin:1em 0}
+    th,td{border:1px solid #d1d5db;padding:0.5em 0.75em;text-align:left}
+    th{background:#f3f4f6;font-weight:600}
+    blockquote{border-left:3px solid #2563EB;padding:0.5em 1em;color:#6b7280;margin:1em 0}
+    article a{color:#2563EB;text-decoration:underline}
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm"><div class="max-w-3xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between"><a href="../index.html" class="text-accent hover:text-accent-hover font-medium">&larr; 返回博客</a><span class="text-sm text-secondary">Node.js, Microservices, API Design</span></div></nav>
+<main class="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12"><article><h1 class="text-3xl sm:text-4xl font-heading font-bold text-text-primary mb-3">后端架构深度解析</h1><p class="text-secondary text-sm mb-8">2026-06-17</p><div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-10 shadow-sm leading-relaxed text-text-primary">
+<p class="mb-2">---</p>
+<p class="mb-2">AIGC:</p>
+<p class="mb-2">AIGC:</p>
+<p class="mb-2">    Label: &quot;1&quot;</p>
+<p class="mb-2">    Label: &quot;1&quot;</p>
+<p class="mb-2">    ContentProducer: 001191110102MACQD9K64018705</p>
+<p class="mb-2">    ContentProducer: 001191110102MACQD9K64018705</p>
+<p class="mb-2">    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/后端架构深度解析.md</p>
+<p class="mb-2">    ProduceID: 7641889108075528511-data_volume/files/所有对话/主对话/教程文件/前后端架构解析/后端架构深度解析.md</p>
+<p class="mb-2">    ReservedCode1: &quot;&quot;</p>
+<p class="mb-2">    ReservedCode1: &quot;&quot;</p>
+<p class="mb-2">    ContentPropagator: 001191110102MACQD9K64028705</p>
+<p class="mb-2">    ContentPropagator: 001191110102MACQD9K64028705</p>
+<p class="mb-2">    PropagateID: 0#1781573300979</p>
+<p class="mb-2">    PropagateID: 0#1781573300979</p>
+<p class="mb-2">    ReservedCode2: &quot;&quot;</p>
+<p class="mb-2">    ReservedCode2: &quot;&quot;</p>
+<p class="mb-2">---</p>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">后端架构深度解析</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">后端架构深度解析</h1>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">目录</h2>
+<br>
+<br>
+<p class="mb-2">1. [Node.js 生态](#1-nodejs-生态)</p>
+<p class="mb-2">1. [Node.js 生态](#1-nodejs-生态)</p>
+<p class="mb-2">2. [Python FastAPI](#2-python-fastapi)</p>
+<p class="mb-2">2. [Python FastAPI](#2-python-fastapi)</p>
+<p class="mb-2">3. [Go 语言架构](#3-go-语言架构)</p>
+<p class="mb-2">3. [Go 语言架构](#3-go-语言架构)</p>
+<p class="mb-2">4. [API 设计](#4-api-设计)</p>
+<p class="mb-2">4. [API 设计](#4-api-设计)</p>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. Node.js 生态</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">1. Node.js 生态</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 Express / Fastify / Nest.js 架构对比</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">1.1 Express / Fastify / Nest.js 架构对比</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 三者定位差异</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.1 三者定位差异</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                    Node.js 框架生态                          │</p>
+<p class="mb-2">│                    Node.js 框架生态                          │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  Express           NestJS              Fastify             │</p>
+<p class="mb-2">│  Express           NestJS              Fastify             │</p>
+<p class="mb-2">│  ┌─────────┐       ┌─────────┐        ┌─────────┐         │</p>
+<p class="mb-2">│  ┌─────────┐       ┌─────────┐        ┌─────────┐         │</p>
+<p class="mb-2">│  │ 轻量     │       │ 企业级   │        │ 高性能   │         │</p>
+<p class="mb-2">│  │ 轻量     │       │ 企业级   │        │ 高性能   │         │</p>
+<p class="mb-2">│  │ 灵活     │       │ 模块化   │        │ 低开销   │         │</p>
+<p class="mb-2">│  │ 灵活     │       │ 模块化   │        │ 低开销   │         │</p>
+<p class="mb-2">│  │ 简洁     │       │ TypeScript │      │ 插件化   │         │</p>
+<p class="mb-2">│  │ 简洁     │       │ TypeScript │      │ 插件化   │         │</p>
+<p class="mb-2">│  └─────────┘       └─────────┘        └─────────┘         │</p>
+<p class="mb-2">│  └─────────┘       └─────────┘        └─────────┘         │</p>
+<p class="mb-2">│       │                 │                  │               │</p>
+<p class="mb-2">│       │                 │                  │               │</p>
+<p class="mb-2">│       ▼                 ▼                  ▼               │</p>
+<p class="mb-2">│       ▼                 ▼                  ▼               │</p>
+<p class="mb-2">│   2009 年           2017 年             2016 年             │</p>
+<p class="mb-2">│   2009 年           2017 年             2016 年             │</p>
+<p class="mb-2">│   Ryan Dahl         Kamil Myśliwiak    Matteo Collina       │</p>
+<p class="mb-2">│   Ryan Dahl         Kamil Myśliwiak    Matteo Collina       │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 核心架构对比</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.2 核心架构对比</h4>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>维度</td><td>Express</td><td>Fastify</td><td>NestJS</td></tr>
+<tr><td>维度</td><td>Express</td><td>Fastify</td><td>NestJS</td></tr>
+<tr><td>**性能**</td><td>中等</td><td>最高</td><td>中等</td></tr>
+<tr><td>**性能**</td><td>中等</td><td>最高</td><td>中等</td></tr>
+<tr><td>**上手难度**</td><td>低</td><td>低</td><td>高</td></tr>
+<tr><td>**上手难度**</td><td>低</td><td>低</td><td>高</td></tr>
+<tr><td>**TypeScript**</td><td>可选</td><td>可选</td><td>首选</td></tr>
+<tr><td>**TypeScript**</td><td>可选</td><td>可选</td><td>首选</td></tr>
+<tr><td>**ORM 集成**</td><td>自由选择</td><td>自由选择</td><td>内置 TypeORM/Prisma</td></tr>
+<tr><td>**ORM 集成**</td><td>自由选择</td><td>自由选择</td><td>内置 TypeORM/Prisma</td></tr>
+<tr><td>**架构模式**</td><td>无限制</td><td>无限制</td><td>模块化/依赖注入</td></tr>
+<tr><td>**架构模式**</td><td>无限制</td><td>无限制</td><td>模块化/依赖注入</td></tr>
+<tr><td>**适用场景**</td><td>快速原型、小型项目</td><td>高性能 API</td><td>企业级应用</td></tr>
+<tr><td>**适用场景**</td><td>快速原型、小型项目</td><td>高性能 API</td><td>企业级应用</td></tr></table>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 Express 架构解析</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.3 Express 架构解析</h4>
+<br>
+<br>
+<p class="mb-2">Express 的核心是**中间件模式**：</p>
+<p class="mb-2">Express 的核心是**中间件模式**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                    Express 中间件模式                        │</p>
+<p class="mb-2">│                    Express 中间件模式                        │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  Request                                                    │</p>
+<p class="mb-2">│  Request                                                    │</p>
+<p class="mb-2">│     │                                                      │</p>
+<p class="mb-2">│     │                                                      │</p>
+<p class="mb-2">│     ▼                                                      │</p>
+<p class="mb-2">│     ▼                                                      │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  │  Logger Middleware │ ← 记录请求日志                      │</p>
+<p class="mb-2">│  │  Logger Middleware │ ← 记录请求日志                      │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  │  Auth Middleware  │ ← 身份验证                          │</p>
+<p class="mb-2">│  │  Auth Middleware  │ ← 身份验证                          │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  │  Route Handler   │ ← 业务逻辑                          │</p>
+<p class="mb-2">│  │  Route Handler   │ ← 业务逻辑                          │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  ┌──────────────────┐                                      │</p>
+<p class="mb-2">│  │  Error Handler   │ ← 统一错误处理                      │</p>
+<p class="mb-2">│  │  Error Handler   │ ← 统一错误处理                      │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│  └────────┬─────────┘                                      │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│           ▼                                                │</p>
+<p class="mb-2">│  Response                                                   │</p>
+<p class="mb-2">│  Response                                                   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**代码示例**：</p>
+<p class="mb-2">**代码示例**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// app.js</p>
+<p class="mb-2">// app.js</p>
+<p class="mb-2">const express = require(&#x27;express&#x27;);</p>
+<p class="mb-2">const express = require(&#x27;express&#x27;);</p>
+<p class="mb-2">const app = express();</p>
+<p class="mb-2">const app = express();</p>
+<br>
+<br>
+<p class="mb-2">// 中间件：请求体解析</p>
+<p class="mb-2">// 中间件：请求体解析</p>
+<p class="mb-2">app.use(express.json());</p>
+<p class="mb-2">app.use(express.json());</p>
+<br>
+<br>
+<p class="mb-2">// 中间件：日志记录</p>
+<p class="mb-2">// 中间件：日志记录</p>
+<p class="mb-2">app.use((req, res, next) =&gt; {</p>
+<p class="mb-2">app.use((req, res, next) =&gt; {</p>
+<p class="mb-2">    console.log(`${req.method} ${req.path}`);</p>
+<p class="mb-2">    console.log(`${req.method} ${req.path}`);</p>
+<p class="mb-2">    next();  // 必须调用 next() 传递控制权</p>
+<p class="mb-2">    next();  // 必须调用 next() 传递控制权</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// 中间件：身份验证（简化版）</p>
+<p class="mb-2">// 中间件：身份验证（简化版）</p>
+<p class="mb-2">const authenticate = (req, res, next) =&gt; {</p>
+<p class="mb-2">const authenticate = (req, res, next) =&gt; {</p>
+<p class="mb-2">    const token = req.headers.authorization;</p>
+<p class="mb-2">    const token = req.headers.authorization;</p>
+<p class="mb-2">    if (token === &#x27;valid-token&#x27;) {</p>
+<p class="mb-2">    if (token === &#x27;valid-token&#x27;) {</p>
+<p class="mb-2">        next();</p>
+<p class="mb-2">        next();</p>
+<p class="mb-2">    } else {</p>
+<p class="mb-2">    } else {</p>
+<p class="mb-2">        res.status(401).json({ error: &#x27;Unauthorized&#x27; });</p>
+<p class="mb-2">        res.status(401).json({ error: &#x27;Unauthorized&#x27; });</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">};</p>
+<p class="mb-2">};</p>
+<br>
+<br>
+<p class="mb-2">// 路由处理器</p>
+<p class="mb-2">// 路由处理器</p>
+<p class="mb-2">app.get(&#x27;/api/users&#x27;, authenticate, (req, res) =&gt; {</p>
+<p class="mb-2">app.get(&#x27;/api/users&#x27;, authenticate, (req, res) =&gt; {</p>
+<p class="mb-2">    res.json([{ id: 1, name: &#x27;John&#x27; }]);</p>
+<p class="mb-2">    res.json([{ id: 1, name: &#x27;John&#x27; }]);</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// 错误处理中间件（必须 4 个参数）</p>
+<p class="mb-2">// 错误处理中间件（必须 4 个参数）</p>
+<p class="mb-2">app.use((err, req, res, next) =&gt; {</p>
+<p class="mb-2">app.use((err, req, res, next) =&gt; {</p>
+<p class="mb-2">    console.error(err.stack);</p>
+<p class="mb-2">    console.error(err.stack);</p>
+<p class="mb-2">    res.status(500).json({ error: &#x27;Something went wrong!&#x27; });</p>
+<p class="mb-2">    res.status(500).json({ error: &#x27;Something went wrong!&#x27; });</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">app.listen(3000);</p>
+<p class="mb-2">app.listen(3000);</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.4 Fastify 架构解析</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.4 Fastify 架构解析</h4>
+<br>
+<br>
+<p class="mb-2">Fastify 的核心优势是**高性能**和**低开销**：</p>
+<p class="mb-2">Fastify 的核心优势是**高性能**和**低开销**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// server.js</p>
+<p class="mb-2">// server.js</p>
+<p class="mb-2">const fastify = require(&#x27;fastify&#x27;)({ </p>
+<p class="mb-2">const fastify = require(&#x27;fastify&#x27;)({ </p>
+<p class="mb-2">    logger: true  // 内置日志，性能优化</p>
+<p class="mb-2">    logger: true  // 内置日志，性能优化</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<br>
+<br>
+<p class="mb-2">// 路由定义 - 使用 async/await</p>
+<p class="mb-2">// 路由定义 - 使用 async/await</p>
+<p class="mb-2">fastify.get(&#x27;/api/users&#x27;, async (request, reply) =&gt; {</p>
+<p class="mb-2">fastify.get(&#x27;/api/users&#x27;, async (request, reply) =&gt; {</p>
+<p class="mb-2">    return [{ id: 1, name: &#x27;John&#x27; }];  // 直接返回自动序列化</p>
+<p class="mb-2">    return [{ id: 1, name: &#x27;John&#x27; }];  // 直接返回自动序列化</p>
+<p class="mb-2">});</p>
+<p class="mb-2">});</p>
+<br>
+<br>
+<p class="mb-2">// 路由前缀</p>
+<p class="mb-2">// 路由前缀</p>
+<p class="mb-2">const userRoutes = require(&#x27;./routes/users&#x27;);</p>
+<p class="mb-2">const userRoutes = require(&#x27;./routes/users&#x27;);</p>
+<p class="mb-2">fastify.register(userRoutes, { prefix: &#x27;/api/v1&#x27; });</p>
+<p class="mb-2">fastify.register(userRoutes, { prefix: &#x27;/api/v1&#x27; });</p>
+<br>
+<br>
+<p class="mb-2">// 启动服务器</p>
+<p class="mb-2">// 启动服务器</p>
+<p class="mb-2">const start = async () =&gt; {</p>
+<p class="mb-2">const start = async () =&gt; {</p>
+<p class="mb-2">    try {</p>
+<p class="mb-2">    try {</p>
+<p class="mb-2">        await fastify.listen({ port: 3000 });</p>
+<p class="mb-2">        await fastify.listen({ port: 3000 });</p>
+<p class="mb-2">        console.log(&#x27;Server running at http://localhost:3000&#x27;);</p>
+<p class="mb-2">        console.log(&#x27;Server running at http://localhost:3000&#x27;);</p>
+<p class="mb-2">    } catch (err) {</p>
+<p class="mb-2">    } catch (err) {</p>
+<p class="mb-2">        fastify.log.error(err);</p>
+<p class="mb-2">        fastify.log.error(err);</p>
+<p class="mb-2">        process.exit(1);</p>
+<p class="mb-2">        process.exit(1);</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">};</p>
+<p class="mb-2">};</p>
+<p class="mb-2">start();</p>
+<p class="mb-2">start();</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// routes/users.js</p>
+<p class="mb-2">// routes/users.js</p>
+<p class="mb-2">const userRoutes = async (fastify, options) =&gt; {</p>
+<p class="mb-2">const userRoutes = async (fastify, options) =&gt; {</p>
+<p class="mb-2">    // GET /api/v1/users</p>
+<p class="mb-2">    // GET /api/v1/users</p>
+<p class="mb-2">    fastify.get(&#x27;/users&#x27;, async (request, reply) =&gt; {</p>
+<p class="mb-2">    fastify.get(&#x27;/users&#x27;, async (request, reply) =&gt; {</p>
+<p class="mb-2">        const users = await fastify.db.query(&#x27;SELECT * FROM users&#x27;);</p>
+<p class="mb-2">        const users = await fastify.db.query(&#x27;SELECT * FROM users&#x27;);</p>
+<p class="mb-2">        return users;</p>
+<p class="mb-2">        return users;</p>
+<p class="mb-2">    });</p>
+<p class="mb-2">    });</p>
+<br>
+<br>
+<p class="mb-2">    // GET /api/v1/users/:id</p>
+<p class="mb-2">    // GET /api/v1/users/:id</p>
+<p class="mb-2">    fastify.get(&#x27;/users/:id&#x27;, async (request, reply) =&gt; {</p>
+<p class="mb-2">    fastify.get(&#x27;/users/:id&#x27;, async (request, reply) =&gt; {</p>
+<p class="mb-2">        const { id } = request.params;</p>
+<p class="mb-2">        const { id } = request.params;</p>
+<p class="mb-2">        const user = await fastify.db.query(</p>
+<p class="mb-2">        const user = await fastify.db.query(</p>
+<p class="mb-2">            &#x27;SELECT * FROM users WHERE id = ?&#x27;, </p>
+<p class="mb-2">            &#x27;SELECT * FROM users WHERE id = ?&#x27;, </p>
+<p class="mb-2">            [id]</p>
+<p class="mb-2">            [id]</p>
+<p class="mb-2">        );</p>
+<p class="mb-2">        );</p>
+<p class="mb-2">        return user;</p>
+<p class="mb-2">        return user;</p>
+<p class="mb-2">    });</p>
+<p class="mb-2">    });</p>
+<p class="mb-2">};</p>
+<p class="mb-2">};</p>
+<br>
+<br>
+<p class="mb-2">module.exports = userRoutes;</p>
+<p class="mb-2">module.exports = userRoutes;</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.5 NestJS 架构解析</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">1.1.5 NestJS 架构解析</h4>
+<br>
+<br>
+<p class="mb-2">NestJS 采用了**模块化 + 依赖注入**的架构：</p>
+<p class="mb-2">NestJS 采用了**模块化 + 依赖注入**的架构：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                    NestJS 架构                              │</p>
+<p class="mb-2">│                    NestJS 架构                              │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  │                    App Module                        │   │</p>
+<p class="mb-2">│  │                    App Module                        │   │</p>
+<p class="mb-2">│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐ │   │</p>
+<p class="mb-2">│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐ │   │</p>
+<p class="mb-2">│  │  │ Users Module │  │ Orders Module│  │ Products   │ │   │</p>
+<p class="mb-2">│  │  │ Users Module │  │ Orders Module│  │ Products   │ │   │</p>
+<p class="mb-2">│  │  │             │  │             │  │ Module     │ │   │</p>
+<p class="mb-2">│  │  │             │  │             │  │ Module     │ │   │</p>
+<p class="mb-2">│  │  │ Controller  │  │ Controller  │  │ Controller │ │   │</p>
+<p class="mb-2">│  │  │ Controller  │  │ Controller  │  │ Controller │ │   │</p>
+<p class="mb-2">│  │  │ Service     │  │ Service     │  │ Service    │ │   │</p>
+<p class="mb-2">│  │  │ Service     │  │ Service     │  │ Service    │ │   │</p>
+<p class="mb-2">│  │  │ Repository  │  │ Repository  │  │ Repository │ │   │</p>
+<p class="mb-2">│  │  │ Repository  │  │ Repository  │  │ Repository │ │   │</p>
+<p class="mb-2">│  │  └─────────────┘  └─────────────┘  └─────────────┘ │   │</p>
+<p class="mb-2">│  │  └─────────────┘  └─────────────┘  └─────────────┘ │   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  Controller: 处理请求，参数验证，路由                         │</p>
+<p class="mb-2">│  Controller: 处理请求，参数验证，路由                         │</p>
+<p class="mb-2">│  Service: 业务逻辑，数据处理                                 │</p>
+<p class="mb-2">│  Service: 业务逻辑，数据处理                                 │</p>
+<p class="mb-2">│  Repository: 数据库操作                                      │</p>
+<p class="mb-2">│  Repository: 数据库操作                                      │</p>
+<p class="mb-2">│  Module: 功能模块封装                                        │</p>
+<p class="mb-2">│  Module: 功能模块封装                                        │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**代码示例**：</p>
+<p class="mb-2">**代码示例**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// users.module.ts</p>
+<p class="mb-2">// users.module.ts</p>
+<p class="mb-2">import { Module } from &#x27;@nestjs/common&#x27;;</p>
+<p class="mb-2">import { Module } from &#x27;@nestjs/common&#x27;;</p>
+<p class="mb-2">import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;</p>
+<p class="mb-2">import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;</p>
+<p class="mb-2">import { User } from &#x27;./user.entity&#x27;;</p>
+<p class="mb-2">import { User } from &#x27;./user.entity&#x27;;</p>
+<p class="mb-2">import { UsersController } from &#x27;./users.controller&#x27;;</p>
+<p class="mb-2">import { UsersController } from &#x27;./users.controller&#x27;;</p>
+<p class="mb-2">import { UsersService } from &#x27;./users.service&#x27;;</p>
+<p class="mb-2">import { UsersService } from &#x27;./users.service&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">@Module({</p>
+<p class="mb-2">@Module({</p>
+<p class="mb-2">    imports: [TypeOrmModule.forFeature([User])],</p>
+<p class="mb-2">    imports: [TypeOrmModule.forFeature([User])],</p>
+<p class="mb-2">    controllers: [UsersController],</p>
+<p class="mb-2">    controllers: [UsersController],</p>
+<p class="mb-2">    providers: [UsersService],</p>
+<p class="mb-2">    providers: [UsersService],</p>
+<p class="mb-2">    exports: [UsersService]  // 供其他模块使用</p>
+<p class="mb-2">    exports: [UsersService]  // 供其他模块使用</p>
+<p class="mb-2">})</p>
+<p class="mb-2">})</p>
+<p class="mb-2">export class UsersModule {}</p>
+<p class="mb-2">export class UsersModule {}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// users.service.ts</p>
+<p class="mb-2">// users.service.ts</p>
+<p class="mb-2">import { Injectable } from &#x27;@nestjs/common&#x27;;</p>
+<p class="mb-2">import { Injectable } from &#x27;@nestjs/common&#x27;;</p>
+<p class="mb-2">import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;</p>
+<p class="mb-2">import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;</p>
+<p class="mb-2">import { Repository } from &#x27;typeorm&#x27;;</p>
+<p class="mb-2">import { Repository } from &#x27;typeorm&#x27;;</p>
+<p class="mb-2">import { User } from &#x27;./user.entity&#x27;;</p>
+<p class="mb-2">import { User } from &#x27;./user.entity&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">@Injectable()</p>
+<p class="mb-2">@Injectable()</p>
+<p class="mb-2">export class UsersService {</p>
+<p class="mb-2">export class UsersService {</p>
+<p class="mb-2">    constructor(</p>
+<p class="mb-2">    constructor(</p>
+<p class="mb-2">        @InjectRepository(User)</p>
+<p class="mb-2">        @InjectRepository(User)</p>
+<p class="mb-2">        private usersRepository: Repository&lt;User&gt;,</p>
+<p class="mb-2">        private usersRepository: Repository&lt;User&gt;,</p>
+<p class="mb-2">    ) {}</p>
+<p class="mb-2">    ) {}</p>
+<br>
+<br>
+<p class="mb-2">    async findAll(): Promise&lt;User[]&gt; {</p>
+<p class="mb-2">    async findAll(): Promise&lt;User[]&gt; {</p>
+<p class="mb-2">        return this.usersRepository.find();</p>
+<p class="mb-2">        return this.usersRepository.find();</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    async findOne(id: number): Promise&lt;User&gt; {</p>
+<p class="mb-2">    async findOne(id: number): Promise&lt;User&gt; {</p>
+<p class="mb-2">        return this.usersRepository.findOne({ where: { id } });</p>
+<p class="mb-2">        return this.usersRepository.findOne({ where: { id } });</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    async create(data: Partial&lt;User&gt;): Promise&lt;User&gt; {</p>
+<p class="mb-2">    async create(data: Partial&lt;User&gt;): Promise&lt;User&gt; {</p>
+<p class="mb-2">        const user = this.usersRepository.create(data);</p>
+<p class="mb-2">        const user = this.usersRepository.create(data);</p>
+<p class="mb-2">        return this.usersRepository.save(user);</p>
+<p class="mb-2">        return this.usersRepository.save(user);</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// users.controller.ts</p>
+<p class="mb-2">// users.controller.ts</p>
+<p class="mb-2">import { Controller, Get, Post, Body, Param, ParseIntPipe } from &#x27;@nestjs/common&#x27;;</p>
+<p class="mb-2">import { Controller, Get, Post, Body, Param, ParseIntPipe } from &#x27;@nestjs/common&#x27;;</p>
+<p class="mb-2">import { UsersService } from &#x27;./users.service&#x27;;</p>
+<p class="mb-2">import { UsersService } from &#x27;./users.service&#x27;;</p>
+<p class="mb-2">import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;</p>
+<p class="mb-2">import { CreateUserDto } from &#x27;./dto/create-user.dto&#x27;;</p>
+<br>
+<br>
+<p class="mb-2">@Controller(&#x27;users&#x27;)</p>
+<p class="mb-2">@Controller(&#x27;users&#x27;)</p>
+<p class="mb-2">export class UsersController {</p>
+<p class="mb-2">export class UsersController {</p>
+<p class="mb-2">    constructor(private readonly usersService: UsersService) {}</p>
+<p class="mb-2">    constructor(private readonly usersService: UsersService) {}</p>
+<br>
+<br>
+<p class="mb-2">    @Get()</p>
+<p class="mb-2">    @Get()</p>
+<p class="mb-2">    async findAll() {</p>
+<p class="mb-2">    async findAll() {</p>
+<p class="mb-2">        return this.usersService.findAll();</p>
+<p class="mb-2">        return this.usersService.findAll();</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    @Get(&#x27;:id&#x27;)</p>
+<p class="mb-2">    @Get(&#x27;:id&#x27;)</p>
+<p class="mb-2">    async findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {</p>
+<p class="mb-2">    async findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {</p>
+<p class="mb-2">        return this.usersService.findOne(id);</p>
+<p class="mb-2">        return this.usersService.findOne(id);</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    @Post()</p>
+<p class="mb-2">    @Post()</p>
+<p class="mb-2">    async create(@Body() createUserDto: CreateUserDto) {</p>
+<p class="mb-2">    async create(@Body() createUserDto: CreateUserDto) {</p>
+<p class="mb-2">        return this.usersService.create(createUserDto);</p>
+<p class="mb-2">        return this.usersService.create(createUserDto);</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. Python FastAPI</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">2. Python FastAPI</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 异步架构</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.1 异步架构</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 同步 vs 异步对比</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.1 同步 vs 异步对比</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">同步模式 (Sync)：</p>
+<p class="mb-2">同步模式 (Sync)：</p>
+<p class="mb-2">┌──────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌──────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│  Request A → [====处理====] → Response A            │</p>
+<p class="mb-2">│  Request A → [====处理====] → Response A            │</p>
+<p class="mb-2">│               [====处理====]                         │</p>
+<p class="mb-2">│               [====处理====]                         │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│  Request B →                             [等待...]→ │</p>
+<p class="mb-2">│  Request B →                             [等待...]→ │</p>
+<p class="mb-2">│                                   [====处理====]     │</p>
+<p class="mb-2">│                                   [====处理====]     │</p>
+<p class="mb-2">│                                   Response B          │</p>
+<p class="mb-2">│                                   Response B          │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│  问题：阻塞等待，资源利用率低                          │</p>
+<p class="mb-2">│  问题：阻塞等待，资源利用率低                          │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">└──────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└──────────────────────────────────────────────────────┘</p>
+<br>
+<br>
+<p class="mb-2">异步模式 (Async)：</p>
+<p class="mb-2">异步模式 (Async)：</p>
+<p class="mb-2">┌──────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌──────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│  Request A → [启动]──────────────[完成] → Response A │</p>
+<p class="mb-2">│  Request A → [启动]──────────────[完成] → Response A │</p>
+<p class="mb-2">│                 ↓                                     │</p>
+<p class="mb-2">│                 ↓                                     │</p>
+<p class="mb-2">│  Request B → [启动]──────────────[完成] → Response B  │</p>
+<p class="mb-2">│  Request B → [启动]──────────────[完成] → Response B  │</p>
+<p class="mb-2">│                 ↓                                     │</p>
+<p class="mb-2">│                 ↓                                     │</p>
+<p class="mb-2">│  Request C → [启动]──────────────[完成] → Response C  │</p>
+<p class="mb-2">│  Request C → [启动]──────────────[完成] → Response C  │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│  优势：并发处理，资源利用率高                          │</p>
+<p class="mb-2">│  优势：并发处理，资源利用率高                          │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">│                                                      │</p>
+<p class="mb-2">└──────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└──────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 FastAPI 异步实现</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.1.2 FastAPI 异步实现</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">main.py</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">main.py</h1>
+<p class="mb-2">from fastapi import FastAPI</p>
+<p class="mb-2">from fastapi import FastAPI</p>
+<p class="mb-2">from fastapi.responses import JSONResponse</p>
+<p class="mb-2">from fastapi.responses import JSONResponse</p>
+<p class="mb-2">import asyncio</p>
+<p class="mb-2">import asyncio</p>
+<br>
+<br>
+<p class="mb-2">app = FastAPI()</p>
+<p class="mb-2">app = FastAPI()</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">同步函数 - 会阻塞事件循环</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">同步函数 - 会阻塞事件循环</h1>
+<p class="mb-2">@app.get(&quot;/sync-task&quot;)</p>
+<p class="mb-2">@app.get(&quot;/sync-task&quot;)</p>
+<p class="mb-2">def sync_task():</p>
+<p class="mb-2">def sync_task():</p>
+<p class="mb-2">    # 模拟耗时操作</p>
+<p class="mb-2">    # 模拟耗时操作</p>
+<p class="mb-2">    result = 0</p>
+<p class="mb-2">    result = 0</p>
+<p class="mb-2">    for i in range(1000000):</p>
+<p class="mb-2">    for i in range(1000000):</p>
+<p class="mb-2">        result += i</p>
+<p class="mb-2">        result += i</p>
+<p class="mb-2">    return {&quot;result&quot;: result, &quot;type&quot;: &quot;sync&quot;}</p>
+<p class="mb-2">    return {&quot;result&quot;: result, &quot;type&quot;: &quot;sync&quot;}</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">异步函数 - 非阻塞</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">异步函数 - 非阻塞</h1>
+<p class="mb-2">@app.get(&quot;/async-task&quot;)</p>
+<p class="mb-2">@app.get(&quot;/async-task&quot;)</p>
+<p class="mb-2">async def async_task():</p>
+<p class="mb-2">async def async_task():</p>
+<p class="mb-2">    # 模拟异步 IO 操作（如数据库查询）</p>
+<p class="mb-2">    # 模拟异步 IO 操作（如数据库查询）</p>
+<p class="mb-2">    await asyncio.sleep(2)  # 不会阻塞其他请求</p>
+<p class="mb-2">    await asyncio.sleep(2)  # 不会阻塞其他请求</p>
+<p class="mb-2">    return {&quot;result&quot;: &quot;done&quot;, &quot;type&quot;: &quot;async&quot;}</p>
+<p class="mb-2">    return {&quot;result&quot;: &quot;done&quot;, &quot;type&quot;: &quot;async&quot;}</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">依赖注入示例</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">依赖注入示例</h1>
+<p class="mb-2">from typing import Optional</p>
+<p class="mb-2">from typing import Optional</p>
+<br>
+<br>
+<p class="mb-2">async def get_db():</p>
+<p class="mb-2">async def get_db():</p>
+<p class="mb-2">    # 模拟数据库连接</p>
+<p class="mb-2">    # 模拟数据库连接</p>
+<p class="mb-2">    db = await connect_to_database()</p>
+<p class="mb-2">    db = await connect_to_database()</p>
+<p class="mb-2">    try:</p>
+<p class="mb-2">    try:</p>
+<p class="mb-2">        yield db</p>
+<p class="mb-2">        yield db</p>
+<p class="mb-2">    finally:</p>
+<p class="mb-2">    finally:</p>
+<p class="mb-2">        await db.close()</p>
+<p class="mb-2">        await db.close()</p>
+<br>
+<br>
+<p class="mb-2">@app.get(&quot;/users/{user_id}&quot;)</p>
+<p class="mb-2">@app.get(&quot;/users/{user_id}&quot;)</p>
+<p class="mb-2">async def get_user(user_id: int, db = Depends(get_db)):</p>
+<p class="mb-2">async def get_user(user_id: int, db = Depends(get_db)):</p>
+<p class="mb-2">    user = await db.query(&quot;SELECT * FROM users WHERE id = ?&quot;, user_id)</p>
+<p class="mb-2">    user = await db.query(&quot;SELECT * FROM users WHERE id = ?&quot;, user_id)</p>
+<p class="mb-2">    return user</p>
+<p class="mb-2">    return user</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 类型安全设计</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.2 类型安全设计</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 Pydantic 模型</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.1 Pydantic 模型</h4>
+<br>
+<br>
+<p class="mb-2">FastAPI 使用 Pydantic 进行**运行时类型验证**：</p>
+<p class="mb-2">FastAPI 使用 Pydantic 进行**运行时类型验证**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">schemas.py</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">schemas.py</h1>
+<p class="mb-2">from pydantic import BaseModel, EmailStr, Field, validator</p>
+<p class="mb-2">from pydantic import BaseModel, EmailStr, Field, validator</p>
+<p class="mb-2">from typing import Optional, List</p>
+<p class="mb-2">from typing import Optional, List</p>
+<p class="mb-2">from datetime import datetime</p>
+<p class="mb-2">from datetime import datetime</p>
+<br>
+<br>
+<p class="mb-2">class UserBase(BaseModel):</p>
+<p class="mb-2">class UserBase(BaseModel):</p>
+<p class="mb-2">    &quot;&quot;&quot;基础用户模型&quot;&quot;&quot;</p>
+<p class="mb-2">    &quot;&quot;&quot;基础用户模型&quot;&quot;&quot;</p>
+<p class="mb-2">    email: EmailStr  # 邮箱格式验证</p>
+<p class="mb-2">    email: EmailStr  # 邮箱格式验证</p>
+<p class="mb-2">    username: str = Field(..., min_length=3, max_length=50)</p>
+<p class="mb-2">    username: str = Field(..., min_length=3, max_length=50)</p>
+<p class="mb-2">    age: Optional[int] = Field(None, ge=0, le=150)  # 可选，范围验证</p>
+<p class="mb-2">    age: Optional[int] = Field(None, ge=0, le=150)  # 可选，范围验证</p>
+<br>
+<br>
+<p class="mb-2">    @validator(&#x27;username&#x27;)</p>
+<p class="mb-2">    @validator(&#x27;username&#x27;)</p>
+<p class="mb-2">    def username_alphanumeric(cls, v):</p>
+<p class="mb-2">    def username_alphanumeric(cls, v):</p>
+<p class="mb-2">        assert v.isalnum(), &#x27;Username must be alphanumeric&#x27;</p>
+<p class="mb-2">        assert v.isalnum(), &#x27;Username must be alphanumeric&#x27;</p>
+<p class="mb-2">        return v.lower()</p>
+<p class="mb-2">        return v.lower()</p>
+<br>
+<br>
+<p class="mb-2">class UserCreate(UserBase):</p>
+<p class="mb-2">class UserCreate(UserBase):</p>
+<p class="mb-2">    &quot;&quot;&quot;创建用户&quot;&quot;&quot;</p>
+<p class="mb-2">    &quot;&quot;&quot;创建用户&quot;&quot;&quot;</p>
+<p class="mb-2">    password: str = Field(..., min_length=8)</p>
+<p class="mb-2">    password: str = Field(..., min_length=8)</p>
+<br>
+<br>
+<p class="mb-2">    @validator(&#x27;password&#x27;)</p>
+<p class="mb-2">    @validator(&#x27;password&#x27;)</p>
+<p class="mb-2">    def password_strength(cls, v):</p>
+<p class="mb-2">    def password_strength(cls, v):</p>
+<p class="mb-2">        if not any(c.isupper() for c in v):</p>
+<p class="mb-2">        if not any(c.isupper() for c in v):</p>
+<p class="mb-2">            raise ValueError(&#x27;Password must contain uppercase&#x27;)</p>
+<p class="mb-2">            raise ValueError(&#x27;Password must contain uppercase&#x27;)</p>
+<p class="mb-2">        if not any(c.isdigit() for c in v):</p>
+<p class="mb-2">        if not any(c.isdigit() for c in v):</p>
+<p class="mb-2">            raise ValueError(&#x27;Password must contain digit&#x27;)</p>
+<p class="mb-2">            raise ValueError(&#x27;Password must contain digit&#x27;)</p>
+<p class="mb-2">        return v</p>
+<p class="mb-2">        return v</p>
+<br>
+<br>
+<p class="mb-2">class UserResponse(UserBase):</p>
+<p class="mb-2">class UserResponse(UserBase):</p>
+<p class="mb-2">    &quot;&quot;&quot;用户响应（不包含密码）&quot;&quot;&quot;</p>
+<p class="mb-2">    &quot;&quot;&quot;用户响应（不包含密码）&quot;&quot;&quot;</p>
+<p class="mb-2">    id: int</p>
+<p class="mb-2">    id: int</p>
+<p class="mb-2">    created_at: datetime</p>
+<p class="mb-2">    created_at: datetime</p>
+<br>
+<br>
+<p class="mb-2">    class Config:</p>
+<p class="mb-2">    class Config:</p>
+<p class="mb-2">        from_attributes = True  # 允许从 ORM 模型创建</p>
+<p class="mb-2">        from_attributes = True  # 允许从 ORM 模型创建</p>
+<br>
+<br>
+<p class="mb-2">class OrderItem(BaseModel):</p>
+<p class="mb-2">class OrderItem(BaseModel):</p>
+<p class="mb-2">    product_id: int</p>
+<p class="mb-2">    product_id: int</p>
+<p class="mb-2">    quantity: int = Field(..., gt=0)  # 必须大于 0</p>
+<p class="mb-2">    quantity: int = Field(..., gt=0)  # 必须大于 0</p>
+<br>
+<br>
+<p class="mb-2">class OrderCreate(BaseModel):</p>
+<p class="mb-2">class OrderCreate(BaseModel):</p>
+<p class="mb-2">    items: List[OrderItem]</p>
+<p class="mb-2">    items: List[OrderItem]</p>
+<p class="mb-2">    shipping_address: str</p>
+<p class="mb-2">    shipping_address: str</p>
+<br>
+<br>
+<p class="mb-2">    @validator(&#x27;items&#x27;)</p>
+<p class="mb-2">    @validator(&#x27;items&#x27;)</p>
+<p class="mb-2">    def validate_items(cls, v):</p>
+<p class="mb-2">    def validate_items(cls, v):</p>
+<p class="mb-2">        if not v:</p>
+<p class="mb-2">        if not v:</p>
+<p class="mb-2">            raise ValueError(&#x27;Order must have at least one item&#x27;)</p>
+<p class="mb-2">            raise ValueError(&#x27;Order must have at least one item&#x27;)</p>
+<p class="mb-2">        return v</p>
+<p class="mb-2">        return v</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 API 路由中使用</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.2.2 API 路由中使用</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">main.py</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">main.py</h1>
+<p class="mb-2">from fastapi import FastAPI, HTTPException, Depends, status</p>
+<p class="mb-2">from fastapi import FastAPI, HTTPException, Depends, status</p>
+<p class="mb-2">from schemas import UserCreate, UserResponse, OrderCreate</p>
+<p class="mb-2">from schemas import UserCreate, UserResponse, OrderCreate</p>
+<br>
+<br>
+<p class="mb-2">app = FastAPI()</p>
+<p class="mb-2">app = FastAPI()</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">存储（演示用）</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">存储（演示用）</h1>
+<p class="mb-2">users_db = {}</p>
+<p class="mb-2">users_db = {}</p>
+<p class="mb-2">orders_db = {}</p>
+<p class="mb-2">orders_db = {}</p>
+<br>
+<br>
+<p class="mb-2">@app.post(&quot;/users/&quot;, response_model=UserResponse, status_code=status.HTTP_201_CREATED)</p>
+<p class="mb-2">@app.post(&quot;/users/&quot;, response_model=UserResponse, status_code=status.HTTP_201_CREATED)</p>
+<p class="mb-2">async def create_user(user: UserCreate):</p>
+<p class="mb-2">async def create_user(user: UserCreate):</p>
+<p class="mb-2">    &quot;&quot;&quot;</p>
+<p class="mb-2">    &quot;&quot;&quot;</p>
+<p class="mb-2">    创建用户</p>
+<p class="mb-2">    创建用户</p>
+<p class="mb-2">    - 自动验证请求体</p>
+<p class="mb-2">    - 自动验证请求体</p>
+<p class="mb-2">    - 自动序列化响应</p>
+<p class="mb-2">    - 自动序列化响应</p>
+<p class="mb-2">    - 自动生成 OpenAPI 文档</p>
+<p class="mb-2">    - 自动生成 OpenAPI 文档</p>
+<p class="mb-2">    &quot;&quot;&quot;</p>
+<p class="mb-2">    &quot;&quot;&quot;</p>
+<p class="mb-2">    if user.email in users_db:</p>
+<p class="mb-2">    if user.email in users_db:</p>
+<p class="mb-2">        raise HTTPException(status_code=400, detail=&quot;Email already registered&quot;)</p>
+<p class="mb-2">        raise HTTPException(status_code=400, detail=&quot;Email already registered&quot;)</p>
+<br>
+<br>
+<p class="mb-2">    user_id = len(users_db) + 1</p>
+<p class="mb-2">    user_id = len(users_db) + 1</p>
+<p class="mb-2">    new_user = UserResponse(</p>
+<p class="mb-2">    new_user = UserResponse(</p>
+<p class="mb-2">        id=user_id,</p>
+<p class="mb-2">        id=user_id,</p>
+<p class="mb-2">        email=user.email,</p>
+<p class="mb-2">        email=user.email,</p>
+<p class="mb-2">        username=user.username,</p>
+<p class="mb-2">        username=user.username,</p>
+<p class="mb-2">        age=user.age,</p>
+<p class="mb-2">        age=user.age,</p>
+<p class="mb-2">        created_at=datetime.now()</p>
+<p class="mb-2">        created_at=datetime.now()</p>
+<p class="mb-2">    )</p>
+<p class="mb-2">    )</p>
+<p class="mb-2">    users_db[user.email] = new_user</p>
+<p class="mb-2">    users_db[user.email] = new_user</p>
+<p class="mb-2">    return new_user</p>
+<p class="mb-2">    return new_user</p>
+<br>
+<br>
+<p class="mb-2">@app.post(&quot;/orders/&quot;)</p>
+<p class="mb-2">@app.post(&quot;/orders/&quot;)</p>
+<p class="mb-2">async def create_order(order: OrderCreate):</p>
+<p class="mb-2">async def create_order(order: OrderCreate):</p>
+<p class="mb-2">    order_id = len(orders_db) + 1</p>
+<p class="mb-2">    order_id = len(orders_db) + 1</p>
+<p class="mb-2">    orders_db[order_id] = order</p>
+<p class="mb-2">    orders_db[order_id] = order</p>
+<p class="mb-2">    return {&quot;order_id&quot;: order_id, &quot;status&quot;: &quot;created&quot;}</p>
+<p class="mb-2">    return {&quot;order_id&quot;: order_id, &quot;status&quot;: &quot;created&quot;}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.3 依赖注入系统</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">2.3 依赖注入系统</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.1 依赖注入原理</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.1 依赖注入原理</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                   FastAPI 依赖注入系统                        │</p>
+<p class="mb-2">│                   FastAPI 依赖注入系统                        │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│   Request                                                    │</p>
+<p class="mb-2">│   Request                                                    │</p>
+<p class="mb-2">│      │                                                      │</p>
+<p class="mb-2">│      │                                                      │</p>
+<p class="mb-2">│      ▼                                                      │</p>
+<p class="mb-2">│      ▼                                                      │</p>
+<p class="mb-2">│   ┌────────────────┐                                       │</p>
+<p class="mb-2">│   ┌────────────────┐                                       │</p>
+<p class="mb-2">│   │ Depends(func)  │ ← 声明依赖                            │</p>
+<p class="mb-2">│   │ Depends(func)  │ ← 声明依赖                            │</p>
+<p class="mb-2">│   └────────┬───────┘                                       │</p>
+<p class="mb-2">│   └────────┬───────┘                                       │</p>
+<p class="mb-2">│            ▼                                               │</p>
+<p class="mb-2">│            ▼                                               │</p>
+<p class="mb-2">│   ┌────────────────┐                                       │</p>
+<p class="mb-2">│   ┌────────────────┐                                       │</p>
+<p class="mb-2">│   │ func 执行      │ ← 解析依赖（数据库连接、认证等）        │</p>
+<p class="mb-2">│   │ func 执行      │ ← 解析依赖（数据库连接、认证等）        │</p>
+<p class="mb-2">│   └────────┬───────┘                                       │</p>
+<p class="mb-2">│   └────────┬───────┘                                       │</p>
+<p class="mb-2">│            ▼                                               │</p>
+<p class="mb-2">│            ▼                                               │</p>
+<p class="mb-2">│   ┌────────────────┐                                       │</p>
+<p class="mb-2">│   ┌────────────────┐                                       │</p>
+<p class="mb-2">│   │ 路由处理器      │ ← 接收解析后的依赖值                    │</p>
+<p class="mb-2">│   │ 路由处理器      │ ← 接收解析后的依赖值                    │</p>
+<p class="mb-2">│   └────────┬───────┘                                       │</p>
+<p class="mb-2">│   └────────┬───────┘                                       │</p>
+<p class="mb-2">│            ▼                                               │</p>
+<p class="mb-2">│            ▼                                               │</p>
+<p class="mb-2">│   Response                                                   │</p>
+<p class="mb-2">│   Response                                                   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.2 实际应用示例</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">2.3.2 实际应用示例</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">dependencies.py</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">dependencies.py</h1>
+<p class="mb-2">from fastapi import Depends, HTTPException, status</p>
+<p class="mb-2">from fastapi import Depends, HTTPException, status</p>
+<p class="mb-2">from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials</p>
+<p class="mb-2">from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials</p>
+<p class="mb-2">from typing import Optional</p>
+<p class="mb-2">from typing import Optional</p>
+<br>
+<br>
+<p class="mb-2">security = HTTPBearer()</p>
+<p class="mb-2">security = HTTPBearer()</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">数据库依赖</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">数据库依赖</h1>
+<p class="mb-2">async def get_db():</p>
+<p class="mb-2">async def get_db():</p>
+<p class="mb-2">    async with Database.connect() as db:</p>
+<p class="mb-2">    async with Database.connect() as db:</p>
+<p class="mb-2">        yield db</p>
+<p class="mb-2">        yield db</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">认证依赖</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">认证依赖</h1>
+<p class="mb-2">async def get_current_user(</p>
+<p class="mb-2">async def get_current_user(</p>
+<p class="mb-2">    credentials: HTTPAuthorizationCredentials = Depends(security),</p>
+<p class="mb-2">    credentials: HTTPAuthorizationCredentials = Depends(security),</p>
+<p class="mb-2">    db = Depends(get_db)</p>
+<p class="mb-2">    db = Depends(get_db)</p>
+<p class="mb-2">):</p>
+<p class="mb-2">):</p>
+<p class="mb-2">    token = credentials.credentials</p>
+<p class="mb-2">    token = credentials.credentials</p>
+<p class="mb-2">    user = await db.verify_token(token)</p>
+<p class="mb-2">    user = await db.verify_token(token)</p>
+<p class="mb-2">    if not user:</p>
+<p class="mb-2">    if not user:</p>
+<p class="mb-2">        raise HTTPException(</p>
+<p class="mb-2">        raise HTTPException(</p>
+<p class="mb-2">            status_code=status.HTTP_401_UNAUTHORIZED,</p>
+<p class="mb-2">            status_code=status.HTTP_401_UNAUTHORIZED,</p>
+<p class="mb-2">            detail=&quot;Invalid authentication credentials&quot;</p>
+<p class="mb-2">            detail=&quot;Invalid authentication credentials&quot;</p>
+<p class="mb-2">        )</p>
+<p class="mb-2">        )</p>
+<p class="mb-2">    return user</p>
+<p class="mb-2">    return user</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">管理员依赖</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">管理员依赖</h1>
+<p class="mb-2">async def get_admin_user(current_user = Depends(get_current_user)):</p>
+<p class="mb-2">async def get_admin_user(current_user = Depends(get_current_user)):</p>
+<p class="mb-2">    if not current_user.is_admin:</p>
+<p class="mb-2">    if not current_user.is_admin:</p>
+<p class="mb-2">        raise HTTPException(</p>
+<p class="mb-2">        raise HTTPException(</p>
+<p class="mb-2">            status_code=status.HTTP_403_FORBIDDEN,</p>
+<p class="mb-2">            status_code=status.HTTP_403_FORBIDDEN,</p>
+<p class="mb-2">            detail=&quot;Not enough permissions&quot;</p>
+<p class="mb-2">            detail=&quot;Not enough permissions&quot;</p>
+<p class="mb-2">        )</p>
+<p class="mb-2">        )</p>
+<p class="mb-2">    return current_user</p>
+<p class="mb-2">    return current_user</p>
+<pre><code></code></pre>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">main.py</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">main.py</h1>
+<p class="mb-2">from dependencies import get_db, get_current_user, get_admin_user</p>
+<p class="mb-2">from dependencies import get_db, get_current_user, get_admin_user</p>
+<br>
+<br>
+<p class="mb-2">@app.get(&quot;/profile&quot;)</p>
+<p class="mb-2">@app.get(&quot;/profile&quot;)</p>
+<p class="mb-2">async def get_profile(current_user = Depends(get_current_user)):</p>
+<p class="mb-2">async def get_profile(current_user = Depends(get_current_user)):</p>
+<p class="mb-2">    &quot;&quot;&quot;需要登录&quot;&quot;&quot;</p>
+<p class="mb-2">    &quot;&quot;&quot;需要登录&quot;&quot;&quot;</p>
+<p class="mb-2">    return current_user</p>
+<p class="mb-2">    return current_user</p>
+<br>
+<br>
+<p class="mb-2">@app.delete(&quot;/users/{user_id}&quot;)</p>
+<p class="mb-2">@app.delete(&quot;/users/{user_id}&quot;)</p>
+<p class="mb-2">async def delete_user(</p>
+<p class="mb-2">async def delete_user(</p>
+<p class="mb-2">    user_id: int,</p>
+<p class="mb-2">    user_id: int,</p>
+<p class="mb-2">    current_user = Depends(get_admin_user)</p>
+<p class="mb-2">    current_user = Depends(get_admin_user)</p>
+<p class="mb-2">):</p>
+<p class="mb-2">):</p>
+<p class="mb-2">    &quot;&quot;&quot;需要管理员权限&quot;&quot;&quot;</p>
+<p class="mb-2">    &quot;&quot;&quot;需要管理员权限&quot;&quot;&quot;</p>
+<p class="mb-2">    await db.delete_user(user_id)</p>
+<p class="mb-2">    await db.delete_user(user_id)</p>
+<p class="mb-2">    return {&quot;status&quot;: &quot;deleted&quot;}</p>
+<p class="mb-2">    return {&quot;status&quot;: &quot;deleted&quot;}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. Go 语言架构</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">3. Go 语言架构</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 Goroutine 并发模型</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.1 Goroutine 并发模型</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 Go 并发 vs 传统线程</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.1 Go 并发 vs 传统线程</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">传统线程模型（Thread）：</p>
+<p class="mb-2">传统线程模型（Thread）：</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│  Thread 1 → [Stack 1MB] ──────────────────────────────────  │</p>
+<p class="mb-2">│  Thread 1 → [Stack 1MB] ──────────────────────────────────  │</p>
+<p class="mb-2">│  Thread 2 → [Stack 1MB] ──────────────────────────────────  │</p>
+<p class="mb-2">│  Thread 2 → [Stack 1MB] ──────────────────────────────────  │</p>
+<p class="mb-2">│  Thread 3 → [Stack 1MB] ──────────────────────────────────  │</p>
+<p class="mb-2">│  Thread 3 → [Stack 1MB] ──────────────────────────────────  │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  问题：内存占用大（每个线程 1MB 栈），创建成本高              │</p>
+<p class="mb-2">│  问题：内存占用大（每个线程 1MB 栈），创建成本高              │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<br>
+<br>
+<p class="mb-2">Goroutine 模型：</p>
+<p class="mb-2">Goroutine 模型：</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  │                   Go Runtime                         │   │</p>
+<p class="mb-2">│  │                   Go Runtime                         │   │</p>
+<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐             │   │</p>
+<p class="mb-2">│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐             │   │</p>
+<p class="mb-2">│  │  │ Goroutin│  │ Goroutin│  │ Goroutin│  ← 2KB 栈    │   │</p>
+<p class="mb-2">│  │  │ Goroutin│  │ Goroutin│  │ Goroutin│  ← 2KB 栈    │   │</p>
+<p class="mb-2">│  │  │   A     │  │   B     │  │   C     │             │   │</p>
+<p class="mb-2">│  │  │   A     │  │   B     │  │   C     │             │   │</p>
+<p class="mb-2">│  │  └────┬────┘  └────┬────┘  └────┬────┘             │   │</p>
+<p class="mb-2">│  │  └────┬────┘  └────┬────┘  └────┬────┘             │   │</p>
+<p class="mb-2">│  │       └────────────┼────────────┘                   │   │</p>
+<p class="mb-2">│  │       └────────────┼────────────┘                   │   │</p>
+<p class="mb-2">│  │                    ▼                                 │   │</p>
+<p class="mb-2">│  │                    ▼                                 │   │</p>
+<p class="mb-2">│  │              [Scheduler]                             │   │</p>
+<p class="mb-2">│  │              [Scheduler]                             │   │</p>
+<p class="mb-2">│  │                    │                                 │   │</p>
+<p class="mb-2">│  │                    │                                 │   │</p>
+<p class="mb-2">│  │                    ▼                                 │   │</p>
+<p class="mb-2">│  │                    ▼                                 │   │</p>
+<p class="mb-2">│  │  ┌─────────────────────────────────────┐             │   │</p>
+<p class="mb-2">│  │  ┌─────────────────────────────────────┐             │   │</p>
+<p class="mb-2">│  │  │       OS Thread Pool (4 核心)        │             │   │</p>
+<p class="mb-2">│  │  │       OS Thread Pool (4 核心)        │             │   │</p>
+<p class="mb-2">│  │  └─────────────────────────────────────┘             │   │</p>
+<p class="mb-2">│  │  └─────────────────────────────────────┘             │   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  优势：内存占用小（2KB 栈），创建成本低（μs 级）              │</p>
+<p class="mb-2">│  优势：内存占用小（2KB 栈），创建成本低（μs 级）              │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 Goroutine 代码示例</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.2 Goroutine 代码示例</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">package main</p>
+<p class="mb-2">package main</p>
+<br>
+<br>
+<p class="mb-2">import (</p>
+<p class="mb-2">import (</p>
+<p class="mb-2">    &quot;fmt&quot;</p>
+<p class="mb-2">    &quot;fmt&quot;</p>
+<p class="mb-2">    &quot;sync&quot;</p>
+<p class="mb-2">    &quot;sync&quot;</p>
+<p class="mb-2">    &quot;time&quot;</p>
+<p class="mb-2">    &quot;time&quot;</p>
+<p class="mb-2">)</p>
+<p class="mb-2">)</p>
+<br>
+<br>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">    // WaitGroup 用于等待所有 goroutine 完成</p>
+<p class="mb-2">    // WaitGroup 用于等待所有 goroutine 完成</p>
+<p class="mb-2">    var wg sync.WaitGroup</p>
+<p class="mb-2">    var wg sync.WaitGroup</p>
+<br>
+<br>
+<p class="mb-2">    // 启动 5 个并发任务</p>
+<p class="mb-2">    // 启动 5 个并发任务</p>
+<p class="mb-2">    for i := 1; i &lt;= 5; i++ {</p>
+<p class="mb-2">    for i := 1; i &lt;= 5; i++ {</p>
+<p class="mb-2">        wg.Add(1)  // 增加计数器</p>
+<p class="mb-2">        wg.Add(1)  // 增加计数器</p>
+<br>
+<br>
+<p class="mb-2">        go func(id int) {</p>
+<p class="mb-2">        go func(id int) {</p>
+<p class="mb-2">            defer wg.Done()  // 完成时减少计数器</p>
+<p class="mb-2">            defer wg.Done()  // 完成时减少计数器</p>
+<p class="mb-2">            fmt.Printf(&quot;Task %d started\n&quot;, id)</p>
+<p class="mb-2">            fmt.Printf(&quot;Task %d started\n&quot;, id)</p>
+<br>
+<br>
+<p class="mb-2">            // 模拟耗时操作</p>
+<p class="mb-2">            // 模拟耗时操作</p>
+<p class="mb-2">            time.Sleep(time.Second)</p>
+<p class="mb-2">            time.Sleep(time.Second)</p>
+<br>
+<br>
+<p class="mb-2">            fmt.Printf(&quot;Task %d completed\n&quot;, id)</p>
+<p class="mb-2">            fmt.Printf(&quot;Task %d completed\n&quot;, id)</p>
+<p class="mb-2">        }(i)</p>
+<p class="mb-2">        }(i)</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    // 等待所有任务完成</p>
+<p class="mb-2">    // 等待所有任务完成</p>
+<p class="mb-2">    wg.Wait()</p>
+<p class="mb-2">    wg.Wait()</p>
+<p class="mb-2">    fmt.Println(&quot;All tasks completed&quot;)</p>
+<p class="mb-2">    fmt.Println(&quot;All tasks completed&quot;)</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 Channel 通信</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.1.3 Channel 通信</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">package main</p>
+<p class="mb-2">package main</p>
+<br>
+<br>
+<p class="mb-2">import &quot;fmt&quot;</p>
+<p class="mb-2">import &quot;fmt&quot;</p>
+<br>
+<br>
+<p class="mb-2">// 生产者函数</p>
+<p class="mb-2">// 生产者函数</p>
+<p class="mb-2">func producer(ch chan&lt;- int) {</p>
+<p class="mb-2">func producer(ch chan&lt;- int) {</p>
+<p class="mb-2">    for i := 1; i &lt;= 5; i++ {</p>
+<p class="mb-2">    for i := 1; i &lt;= 5; i++ {</p>
+<p class="mb-2">        ch &lt;- i  // 发送数据到 channel</p>
+<p class="mb-2">        ch &lt;- i  // 发送数据到 channel</p>
+<p class="mb-2">        fmt.Printf(&quot;Produced: %d\n&quot;, i)</p>
+<p class="mb-2">        fmt.Printf(&quot;Produced: %d\n&quot;, i)</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    close(ch)  // 关闭 channel</p>
+<p class="mb-2">    close(ch)  // 关闭 channel</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 消费者函数</p>
+<p class="mb-2">// 消费者函数</p>
+<p class="mb-2">func consumer(ch &lt;-chan int, done chan&lt;- bool) {</p>
+<p class="mb-2">func consumer(ch &lt;-chan int, done chan&lt;- bool) {</p>
+<p class="mb-2">    for v := range ch {  // 持续读取直到 channel 关闭</p>
+<p class="mb-2">    for v := range ch {  // 持续读取直到 channel 关闭</p>
+<p class="mb-2">        fmt.Printf(&quot;Consumed: %d\n&quot;, v)</p>
+<p class="mb-2">        fmt.Printf(&quot;Consumed: %d\n&quot;, v)</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    done &lt;- true</p>
+<p class="mb-2">    done &lt;- true</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">    // 创建 channel</p>
+<p class="mb-2">    // 创建 channel</p>
+<p class="mb-2">    ch := make(chan int, 3)  // 带缓冲的 channel，容量 3</p>
+<p class="mb-2">    ch := make(chan int, 3)  // 带缓冲的 channel，容量 3</p>
+<p class="mb-2">    done := make(chan bool)</p>
+<p class="mb-2">    done := make(chan bool)</p>
+<br>
+<br>
+<p class="mb-2">    // 启动生产者和消费者</p>
+<p class="mb-2">    // 启动生产者和消费者</p>
+<p class="mb-2">    go producer(ch)</p>
+<p class="mb-2">    go producer(ch)</p>
+<p class="mb-2">    go consumer(ch, done)</p>
+<p class="mb-2">    go consumer(ch, done)</p>
+<br>
+<br>
+<p class="mb-2">    &lt;-done  // 等待消费者完成</p>
+<p class="mb-2">    &lt;-done  // 等待消费者完成</p>
+<p class="mb-2">    fmt.Println(&quot;Done&quot;)</p>
+<p class="mb-2">    fmt.Println(&quot;Done&quot;)</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 微服务架构</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">3.2 微服务架构</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 Go 微服务项目结构</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.1 Go 微服务项目结构</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">user-service/</p>
+<p class="mb-2">user-service/</p>
+<p class="mb-2">├── cmd/</p>
+<p class="mb-2">├── cmd/</p>
+<p class="mb-2">│   └── server/</p>
+<p class="mb-2">│   └── server/</p>
+<p class="mb-2">│       └── main.go          # 程序入口</p>
+<p class="mb-2">│       └── main.go          # 程序入口</p>
+<p class="mb-2">├── internal/</p>
+<p class="mb-2">├── internal/</p>
+<p class="mb-2">│   ├── config/</p>
+<p class="mb-2">│   ├── config/</p>
+<p class="mb-2">│   │   └── config.go        # 配置管理</p>
+<p class="mb-2">│   │   └── config.go        # 配置管理</p>
+<p class="mb-2">│   ├── handler/</p>
+<p class="mb-2">│   ├── handler/</p>
+<p class="mb-2">│   │   └── user_handler.go  # HTTP 处理器</p>
+<p class="mb-2">│   │   └── user_handler.go  # HTTP 处理器</p>
+<p class="mb-2">│   ├── service/</p>
+<p class="mb-2">│   ├── service/</p>
+<p class="mb-2">│   │   └── user_service.go  # 业务逻辑</p>
+<p class="mb-2">│   │   └── user_service.go  # 业务逻辑</p>
+<p class="mb-2">│   ├── repository/</p>
+<p class="mb-2">│   ├── repository/</p>
+<p class="mb-2">│   │   └── user_repo.go     # 数据访问</p>
+<p class="mb-2">│   │   └── user_repo.go     # 数据访问</p>
+<p class="mb-2">│   ├── model/</p>
+<p class="mb-2">│   ├── model/</p>
+<p class="mb-2">│   │   └── user.go          # 数据模型</p>
+<p class="mb-2">│   │   └── user.go          # 数据模型</p>
+<p class="mb-2">│   └── middleware/</p>
+<p class="mb-2">│   └── middleware/</p>
+<p class="mb-2">│       ├── auth.go          # 认证中间件</p>
+<p class="mb-2">│       ├── auth.go          # 认证中间件</p>
+<p class="mb-2">│       └── logging.go       # 日志中间件</p>
+<p class="mb-2">│       └── logging.go       # 日志中间件</p>
+<p class="mb-2">├── pkg/</p>
+<p class="mb-2">├── pkg/</p>
+<p class="mb-2">│   └── response/</p>
+<p class="mb-2">│   └── response/</p>
+<p class="mb-2">│       └── response.go      # 统一响应格式</p>
+<p class="mb-2">│       └── response.go      # 统一响应格式</p>
+<p class="mb-2">├── go.mod</p>
+<p class="mb-2">├── go.mod</p>
+<p class="mb-2">└── go.sum</p>
+<p class="mb-2">└── go.sum</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 核心代码实现</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">3.2.2 核心代码实现</h4>
+<br>
+<br>
+<p class="mb-2">**main.go 入口**：</p>
+<p class="mb-2">**main.go 入口**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">package main</p>
+<p class="mb-2">package main</p>
+<br>
+<br>
+<p class="mb-2">import (</p>
+<p class="mb-2">import (</p>
+<p class="mb-2">    &quot;log&quot;</p>
+<p class="mb-2">    &quot;log&quot;</p>
+<p class="mb-2">    &quot;os&quot;</p>
+<p class="mb-2">    &quot;os&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/config&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/config&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/handler&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/handler&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/middleware&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/middleware&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/repository&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/repository&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/service&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/service&quot;</p>
+<br>
+<br>
+<p class="mb-2">    &quot;github.com/gin-gonic/gin&quot;</p>
+<p class="mb-2">    &quot;github.com/gin-gonic/gin&quot;</p>
+<p class="mb-2">)</p>
+<p class="mb-2">)</p>
+<br>
+<br>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">    // 加载配置</p>
+<p class="mb-2">    // 加载配置</p>
+<p class="mb-2">    cfg := config.Load(os.Getenv(&quot;CONFIG_PATH&quot;))</p>
+<p class="mb-2">    cfg := config.Load(os.Getenv(&quot;CONFIG_PATH&quot;))</p>
+<br>
+<br>
+<p class="mb-2">    // 初始化层</p>
+<p class="mb-2">    // 初始化层</p>
+<p class="mb-2">    repo := repository.NewUserRepository(cfg.Database)</p>
+<p class="mb-2">    repo := repository.NewUserRepository(cfg.Database)</p>
+<p class="mb-2">    svc := service.NewUserService(repo)</p>
+<p class="mb-2">    svc := service.NewUserService(repo)</p>
+<p class="mb-2">    hdlr := handler.NewUserHandler(svc)</p>
+<p class="mb-2">    hdlr := handler.NewUserHandler(svc)</p>
+<br>
+<br>
+<p class="mb-2">    // 创建 Gin 引擎</p>
+<p class="mb-2">    // 创建 Gin 引擎</p>
+<p class="mb-2">    r := gin.Default()</p>
+<p class="mb-2">    r := gin.Default()</p>
+<br>
+<br>
+<p class="mb-2">    // 注册中间件</p>
+<p class="mb-2">    // 注册中间件</p>
+<p class="mb-2">    r.Use(middleware.Logger())</p>
+<p class="mb-2">    r.Use(middleware.Logger())</p>
+<p class="mb-2">    r.Use(middleware.Recovery())</p>
+<p class="mb-2">    r.Use(middleware.Recovery())</p>
+<p class="mb-2">    r.Use(middleware.CORS())</p>
+<p class="mb-2">    r.Use(middleware.CORS())</p>
+<br>
+<br>
+<p class="mb-2">    // 路由组</p>
+<p class="mb-2">    // 路由组</p>
+<p class="mb-2">    api := r.Group(&quot;/api/v1&quot;)</p>
+<p class="mb-2">    api := r.Group(&quot;/api/v1&quot;)</p>
+<p class="mb-2">    {</p>
+<p class="mb-2">    {</p>
+<p class="mb-2">        users := api.Group(&quot;/users&quot;)</p>
+<p class="mb-2">        users := api.Group(&quot;/users&quot;)</p>
+<p class="mb-2">        {</p>
+<p class="mb-2">        {</p>
+<p class="mb-2">            users.POST(&quot;&quot;, hdlr.Create)</p>
+<p class="mb-2">            users.POST(&quot;&quot;, hdlr.Create)</p>
+<p class="mb-2">            users.GET(&quot;/:id&quot;, hdlr.GetByID)</p>
+<p class="mb-2">            users.GET(&quot;/:id&quot;, hdlr.GetByID)</p>
+<p class="mb-2">            users.PUT(&quot;/:id&quot;, hdlr.Update)</p>
+<p class="mb-2">            users.PUT(&quot;/:id&quot;, hdlr.Update)</p>
+<p class="mb-2">            users.DELETE(&quot;/:id&quot;, hdlr.Delete)</p>
+<p class="mb-2">            users.DELETE(&quot;/:id&quot;, hdlr.Delete)</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    // 启动服务器</p>
+<p class="mb-2">    // 启动服务器</p>
+<p class="mb-2">    log.Printf(&quot;Server starting on :%s&quot;, cfg.Server.Port)</p>
+<p class="mb-2">    log.Printf(&quot;Server starting on :%s&quot;, cfg.Server.Port)</p>
+<p class="mb-2">    if err := r.Run(&quot;:&quot; + cfg.Server.Port); err != nil {</p>
+<p class="mb-2">    if err := r.Run(&quot;:&quot; + cfg.Server.Port); err != nil {</p>
+<p class="mb-2">        log.Fatalf(&quot;Failed to start server: %v&quot;, err)</p>
+<p class="mb-2">        log.Fatalf(&quot;Failed to start server: %v&quot;, err)</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**Service 层**：</p>
+<p class="mb-2">**Service 层**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">package service</p>
+<p class="mb-2">package service</p>
+<br>
+<br>
+<p class="mb-2">import (</p>
+<p class="mb-2">import (</p>
+<p class="mb-2">    &quot;errors&quot;</p>
+<p class="mb-2">    &quot;errors&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/model&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/model&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/repository&quot;</p>
+<p class="mb-2">    &quot;user-service/internal/repository&quot;</p>
+<p class="mb-2">)</p>
+<p class="mb-2">)</p>
+<br>
+<br>
+<p class="mb-2">var (</p>
+<p class="mb-2">var (</p>
+<p class="mb-2">    ErrNotFound     = errors.New(&quot;user not found&quot;)</p>
+<p class="mb-2">    ErrNotFound     = errors.New(&quot;user not found&quot;)</p>
+<p class="mb-2">    ErrEmailExisted  = errors.New(&quot;email already exists&quot;)</p>
+<p class="mb-2">    ErrEmailExisted  = errors.New(&quot;email already exists&quot;)</p>
+<p class="mb-2">)</p>
+<p class="mb-2">)</p>
+<br>
+<br>
+<p class="mb-2">type UserService interface {</p>
+<p class="mb-2">type UserService interface {</p>
+<p class="mb-2">    Create(req *model.CreateUserRequest) (*model.User, error)</p>
+<p class="mb-2">    Create(req *model.CreateUserRequest) (*model.User, error)</p>
+<p class="mb-2">    GetByID(id uint) (*model.User, error)</p>
+<p class="mb-2">    GetByID(id uint) (*model.User, error)</p>
+<p class="mb-2">    Update(id uint, req *model.UpdateUserRequest) (*model.User, error)</p>
+<p class="mb-2">    Update(id uint, req *model.UpdateUserRequest) (*model.User, error)</p>
+<p class="mb-2">    Delete(id uint) error</p>
+<p class="mb-2">    Delete(id uint) error</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">type userService struct {</p>
+<p class="mb-2">type userService struct {</p>
+<p class="mb-2">    repo repository.UserRepository</p>
+<p class="mb-2">    repo repository.UserRepository</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func NewUserService(repo repository.UserRepository) UserService {</p>
+<p class="mb-2">func NewUserService(repo repository.UserRepository) UserService {</p>
+<p class="mb-2">    return &amp;userService{repo: repo}</p>
+<p class="mb-2">    return &amp;userService{repo: repo}</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func (s *userService) Create(req *model.CreateUserRequest) (*model.User, error) {</p>
+<p class="mb-2">func (s *userService) Create(req *model.CreateUserRequest) (*model.User, error) {</p>
+<p class="mb-2">    // 业务校验</p>
+<p class="mb-2">    // 业务校验</p>
+<p class="mb-2">    if _, err := s.repo.FindByEmail(req.Email); err == nil {</p>
+<p class="mb-2">    if _, err := s.repo.FindByEmail(req.Email); err == nil {</p>
+<p class="mb-2">        return nil, ErrEmailExisted</p>
+<p class="mb-2">        return nil, ErrEmailExisted</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    // 创建用户</p>
+<p class="mb-2">    // 创建用户</p>
+<p class="mb-2">    user := &amp;model.User{</p>
+<p class="mb-2">    user := &amp;model.User{</p>
+<p class="mb-2">        Email:    req.Email,</p>
+<p class="mb-2">        Email:    req.Email,</p>
+<p class="mb-2">        Username: req.Username,</p>
+<p class="mb-2">        Username: req.Username,</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    if err := user.SetPassword(req.Password); err != nil {</p>
+<p class="mb-2">    if err := user.SetPassword(req.Password); err != nil {</p>
+<p class="mb-2">        return nil, err</p>
+<p class="mb-2">        return nil, err</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<br>
+<br>
+<p class="mb-2">    return s.repo.Create(user)</p>
+<p class="mb-2">    return s.repo.Create(user)</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func (s *userService) GetByID(id uint) (*model.User, error) {</p>
+<p class="mb-2">func (s *userService) GetByID(id uint) (*model.User, error) {</p>
+<p class="mb-2">    user, err := s.repo.FindByID(id)</p>
+<p class="mb-2">    user, err := s.repo.FindByID(id)</p>
+<p class="mb-2">    if err != nil {</p>
+<p class="mb-2">    if err != nil {</p>
+<p class="mb-2">        return nil, ErrNotFound</p>
+<p class="mb-2">        return nil, ErrNotFound</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    return user, nil</p>
+<p class="mb-2">    return user, nil</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">4. API 设计</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">4. API 设计</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.1 REST / GraphQL / gRPC 对比</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">4.1 REST / GraphQL / gRPC 对比</h3>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.1 协议特性对比</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.1 协议特性对比</h4>
+<br>
+<br>
+<table class="my-4 w-full"><tr><td>维度</td><td>REST</td><td>GraphQL</td><td>gRPC</td></tr>
+<tr><td>维度</td><td>REST</td><td>GraphQL</td><td>gRPC</td></tr>
+<tr><td>**传输协议**</td><td>HTTP/1.1</td><td>HTTP/1.1</td><td>HTTP/2</td></tr>
+<tr><td>**传输协议**</td><td>HTTP/1.1</td><td>HTTP/1.1</td><td>HTTP/2</td></tr>
+<tr><td>**数据格式**</td><td>JSON/XML</td><td>JSON</td><td>Protocol Buffers</td></tr>
+<tr><td>**数据格式**</td><td>JSON/XML</td><td>JSON</td><td>Protocol Buffers</td></tr>
+<tr><td>**设计风格**</td><td>资源导向</td><td>查询导向</td><td>接口导向</td></tr>
+<tr><td>**设计风格**</td><td>资源导向</td><td>查询导向</td><td>接口导向</td></tr>
+<tr><td>**优势**</td><td>简单、缓存好</td><td>灵活、按需取</td><td>高性能、低延迟</td></tr>
+<tr><td>**优势**</td><td>简单、缓存好</td><td>灵活、按需取</td><td>高性能、低延迟</td></tr>
+<tr><td>**劣势**</td><td>过度/不足获取</td><td>复杂度高、缓存难</td><td>学习曲线陡</td></tr>
+<tr><td>**劣势**</td><td>过度/不足获取</td><td>复杂度高、缓存难</td><td>学习曲线陡</td></tr>
+<tr><td>**适用场景**</td><td>通用 Web API</td><td>多端差异大</td><td>微服务间通信</td></tr>
+<tr><td>**适用场景**</td><td>通用 Web API</td><td>多端差异大</td><td>微服务间通信</td></tr></table>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.2 REST API 设计</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.2 REST API 设计</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">┌─────────────────────────────────────────────────────────────┐</p>
+<p class="mb-2">│                    REST API 设计规范                         │</p>
+<p class="mb-2">│                    REST API 设计规范                         │</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">├─────────────────────────────────────────────────────────────┤</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  资源命名：使用名词复数                                      │</p>
+<p class="mb-2">│  资源命名：使用名词复数                                      │</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  │  GET    /users          获取用户列表                 │   │</p>
+<p class="mb-2">│  │  GET    /users          获取用户列表                 │   │</p>
+<p class="mb-2">│  │  GET    /users/:id       获取单个用户                 │   │</p>
+<p class="mb-2">│  │  GET    /users/:id       获取单个用户                 │   │</p>
+<p class="mb-2">│  │  POST   /users           创建用户                     │   │</p>
+<p class="mb-2">│  │  POST   /users           创建用户                     │   │</p>
+<p class="mb-2">│  │  PUT    /users/:id       更新用户（整体）             │   │</p>
+<p class="mb-2">│  │  PUT    /users/:id       更新用户（整体）             │   │</p>
+<p class="mb-2">│  │  PATCH  /users/:id       部分更新                      │   │</p>
+<p class="mb-2">│  │  PATCH  /users/:id       部分更新                      │   │</p>
+<p class="mb-2">│  │  DELETE /users/:id       删除用户                     │   │</p>
+<p class="mb-2">│  │  DELETE /users/:id       删除用户                     │   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│  HTTP 状态码规范：                                           │</p>
+<p class="mb-2">│  HTTP 状态码规范：                                           │</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  ┌─────────────────────────────────────────────────────┐   │</p>
+<p class="mb-2">│  │  200 OK           成功                               │   │</p>
+<p class="mb-2">│  │  200 OK           成功                               │   │</p>
+<p class="mb-2">│  │  201 Created      创建成功                          │   │</p>
+<p class="mb-2">│  │  201 Created      创建成功                          │   │</p>
+<p class="mb-2">│  │  204 No Content   删除成功（无返回）                 │   │</p>
+<p class="mb-2">│  │  204 No Content   删除成功（无返回）                 │   │</p>
+<p class="mb-2">│  │  400 Bad Request  请求参数错误                       │   │</p>
+<p class="mb-2">│  │  400 Bad Request  请求参数错误                       │   │</p>
+<p class="mb-2">│  │  401 Unauthorized 未认证                            │   │</p>
+<p class="mb-2">│  │  401 Unauthorized 未认证                            │   │</p>
+<p class="mb-2">│  │  403 Forbidden    无权限                           │   │</p>
+<p class="mb-2">│  │  403 Forbidden    无权限                           │   │</p>
+<p class="mb-2">│  │  404 Not Found    资源不存在                         │   │</p>
+<p class="mb-2">│  │  404 Not Found    资源不存在                         │   │</p>
+<p class="mb-2">│  │  500 Server Error 服务器错误                         │   │</p>
+<p class="mb-2">│  │  500 Server Error 服务器错误                         │   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│  └─────────────────────────────────────────────────────┘   │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">│                                                             │</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<p class="mb-2">└─────────────────────────────────────────────────────────────┘</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**REST API 示例**：</p>
+<p class="mb-2">**REST API 示例**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">使用 FastAPI</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">使用 FastAPI</h1>
+<p class="mb-2">from fastapi import FastAPI, HTTPException, status</p>
+<p class="mb-2">from fastapi import FastAPI, HTTPException, status</p>
+<p class="mb-2">from pydantic import BaseModel</p>
+<p class="mb-2">from pydantic import BaseModel</p>
+<br>
+<br>
+<p class="mb-2">app = FastAPI()</p>
+<p class="mb-2">app = FastAPI()</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">请求模型</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">请求模型</h1>
+<p class="mb-2">class UserCreate(BaseModel):</p>
+<p class="mb-2">class UserCreate(BaseModel):</p>
+<p class="mb-2">    email: str</p>
+<p class="mb-2">    email: str</p>
+<p class="mb-2">    username: str</p>
+<p class="mb-2">    username: str</p>
+<p class="mb-2">    password: str</p>
+<p class="mb-2">    password: str</p>
+<br>
+<br>
+<p class="mb-2">class UserUpdate(BaseModel):</p>
+<p class="mb-2">class UserUpdate(BaseModel):</p>
+<p class="mb-2">    email: str | None = None</p>
+<p class="mb-2">    email: str | None = None</p>
+<p class="mb-2">    username: str | None = None</p>
+<p class="mb-2">    username: str | None = None</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">响应模型</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">响应模型</h1>
+<p class="mb-2">class UserResponse(BaseModel):</p>
+<p class="mb-2">class UserResponse(BaseModel):</p>
+<p class="mb-2">    id: int</p>
+<p class="mb-2">    id: int</p>
+<p class="mb-2">    email: str</p>
+<p class="mb-2">    email: str</p>
+<p class="mb-2">    username: str</p>
+<p class="mb-2">    username: str</p>
+<br>
+<br>
+<p class="mb-2">    class Config:</p>
+<p class="mb-2">    class Config:</p>
+<p class="mb-2">        from_attributes = True</p>
+<p class="mb-2">        from_attributes = True</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">模拟数据库</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">模拟数据库</h1>
+<p class="mb-2">users_db = {}</p>
+<p class="mb-2">users_db = {}</p>
+<p class="mb-2">next_id = 1</p>
+<p class="mb-2">next_id = 1</p>
+<br>
+<br>
+<p class="mb-2">@app.post(&quot;/users/&quot;, response_model=UserResponse, status_code=status.HTTP_201_CREATED)</p>
+<p class="mb-2">@app.post(&quot;/users/&quot;, response_model=UserResponse, status_code=status.HTTP_201_CREATED)</p>
+<p class="mb-2">def create_user(user: UserCreate):</p>
+<p class="mb-2">def create_user(user: UserCreate):</p>
+<p class="mb-2">    global next_id</p>
+<p class="mb-2">    global next_id</p>
+<br>
+<br>
+<p class="mb-2">    # 检查邮箱是否已存在</p>
+<p class="mb-2">    # 检查邮箱是否已存在</p>
+<p class="mb-2">    for u in users_db.values():</p>
+<p class="mb-2">    for u in users_db.values():</p>
+<p class="mb-2">        if u.email == user.email:</p>
+<p class="mb-2">        if u.email == user.email:</p>
+<p class="mb-2">            raise HTTPException(status_code=400, detail=&quot;Email already exists&quot;)</p>
+<p class="mb-2">            raise HTTPException(status_code=400, detail=&quot;Email already exists&quot;)</p>
+<br>
+<br>
+<p class="mb-2">    new_user = UserResponse(id=next_id, **user.model_dump())</p>
+<p class="mb-2">    new_user = UserResponse(id=next_id, **user.model_dump())</p>
+<p class="mb-2">    users_db[next_id] = new_user</p>
+<p class="mb-2">    users_db[next_id] = new_user</p>
+<p class="mb-2">    next_id += 1</p>
+<p class="mb-2">    next_id += 1</p>
+<p class="mb-2">    return new_user</p>
+<p class="mb-2">    return new_user</p>
+<br>
+<br>
+<p class="mb-2">@app.get(&quot;/users/{user_id}&quot;, response_model=UserResponse)</p>
+<p class="mb-2">@app.get(&quot;/users/{user_id}&quot;, response_model=UserResponse)</p>
+<p class="mb-2">def get_user(user_id: int):</p>
+<p class="mb-2">def get_user(user_id: int):</p>
+<p class="mb-2">    if user_id not in users_db:</p>
+<p class="mb-2">    if user_id not in users_db:</p>
+<p class="mb-2">        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)</p>
+<p class="mb-2">        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)</p>
+<p class="mb-2">    return users_db[user_id]</p>
+<p class="mb-2">    return users_db[user_id]</p>
+<br>
+<br>
+<p class="mb-2">@app.put(&quot;/users/{user_id}&quot;, response_model=UserResponse)</p>
+<p class="mb-2">@app.put(&quot;/users/{user_id}&quot;, response_model=UserResponse)</p>
+<p class="mb-2">def update_user(user_id: int, user: UserUpdate):</p>
+<p class="mb-2">def update_user(user_id: int, user: UserUpdate):</p>
+<p class="mb-2">    if user_id not in users_db:</p>
+<p class="mb-2">    if user_id not in users_db:</p>
+<p class="mb-2">        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)</p>
+<p class="mb-2">        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)</p>
+<br>
+<br>
+<p class="mb-2">    existing_user = users_db[user_id]</p>
+<p class="mb-2">    existing_user = users_db[user_id]</p>
+<p class="mb-2">    update_data = user.model_dump(exclude_unset=True)</p>
+<p class="mb-2">    update_data = user.model_dump(exclude_unset=True)</p>
+<br>
+<br>
+<p class="mb-2">    for field, value in update_data.items():</p>
+<p class="mb-2">    for field, value in update_data.items():</p>
+<p class="mb-2">        setattr(existing_user, field, value)</p>
+<p class="mb-2">        setattr(existing_user, field, value)</p>
+<br>
+<br>
+<p class="mb-2">    return existing_user</p>
+<p class="mb-2">    return existing_user</p>
+<br>
+<br>
+<p class="mb-2">@app.delete(&quot;/users/{user_id}&quot;, status_code=status.HTTP_204_NO_CONTENT)</p>
+<p class="mb-2">@app.delete(&quot;/users/{user_id}&quot;, status_code=status.HTTP_204_NO_CONTENT)</p>
+<p class="mb-2">def delete_user(user_id: int):</p>
+<p class="mb-2">def delete_user(user_id: int):</p>
+<p class="mb-2">    if user_id not in users_db:</p>
+<p class="mb-2">    if user_id not in users_db:</p>
+<p class="mb-2">        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)</p>
+<p class="mb-2">        raise HTTPException(status_code=404, detail=&quot;User not found&quot;)</p>
+<p class="mb-2">    del users_db[user_id]</p>
+<p class="mb-2">    del users_db[user_id]</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.3 GraphQL 设计</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.3 GraphQL 设计</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">schema.graphql</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">schema.graphql</h1>
+<br>
+<br>
+<p class="mb-2">type User {</p>
+<p class="mb-2">type User {</p>
+<p class="mb-2">  id: ID!</p>
+<p class="mb-2">  id: ID!</p>
+<p class="mb-2">  email: String!</p>
+<p class="mb-2">  email: String!</p>
+<p class="mb-2">  username: String!</p>
+<p class="mb-2">  username: String!</p>
+<p class="mb-2">  createdAt: DateTime!</p>
+<p class="mb-2">  createdAt: DateTime!</p>
+<p class="mb-2">  posts: [Post!]!</p>
+<p class="mb-2">  posts: [Post!]!</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">type Post {</p>
+<p class="mb-2">type Post {</p>
+<p class="mb-2">  id: ID!</p>
+<p class="mb-2">  id: ID!</p>
+<p class="mb-2">  title: String!</p>
+<p class="mb-2">  title: String!</p>
+<p class="mb-2">  content: String!</p>
+<p class="mb-2">  content: String!</p>
+<p class="mb-2">  author: User!</p>
+<p class="mb-2">  author: User!</p>
+<p class="mb-2">  comments: [Comment!]!</p>
+<p class="mb-2">  comments: [Comment!]!</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">type Comment {</p>
+<p class="mb-2">type Comment {</p>
+<p class="mb-2">  id: ID!</p>
+<p class="mb-2">  id: ID!</p>
+<p class="mb-2">  content: String!</p>
+<p class="mb-2">  content: String!</p>
+<p class="mb-2">  author: User!</p>
+<p class="mb-2">  author: User!</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">查询类型</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">查询类型</h1>
+<p class="mb-2">type Query {</p>
+<p class="mb-2">type Query {</p>
+<p class="mb-2">  # 获取单个用户（按需取字段）</p>
+<p class="mb-2">  # 获取单个用户（按需取字段）</p>
+<p class="mb-2">  user(id: ID!): User</p>
+<p class="mb-2">  user(id: ID!): User</p>
+<p class="mb-2">  # 获取用户列表</p>
+<p class="mb-2">  # 获取用户列表</p>
+<p class="mb-2">  users(limit: Int, offset: Int): [User!]!</p>
+<p class="mb-2">  users(limit: Int, offset: Int): [User!]!</p>
+<p class="mb-2">  # 获取用户及其帖子（嵌套）</p>
+<p class="mb-2">  # 获取用户及其帖子（嵌套）</p>
+<p class="mb-2">  userWithPosts(id: ID!): User</p>
+<p class="mb-2">  userWithPosts(id: ID!): User</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">变更类型</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">变更类型</h1>
+<p class="mb-2">type Mutation {</p>
+<p class="mb-2">type Mutation {</p>
+<p class="mb-2">  createUser(input: CreateUserInput!): User!</p>
+<p class="mb-2">  createUser(input: CreateUserInput!): User!</p>
+<p class="mb-2">  updateUser(id: ID!, input: UpdateUserInput!): User!</p>
+<p class="mb-2">  updateUser(id: ID!, input: UpdateUserInput!): User!</p>
+<p class="mb-2">  deleteUser(id: ID!): Boolean!</p>
+<p class="mb-2">  deleteUser(id: ID!): Boolean!</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">输入类型</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">输入类型</h1>
+<p class="mb-2">input CreateUserInput {</p>
+<p class="mb-2">input CreateUserInput {</p>
+<p class="mb-2">  email: String!</p>
+<p class="mb-2">  email: String!</p>
+<p class="mb-2">  username: String!</p>
+<p class="mb-2">  username: String!</p>
+<p class="mb-2">  password: String!</p>
+<p class="mb-2">  password: String!</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">input UpdateUserInput {</p>
+<p class="mb-2">input UpdateUserInput {</p>
+<p class="mb-2">  email: String</p>
+<p class="mb-2">  email: String</p>
+<p class="mb-2">  username: String</p>
+<p class="mb-2">  username: String</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**GraphQL 客户端查询示例**：</p>
+<p class="mb-2">**GraphQL 客户端查询示例**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">客户端查询 - 按需取字段</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">客户端查询 - 按需取字段</h1>
+<p class="mb-2">query {</p>
+<p class="mb-2">query {</p>
+<p class="mb-2">  user(id: &quot;1&quot;) {</p>
+<p class="mb-2">  user(id: &quot;1&quot;) {</p>
+<p class="mb-2">    id</p>
+<p class="mb-2">    id</p>
+<p class="mb-2">    username</p>
+<p class="mb-2">    username</p>
+<p class="mb-2">    email</p>
+<p class="mb-2">    email</p>
+<p class="mb-2">  }</p>
+<p class="mb-2">  }</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">嵌套查询 - 一并获取关联数据</h1>
+<h1 class="font-heading text-3xl font-bold mt-8 mb-4">嵌套查询 - 一并获取关联数据</h1>
+<p class="mb-2">query {</p>
+<p class="mb-2">query {</p>
+<p class="mb-2">  user(id: &quot;1&quot;) {</p>
+<p class="mb-2">  user(id: &quot;1&quot;) {</p>
+<p class="mb-2">    id</p>
+<p class="mb-2">    id</p>
+<p class="mb-2">    username</p>
+<p class="mb-2">    username</p>
+<p class="mb-2">    posts {</p>
+<p class="mb-2">    posts {</p>
+<p class="mb-2">      id</p>
+<p class="mb-2">      id</p>
+<p class="mb-2">      title</p>
+<p class="mb-2">      title</p>
+<p class="mb-2">      comments {</p>
+<p class="mb-2">      comments {</p>
+<p class="mb-2">        content</p>
+<p class="mb-2">        content</p>
+<p class="mb-2">        author {</p>
+<p class="mb-2">        author {</p>
+<p class="mb-2">          username</p>
+<p class="mb-2">          username</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">      }</p>
+<p class="mb-2">      }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">  }</p>
+<p class="mb-2">  }</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.4 gRPC 设计</h4>
+<h4 class="font-heading text-lg font-semibold mt-6 mb-2">4.1.4 gRPC 设计</h4>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">// user.proto</p>
+<p class="mb-2">// user.proto</p>
+<p class="mb-2">syntax = &quot;proto3&quot;;</p>
+<p class="mb-2">syntax = &quot;proto3&quot;;</p>
+<br>
+<br>
+<p class="mb-2">package user;</p>
+<p class="mb-2">package user;</p>
+<br>
+<br>
+<p class="mb-2">option go_package = &quot;github.com/example/user-service/proto&quot;;</p>
+<p class="mb-2">option go_package = &quot;github.com/example/user-service/proto&quot;;</p>
+<br>
+<br>
+<p class="mb-2">// 用户消息</p>
+<p class="mb-2">// 用户消息</p>
+<p class="mb-2">message User {</p>
+<p class="mb-2">message User {</p>
+<p class="mb-2">    string id = 1;</p>
+<p class="mb-2">    string id = 1;</p>
+<p class="mb-2">    string email = 2;</p>
+<p class="mb-2">    string email = 2;</p>
+<p class="mb-2">    string username = 3;</p>
+<p class="mb-2">    string username = 3;</p>
+<p class="mb-2">    string created_at = 4;</p>
+<p class="mb-2">    string created_at = 4;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 创建用户请求</p>
+<p class="mb-2">// 创建用户请求</p>
+<p class="mb-2">message CreateUserRequest {</p>
+<p class="mb-2">message CreateUserRequest {</p>
+<p class="mb-2">    string email = 1;</p>
+<p class="mb-2">    string email = 1;</p>
+<p class="mb-2">    string username = 2;</p>
+<p class="mb-2">    string username = 2;</p>
+<p class="mb-2">    string password = 3;</p>
+<p class="mb-2">    string password = 3;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 获取用户请求</p>
+<p class="mb-2">// 获取用户请求</p>
+<p class="mb-2">message GetUserRequest {</p>
+<p class="mb-2">message GetUserRequest {</p>
+<p class="mb-2">    string id = 1;</p>
+<p class="mb-2">    string id = 1;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 用户响应</p>
+<p class="mb-2">// 用户响应</p>
+<p class="mb-2">message UserResponse {</p>
+<p class="mb-2">message UserResponse {</p>
+<p class="mb-2">    User user = 1;</p>
+<p class="mb-2">    User user = 1;</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">// 用户服务</p>
+<p class="mb-2">// 用户服务</p>
+<p class="mb-2">service UserService {</p>
+<p class="mb-2">service UserService {</p>
+<p class="mb-2">    // 创建用户</p>
+<p class="mb-2">    // 创建用户</p>
+<p class="mb-2">    rpc CreateUser(CreateUserRequest) returns (UserResponse);</p>
+<p class="mb-2">    rpc CreateUser(CreateUserRequest) returns (UserResponse);</p>
+<p class="mb-2">    // 获取用户</p>
+<p class="mb-2">    // 获取用户</p>
+<p class="mb-2">    rpc GetUser(GetUserRequest) returns (UserResponse);</p>
+<p class="mb-2">    rpc GetUser(GetUserRequest) returns (UserResponse);</p>
+<p class="mb-2">    // 流式获取用户列表</p>
+<p class="mb-2">    // 流式获取用户列表</p>
+<p class="mb-2">    rpc ListUsers(ListUsersRequest) returns (stream UserResponse);</p>
+<p class="mb-2">    rpc ListUsers(ListUsersRequest) returns (stream UserResponse);</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">**Go gRPC 服务器实现**：</p>
+<p class="mb-2">**Go gRPC 服务器实现**：</p>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">package main</p>
+<p class="mb-2">package main</p>
+<br>
+<br>
+<p class="mb-2">import (</p>
+<p class="mb-2">import (</p>
+<p class="mb-2">    &quot;context&quot;</p>
+<p class="mb-2">    &quot;context&quot;</p>
+<p class="mb-2">    &quot;log&quot;</p>
+<p class="mb-2">    &quot;log&quot;</p>
+<p class="mb-2">    &quot;net&quot;</p>
+<p class="mb-2">    &quot;net&quot;</p>
+<br>
+<br>
+<p class="mb-2">    &quot;github.com/example/user-service/proto&quot;</p>
+<p class="mb-2">    &quot;github.com/example/user-service/proto&quot;</p>
+<p class="mb-2">    &quot;google.golang.org/grpc&quot;</p>
+<p class="mb-2">    &quot;google.golang.org/grpc&quot;</p>
+<p class="mb-2">)</p>
+<p class="mb-2">)</p>
+<br>
+<br>
+<p class="mb-2">type userServer struct {</p>
+<p class="mb-2">type userServer struct {</p>
+<p class="mb-2">    proto.UnimplementedUserServiceServer</p>
+<p class="mb-2">    proto.UnimplementedUserServiceServer</p>
+<p class="mb-2">    users map[string]*proto.User</p>
+<p class="mb-2">    users map[string]*proto.User</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func (s *userServer) CreateUser(ctx context.Context, req *proto.CreateUserRequest) (*proto.UserResponse, error) {</p>
+<p class="mb-2">func (s *userServer) CreateUser(ctx context.Context, req *proto.CreateUserRequest) (*proto.UserResponse, error) {</p>
+<p class="mb-2">    user := &amp;proto.User{</p>
+<p class="mb-2">    user := &amp;proto.User{</p>
+<p class="mb-2">        Id:       generateID(),</p>
+<p class="mb-2">        Id:       generateID(),</p>
+<p class="mb-2">        Email:    req.Email,</p>
+<p class="mb-2">        Email:    req.Email,</p>
+<p class="mb-2">        Username: req.Username,</p>
+<p class="mb-2">        Username: req.Username,</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    s.users[user.Id] = user</p>
+<p class="mb-2">    s.users[user.Id] = user</p>
+<p class="mb-2">    return &amp;proto.UserResponse{User: user}, nil</p>
+<p class="mb-2">    return &amp;proto.UserResponse{User: user}, nil</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func (s *userServer) GetUser(ctx context.Context, req *proto.GetUserRequest) (*proto.UserResponse, error) {</p>
+<p class="mb-2">func (s *userServer) GetUser(ctx context.Context, req *proto.GetUserRequest) (*proto.UserResponse, error) {</p>
+<p class="mb-2">    user, ok := s.users[req.Id]</p>
+<p class="mb-2">    user, ok := s.users[req.Id]</p>
+<p class="mb-2">    if !ok {</p>
+<p class="mb-2">    if !ok {</p>
+<p class="mb-2">        return nil, fmt.Errorf(&quot;user not found&quot;)</p>
+<p class="mb-2">        return nil, fmt.Errorf(&quot;user not found&quot;)</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    return &amp;proto.UserResponse{User: user}, nil</p>
+<p class="mb-2">    return &amp;proto.UserResponse{User: user}, nil</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func (s *userServer) ListUsers(req *proto.ListUsersRequest, stream proto.UserService_ListUsersServer) error {</p>
+<p class="mb-2">func (s *userServer) ListUsers(req *proto.ListUsersRequest, stream proto.UserService_ListUsersServer) error {</p>
+<p class="mb-2">    for _, user := range s.users {</p>
+<p class="mb-2">    for _, user := range s.users {</p>
+<p class="mb-2">        if err := stream.Send(&amp;proto.UserResponse{User: user}); err != nil {</p>
+<p class="mb-2">        if err := stream.Send(&amp;proto.UserResponse{User: user}); err != nil {</p>
+<p class="mb-2">            return err</p>
+<p class="mb-2">            return err</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">        }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    }</p>
+<p class="mb-2">    return nil</p>
+<p class="mb-2">    return nil</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<br>
+<br>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">func main() {</p>
+<p class="mb-2">    lis, _ := net.Listen(&quot;tcp&quot;, &quot;:50051&quot;)</p>
+<p class="mb-2">    lis, _ := net.Listen(&quot;tcp&quot;, &quot;:50051&quot;)</p>
+<p class="mb-2">    s := grpc.NewServer()</p>
+<p class="mb-2">    s := grpc.NewServer()</p>
+<p class="mb-2">    proto.RegisterUserServiceServer(s, &amp;userServer{})</p>
+<p class="mb-2">    proto.RegisterUserServiceServer(s, &amp;userServer{})</p>
+<p class="mb-2">    log.Printf(&quot;Server starting on :50051&quot;)</p>
+<p class="mb-2">    log.Printf(&quot;Server starting on :50051&quot;)</p>
+<p class="mb-2">    s.Serve(lis)</p>
+<p class="mb-2">    s.Serve(lis)</p>
+<p class="mb-2">}</p>
+<p class="mb-2">}</p>
+<pre><code></code></pre>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
+<h2 class="font-heading text-2xl font-bold mt-8 mb-4 border-b border-gray-200 pb-2">总结</h2>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">后端架构知识图谱</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">后端架构知识图谱</h3>
+<br>
+<br>
+<pre><code></code></pre>
+<p class="mb-2">后端架构</p>
+<p class="mb-2">后端架构</p>
+<p class="mb-2">├── Node.js 生态</p>
+<p class="mb-2">├── Node.js 生态</p>
+<p class="mb-2">│   ├── Express（中间件模式、灵活）</p>
+<p class="mb-2">│   ├── Express（中间件模式、灵活）</p>
+<p class="mb-2">│   ├── Fastify（高性能、低开销）</p>
+<p class="mb-2">│   ├── Fastify（高性能、低开销）</p>
+<p class="mb-2">│   └── NestJS（模块化、依赖注入）</p>
+<p class="mb-2">│   └── NestJS（模块化、依赖注入）</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── Python FastAPI</p>
+<p class="mb-2">├── Python FastAPI</p>
+<p class="mb-2">│   ├── 异步架构（async/await）</p>
+<p class="mb-2">│   ├── 异步架构（async/await）</p>
+<p class="mb-2">│   ├── 类型安全（Pydantic）</p>
+<p class="mb-2">│   ├── 类型安全（Pydantic）</p>
+<p class="mb-2">│   └── 依赖注入</p>
+<p class="mb-2">│   └── 依赖注入</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">├── Go 语言</p>
+<p class="mb-2">├── Go 语言</p>
+<p class="mb-2">│   ├── Goroutine（轻量并发）</p>
+<p class="mb-2">│   ├── Goroutine（轻量并发）</p>
+<p class="mb-2">│   ├── Channel（通信机制）</p>
+<p class="mb-2">│   ├── Channel（通信机制）</p>
+<p class="mb-2">│   └── 微服务架构</p>
+<p class="mb-2">│   └── 微服务架构</p>
+<p class="mb-2">│</p>
+<p class="mb-2">│</p>
+<p class="mb-2">└── API 设计</p>
+<p class="mb-2">└── API 设计</p>
+<p class="mb-2">    ├── REST（资源导向）</p>
+<p class="mb-2">    ├── REST（资源导向）</p>
+<p class="mb-2">    ├── GraphQL（按需查询）</p>
+<p class="mb-2">    ├── GraphQL（按需查询）</p>
+<p class="mb-2">    └── gRPC（高性能通信）</p>
+<p class="mb-2">    └── gRPC（高性能通信）</p>
+<pre><code></code></pre>
+<br>
+<br>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">学习建议</h3>
+<h3 class="font-heading text-xl font-semibold mt-6 mb-3">学习建议</h3>
+<br>
+<br>
+<p class="mb-2">1. **Node.js**: 从 Express 入手，理解中间件模式后再学 NestJS</p>
+<p class="mb-2">1. **Node.js**: 从 Express 入手，理解中间件模式后再学 NestJS</p>
+<p class="mb-2">2. **FastAPI**: 重点掌握异步编程和 Pydantic 模型</p>
+<p class="mb-2">2. **FastAPI**: 重点掌握异步编程和 Pydantic 模型</p>
+<p class="mb-2">3. **Go**: 理解 Goroutine 和 Channel 的并发模型</p>
+<p class="mb-2">3. **Go**: 理解 Goroutine 和 Channel 的并发模型</p>
+<p class="mb-2">4. **API 设计**: 根据业务场景选择合适的协议</p>
+<p class="mb-2">4. **API 设计**: 根据业务场景选择合适的协议</p>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<p class="mb-2">*文档版本：2024.12*</p>
+<p class="mb-2">*文档版本：2024.12*</p>
+<br>
+<br>
+<p class="mb-2">---</p>
+<br>
+<br>
+<blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
+<blockquote class="my-3"><p>本内容由 Coze AI 生成，请遵循相关法律法规及《人工智能生成合成内容标识办法》使用与传播。</p></blockquote>
+<br>
+</div></article></main>
+<footer class="text-center text-sm text-secondary py-8 border-t border-gray-200 mt-8"><p>&copy; 2026 My Tech Blog. Built with Tailwind CSS.</p></footer>
+</body></html>
