@@ -156,6 +156,7 @@
         <!-- Desktop Nav Links -->
         <div class="hidden md:flex items-center gap-8">
           <a href="#projects" class="nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200">项目</a>
+          <a href="#games" class="nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200">游戏</a>
           <a href="#blog" class="nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200">博客</a>
           <a href="#about" class="nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200">关于</a>
           <a href="#contact" class="nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200">联系</a>
@@ -196,6 +197,7 @@
       <div id="mobileMenu" class="mobile-menu hidden md:hidden mt-4 pb-2 transform -translate-y-2">
         <div class="flex flex-col gap-3">
           <a href="#projects" class="mobile-link nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200 py-2">项目</a>
+          <a href="#games" class="mobile-link nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200 py-2">游戏</a>
           <a href="#blog" class="mobile-link nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200 py-2">博客</a>
           <a href="#about" class="mobile-link nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200 py-2">关于</a>
           <a href="#contact" class="mobile-link nav-link text-sm font-medium text-secondary hover:text-text-primary transition-colors duration-200 py-2">联系</a>
@@ -329,6 +331,9 @@
         <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-secondary hover:bg-gray-200 transition-all duration-200 cursor-pointer" data-filter="ai">
           AI / ML
         </button>
+        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-secondary hover:bg-gray-200 transition-all duration-200 cursor-pointer" data-filter="game">
+          游戏
+        </button>
         <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-secondary hover:bg-gray-200 transition-all duration-200 cursor-pointer" data-filter="opensource">
           开源项目
         </button>
@@ -458,7 +463,168 @@
           </div>
         </div>
 
+        <!-- Project 5: Drift Diary -->
+        <div class="project-card group relative bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-400" data-category="game">
+          <div class="aspect-[4/3] bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <div class="overlay absolute inset-0 bg-text-primary/85 flex items-center justify-center p-6">
+            <div class="overlay-content text-center">
+              <p class="text-white/70 text-sm mb-3">基于《鲁滨孙漂流记》改编的互动文字冒险游戏，28+ 场景、分支选择、多重结局，沉浸式配乐与存档系统</p>
+              <div class="flex gap-2 flex-wrap justify-center mb-4">
+                <span class="px-2 py-1 text-xs rounded-md bg-white/20 text-white">React 18</span>
+                <span class="px-2 py-1 text-xs rounded-md bg-white/20 text-white">TypeScript</span>
+                <span class="px-2 py-1 text-xs rounded-md bg-white/20 text-white">Vite</span>
+                <span class="px-2 py-1 text-xs rounded-md bg-white/20 text-white">Zustand</span>
+                <span class="px-2 py-1 text-xs rounded-md bg-white/20 text-white">Tailwind</span>
+              </div>
+              <div class="flex items-center justify-center gap-2">
+                <a href="https://github.com/zhang66633/drift-diary" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent-hover transition-colors duration-200 cursor-pointer">
+                  源码
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V4m0 0l4 4m-4-4L6 8"/></svg>
+                </a>
+                <a href="https://drift-diary.pages.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 border border-white/30 text-white rounded-lg text-sm font-medium hover:bg-white/10 transition-colors duration-200 cursor-pointer">
+                  演示
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading font-semibold text-lg text-text-primary mb-1">Drift Diary 漂流日记</h3>
+            <p class="text-sm text-secondary">互动文字冒险游戏</p>
+          </div>
+        </div>
+
       </div><!-- /Project Grid -->
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- GAMES SECTION                                -->
+  <!-- ============================================ -->
+  <section id="games" class="py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- Section Header -->
+      <div class="reveal text-center mb-16">
+        <span class="text-accent font-medium text-sm tracking-wider uppercase">Games</span>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-text-primary mt-2 mb-4">
+          游戏版块
+        </h2>
+        <p class="text-secondary max-w-lg mx-auto">
+          业余时间开发的小游戏，在玩中探索编程的乐趣
+        </p>
+      </div>
+
+      <!-- Game 1: Drift Diary 漂流日记 -->
+      <div class="reveal mb-12">
+        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-400">
+          <div class="grid lg:grid-cols-5">
+            <!-- Left: Visual -->
+            <div class="lg:col-span-2 bg-gradient-to-br from-teal-400 to-emerald-500 p-8 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                  <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+              </div>
+              <div class="relative text-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+                <h3 class="font-heading font-bold text-2xl mb-2">Drift Diary</h3>
+                <p class="text-white/80 text-lg">漂流日记</p>
+              </div>
+            </div>
+            <!-- Right: Info -->
+            <div class="lg:col-span-3 p-8">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-lg bg-teal-50 text-teal-600 text-xs font-medium">文字冒险</span>
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-600 text-xs font-medium">互动小说</span>
+                <span class="px-2.5 py-1 rounded-lg bg-cyan-50 text-cyan-600 text-xs font-medium">React</span>
+              </div>
+              <h3 class="font-heading font-semibold text-2xl text-text-primary mb-3">Drift Diary 漂流日记</h3>
+              <p class="text-secondary leading-relaxed mb-4">
+                基于《鲁滨孙漂流记》改编的互动文字冒险游戏。28+ 个场景、分支选择系统、多重结局，配备沉浸式背景音乐与完整的存档/读档系统。
+                精美的 UI 设计与流畅的过渡动画，带来主机游戏般的文字冒险体验。
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">React 18</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">TypeScript</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">Vite</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">Zustand</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">Tailwind CSS</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">Web Audio API</span>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://github.com/zhang66633/drift-diary" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-text-primary text-white rounded-xl text-sm font-medium hover:bg-secondary transition-colors duration-200 cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  源码
+                </a>
+                <a href="https://drift-diary.pages.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-5 py-2.5 border border-gray-200 text-text-primary rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors duration-200 cursor-pointer">
+                  在线试玩
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game 2: Snake Game 贪吃蛇 -->
+      <div class="reveal mb-12">
+        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-400">
+          <div class="grid lg:grid-cols-5">
+            <!-- Left: Visual -->
+            <div class="lg:col-span-2 bg-gradient-to-br from-purple-500 to-pink-500 p-8 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                  <path d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.959.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
+                </svg>
+              </div>
+              <div class="relative text-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.959.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
+                </svg>
+                <h3 class="font-heading font-bold text-2xl mb-2">Snake Game</h3>
+                <p class="text-white/80 text-lg">贪吃蛇</p>
+              </div>
+            </div>
+            <!-- Right: Info -->
+            <div class="lg:col-span-3 p-8">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-lg bg-purple-50 text-purple-600 text-xs font-medium">经典游戏</span>
+                <span class="px-2.5 py-1 rounded-lg bg-pink-50 text-pink-600 text-xs font-medium">AI 对战</span>
+                <span class="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-600 text-xs font-medium">双人模式</span>
+              </div>
+              <h3 class="font-heading font-semibold text-2xl text-text-primary mb-3">Snake Game 贪吃蛇</h3>
+              <p class="text-secondary leading-relaxed mb-4">
+                多模式贪吃蛇游戏，包含四大玩法：<strong>经典模式</strong>怀旧贪吃蛇体验、<strong>AI 自动寻路</strong>基于 BFS 算法的智能蛇、<strong>双人对战</strong>同屏竞技、<strong>子弹模式</strong>可发射子弹消除障碍。
+                支持自定义地图大小、速度调节，本地保存最高分记录。
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">Python</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">Pygame</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">C (移植版)</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">BFS 寻路</span>
+                <span class="px-2.5 py-1 bg-gray-100 text-text-primary rounded-lg text-xs font-medium">Pygame_gui</span>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://github.com/zhang66633/snake_game" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-text-primary text-white rounded-xl text-sm font-medium hover:bg-secondary transition-colors duration-200 cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  源码
+                </a>
+                <a href="https://github.com/zhang66633/snake_game/releases" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-5 py-2.5 border border-gray-200 text-text-primary rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors duration-200 cursor-pointer">
+                  下载
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
