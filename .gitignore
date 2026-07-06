@@ -1,0 +1,16 @@
+# Node modules
+node_modules
+
+# Editor
+.vscode
+.idea
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
+.firecrawl/
+design-system/
