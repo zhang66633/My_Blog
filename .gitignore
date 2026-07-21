@@ -14,3 +14,6 @@ Thumbs.db
 .claude/
 .firecrawl/
 design-system/
+
+# Cloudflare Pages 本地状态
+.wrangler/
